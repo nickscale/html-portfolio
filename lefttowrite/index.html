@@ -1,0 +1,143 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Left To Write</title>
+    <link rel="stylesheet" href="style.css" />
+
+    <!-- Link jQuery -->
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.7.0/jquery.min.js"></script>
+    <link
+      rel="stylesheet"
+      href="https://ajax.googleapis.com/ajax/libs/jqueryui/1.13.2/themes/smoothness/jquery-ui.css"
+    />
+    <script src="https://ajax.googleapis.com/ajax/libs/jqueryui/1.13.2/jquery-ui.min.js"></script>
+
+    <!-- Link Google Font -->
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Pacifico&display=swap"
+      rel="stylesheet"
+    />
+  </head>
+  <body>
+    <div class="app-container">
+      <h1>Left To Write</h1>
+      <div class="form-container">
+        <form action="" id="data-entry">
+          <p>
+            Today is
+            <input
+              type="date"
+              name="todays-date"
+              id="todays-date"
+              placeholder=""
+              onchange="recalculate()"
+            />.
+          </p>
+          <p>
+            I write
+            <select id="days-per-week" name="" onchange="recalculate()">
+              <option value="1">1</option>
+              <option value="2">2</option>
+              <option value="3">3</option>
+              <option value="4">4</option>
+              <option value="5">5</option>
+              <option value="6">6</option>
+              <option value="7" selected>7</option>
+            </select>
+            days per week.
+          </p>
+          <p>
+            Current word count:
+            <input
+              type="number"
+              min="1"
+              max="999999"
+              name=""
+              id="current-words"
+              placeholder="1000"
+              onchange="recalculate()"
+            />
+          </p>
+          <p>
+            Target word count:
+            <input
+              type="number"
+              min="2"
+              max="999999"
+              name=""
+              id="target-words"
+              placeholder="1000"
+              onchange="recalculate()"
+            />
+          </p>
+
+          <p>Choose either:</p>
+          <p>
+            <input
+              type="radio"
+              name="time-type"
+              id="choose-current-days"
+              checked="checked"
+            />
+            <label for="current-days">I have written for</label>
+            <input
+              type="number"
+              name="time-type"
+              id="current-days"
+              min="1"
+              max="9999"
+              placeholder="100"
+              onchange="recalculate()"
+            />
+            days so far.
+          </p>
+          <p>
+            <input type="radio" name="time-type" id="choose-start-date" />
+            <label for="start-date">I started writing on</label>
+            <input
+              type="date"
+              name="time-type2"
+              id="start-date"
+              min="2010-01-01"
+              placeholder="01/01/2020"
+              onchange="recalculate()"
+            />
+          </p>
+        </form>
+      </div>
+      <div class="result-box">
+        <p>
+          On average you write <span id="current-rate">CURRENT RATE</span> words
+          per day.
+        </p>
+      </div>
+      <div class="result-box">
+        <p>
+          You should finish on
+          <span id="estimated-finish">ESTIMATED FINISH DATE</span>.
+        </p>
+      </div>
+      <div class="result-box">
+        <p>
+          To finish by
+          <input
+            type="date"
+            name="target-date"
+            id=""
+            onchange="recalculate()"
+          />
+          you need to write <span id="required-rate">REQUIRED RATE</span> words
+          per day.
+        </p>
+      </div>
+    </div>
+
+    <footer><p>v0.1a © 2023</p></footer>
+    <script src="./main.js"></script>
+  </body>
+</html>

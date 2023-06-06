@@ -1,0 +1,63 @@
+<!DOCTYPE html>
+<html lang="en" dir="ltr">
+  <head>
+    <meta charset="utf-8" />
+    <title>Simon Says</title>
+    <link rel="stylesheet" href="style.css" />
+    <link rel="shortcut icon" href="favicon.ico" type="image/x-icon" />
+
+    <!-- Link jQuery -->
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.7.0/jquery.min.js"></script>
+    <link
+      rel="stylesheet"
+      href="https://ajax.googleapis.com/ajax/libs/jqueryui/1.13.2/themes/smoothness/jquery-ui.css"
+    />
+    <script src="https://ajax.googleapis.com/ajax/libs/jqueryui/1.13.2/jquery-ui.min.js"></script>
+
+    <!-- Link Google Font -->
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Oxanium&display=swap"
+      rel="stylesheet"
+    />
+  </head>
+
+  <body>
+    <!-- Standard header -->
+    <header>
+      <button class="home-btn">◀︎ Home</button>
+    </header>
+
+    <!-- game/app container -->
+    <div class="game-container">
+      <div id="main-title"><h1>Simon Says</h1></div>
+      <div class="board-container">
+        <div class="board-bg"></div>
+        <div>
+          <div class="btn green" id="green"></div>
+          <div class="btn red" id="red"></div>
+        </div>
+        <div id="instructions">
+          <h2>Press any key to play</h2>
+          <p>
+            Repeat the sound that Simon makes.<br />
+            Every turn repeat all the previous sounds.<br />
+            What's the longest sequence you can recall?
+          </p>
+        </div>
+        <div>
+          <div class="btn yellow" id="yellow"></div>
+          <div class="btn blue" id="blue"></div>
+        </div>
+      </div>
+    </div>
+
+    <!-- Standard footer -->
+    <footer>
+      <p>v0.2a © Nick Swinglehurst 2023</p>
+    </footer>
+
+    <script src="./main.js"></script>
+  </body>
+</html>

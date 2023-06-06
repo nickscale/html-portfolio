@@ -1,0 +1,49 @@
+* {
+  margin: 0;
+  padding: 0;
+  --theme-white: #ddd;
+}
+
+body {
+  background-color: var(--theme-white);
+}
+
+.app-container {
+  width: max-content;
+  height: 100%;
+  margin: 0 auto;
+  background-color: orange;
+}
+
+.board-container {
+}
+
+.controls-container {
+  background-color: #999;
+  height: 8vh;
+  text-align: center;
+}
+
+.button {
+  display: inline-block;
+  height: 8vh;
+  width: 8vh;
+  border: 2px solid black;
+  margin: 2px;
+  border-radius: 10%;
+}
+
+.button:hover {
+  background-color: var(--theme-white);
+}
+
+.active {
+  background-color: var(--theme-white);
+}
+
+footer {
+  margin: 10px;
+  position: fixed;
+  bottom: 0px;
+  right: 0px;
+}

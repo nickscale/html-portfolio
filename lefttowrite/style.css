@@ -1,0 +1,52 @@
+* {
+  margin: 0;
+  padding: 0;
+  font-family: Georgia, "Times New Roman", Times, serif;
+}
+
+body {
+  background-color: #ddd;
+}
+
+h1 {
+  font-family: "Pacifico", cursive;
+  text-align: center;
+  color: #383;
+  padding: 1vh 0;
+  text-shadow: 3px 3px 5px #2222;
+}
+
+p {
+  padding: 5px;
+}
+
+.app-container {
+  position: absolute;
+  left: 50%;
+  top: 45%;
+  transform: translate(-50%, -50%);
+  width: 50%;
+  max-width: 840px;
+}
+
+.app-container > div {
+  padding: 1vh;
+  margin: 2vh;
+  border-radius: 10px;
+  box-shadow: 0px 0px 10px 0px #2222;
+}
+
+.form-container {
+  background-color: #7e7;
+}
+
+.result-box {
+  background-color: #eee;
+}
+
+footer {
+  position: absolute;
+  font-size: small;
+  bottom: 0px;
+  right: 0px;
+}

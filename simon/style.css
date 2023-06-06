@@ -1,0 +1,134 @@
+* {
+  margin: 0px;
+  font-family: "Oxanium", sans-serif;
+  box-sizing: border-box;
+}
+
+body {
+  background-color: #333;
+  text-align: center;
+}
+
+h1 {
+  font-size: 4rem;
+  text-shadow: 3px 3px 15px #999;
+  margin: 15px 0px;
+}
+
+h2 {
+  font-size: 2rem;
+  margin: 10px 0px;
+}
+
+p {
+  margin: 10px 0px;
+}
+
+.game-container {
+  width: fit-content;
+  padding: 20px;
+  margin: 6vh auto;
+}
+
+.board-container {
+  position: relative;
+  width: max-content;
+  margin: 0 auto;
+  padding: 25px;
+  animation-name: board-landing;
+  animation-duration: 1.5s;
+}
+
+@keyframes board-landing {
+  0% {
+    scale: 0%;
+    rotate: -45deg;
+  }
+  100% {
+    scale: 100%;
+    rotate: 0deg;
+  }
+}
+
+.board-bg {
+  position: absolute;
+}
+
+.btn {
+  display: inline-block;
+  height: 200px;
+  width: 200px;
+  margin: 5px;
+  border: 10px solid black;
+  border-radius: 20%;
+}
+
+.hoverable:hover {
+  cursor: pointer;
+}
+
+.red {
+  background-color: red;
+  border-top-right-radius: 250px;
+}
+
+.green {
+  background-color: green;
+  border-top-left-radius: 250px;
+}
+
+.blue {
+  background-color: blue;
+  border-bottom-right-radius: 250px;
+}
+
+.yellow {
+  background-color: yellow;
+  border-bottom-left-radius: 250px;
+}
+
+.white {
+  background-color: white;
+}
+
+.pressed {
+  box-shadow: 0 0 20px white;
+  background-color: grey;
+}
+
+.error {
+  background-color: red;
+}
+
+#instructions {
+  display: block;
+  position: absolute;
+  width: max-content;
+  padding: 15px;
+  margin: 0 auto;
+  background-color: #eee;
+  border: 10px solid black;
+  border-radius: 25px;
+  left: 50%;
+  top: 50%;
+  transform: translateX(-50%) translateY(-50%);
+}
+
+footer {
+  margin: 15px;
+  position: absolute;
+  bottom: 0px;
+  right: 0px;
+}
+
+.home-btn {
+  margin: 10px;
+  padding: 4px;
+  position: absolute;
+  top: 0px;
+  left: 0px;
+}
+
+.home-btn:hover {
+  background-color: #888;
+}
