@@ -1,7 +1,5 @@
 * {
-  margin: 0;
-  padding: 0;
-  box-sizing: border-box;
+  /* global variables */
   --nav-line-height: 70px;
   --theme-light: #eee;
   --theme-dark: #2e2b38;
@@ -9,10 +7,14 @@
   --theme-background: #333;
   --DEBUG-left: lawngreen;
   --DEBUG-right: rebeccapurple;
+
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+  color: var(--theme-light);
 }
 
 body {
-  background-color: var(--theme-background);
   font-family: "Poppins", "Arial Narrow", Arial, sans-serif;
   font-weight: 100;
   height: 100%;
@@ -32,12 +34,16 @@ body {
   min-height: 100vh;
   padding: 2vw 2vh;
   margin: 0 auto -var(--nav-line-height);
-  grid-template-areas: "header" "main" "footer";
+  grid-template-areas:
+    "header"
+    "main"
+    "footer";
   grid-template-columns: 1fr;
   grid-template-rows: max-content auto max-content;
 }
 
-/* for less than 768px - see @media */
+/* For screen-width less than 768px. */
+/* See @media for large sizes. */
 .dynamic {
   display: block;
   width: 100%;
@@ -47,9 +53,12 @@ body {
 header {
   grid-area: header;
   line-height: var(--nav-line-height);
+  background-color: var(--theme-background);
+  box-shadow: 0px 10px 10px 5px #3333;
 }
 
 logotype {
+  visibility: visible;
 }
 
 nav {
@@ -70,9 +79,14 @@ main {
   grid-area: main;
 }
 
+.go-to-top {
+  position: fixed;
+  right: 13px;
+  bottom: var(--nav-line-height);
+}
+
 footer {
   grid-area: footer;
-  background-color: var(--theme-background);
   line-height: var(--nav-line-height);
 }
 
@@ -83,12 +97,11 @@ footer,
 
 .background {
   position: fixed;
-  z-index: -3;
-
   left: 0;
   top: 0;
   width: 100vw;
   height: 100vh;
+  z-index: -1;
 
   /* background moving gradient */
   background: linear-gradient(-45deg, #3c3938, #2e2b38, #5c6163, #831e42);
@@ -116,9 +129,19 @@ h1 {
 }
 
 h2 {
-  font-weight: 300;
+  font-weight: 400;
   font-size: 4rem;
-  color: var(--theme-light);
+}
+
+h3 {
+  font-weight: 300;
+  font-size: 3rem;
+}
+
+.title {
+  display: block;
+  clear: both;
+  text-align: center;
 }
 
 p,
@@ -155,6 +178,5 @@ textarea {
   .dynamic {
     display: inline-block;
     width: auto;
-    text-align: inherit;
   }
 }

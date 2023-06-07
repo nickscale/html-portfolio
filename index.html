@@ -26,22 +26,28 @@
   </head>
 
   <body class="grid-container">
+    <!-- gradient animation background -->
     <div class="background"></div>
+    <a href="#top">
+      <img class="go-to-top" src="./images/scroll-up-50.png" alt="Go to top"
+    /></a>
+
+    <!-- wrapper required for footer fix -->
     <div class="page-wrapper">
       <!-- header -->
       <header>
         <logotype class="dynamic left"
-          ><a href="#"> <h1>Nick Swinglehurst</h1></a>
+          ><a href="#" id="top"> <h1>Nick Swinglehurst</h1></a>
         </logotype>
         <nav class="dynamic right">
           <div class="nav-item">
-            <a href="#" alt="About">About</a>
+            <a href="#about" alt="About">About</a>
           </div>
           <div class="nav-item">
-            <a href="#" alt="Projects">Projects</a>
+            <a href="#projects" alt="Projects">Projects</a>
           </div>
           <div class="nav-item">
-            <a href="#" alt="Contact">Contact</a>
+            <a href="#contact" alt="Contact">Contact</a>
           </div>
         </nav>
       </header>
@@ -50,23 +56,31 @@
 
       <main>
         <div class="parallax">
-          <h2>Coding soon</h2>
+          <h2 class="title">I'm Nick</h2>
+          <h3 class="title">Junior Developer</h3>
         </div>
-        <p>
-          Lorem ipsum dolor sit amet, consectetur adipisicing elit. Ducimus id
-          quam dignissimos, odio, tenetur exercitationem libero earum vitae
-          perferendis enim ex quas laborum consequuntur itaque voluptas!
-          Eligendi vero et accusamus minima non, enim quidem voluptatem pariatur
-          dolorum assumenda quas. Reprehenderit, delectus. Illo blanditiis fugit
-          sequi nobis eligendi nihil iusto consectetur optio labore asperiores
-          illum, vel modi corrupti assumenda, aliquid ipsa numquam inventore
-          esse nostrum deserunt eius veniam. Esse voluptate harum cumque totam
-          quas placeat soluta et eligendi magnam porro optio officiis accusamus
-          iure impedit, commodi accusantium repellat cupiditate incidunt eaque
-          asperiores quasi? Fugit, molestiae ipsam amet culpa vitae repudiandae
-          adipisci!
-        </p>
-
+        <div>
+          <h2 class="title"><a id="about">About me</a></h2>
+        </div>
+        <div>
+          <p>I love putting ideas into code and making them a joy to use.</p>
+        </div>
+        <div>
+          <h2 class="title"><a id="projects">Projects</a></h2>
+        </div>
+        <div>
+          <p>
+            Lorem ipsum dolor, sit amet consectetur adipisicing elit. Architecto
+            doloribus aliquam vitae eum, nobis, accusamus adipisci vero aut
+            quaerat quae ab voluptate dignissimos aperiam. Nemo asperiores alias
+            eaque cupiditate, cum nulla ut vel quam tempore dolore, debitis eum
+            quo impedit molestias quasi facilis ducimus. Unde temporibus optio
+            voluptate fugit soluta?
+          </p>
+        </div>
+        <div>
+          <h2 class="title"><a id="contact">Contact</a></h2>
+        </div>
         <form
           class="contact-form"
           action="mailto:nickswinglehurst@gmail.com?subject=Message via contact form"
@@ -93,9 +107,11 @@
           </fieldset>
         </form>
       </main>
-      <div class="push"></div>
+
       <!-- push footer offscreen -->
+      <div class="push"></div>
     </div>
+
     <!-- footer -->
     <footer>
       <div class="left dynamic">
