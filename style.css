@@ -1,123 +1,160 @@
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+  --nav-line-height: 70px;
+  --theme-light: #eee;
+  --theme-dark: #2e2b38;
+  --theme-highlight: #c00c33;
+  --theme-background: #333;
+  --DEBUG-left: lawngreen;
+  --DEBUG-right: rebeccapurple;
+}
+
 body {
-    background-color: #222;
-    font-family: 'Poppins', 'Arial Narrow', Arial, sans-serif;
-    font-weight: 100;
-    color: white;
-    margin: 0;
-    padding: 20;
-
-    /* background moving gradient */
-    background: linear-gradient(-45deg, #3c3938, #2e2b38, #5c6163, #831e42);
-    background-size: 400% 400%;
-    animation: gradient 15s ease infinite;
-    height: 100vh;
-
+  background-color: var(--theme-background);
+  font-family: "Poppins", "Arial Narrow", Arial, sans-serif;
+  font-weight: 100;
+  height: 100%;
 }
 
-@keyframes gradient {
-    0% {
-        background-position: 0% 50%;
-    }
-
-    50% {
-        background-position: 100% 50%;
-    }
-
-    100% {
-        background-position: 0% 50%;
-    }
+.page-wrapper {
+  min-height: 100%;
+  margin-bottom: -var(--nav-line-height);
 }
 
-.background {
-    position: absolute;
-    width: 100vw;
-    height: 100vh;
-    overflow: hidden;
+.grid-container {
+  /* static grain texture */
+  background-image: url("./images/whitenoise_200px.png");
+  background-repeat: repeat-x-y;
+
+  display: grid;
+  min-height: 100vh;
+  padding: 2vw 2vh;
+  margin: 0 auto -var(--nav-line-height);
+  grid-template-areas: "header" "main" "footer";
+  grid-template-columns: 1fr;
+  grid-template-rows: max-content auto max-content;
 }
 
-.background::after {
-    content: "";
-    position: absolute;
-    width: 200vw;
-    height: 200vh;
-    left: -50%;
-    top: -50%;
-    background-image: url(data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAGQAAABk
- ... ... ... 0h3x10Knx7u8R/N/zoJhKaqY2qsAAAAASUVORK5CYII=);
-}
-
-
-
-
-
-.page-container {
-    position: relative;
-    height: 100vh;
-    width: 100vw;
-    background-image: url("./images/whitenoise_200px.png");
-    background-repeat: repeat-x-y;
-}
-
-.content-wrapper {
-    padding-bottom: 3rem;
-}
-
-h1 {
-    font-family: 'Comforter Brush', Cochin, Georgia, Times, serif;
-    font-size: 4rem;
-    margin: 0px;
-    color: rgb(192, 12, 51);
-}
-
-h2 {
-    font-weight: 300;
-    font-size: 4rem;
-    display: block;
-    margin: 0px auto;
-    padding: 0;
+/* for less than 768px - see @media */
+.dynamic {
+  display: block;
+  width: 100%;
+  text-align: center;
 }
 
 header {
-    padding: 20px;
-    height: 4rem;
-    line-height: 4rem;
+  grid-area: header;
+  line-height: var(--nav-line-height);
+}
+
+logotype {
+}
+
+nav {
+  text-align: center;
+}
+
+nav .nav-item {
+  display: inline-block;
+  width: 90px;
+  height: var(--nav-line-height);
+}
+
+.nav-item:hover {
+  font-weight: bold;
+}
+
+main {
+  grid-area: main;
 }
 
 footer {
-    position: absolute;
-    width: 95%;
-    bottom: 0;
-    height: 4rem;
+  grid-area: footer;
+  background-color: var(--theme-background);
+  line-height: var(--nav-line-height);
 }
 
-.navigation {
-    margin: 0px 20px;
+footer,
+.push {
+  height: var(--nav-line-height);
 }
 
-.navigation a {
-    color: white;
-    text-decoration: none;
-    padding-inline: 10px;
+.background {
+  position: fixed;
+  z-index: -3;
+
+  left: 0;
+  top: 0;
+  width: 100vw;
+  height: 100vh;
+
+  /* background moving gradient */
+  background: linear-gradient(-45deg, #3c3938, #2e2b38, #5c6163, #831e42);
+  background-size: 200% 200%;
+  animation: gradient 15s ease infinite;
 }
 
-.centerxy {
-    position: absolute;
-    width: 50%;
-    left: 25%;
-    top: 40%;
-    text-align: center;
+@keyframes gradient {
+  0% {
+    background-position: 0% 50%;
+  }
+
+  50% {
+    background-position: 100% 50%;
+  }
+
+  100% {
+    background-position: 0% 50%;
+  }
+}
+
+h1 {
+  font-family: "Comforter Brush", Cochin, Georgia, Times, serif;
+  color: var(--theme-highlight);
+}
+
+h2 {
+  font-weight: 300;
+  font-size: 4rem;
+  color: var(--theme-light);
+}
+
+p,
+a {
+  color: var(--theme-light);
+  text-decoration: none;
+}
+
+.parallax {
+}
+
+.contact-form {
+  color: var(--theme-light);
+}
+
+.contact-form input,
+textarea {
+  margin: 10px;
+  padding: 5px;
+  border: 0px;
+  border-bottom: 8px solid black;
 }
 
 .left {
-    /* background-color: lawngreen; */
-    max-width: 50%;
-    float: left;
-    vertical-align: top;
+  float: left;
 }
 
 .right {
-    /* background-color: rebeccapurple; */
-    max-width: 50%;
-    float: right;
-    vertical-align: top;
+  float: right;
+}
+
+/* for larger screens - mobile first design */
+@media only screen and (min-width: 640px) {
+  .dynamic {
+    display: inline-block;
+    width: auto;
+    text-align: inherit;
+  }
 }

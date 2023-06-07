@@ -8,6 +8,18 @@ body {
   background-color: #ddd;
 }
 
+@media screen and (max-width: 960px) {
+  .column {
+    width: 50%;
+  }
+}
+
+@media screen and (max-width: 600px) {
+  .column {
+    width: 100%;
+  }
+}
+
 h1 {
   font-family: "Pacifico", cursive;
   text-align: center;
