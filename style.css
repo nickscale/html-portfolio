@@ -1,13 +1,30 @@
-* {
-  /* global variables */
-  --nav-line-height: 70px;
-  --theme-light: #eee;
-  --theme-dark: #2e2b38;
-  --theme-highlight: #c00c33;
-  --theme-background: #333;
-  --DEBUG-left: lawngreen;
-  --DEBUG-right: rebeccapurple;
+@import url("https://fonts.googleapis.com/css2?family=Playfair+Display:wght@700&display=swap");
+@import url("https://fonts.googleapis.com/css2?family=Comforter+Brush&display=swap");
+@import url("https://fonts.googleapis.com/css2?family=Poppins:wght@100;300;500&display=swap");
+@import url("https://fonts.googleapis.com/css2?family=Special+Elite&display=swap");
 
+:root {
+  /* global variables */
+  --nav-line-height: 80px;
+  --article-width: 400px;
+
+  --theme-light: #ddd;
+  --theme-dark: #2e2b38;
+  --theme-highlight: royalblue;
+  --theme-background: #333;
+
+  --DEBUG-left: green;
+  --DEBUG-right: red;
+
+  --font-heading: "Playfair Display", serif;
+  --font-primary: "Poppins", serif;
+
+  --scale: 0;
+  --space: 8vmin;
+  --theme-padding: 10px;
+}
+
+* {
   margin: 0;
   padding: 0;
   box-sizing: border-box;
@@ -15,168 +32,300 @@
 }
 
 body {
-  font-family: "Poppins", "Arial Narrow", Arial, sans-serif;
+  background-color: var(--theme-background);
+  font-size: clamp(1.2rem, 5vw, 1.5rem);
+  font-family: var(--font-primary);
+  color: var(--theme-light);
+  line-height: 1.6;
+}
+
+h1 {
+  font-size: 5rem;
+  font-family: var(--font-heading);
+}
+
+h2 {
+  font-size: 3rem;
+}
+
+h3 {
+  display: inline-block;
+}
+
+p {
   font-weight: 100;
-  height: 100%;
 }
 
-.page-wrapper {
-  min-height: 100%;
-  margin-bottom: -var(--nav-line-height);
+a {
+  color: var(--theme-light);
+  font-weight: bold;
+  text-decoration: none;
 }
 
-.grid-container {
-  /* static grain texture */
-  background-image: url("./images/whitenoise_200px.png");
-  background-repeat: repeat-x-y;
-
-  display: grid;
-  min-height: 100vh;
-  padding: 2vw 2vh;
-  margin: 0 auto -var(--nav-line-height);
-  grid-template-areas:
-    "header"
-    "main"
-    "footer";
-  grid-template-columns: 1fr;
-  grid-template-rows: max-content auto max-content;
-}
-
-/* For screen-width less than 768px. */
-/* See @media for large sizes. */
-.dynamic {
-  display: block;
-  width: 100%;
-  text-align: center;
+a:hover,
+a:focus {
+  color: var(--theme-highlight);
 }
 
 header {
-  grid-area: header;
-  line-height: var(--nav-line-height);
   background-color: var(--theme-background);
-  box-shadow: 0px 10px 10px 5px #3333;
+  background-image: url("./images/gallery/liminal-ext-039.jpeg");
+  background-size: cover;
+  height: 100vh;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
 }
 
-logotype {
-  visibility: visible;
-}
-
-nav {
+/* main title with animated scroll arrow */
+.page-title {
+  padding: var(--theme-padding);
   text-align: center;
+  color: var(--theme-highlight);
 }
 
-nav .nav-item {
-  display: inline-block;
-  width: 90px;
+.shadow3d {
+  --shadow-grey: #999;
+  --shadow-soft: #2222;
+  text-shadow: 1px 1px 1px var(--shadow-grey), 1px 2px 1px var(--shadow-grey),
+    1px 3px 1px var(--shadow-grey), 1px 4px 1px var(--shadow-grey),
+    1px 24px 6px var(--shadow-soft), 1px 30px 60px var(--shadow-soft);
+}
+
+.page-title:last-child:after {
+  content: "↓";
+  display: block;
+  position: relative;
+  font-size: 2em;
+  opacity: 0;
+  transform: translateY(0px);
+  animation-name: fade-in, arrow-bounce;
+  animation-duration: 500ms, 1000ms;
+  animation-delay: 0ms, 500ms;
+  animation-timing-function: ease, ease;
+  animation-iteration-count: 1, infinite;
+  animation-fill-mode: forwards, forwards;
+}
+@keyframes fade-in {
+  to {
+    opacity: 1;
+    transform: translateY(25px);
+  }
+}
+@keyframes arrow-bounce {
+  0%,
+  100% {
+    top: 0px;
+  }
+  50% {
+    top: -25px;
+  }
+}
+
+/* general navigation styling */
+nav {
+  padding: 0 var(--theme-padding);
   height: var(--nav-line-height);
+  line-height: var(--nav-line-height);
+  box-shadow: 0px 10px 20px #0006;
 }
 
-.nav-item:hover {
-  font-weight: bold;
+nav a,
+p,
+h3 {
+  overflow: hidden;
+  display: inline;
+  color: var(--theme-light);
+  padding: 0 var(--theme-padding);
+  text-decoration: none;
+}
+.top-nav a:hover,
+.bottom-nav a:hover {
+  color: var(--theme-highlight);
 }
 
-main {
-  grid-area: main;
+/* responsive sticky top navigation */
+.top-nav {
+  background-color: var(--theme-dark);
+  position: sticky;
+  top: 0px;
+  z-index: 3;
+}
+.top-nav #nav-burger {
+  display: inline-block;
+}
+
+/* fixed position bottom navigation */
+.bottom-nav {
+  position: sticky;
+  bottom: 0px;
+}
+
+/* When the screen is less than 600 pixels wide, hide all links, except for the first one ("Home"). Show the link that contains should open and close the topnav (.icon) */
+@media screen and (max-width: 700px) {
+  .top-nav a:not(:last-child) {
+    display: none;
+  }
+  .top-nav a#nav-burger {
+    display: block;
+  }
+}
+
+/* The "responsive" class is added to the topnav with JavaScript when the user clicks on the icon. This class makes the topnav look good on small screens (display the links vertically instead of horizontally) */
+@media screen and (max-width: 700px) {
+  .top-nav.responsive {
+    position: relative;
+  }
+  .top-nav.responsive .nav-burger {
+    position: absolute;
+    right: 0;
+    top: 0;
+  }
+  .top-nav.responsive a {
+    float: none;
+    display: block;
+    text-align: left;
+  }
+}
+
+.headshot {
+  width: 200px;
+  border-radius: 50%;
+  margin: 0px 30px 10px 0px;
+  float: left;
+  clear: right;
 }
 
 .go-to-top {
   position: fixed;
-  right: 13px;
+  right: 20px;
+  bottom: 20px;
+  z-index: 10;
   bottom: var(--nav-line-height);
 }
 
-footer {
-  grid-area: footer;
-  line-height: var(--nav-line-height);
+/* for parallax of sections with image background */
+/* based on https://codepen.io/hexagoncircle/pen/JjRYaZw */
+.section {
+  transform-origin: center top;
+  transform: scaleY(calc(1 - var(--scale)));
+}
+.section > * {
+  transform-origin: center top;
+  transform: scaleY(calc(1 / (1 - var(--scale))));
 }
 
-footer,
-.push {
-  height: var(--nav-line-height);
+.section-title {
+  font-family: var(--font-heading);
+  font-size: clamp(2rem, 5vw, 4rem);
+  font-weight: bold;
+  line-height: 1.125;
 }
-
-.background {
-  position: fixed;
-  left: 0;
-  top: 0;
-  width: 100vw;
-  height: 100vh;
-  z-index: -1;
-
-  /* background moving gradient */
-  background: linear-gradient(-45deg, #3c3938, #2e2b38, #5c6163, #831e42);
-  background-size: 200% 200%;
-  animation: gradient 15s ease infinite;
-}
-
-@keyframes gradient {
-  0% {
-    background-position: 0% 50%;
-  }
-
-  50% {
-    background-position: 100% 50%;
-  }
-
-  100% {
-    background-position: 0% 50%;
-  }
-}
-
-h1 {
-  font-family: "Comforter Brush", Cochin, Georgia, Times, serif;
-  color: var(--theme-highlight);
-}
-
-h2 {
-  font-weight: 400;
-  font-size: 4rem;
-}
-
-h3 {
-  font-weight: 300;
-  font-size: 3rem;
-}
-
-.title {
+.byline {
   display: block;
-  clear: both;
-  text-align: center;
+  font-weight: bold;
 }
 
-p,
-a {
-  color: var(--theme-light);
-  text-decoration: none;
+.content {
+  position: relative;
+  margin: -50vh auto 0;
+  padding: var(--space);
+  max-width: 55ch;
+  width: calc(100% - var(--space));
+  background: hsla(5, 15%, 5%, 0.9);
 }
 
-.parallax {
+.content > * + * {
+  margin-top: 2rem;
 }
 
-.contact-form {
-  color: var(--theme-light);
+.image-container {
+  position: sticky;
+  top: 0;
+  width: 100%;
+  height: 100vh;
+  z-index: -2;
 }
+
+.image-container img {
+  display: block;
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+}
+
+/* .image-container::after {
+  content: "";
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  width: 100%;
+  height: 50%;
+  background: linear-gradient(
+    to bottom,
+    hsla(5, 15%, 5%, 0) 0%,
+    hsla(5, 15%, 5%, 0.013) 8.1%,
+    hsla(5, 15%, 5%, 0.049) 15.5%,
+    hsla(5, 15%, 5%, 0.104) 22.5%,
+    hsla(5, 15%, 5%, 0.175) 29%,
+    hsla(5, 15%, 5%, 0.259) 35.3%,
+    hsla(5, 15%, 5%, 0.352) 41.2%,
+    hsla(5, 15%, 5%, 0.45) 47.1%,
+    hsla(5, 15%, 5%, 0.55) 52.9%,
+    hsla(5, 15%, 5%, 0.648) 58.8%,
+    hsla(5, 15%, 5%, 0.741) 64.7%,
+    hsla(5, 15%, 5%, 0.825) 71%,
+    hsla(5, 15%, 5%, 0.896) 77.5%,
+    hsla(5, 15%, 5%, 0.951) 84.5%,
+    hsla(5, 15%, 5%, 0.987) 91.9%,
+    hsl(5, 15%, 5%) 100%
+  );
+} */
 
 .contact-form input,
 textarea {
-  margin: 10px;
-  padding: 5px;
-  border: 0px;
-  border-bottom: 8px solid black;
+  font-family: var(--font-primary);
+  color: var(--theme-dark);
+  padding: 12px 20px;
+  margin: 10px 0px;
+  box-sizing: border-box;
 }
 
 .left {
   float: left;
 }
-
 .right {
   float: right;
 }
 
-/* for larger screens - mobile first design */
-@media only screen and (min-width: 640px) {
-  .dynamic {
-    display: inline-block;
-    width: auto;
-  }
+/* flexbox portfolio */
+.portfolio-container {
+  display: inline-flex;
+  flex-direction: column;
+  flex-wrap: wrap;
+  justify-content: flex-start;
+  align-items: flex-start;
+  align-content: flex-start;
+  gap: 20px;
+}
+.portfolio-item {
+  margin: 0px;
+  max-width: 340px;
+  padding: 20px;
+  background-color: var(--theme-dark);
+}
+.portfolio-thumbnail {
+  background-color: var(--theme-light);
+  width: 300px;
+  height: 160px;
+  margin: 10px 0px;
+}
+
+/* misc styles */
+.bloody {
+  font-family: "Creepster";
+  color: red;
 }

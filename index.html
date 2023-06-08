@@ -2,96 +2,165 @@
 <html lang="en">
   <head>
     <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <meta
-      http-equiv="Cache-Control"
-      content="no-cache, no-store, must-revalidate"
-    />
-    <meta http-equiv="Pragma" content="no-cache" />
-    <meta http-equiv="Expires" content="0" />
-    <meta title="Home" />
+    <title>Nick Swinglehurst</title>
     <link rel="stylesheet" href="style.css" />
 
-    <!-- Google fonts -->
+    <!-- Link for hamburger menu image -->
+    <link
+      rel="stylesheet"
+      href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css"
+    />
+
+    <!-- link to google font -->
     <link rel="preconnect" href="https://fonts.googleapis.com" />
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
     <link
-      href="https://fonts.googleapis.com/css2?family=Comforter+Brush&display=swap"
+      href="https://fonts.googleapis.com/css2?family=Creepster&display=swap"
+      rel="stylesheet"
+    />
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Vesper+Libre&display=swap"
       rel="stylesheet"
     />
     <link
-      href="https://fonts.googleapis.com/css2?family=Poppins:wght@100;300;500&display=swap"
+      href="https://fonts.googleapis.com/css2?family=Special+Elite&display=swap"
       rel="stylesheet"
     />
   </head>
-
-  <body class="grid-container">
+  <body>
     <!-- gradient animation background -->
     <div class="background"></div>
+
+    <!-- go to top arrow -->
     <a href="#top">
-      <img class="go-to-top" src="./images/scroll-up-50.png" alt="Go to top"
+      <img
+        class="go-to-top"
+        src="./images/icons/scroll-up-50.png"
+        alt="Go to top"
     /></a>
 
-    <!-- wrapper required for footer fix -->
-    <div class="page-wrapper">
-      <!-- header -->
-      <header>
-        <logotype class="dynamic left"
-          ><a href="#" id="top"> <h1>Nick Swinglehurst</h1></a>
-        </logotype>
-        <nav class="dynamic right">
-          <div class="nav-item">
-            <a href="#about" alt="About">About</a>
-          </div>
-          <div class="nav-item">
-            <a href="#projects" alt="Projects">Projects</a>
-          </div>
-          <div class="nav-item">
-            <a href="#contact" alt="Contact">Contact</a>
-          </div>
-        </nav>
-      </header>
+    <!-- masthead welcome image -->
+    <header id="top">
+      <h1 class="page-title shadow3d">Nick Swinglehurst</h1>
+      <h2 class="page-title shadow3d">Creative Junior Dev</h2>
+    </header>
 
-      <!-- main page content -->
+    <!-- navigation bar -->
+    <nav class="top-nav" id="top-nav">
+      <div class="left">
+        <a href="#top">Nick Swinglehurst</a>
+      </div>
+      <div class="right">
+        <a href="#about" alt="About">About</a>
+        <a href="#projects" alt="Projects">Projects</a>
+        <a href="#contact" alt="Contact">Contact</a>
+        <a
+          href="javascript:void(0);"
+          class="nav-hamburger"
+          onclick="showHamburger()"
+          ><i class="fa fa-bars"></i
+        ></a>
+      </div>
+    </nav>
 
-      <main>
-        <div class="parallax">
-          <h2 class="title">I'm Nick</h2>
-          <h3 class="title">Junior Developer</h3>
-        </div>
-        <div>
-          <h2 class="title"><a id="about">About me</a></h2>
-        </div>
-        <div>
-          <p>I love putting ideas into code and making them a joy to use.</p>
-        </div>
-        <div>
-          <h2 class="title"><a id="projects">Projects</a></h2>
-        </div>
-        <div>
+    <!-- main page content -->
+    <main class="main">
+      <section class="section" id="about">
+        <figure class="image-container">
+          <img src="./images/gallery/liminal-ext-017.jpeg" alt="" />
+        </figure>
+        <article class="content">
+          <h2 class="section-title">About</h2>
+          <span class="byline"
+            >Not everything is about me. But this bit is.</span
+          >
+          <img src="./images/headshot_20230203.jpg" alt="" class="headshot" />
           <p>
-            Lorem ipsum dolor, sit amet consectetur adipisicing elit. Architecto
-            doloribus aliquam vitae eum, nobis, accusamus adipisci vero aut
-            quaerat quae ab voluptate dignissimos aperiam. Nemo asperiores alias
-            eaque cupiditate, cum nulla ut vel quam tempore dolore, debitis eum
-            quo impedit molestias quasi facilis ducimus. Unde temporibus optio
-            voluptate fugit soluta?
+            I combine creativity with diverse tech skills. I love a challenge
+            and thinking outside the box.
           </p>
-        </div>
-        <div>
-          <h2 class="title"><a id="contact">Contact</a></h2>
-        </div>
-        <form
-          class="contact-form"
-          action="mailto:nickswinglehurst@gmail.com?subject=Message via contact form"
-        >
-          <fieldset>
-            <legend>Contact</legend>
+          <p>
+            My degree is in Electronic Systems Engineering. My final year
+            project was a virtual multimeter and oscilloscope, to give students
+            hands-on skills without being in the laboratory.
+          </p>
+          <p>
+            My background is in film and television editing. I cut
+            <a href="#">thousands</a> of TV shows, films and commercials.
+            Editing requires excellent communication, focus and teamwork.
+            skills.
+          </p>
+          <p>
+            I live in south London and enjoy metal gigs 🤘🏻,
+            <a href="#">making noise</a>,
+            <a href="#">writing <span class="bloody">horror</span> stories</a>
+            and hanging out with my coffee club ☕️.
+          </p>
+        </article>
+      </section>
+      <section class="section" id="projects">
+        <figure class="image-container">
+          <img src="./images/gallery/liminal-ext-012.jpeg" alt="" />
+        </figure>
+        <article class="content">
+          <h2 class="section-title">Projects</h2>
+          <span class="byline">time + inspiration + coffee = apps</span>
+          <div class="portfolio-container">
+            <div class="portfolio-item">
+              <h3><a href="./simon/" target="_self">Simon Says</a></h3>
+              <div class="portfolio-thumbnail">Thumbnail</div>
+              <p>A reinvention of the classic 80s handheld game</p>
+            </div>
+            <div class="portfolio-item">
+              <h3><a href="./lefttowrite/" target="_self">Left To Write</a></h3>
+              <div class="portfolio-thumbnail">Thumbnail</div>
+              <p>Helping writers work to deadlines</p>
+            </div>
+            <div class="portfolio-item">
+              <h3><a href="./chime/" target="_self">Chime</a></h3>
+              <div class="portfolio-thumbnail">Thumbnail</div>
+              <p>Soothing audio toy</p>
+            </div>
+            <div class="portfolio-item">
+              <h3>
+                <a href="./chime/" target="_self">White Label Dictionary</a>
+              </h3>
+              <div class="portfolio-thumbnail">Thumbnail</div>
+              <p>Versatile dictionary gadget for website</p>
+            </div>
+            <div class="portfolio-item">
+              <h3>
+                <a href="./tanx3d/" target="_self">Tanx 3D</a>
+              </h3>
+              <div class="portfolio-thumbnail">Thumbnail</div>
+              <p>Retro tank game for 3D glasses.</p>
+            </div>
+            <div class="portfolio-item">project6</div>
+            <div class="portfolio-item">project7</div>
+            <div class="portfolio-item">project8</div>
+          </div>
+        </article>
+      </section>
+      <section class="section" id="contact">
+        <figure class="image-container">
+          <img src="./images/gallery/liminal-ext-020.jpeg" alt="" />
+        </figure>
+        <article class="content">
+          <h2 class="section-title">Contact</h2>
+          <form
+            class="contact-form"
+            action="mailto:nickswinglehurst@gmail.com?subject=Message via contact form"
+          >
             <textarea
               id="message"
               name="message-field"
-              cols="41"
-              placeholder="Drop me a line"
+              rows="4"
+              cols="56"
+              placeholder="Reach out. It's good for your shoulders."
               required
             ></textarea>
             <br />
@@ -100,37 +169,50 @@
               name=""
               id=""
               placeholder="your@email.com"
-              size="42"
+              size="56"
               required
-            />
+            /><br />
             <input type="submit" value="Send" />
-          </fieldset>
-        </form>
-      </main>
+          </form>
+        </article>
+      </section>
+    </main>
 
-      <!-- push footer offscreen -->
-      <div class="push"></div>
-    </div>
-
-    <!-- footer -->
     <footer>
-      <div class="left dynamic">
-        <a href="#">© Nick Swinglehurst 2023</a>
-      </div>
-      <div class="right dynamic">
-        <img
-          src="./images/linkedin_48px.png"
-          alt="LinkedIn"
-          srcset=""
-          width="16px"
-        />
-        <img
-          src="./images/vocal_48px.png"
-          alt="Vocal.Media"
-          srcset=""
-          width="16px"
-        />
-      </div>
+      <nav class="bottom-nav" id="bottom-nav">
+        <div class="left">
+          <a href="#top">© Nick Swinglehurst 2023</a>
+        </div>
+        <div class="right">
+          <a href="#"
+            ><img
+              src="./images/icons/linkedin_48px.png"
+              height="25px"
+              alt="LinkedIn"
+          /></a>
+          <a href="#"
+            ><img src="./images/icons/github.png" height="25px" alt="GitHub"
+          /></a>
+          <a href="#"
+            ><img src="./images/icons/vimeo.png" height="25px" alt="Vimeo"
+          /></a>
+          <a href="#"
+            ><img
+              src="./images/icons/vocal_100px.png"
+              height="25px"
+              alt="Vocal"
+          /></a>
+          <a href="#"
+            ><img
+              src="./images/icons/soundcloud.png"
+              height="25px"
+              alt="Soundcloud"
+          /></a>
+        </div>
+      </nav>
     </footer>
+
+    <!-- Javascript for hamburger menu -->
+    <script src="./index.js"></script>
   </body>
 </html>

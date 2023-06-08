@@ -1,0 +1,138 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta
+      http-equiv="Cache-Control"
+      content="no-cache, no-store, must-revalidate"
+    />
+    <meta http-equiv="Pragma" content="no-cache" />
+    <meta http-equiv="Expires" content="0" />
+    <meta title="Home" />
+    <link rel="stylesheet" href="style_01.css" />
+
+    <!-- Google fonts -->
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Comforter+Brush&display=swap"
+      rel="stylesheet"
+    />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Poppins:wght@100;300;500&display=swap"
+      rel="stylesheet"
+    />
+  </head>
+
+  <body class="grid-container">
+    <!-- gradient animation background -->
+    <div class="background"></div>
+    <a href="#top">
+      <img class="go-to-top" src="./images/scroll-up-50.png" alt="Go to top"
+    /></a>
+
+    <!-- wrapper required for footer fix -->
+    <div class="page-wrapper">
+      <!-- header -->
+      <header>
+        <nav>
+          <logotype class="dynamic left">
+            <a href="#" id="top"> <h1>Nick Swinglehurst</h1></a>
+          </logotype>
+          <div class="dynamic right">
+            <div class="nav-item">
+              <a href="#about" alt="About">About</a>
+            </div>
+            <div class="nav-item">
+              <a href="#projects" alt="Projects">Projects</a>
+            </div>
+            <div class="nav-item">
+              <a href="#contact" alt="Contact">Contact</a>
+            </div>
+          </div>
+        </nav>
+      </header>
+
+      <!-- main page content -->
+
+      <main>
+        <div class="parallax">
+          <h2 class="title">I'm Nick</h2>
+          <h3 class="title">Junior Developer</h3>
+        </div>
+        <div>
+          <h2 class="title"><a id="about">About me</a></h2>
+        </div>
+        <div>
+          <p>I love putting ideas into code and making them a joy to use.</p>
+        </div>
+        <div>
+          <h2 class="title"><a id="projects">Projects</a></h2>
+        </div>
+        <div>
+          <p>
+            Lorem ipsum dolor, sit amet consectetur adipisicing elit. Architecto
+            doloribus aliquam vitae eum, nobis, accusamus adipisci vero aut
+            quaerat quae ab voluptate dignissimos aperiam. Nemo asperiores alias
+            eaque cupiditate, cum nulla ut vel quam tempore dolore, debitis eum
+            quo impedit molestias quasi facilis ducimus. Unde temporibus optio
+            voluptate fugit soluta?
+          </p>
+        </div>
+        <div>
+          <h2 class="title"><a id="contact">Contact</a></h2>
+        </div>
+        <form
+          class="contact-form"
+          action="mailto:nickswinglehurst@gmail.com?subject=Message via contact form"
+        >
+          <fieldset>
+            <legend>Contact</legend>
+            <textarea
+              id="message"
+              name="message-field"
+              cols="41"
+              placeholder="Drop me a line"
+              required
+            ></textarea>
+            <br />
+            <input
+              type="email"
+              name=""
+              id=""
+              placeholder="your@email.com"
+              size="42"
+              required
+            />
+            <input type="submit" value="Send" />
+          </fieldset>
+        </form>
+      </main>
+
+      <!-- push footer offscreen -->
+      <div class="push"></div>
+    </div>
+
+    <!-- footer -->
+    <footer>
+      <div class="left dynamic">
+        <a href="#">© Nick Swinglehurst 2023</a>
+      </div>
+      <div class="right dynamic">
+        <img
+          src="./images/linkedin_48px.png"
+          alt="LinkedIn"
+          srcset=""
+          width="16px"
+        />
+        <img
+          src="./images/vocal_48px.png"
+          alt="Vocal.Media"
+          srcset=""
+          width="16px"
+        />
+      </div>
+    </footer>
+  </body>
+</html>
