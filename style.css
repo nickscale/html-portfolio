@@ -7,22 +7,21 @@
 
 :root {
   /* global variables */
-  --nav-line-height: 60px;
-  --content-max-width: 760px;
-  --space-wide: 10vmin;
-  --space-padding: 10px 20px;
-  --space-scale: 0;
+  --nav-line-height: 70px;
+  --content-max-width: 700px;
+  --space-x: 10vmin;
+  --space-y: 15vh;
+  --space-padding: 20px 20px;
 
-  --theme-white: #ddd;
-  --theme-black: #181818;
-  --theme-lowlight: #1dd3b0;
+  --theme-white: #ccc;
+  --theme-black: #040404;
   --theme-highlight: #affc41;
-  --theme-background: #999;
+  --theme-background: #222;
 
   --DEBUG-left: green;
   --DEBUG-right: red;
 
-  --font-heading: "Passion One", san-serif;
+  --font-heading: "Archivo Black", san-serif;
   --font-primary: "Poppins", serif;
 }
 
@@ -34,7 +33,6 @@
 }
 
 body {
-  background-color: var(--theme-background);
   font-size: clamp(1.2rem, 5vw, 1.5rem);
   font-family: var(--font-primary);
   color: var(--theme-white);
@@ -42,46 +40,56 @@ body {
   grid-template-columns: ;
 }
 
-/* text styling */
+/* general text block element stylings */
+
 h1,
-headline {
-  font-family: "Archivo Black";
+.headline {
+  font-family: var(--font-heading);
   font-size: 5rem;
 }
 
-h2,
-byline {
+h2 {
+  font-weight: 200;
+}
+
+h3,
+.byline {
   font-size: 2rem;
   font-weight: 100;
 }
 
-h3 {
-  font-size: rem;
-}
-
 p {
-  font-weight: 100;
+  font-weight: 300;
+  font-size: smaller;
+  margin-bottom: 1rem;
 }
 
 a {
   font-weight: bold;
   text-decoration: none;
 }
+
 a:hover,
 a:focus {
   color: var(--theme-highlight);
 }
 
-/* grid template areas styling */
-header {
+/* primary area stylings */
+
+section,
+main {
   width: 100%;
 }
 
-page-title,
-nav,
-main,
-footer {
-  width: var(--content-max-width);
+header {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 100%;
+  height: 100vh;
+  padding: var(--space-padding);
+  background-image: url("./images/gallery/liminal-ext-039.jpeg");
+  background-size: cover;
 }
 
 main {
@@ -92,70 +100,134 @@ main {
   align-content: center;
 }
 
-header {
-  display: flex;
+/* header element styling */
 
-  padding: var(--space-padding);
-  width: 100%;
-  height: 100vh;
-  background-color: var(--theme-black);
-  background-image: url("./images/gallery/liminal-ext-028.jpeg");
+.page-title {
+  width: var(--content-max-width);
 }
 
-.navigation {
-  padding: var(--space-padding);
-  width: 100%;
+.page-title:last-child:after {
+  content: "↓";
+  display: block;
+  position: relative;
+  font-size: 2em;
+  opacity: 1;
+  animation-name: arrow-bounce;
+  animation-duration: 1000ms;
+  animation-timing-function: ease;
+  animation-iteration-count: infinite;
+  animation-fill-mode: forwards;
+}
+@keyframes arrow-bounce {
+  0%,
+  100% {
+    top: 0px;
+  }
+  50% {
+    top: 25px;
+  }
+}
+
+/* navigation stylings and media queries */
+
+.topnav,
+.bottomnav {
   background-color: var(--theme-white);
-  line-height: var(--nav-line-height);
+  box-shadow: 0px 10px 50px 50px #0006;
 }
 
-#top-nav {
+.topnav {
   position: sticky;
   top: 0px;
 }
 
-section,
-article {
-  width: 100%;
+.bottomnav {
+  padding: var(--space-padding);
 }
 
-section-header {
-  padding: var(--space-padding);
+.topnav a {
+  float: left;
   display: block;
-  background-color: var(--theme-white);
   color: var(--theme-black);
+  text-align: center;
   padding: var(--space-padding);
+  text-decoration: none;
 }
 
-article {
+.topnav a:hover {
+  background-color: var(--theme-highlight);
 }
 
-article-header,
-article-body {
+/* Hide the link that should open and close the topnav on small screens */
+.topnav .icon {
+  display: none;
+}
+
+/* For screens <800px, hide links except the first and show the hamburger */
+@media screen and (max-width: 800px) {
+  .topnav a:not(:first-child) {
+    display: none;
+  }
+  .topnav a.icon {
+    float: right;
+    display: inline-block;
+    padding-right: 25px;
+  }
+}
+
+/* Add "responsive" class when user clicks the hamburger */
+@media screen and (max-width: 800px) {
+  .topnav.responsive {
+    position: relative;
+  }
+  .topnav.responsive a.icon {
+    position: absolute;
+    right: 0;
+    top: 0;
+  }
+  .topnav.responsive a {
+    float: none;
+    display: block;
+    text-align: left;
+  }
+
+  .article-header {
+    width: 100%;
+    background-color: red;
+    margin: 0px;
+  }
+}
+
+/* article stylings */
+
+.article {
+  width: 100%;
+  background-color: var(--theme-background);
+}
+
+.article-header,
+.article-body {
   display: flex;
   flex-direction: column;
   flex-wrap: nowrap;
   align-items: center;
   align-content: normal;
-
   width: 100%;
-  background-color: var(--theme-black);
 }
 
-article-header {
+.article-header {
   justify-content: flex-end;
-  padding-top: 20vh;
-  background-image: url("./images/gallery/liminal-ext-017.jpeg");
+  padding-top: var(--space-y);
+  background-size: cover;
 }
 
-article-body {
+.article-body {
   justify-content: flex-start;
-  padding-bottom: 15vh;
-  background-color: var(--theme-black);
+  padding-bottom: var(--space-y);
 }
 
-headline,
-byline {
+.headline,
+.byline {
   display: inline-block;
   width: var(--content-max-width);
   background-color: var(--theme-highlight);
@@ -163,20 +235,74 @@ byline {
   padding: var(--space-padding);
 }
 
-headline {
-  margin-top: var(--space-padding);
+.headline {
+  margin-top: var(--space-y);
 }
 
-byline {
-  margin-bottom: var(--space-padding);
-}
-
-copy {
-  display: inline-block;
+.article-text {
   width: var(--content-max-width);
   background-color: var(--theme-white);
-  color: var(--theme-black);
   padding: var(--space-padding);
+  margin-bottom: 5vh;
+}
+
+#article-header-1 {
+  background-image: url("./images/gallery/liminal-ext-017.jpeg");
+}
+
+#article-header-2 {
+  background-image: url("./images/gallery/liminal-ext-018.jpeg");
+}
+
+#article-header-3 {
+  background-image: url("./images/gallery/liminal-ext-019.jpeg");
+}
+
+/* portfolio stylings */
+
+.portfolio-container {
+  display: flex;
+  flex-direction: row;
+  flex-wrap: wrap;
+  justify-content: space-between;
+  row-gap: 20px;
+}
+
+.portfolio-item {
+  min-width: 47%;
+  max-width: min-content;
+}
+
+.portfolio-thumbnail {
+  min-width: 100%;
+  height: 150px;
+  background-color: white;
+}
+
+/* contact form stylings */
+
+.contact-form input,
+textarea {
+  font-family: var(--font-primary);
+  color: var(--theme-dark);
+  padding: 12px 20px;
+  margin: 10px 0px;
+  box-sizing: border-box;
+}
+
+/* misc element stylings */
+
+.headshot {
+  width: 200px;
+  border-radius: 50%;
+  margin: 0px 30px 10px 0px;
+  float: left;
+  clear: right;
+}
+
+.bloody {
+  font-family: "Creepster";
+  color: red;
 }
 
 .go-to-top {

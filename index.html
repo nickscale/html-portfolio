@@ -5,6 +5,20 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>Version 3</title>
     <link rel="stylesheet" href="style.css" />
+
+    <!-- link to a hamburger menu -->
+    <link
+      rel="stylesheet"
+      href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css"
+    />
+
+    <!-- link to google font -->
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Creepster&display=swap"
+      rel="stylesheet"
+    />
   </head>
   <body>
     <!-- go to top arrow -->
@@ -17,70 +31,107 @@
 
     <header>
       <page-title>
-        <h1 class="page-title">NICK SWINGLEHURST</h1>
-        <h2 class="page-title">Creative Junior Dev</h2>
+        <h1 class="page-title">MOBILE NAV IS BROKEN 😣</h1>
+        <h2 class="page-title">I WILL REPLACE IT WITH BOOTSTRAP</h2>
       </page-title>
     </header>
 
     <!-- navigation bar -->
-    <nav class="navigation" id="top-nav">
-      <div class="left">
-        <a href="#top">NICK SWINGLEHURST</a>
-      </div>
-      <div class="right">
-        <a href="#about" alt="About">About</a>
-        <a href="#projects" alt="Projects">Projects</a>
-        <a href="#contact" alt="Contact">Contact</a>
-        <a
-          href="javascript:void(0);"
-          class="nav-hamburger"
-          onclick="showHamburger()"
-          ><img src="./images/icons/hamburger-menu.png" alt="" height="25px"
-        /></a>
-      </div>
-    </nav>
+    <div class="topnav" id="myTopnav">
+      <a href="#top" class="active">Home</a>
+      <a href="#about">About</a>
+      <a href="#projects">Projects</a>
+      <a href="#contact">Contact</a>
+      <a href="javascript:void(0);" class="icon" onclick="myFunction()">
+        <i class="fa fa-bars"></i>
+      </a>
+    </div>
+
+    <!-- main content starts here -->
     <main>
       <section>
         <!-- <section-header>SECTION</section-header> -->
-        <article>
-          <article-header>
-            <headline>ABOUT</headline>
-          </article-header>
-          <article-body>
-            <byline>My story.</byline>
-            <copy>
+        <div class="article" id="about">
+          <div class="article-header" id="article-header-1">
+            <div class="headline">ABOUT</div>
+          </div>
+          <div class="article-body">
+            <!-- <div class="byline">My story.</div> -->
+            <div class="article-text">
+              <img
+                src="./images/profile_image_mono.jpg"
+                alt=""
+                class="headshot"
+              />
               <p>
-                Lorem ipsum, dolor sit amet consectetur adipisicing elit.
-                Expedita, fuga ducimus ipsa natus perspiciatis magnam dicta sed
-                temporibus omnis perferendis adipisci corrupti. Culpa, eius
-                similique?
+                I combine creativity with diverse tech skills. I love a
+                challenge and thinking outside the box.
               </p>
-            </copy>
-          </article-body>
-        </article>
-        <article>
-          <article-header>
-            <headline>PROJECTS</headline>
-          </article-header>
-          <article-body>
-            <byline>Example of my work.</byline>
-            <copy>
               <p>
-                Lorem ipsum, dolor sit amet consectetur adipisicing elit.
-                Expedita, fuga ducimus ipsa natus perspiciatis magnam dicta sed
-                temporibus omnis perferendis adipisci corrupti. Culpa, eius
-                similique?
+                My degree is in Electronic Systems Engineering. My final year
+                project was a virtual multimeter and oscilloscope, to give
+                students hands-on skills without being in the laboratory.
               </p>
-            </copy>
-          </article-body>
-        </article>
-        <article>
-          <article-header>
-            <headline>CONTACT</headline>
-          </article-header>
-          <article-body>
-            <byline>Reach out. It's good for your shoulders.</byline>
-            <copy>
+              <p>
+                My background is in film and television editing. I cut
+                <a href="#">thousands</a> of TV shows, films and commercials.
+                Editing requires excellent communication, focus and teamwork.
+                skills.
+              </p>
+              <p>
+                I live in south London and enjoy metal gigs 🤘🏻,
+                <a href="#">making noise</a>,
+                <a href="#"
+                  >writing <span class="bloody">horror</span> stories</a
+                >
+                and hanging out with my cat 🐱.
+              </p>
+            </div>
+          </div>
+        </div>
+        <div class="article" id="projects">
+          <div class="article-header" id="article-header-2">
+            <div class="headline">PROJECTS</div>
+          </div>
+          <div class="article-body">
+            <!-- <div class="byline">time + inspiration + coffee = apps</div> -->
+            <div class="article-text">
+              <div class="portfolio-container">
+                <div class="portfolio-item">
+                  <h3><a href="./simon/" target="_self">Simon Says</a></h3>
+                  <div class="portfolio-thumbnail">Thumbnail</div>
+                  <p>A reinvention of the classic 80s handheld game</p>
+                </div>
+                <div class="portfolio-item">
+                  <h3>
+                    <a href="./lefttowrite/" target="_self">Left To Write</a>
+                  </h3>
+                  <div class="portfolio-thumbnail">Thumbnail</div>
+                  <p>Helping writers work to deadlines</p>
+                </div>
+                <div class="portfolio-item">
+                  <h3><a href="./chime/" target="_self">Chime</a></h3>
+                  <div class="portfolio-thumbnail">Thumbnail</div>
+                  <p>Soothing audio toy</p>
+                </div>
+                <div class="portfolio-item">
+                  <h3>
+                    <a href="./chime/" target="_self">White Label Dictionary</a>
+                  </h3>
+                  <div class="portfolio-thumbnail">Thumbnail</div>
+                  <p>Versatile dictionary gadget for website</p>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+        <div class="article" id="contact">
+          <div class="article-header" id="article-header-3">
+            <div class="headline">CONTACT</div>
+          </div>
+          <div class="article-body">
+            <!-- <div class="byline">Reach out. It's good for your shoulders.</div> -->
+            <div class="article-text">
               <form
                 class="contact-form"
                 action="mailto:nickswinglehurst@gmail.com?subject=Message via contact form"
@@ -90,7 +141,7 @@
                   name="message-field"
                   rows="4"
                   cols="56"
-                  placeholder="Enter message"
+                  placeholder="Reach out. It's good for your shoulders."
                   required
                 ></textarea>
                 <br />
@@ -104,12 +155,12 @@
                 /><br />
                 <input type="submit" value="Send" />
               </form>
-            </copy>
-          </article-body>
-        </article>
+            </div>
+          </div>
+        </div>
       </section>
     </main>
-    <footer class="navigation" id="bottom-nav">
+    <footer class="bottomnav" id="main-bottomnav">
       <div class="left">© Nick Swinglehurst</div>
       <div class="right">
         <a href="">LINKEDIN</a>
@@ -118,5 +169,8 @@
         <a href="">VOCAL</a>
       </div>
     </footer>
+
+    <!-- Javascript for hamburger menu -->
+    <script src="./index.js"></script>
   </body>
 </html>
