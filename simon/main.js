@@ -1,5 +1,6 @@
 // Initialise constants
-const Colors = ["green", "red", "yellow", "blue"];
+const swatch = ["#06D6A0", "#1B9AAA", "#EF476F", "#FFC43D", "#F8FFE5"];
+const Colors = ["color1", "color2", "color3", "color4"];
 var playing = false;
 var gamePattern = [];
 var playerPattern = [];
@@ -19,11 +20,14 @@ document.addEventListener("keydown", function () {
     playerPattern = [];
     gameColor = "";
     playerColor = "";
-    level = 0; // Used as index, so displayed level is level+1
+    level = 0; // array index, so display as level+1
     thisItem = 0;
     $(".btn").addClass("hoverable");
+    $("#game-title").css("display", "none");
     $("#game-over").css("display", "none");
-    $("#instructions").css("display", "none");
+    $("#level").text("Level " + String(level+1));
+    $("#level").css("display", "block");
+    $("#press-key").css("visibility", "hidden");
 
 
     setTimeout(function (){
@@ -31,11 +35,7 @@ document.addEventListener("keydown", function () {
       gamePattern.push(gameColor);
       flashButton(gameColor);
       playSound(gameColor);
-      $("#main-title h1").text("Level " + String(level+1));
-    }, 300); // pause in milliseconds
-
-  } else {
-    console.log("Keydown during play - no action");
+    }, 400); // pause in milliseconds
   }
 });
 
@@ -63,7 +63,7 @@ $(".btn").on("mousedown", function () {
 
         // add another colour, and reset to start of pattern
         setTimeout(function (){
-          $("#main-title h1").text("Level " + String(level+1));
+          $("#level").text("Level " + String(level+1));
           thisItem = 0;
           gameColor = randomColor();
           gamePattern.push(gameColor);
@@ -76,13 +76,20 @@ $(".btn").on("mousedown", function () {
     } else {
       
       // if not correct, play 'wrong' sound and end game
+      playing = false;
       $(".btn").removeClass("hoverable");
       playSound("wrong");
       flashScreen();
-      playing = false;
-      // $("#game-over").css("display", "block");
-      $("#main-title h1").text("Game over!");
-      $("#instructions").css("display", "block");
+      $("#game-over").css("display", "block");
+      $("#game-title").css("display", "none");
+      $("#level").css("display", "none");
+
+      setTimeout(function (){
+        $("#game-over").css("display", "none");
+        $("#game-title").css("display", "block");
+        $("#press-key").css("visibility", "visible");
+      }, 2500); // pause in milliseconds
+
     }
   }
 });
@@ -109,7 +116,7 @@ function flashButton(buttonColor) {
 // flash the game background
 function flashScreen() {
   $(".game-container").addClass("error");
-  $(".game-container").removeClass("error" , 200);
+  $(".game-container").removeClass("error" , 1500);
 }
 
 function delay(milliseconds){

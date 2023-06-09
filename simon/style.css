@@ -1,57 +1,102 @@
+@import url("https://fonts.googleapis.com/css2?family=Bruno+Ace&family=Monomaniac+One&family=Monoton&family=Poppins:wght@100;300;500&family=Press+Start+2P&family=Rubik+Pixels&family=Oxanium&family=VT323&display=swap");
+
+:root {
+  --color1: #06d6a0; /* light yellow */
+  --color2: #1b9aaa; /* blue munsell */
+  --color3: #ef476f; /* bright pink crayola */
+  --color4: #ffc43d; /* amber */
+  --color5: #f8ffe5; /* light yellow */
+
+  margin: 0;
+  padding: 0;
+}
+
 * {
-  margin: 0px;
   font-family: "Oxanium", sans-serif;
   box-sizing: border-box;
 }
 
 body {
+  display: flex;
+  flex-direction: column;
+  flex-wrap: nowrap;
+  align-items: center;
+  justify-content: center;
   background-color: #333;
-  text-align: center;
 }
 
 h1 {
-  font-size: 4rem;
-  text-shadow: 3px 3px 15px #999;
-  margin: 15px 0px;
+  font-size: 6rem;
+  line-height: 6rem;
+  font-weight: 800;
+  font-family: "Monoton";
+  margin: 0px;
+  background: -webkit-linear-gradient(
+    90deg,
+    var(--color1),
+    var(--color2),
+    var(--color3),
+    var(--color4)
+  );
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
 }
 
 h2 {
   font-size: 2rem;
-  margin: 10px 0px;
-}
-
-p {
-  margin: 10px 0px;
+  margin: 10px;
 }
 
 .game-container {
-  width: fit-content;
+  position: absolute;
+  top: 50%;
+  transform: translateY(-50%);
+  height: fit-content;
+  width: 550px;
+  text-align: center;
   padding: 20px;
-  margin: 6vh auto;
+  background-color: var(--color5);
+}
+
+#main-title {
+  display: grid;
+  grid-template-rows: auto auto auto;
+  grid-template-areas: "top" "middle" "bottom";
+  height: 200px;
+}
+
+#game-title {
+  grid-area: middle;
+  display: block;
+}
+
+#game-over {
+  grid-area: middle;
+  display: none;
+}
+
+#level {
+  grid-area: middle;
+  display: none;
 }
 
 .board-container {
-  position: relative;
-  width: max-content;
-  margin: 0 auto;
-  padding: 25px;
   animation-name: board-landing;
-  animation-duration: 1.5s;
+  animation-timing-function: ease;
+  animation-duration: 1s;
 }
 
 @keyframes board-landing {
   0% {
     scale: 0%;
-    rotate: -45deg;
+    translate: 0px -200px;
+    rotate: -4turn;
   }
   100% {
     scale: 100%;
-    rotate: 0deg;
+    translate: 0px;
+    rotate: 0;
   }
-}
-
-.board-bg {
-  position: absolute;
 }
 
 .btn {
@@ -59,7 +104,7 @@ p {
   height: 200px;
   width: 200px;
   margin: 5px;
-  border: 10px solid black;
+  /* border: 5px solid black; */
   border-radius: 20%;
 }
 
@@ -67,32 +112,32 @@ p {
   cursor: pointer;
 }
 
-.red {
-  background-color: red;
-  border-top-right-radius: 250px;
-}
-
-.green {
-  background-color: green;
+.color1 {
+  background-color: var(--color1);
   border-top-left-radius: 250px;
 }
 
-.blue {
-  background-color: blue;
-  border-bottom-right-radius: 250px;
+.color2 {
+  background-color: var(--color2);
+  border-top-right-radius: 250px;
 }
 
-.yellow {
-  background-color: yellow;
+.color3 {
+  background-color: var(--color3);
   border-bottom-left-radius: 250px;
 }
 
-.white {
-  background-color: white;
+.color4 {
+  background-color: var(--color4);
+  border-bottom-right-radius: 250px;
+}
+
+.color5 {
+  background-color: var(--color5);
 }
 
 .pressed {
-  box-shadow: 0 0 20px white;
+  box-shadow: 0 0 20px var(--color5);
   background-color: grey;
 }
 
@@ -100,26 +145,7 @@ p {
   background-color: red;
 }
 
-#instructions {
-  display: block;
-  position: absolute;
-  width: max-content;
-  padding: 15px;
-  margin: 0 auto;
-  background-color: #eee;
-  border: 10px solid black;
-  border-radius: 25px;
-  left: 50%;
-  top: 50%;
-  transform: translateX(-50%) translateY(-50%);
-}
-
-footer {
-  margin: 15px;
-  position: absolute;
-  bottom: 0px;
-  right: 0px;
-}
+/* misc furniture */
 
 .home-btn {
   margin: 10px;
@@ -131,4 +157,11 @@ footer {
 
 .home-btn:hover {
   background-color: #888;
+}
+
+footer {
+  margin: 15px;
+  position: fixed;
+  bottom: 1px;
+  right: 1px;
 }
