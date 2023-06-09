@@ -1,0 +1,330 @@
+@import url("https://fonts.googleapis.com/css2?family=Playfair+Display:wght@700&display=swap");
+@import url("https://fonts.googleapis.com/css2?family=Comforter+Brush&display=swap");
+@import url("https://fonts.googleapis.com/css2?family=Poppins:wght@100;300;500&display=swap");
+@import url("https://fonts.googleapis.com/css2?family=Special+Elite&display=swap");
+
+:root {
+  /* global variables */
+  --nav-line-height: 80px;
+  --article-width: 400px;
+
+  --theme-light: #ddd;
+  --theme-dark: #2e2b38;
+  --theme-highlight: royalblue;
+  --theme-background: #333;
+
+  --DEBUG-left: green;
+  --DEBUG-right: red;
+
+  --font-heading: "Playfair Display", serif;
+  --font-primary: "Poppins", serif;
+
+  --scale: 0;
+  --space: 8vmin;
+  --theme-padding: 10px;
+}
+
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+  color: var(--theme-light);
+}
+
+body {
+  background-color: var(--theme-background);
+  font-size: clamp(1.2rem, 5vw, 1.5rem);
+  font-family: var(--font-primary);
+  color: var(--theme-light);
+  line-height: 1.6;
+}
+
+h1 {
+  font-size: 5rem;
+  font-family: var(--font-heading);
+}
+
+h2 {
+  font-size: 3rem;
+}
+
+h3 {
+  display: inline-block;
+}
+
+p {
+  font-weight: 100;
+}
+
+a {
+  color: var(--theme-light);
+  font-weight: bold;
+  text-decoration: none;
+}
+
+a:hover,
+a:focus {
+  color: var(--theme-highlight);
+}
+
+header {
+  background-color: var(--theme-background);
+  background-image: url("./images/gallery/liminal-ext-039.jpeg");
+  background-size: cover;
+  height: 100vh;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+}
+
+/* main title with animated scroll arrow */
+.page-title {
+  padding: var(--theme-padding);
+  text-align: center;
+}
+
+.shadow3d {
+  --shadow-grey: #999;
+  --shadow-soft: #2222;
+  text-shadow: 1px 1px 1px var(--shadow-grey), 1px 2px 1px var(--shadow-grey),
+    1px 3px 1px var(--shadow-grey), 1px 4px 1px var(--shadow-grey),
+    1px 24px 6px var(--shadow-soft), 1px 30px 60px var(--shadow-soft);
+}
+
+.page-title:last-child:after {
+  content: "↓";
+  display: block;
+  position: relative;
+  font-size: 2em;
+  opacity: 0;
+  transform: translateY(0px);
+  animation-name: fade-in, arrow-bounce;
+  animation-duration: 500ms, 1000ms;
+  animation-delay: 0ms, 500ms;
+  animation-timing-function: ease, ease;
+  animation-iteration-count: 1, infinite;
+  animation-fill-mode: forwards, forwards;
+}
+@keyframes fade-in {
+  to {
+    opacity: 1;
+    transform: translateY(25px);
+  }
+}
+@keyframes arrow-bounce {
+  0%,
+  100% {
+    top: 0px;
+  }
+  50% {
+    top: -25px;
+  }
+}
+
+/* general navigation styling */
+nav {
+  padding: 0 var(--theme-padding);
+  height: var(--nav-line-height);
+  line-height: var(--nav-line-height);
+  box-shadow: 0px 10px 20px #0006;
+}
+
+nav a,
+p,
+h3 {
+  overflow: hidden;
+  display: inline;
+  color: var(--theme-light);
+  padding: 0 var(--theme-padding);
+  text-decoration: none;
+}
+.top-nav a:hover,
+.bottom-nav a:hover {
+  color: var(--theme-highlight);
+}
+
+/* responsive sticky top navigation */
+.top-nav {
+  background-color: var(--theme-dark);
+  position: sticky;
+  top: 0px;
+  z-index: 3;
+}
+.top-nav #nav-burger {
+  display: inline-block;
+}
+
+/* fixed position bottom navigation */
+.bottom-nav {
+  position: sticky;
+  bottom: 0px;
+}
+
+/* When the screen is less than 600 pixels wide, hide all links, except for the first one ("Home"). Show the link that contains should open and close the topnav (.icon) */
+@media screen and (max-width: 700px) {
+  .top-nav a:not(:last-child) {
+    display: none;
+  }
+  .top-nav a#nav-burger {
+    display: block;
+  }
+}
+
+/* The "responsive" class is added to the topnav with JavaScript when the user clicks on the icon. This class makes the topnav look good on small screens (display the links vertically instead of horizontally) */
+@media screen and (max-width: 700px) {
+  .top-nav.responsive {
+    position: relative;
+  }
+  .top-nav.responsive .nav-burger {
+    position: absolute;
+    right: 0;
+    top: 0;
+  }
+  .top-nav.responsive a {
+    float: none;
+    display: block;
+    text-align: left;
+  }
+}
+
+.headshot {
+  width: 200px;
+  border-radius: 50%;
+  margin: 0px 30px 10px 0px;
+  float: left;
+  clear: right;
+}
+
+.go-to-top {
+  position: fixed;
+  right: 20px;
+  bottom: 20px;
+  z-index: 10;
+  bottom: var(--nav-line-height);
+}
+
+/* for parallax of sections with image background */
+/* based on https://codepen.io/hexagoncircle/pen/JjRYaZw */
+.section {
+  transform-origin: center top;
+  transform: scaleY(calc(1 - var(--scale)));
+}
+.section > * {
+  transform-origin: center top;
+  transform: scaleY(calc(1 / (1 - var(--scale))));
+}
+
+.section-title {
+  font-family: var(--font-heading);
+  font-size: clamp(2rem, 5vw, 4rem);
+  font-weight: bold;
+  line-height: 1.125;
+}
+.byline {
+  display: block;
+  font-weight: bold;
+}
+
+.content {
+  position: relative;
+  margin: -50vh auto 0;
+  padding: var(--space);
+  max-width: 55ch;
+  width: calc(100% - var(--space));
+  background: hsla(5, 15%, 5%, 0.9);
+}
+
+.content > * + * {
+  margin-top: 2rem;
+}
+
+.image-container {
+  position: sticky;
+  top: 0;
+  width: 100%;
+  height: 100vh;
+  z-index: -2;
+}
+
+.image-container img {
+  display: block;
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+}
+
+/* .image-container::after {
+  content: "";
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  width: 100%;
+  height: 50%;
+  background: linear-gradient(
+    to bottom,
+    hsla(5, 15%, 5%, 0) 0%,
+    hsla(5, 15%, 5%, 0.013) 8.1%,
+    hsla(5, 15%, 5%, 0.049) 15.5%,
+    hsla(5, 15%, 5%, 0.104) 22.5%,
+    hsla(5, 15%, 5%, 0.175) 29%,
+    hsla(5, 15%, 5%, 0.259) 35.3%,
+    hsla(5, 15%, 5%, 0.352) 41.2%,
+    hsla(5, 15%, 5%, 0.45) 47.1%,
+    hsla(5, 15%, 5%, 0.55) 52.9%,
+    hsla(5, 15%, 5%, 0.648) 58.8%,
+    hsla(5, 15%, 5%, 0.741) 64.7%,
+    hsla(5, 15%, 5%, 0.825) 71%,
+    hsla(5, 15%, 5%, 0.896) 77.5%,
+    hsla(5, 15%, 5%, 0.951) 84.5%,
+    hsla(5, 15%, 5%, 0.987) 91.9%,
+    hsl(5, 15%, 5%) 100%
+  );
+} */
+
+.contact-form input,
+textarea {
+  font-family: var(--font-primary);
+  color: var(--theme-dark);
+  padding: 12px 20px;
+  margin: 10px 0px;
+  box-sizing: border-box;
+}
+
+.left {
+  float: left;
+}
+.right {
+  float: right;
+}
+
+/* flexbox portfolio */
+.portfolio-container {
+  display: inline-flex;
+  flex-direction: column;
+  flex-wrap: wrap;
+  justify-content: flex-start;
+  align-items: flex-start;
+  align-content: flex-start;
+  gap: 20px;
+}
+.portfolio-item {
+  margin: 0px;
+  max-width: 340px;
+  padding: 20px;
+  background-color: var(--theme-dark);
+}
+.portfolio-thumbnail {
+  background-color: var(--theme-light);
+  width: 300px;
+  height: 160px;
+  margin: 10px 0px;
+}
+
+/* misc styles */
+.bloody {
+  font-family: "Creepster";
+  color: red;
+}
