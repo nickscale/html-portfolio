@@ -1,13 +1,17 @@
 // Initialise constants
 const swatch = ["#06D6A0", "#1B9AAA", "#EF476F", "#FFC43D", "#F8FFE5"];
 const Colors = ["color1", "color2", "color3", "color4"];
-var playing = false;
-var gamePattern = [];
-var playerPattern = [];
-var gameColor = "";
-var playerColor = "";
-var level = 0;
-var thisItem = 0;
+let playing = false;
+let gamePattern = [];
+let playerPattern = [];
+let gameColor = "";
+let playerColor = "";
+let level = 0;
+let thisItem = 0;
+
+$(document).ready( function() {
+  setCopyrightYear();
+});
 
 // detect keypress to begin game
 document.addEventListener("keydown", function () {
@@ -109,18 +113,17 @@ function playSound(sound) {
 
 // flash a button
 function flashButton(buttonColor) {
-  $(".btn." + buttonColor).addClass("pressed");
+  $(".btn." + buttonColor).addClass("pressed"); 
   $(".btn." + buttonColor).removeClass("pressed", 200);
 }
 
 // flash the game background
 function flashScreen() {
   $(".game-container").addClass("error");
-  $(".game-container").removeClass("error" , 1500);
+  $(".game-container").removeClass("error", 1500);
 }
 
-function delay(milliseconds){
-  return new Promise(resolve => {
-      setTimeout(resolve, milliseconds);
-  });
+function setCopyrightYear() {
+  let thisYear = new Date();
+  $("#copyright-year").text(thisYear.getUTCFullYear());
 }

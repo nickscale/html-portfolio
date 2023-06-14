@@ -115,10 +115,6 @@ function niceDate(thisDate) {
     return dateString
 }
 
-function addSeparators(thisNumber) {
-    return thisNumber.toString().replace(/\B(?<!\.\d*)(?=(\d{3})+(?!\d))/g, ",");
-}
-
 function setCopyrightYear() {
     let thisYear = new Date();
     $("#copyright-year").text(thisYear.getUTCFullYear());
