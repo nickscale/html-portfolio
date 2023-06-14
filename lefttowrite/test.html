@@ -1,0 +1,26 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+
+    <!-- Link jQuery -->
+    <script
+      src="https://code.jquery.com/jquery-3.7.0.min.js"
+      integrity="sha256-2Pmvv0kuTBOenSvLm6bvfBSSHrUJ+3A7x6P5Ebd07/g="
+      crossorigin="anonymous"
+    ></script>
+
+    <script src="./test.js"></script>
+  </head>
+  <body>
+    <input type="number" id="number1" onchange="update()" placeholder="0" /> +
+    <input type="number" id="number2" onchange="update()" placeholder="0" />
+    <span id="result">0</span>
+    <br />
+    <input type="date" id="date-today" onchange="update()" />
+    <input type="date" id="date-predicted" onchange="update()" />
+    <input type="date" id="date-target" onchange="update()" />
+  </body>
+</html>
