@@ -1,62 +1,36 @@
 @import url("https://fonts.googleapis.com/css2?family=Pacifico&display=swap");
 
+:root {
+  --theme-white: #f4f4f4;
+  --theme-black: #111;
+  --theme-highlight: #4f4;
+  --theme-background: #bbb;
+  --theme-shadow: #6662;
+  --DEBUG: red;
+}
+
 * {
-  margin: 0;
-  padding: 0;
-  font-family: Georgia, "Times New Roman", Times, serif;
+  margin: 0px;
+  padding: 0px;
+  font-family: "Segoe UI", Tahoma, Geneva, Verdana, sans-serif;
+  line-height: 1.5rem;
 }
 
 body {
-  background-color: #ddd;
-}
-
-@media screen and (max-width: 960px) {
-  .column {
-    width: 50%;
-  }
-}
-
-@media screen and (max-width: 600px) {
-  .column {
-    width: 100%;
-  }
+  background-color: var(--theme-background);
 }
 
 h1 {
   font-family: "Pacifico", cursive;
+  font-size: 3rem;
   text-align: center;
-  color: #383;
-  padding: 1vh 0;
-  text-shadow: 3px 3px 5px #2222;
+  line-height: 3rem;
+  color: var(--theme-white);
+  text-shadow: 3px 3px 5px var(--theme-shadow);
 }
 
 p {
   padding: 5px;
-}
-
-.app-container {
-  position: absolute;
-  left: 50%;
-  top: 45%;
-  transform: translate(-50%, -50%);
-  width: 50%;
-  min-width: 375px;
-  max-width: 840px;
-}
-
-.app-container > div {
-  padding: 1vh;
-  margin: 2vh;
-  border-radius: 10px;
-  box-shadow: 0px 0px 10px 0px #2222;
-}
-
-.form-container {
-  background-color: #7e7;
-}
-
-.result-box {
-  background-color: #eee;
 }
 
 footer {
@@ -64,4 +38,69 @@ footer {
   font-size: small;
   bottom: 0px;
   right: 0px;
+}
+
+.app-container {
+  position: absolute;
+  left: 50%;
+  top: 50%;
+  transform: translate(-50%, -50%);
+}
+
+.main-title {
+  display: block;
+  margin: 0;
+  padding: 20px;
+}
+
+.form-container,
+.results-container {
+  display: block;
+  padding: 20px;
+  margin: 20px;
+  vertical-align: top;
+  width: 300px;
+  border-radius: 3px;
+  box-shadow: 0px 0px 10px 0px var(--theme-shadow);
+  background-color: var(--theme-white);
+}
+
+.form-container {
+  background-color: var(--theme-highlight);
+}
+
+/* For wider screens */
+@media screen and (min-width: 800px) {
+  .app-container {
+    width: 740px;
+  }
+  .form-container,
+  .results-container {
+    display: inline-block;
+    margin: 10px;
+  }
+}
+
+/* For tiny small screens up to 400px */
+@media screen and (max-width: 400px) {
+  .app-container {
+    width: 100%;
+  }
+  .form-container,
+  .results-container {
+    box-sizing: border-box;
+    width: 100%;
+    margin: 20px 0px;
+    padding: 20px;
+  }
+
+  .main-title {
+    height: 8vw;
+    line-height: 8vw;
+  }
+
+  h1 {
+    font-size: 12vw;
+    padding: 0px;
+  }
 }

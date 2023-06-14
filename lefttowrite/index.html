@@ -17,14 +17,16 @@
   </head>
   <body>
     <div class="app-container">
-      <h1>Left To Write</h1>
+      <div class="main-title">
+        <h1>Left To Write</h1>
+      </div>
       <div class="form-container">
-        <form action="" id="data-entry">
+        <form action="" id="">
           <p>
             Today is
             <input type="date" name="" id="date-today" onchange="update()" />
           </p>
-          <p>
+          <!-- <p>
             I write
             <select id="days-per-week" name="" onchange="update()">
               <option value="1">1</option>
@@ -36,7 +38,7 @@
               <option value="7" selected>7</option>
             </select>
             days per week.
-          </p>
+          </p> -->
           <p>
             Current word count:
             <input
@@ -60,13 +62,14 @@
             />
           </p>
 
-          <p>Choose either:</p>
+          <p><strong>Choose either:</strong></p>
           <p>
             <input
               type="radio"
               name="time-type"
               id="choose-days-current"
               checked="checked"
+              onchange="update()"
             />
             <label for="days-current">I have been writing for</label>
             <input
@@ -80,7 +83,12 @@
             days.
           </p>
           <p>
-            <input type="radio" name="time-type" id="choose-date-start" />
+            <input
+              type="radio"
+              name="time-type"
+              id="choose-date-start"
+              onchange="update()"
+            />
             <label for="date-start">I started writing on</label>
             <input
               type="date"
@@ -91,23 +99,26 @@
           </p>
         </form>
       </div>
-      <div class="result-box">
+      <div class="results-container">
         <p>
-          At your current rate of
-          <span id="rate-current">CURRENT RATE</span> words per day you will
-          finish on <span id="date-predicted">ESTIMATED FINISH DATE</span>.
+          Your current rate is
+          <strong><span id="rate-current"></span> words per day</strong>.
         </p>
-      </div>
-      <div class="result-box">
+        <p>
+          At this rate, you should finish by
+          <strong><span id="date-predicted"></span></strong>.
+        </p>
         <p>
           To finish by
           <input type="date" name="" id="date-target" onchange="update()" />
-          you need to write <span id="rate-required">REQUIRED RATE</span> words
-          per day.
+          you need to write
+          <strong><span id="rate-required"></span> words per day</strong>.
         </p>
       </div>
     </div>
 
-    <footer><p>v0.1a © 2023</p></footer>
+    <footer>
+      <p>v0.2a © <span id="copyright-year"></span></p>
+    </footer>
   </body>
 </html>
