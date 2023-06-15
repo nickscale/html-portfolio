@@ -41,6 +41,8 @@ h1 {
   );
   -webkit-background-clip: text;
   -webkit-text-fill-color: transparent;
+  background-clip: text;
+  -webkit-text-fill-color: transparent;
 }
 
 h2 {
@@ -49,10 +51,10 @@ h2 {
 }
 
 footer {
-  position: absolute;
+  position: fixed;
   font-size: small;
-  bottom: 0px;
-  right: 0px;
+  bottom: 5px;
+  right: 5px;
 }
 
 /* game container stylings */

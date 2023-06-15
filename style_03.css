@@ -198,6 +198,38 @@ main {
   }
 }
 
+@media (prefers-color-scheme: dark) {
+  /* These need fixing! */
+  body {
+    --theme-white: #ccc;
+    --theme-black: #040404;
+    --theme-highlight: #affc41;
+    --theme-background: #222;
+  }
+}
+
+@media (prefers-color-scheme: light) {
+  /* These need fixing! */
+  body {
+    --theme-white: #ccc;
+    --theme-black: #040404;
+    --theme-highlight: #affc41;
+    --theme-background: #222;
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  /* These need fixing! */
+  *,
+  *::before,
+  *::after {
+    animation-duration: 0.01ms iportant !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 0.01ms !important;
+    scroll-behavior: auto !important;
+  }
+}
+
 /* article stylings */
 
 .article {
