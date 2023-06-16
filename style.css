@@ -1,0 +1,49 @@
+* {
+  margin: 0;
+  padding: 0;
+}
+
+html {
+  --theme-bg: #333;
+  --theme-white: #eee;
+  --theme-black: #111;
+  --theme-color1: #666666;
+  --theme-color2: #666666;
+  --theme-color3: #666666;
+  --theme-color4: #666666;
+  --theme-color5: #666666;
+  --DEBUG1: #f00;
+  --DEBUG2: #0f0;
+  --DEBUG3: #00f;
+  --content-width: 90vw;
+  --content-height: 90vh;
+  --content-space-x: 5vw;
+  --content-space-y: 5vh;
+}
+
+body {
+  background-color: ;
+}
+
+h1 {
+}
+
+.page-container {
+  background-color: var(--DEBUG3);
+  width: 100vw;
+  height: 100vh;
+  grid-template-columns: 1fr 2fr 1fr 1fr;
+  grid-template-rows: 1fr 1fr 1fr 1fr;
+}
+
+.headline {
+  grid-column: 2 / 4;
+  grid-row: 2 / 3;
+  background-color: var(--DEBUG1);
+}
+
+.subtitle {
+  grid-column: 2 / 4;
+  grid-row: 3 / 4;
+  background-color: var(--DEBUG2);
+}
