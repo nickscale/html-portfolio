@@ -9,9 +9,13 @@
   /* set theme styles */
   --theme-white: #eff2f1;
   --theme-black: #08080f;
-  --theme-dark: #4059ad;
-  --theme-light: #6b9ac4;
+
+  --theme-text: var(--theme-black); /* defaults to black text on white bg */
+  --theme-bg: var(--theme-white); /* defaults to black text on white bg */
   --theme-action: #98ce00;
+  --theme-highlight: #648800;
+
+  /* original colors */
   --theme-color1: #4059ad;
   --theme-color2: #6b9ac4;
   --theme-color3: #98ce00;
@@ -39,7 +43,80 @@
 body {
   font-family: var(--font-family-body);
   font-size: clamp(1.2rem, 5vw, 1.5rem);
-  background-color: var(--theme-light);
+}
+
+/* dark mode stylings */
+
+#toggleMode {
+  position: absolute;
+  visibility: hidden;
+}
+
+.toggleDark,
+.toggleLight {
+  position: absolute;
+  top: 20px;
+  left: 20px;
+  z-index: 20;
+  cursor: pointer;
+}
+
+.toggleDark {
+  display: block;
+  color: var(--theme-text);
+}
+
+.toggleLight {
+  display: none;
+  position: absolute;
+  top: 20px;
+  left: 20px;
+  color: var(--theme-bg);
+}
+
+.toggleLight img {
+  filter: invert(100%);
+}
+
+.toggleDark:hover,
+.toggleLight:hover {
+  color: var(--theme-highlight);
+}
+
+.toggleMute {
+  display: block;
+  position: absolute;
+  top: 20px;
+  left: 60px;
+  z-index: 20;
+  color: var(--theme-text);
+}
+
+#toggleMode:checked ~ .toggleDark {
+  display: none;
+}
+
+#toggleMode:checked ~ .toggleLight {
+  display: block;
+}
+
+#toggleMode:checked ~ .toggleMute {
+  filter: invert(100%);
+}
+
+.site-wrapper {
+  /* default to light mode: black text on white bg */
+  --theme-text: var(--theme-black);
+  --theme-bg: var(--theme-white);
+}
+
+/* toggle to dark mode: white text on black bg */
+#toggleMode:checked ~ .site-wrapper {
+  --theme-text: var(--theme-white);
+  --theme-bg: var(--theme-black);
+}
+
+.site-settings {
 }
 
 h1 {
@@ -60,6 +137,10 @@ a {
   text-decoration: none;
 }
 
+a:hover {
+  color: var(--theme-highlight);
+}
+
 .page-container {
   width: 100vw;
   height: 100vh;
@@ -67,18 +148,21 @@ a {
   gap: 20px;
   grid-template-columns: var(--content-space-y) 2fr 1fr var(--content-space-y);
   grid-template-rows: var(--content-space-x) 1fr 1fr var(--content-space-x);
+
+  background-color: var(--theme-bg);
+  color: var(--theme-text);
 }
 
 .page-container#page2 {
-  background-color: var(--theme-dark);
+  background-color: var(--theme-bg);
 }
 
 .page-container#page3 {
-  background-color: var(--theme-light);
+  background-color: var(--theme-bg);
 }
 
 .page-container#page4 {
-  background-color: var(--theme-dark);
+  background-color: var(--theme-bg);
 }
 
 /* front page styling */
@@ -123,7 +207,7 @@ button {
 }
 
 .project-card {
-  background-color: var(--theme-white);
+  background-color: var(--theme-bg);
 }
 
 .project-thumb {
@@ -158,9 +242,8 @@ button {
 }
 
 /* Navigation styling */
-@import url("https://fonts.googleapis.com/css?family=Rubik+Mono+One|Roboto+Mono:400,700&display=swap");
-:root {
-}
+/* Streamlined from Ryan Mulligan's CSS https://codepen.io/hexagoncircle/pen/OJLMgYY */
+
 .nav-main {
   align-items: center;
   display: flex;
@@ -174,7 +257,7 @@ button {
 .nav-main::before,
 .nav-main::after {
   content: "";
-  background-color: var(--theme-dark);
+  background-color: var(--theme-bg);
   height: 50%;
   left: 0;
   position: absolute;
@@ -217,7 +300,7 @@ button {
 }
 [id="main-navigation-toggle"] ~ label span::before,
 [id="main-navigation-toggle"] ~ label span::after {
-  background-color: var(--theme-black);
+  background-color: var(--theme-text);
   bottom: 0;
   content: "";
   height: 4px;
@@ -301,13 +384,13 @@ button {
   z-index: 2;
 }
 .submenu .menu-item {
-  font-family: var(--font-family-heading);
+  font-family: var(--font-family-body);
   font-size: 3.5vmin;
   width: 100%;
 }
 .submenu .menu-link {
-  color: var(--theme-light);
-  text-shadow: 1px 1px 0 var(--theme-black), 2px 2px 0 var(--theme-black);
+  color: var(--theme-text);
+  text-shadow: 1px 1px 2px var(--theme-bg), 2px 2px 4px var(--theme-bg);
 }
 .submenu .menu-link::before,
 .submenu .menu-link::after {
@@ -317,23 +400,14 @@ button {
   display: block;
   position: relative;
 }
-.menu-item:hover .menu-link::before,
-.menu-item:hover .menu-link::after {
-  animation: blink 1s var(--delay) steps(1, end) forwards infinite;
-  transform: translateX(calc(100% - 0.5rem));
-  transition-duration: calc(var(--delay) * 3);
-}
-.menu-item:hover .menu-link::after {
-  transition-delay: calc(var(--delay) / 2);
-}
 .menu-item:hover .submenu {
   opacity: 1;
-  transform: translateY(0);
-  transition: transform calc(var(--delay) * 2) calc(var(--delay) * 3) var(--ease), opacity calc(var(--delay) * 2) calc(var(--delay) * 3) var(--ease), visibility 0s calc(var(--delay) * 3);
+  transform: translateY(-5%);
+  transition: transform calc(var(--delay) * 1) calc(var(--delay) * 2) var(--ease), opacity calc(var(--delay) * 1) calc(var(--delay) * 2) var(--ease), visibility 0s calc(var(--delay) * 2);
   visibility: visible;
 }
 .menu-link {
-  color: var(--theme-black);
+  color: var(--theme-text);
   display: inline-block;
   font-weight: normal;
   overflow: hidden;
@@ -346,7 +420,7 @@ button {
 .menu-link::before,
 .menu-link::after {
   content: "";
-  background-color: var(--theme-white);
+  background-color: var(--theme-bg);
   height: 50%;
   left: 0;
   position: absolute;
@@ -366,35 +440,25 @@ button {
   opacity: 1;
   transform: translate(0, 0);
 }
-.menu-item {
-  --pull: 30%;
-}
+
 .menu-item .menu-link {
-  opacity: 0.25;
-  transition-duration: calc(var(--delay) * 3);
-  transform: translate(0, calc(var(--pull) * -1));
+  opacity: 0.1;
+  transition-duration: calc(var(--delay) * 2);
 }
 .menu-item .submenu .menu-link {
   opacity: 1;
 }
 .menu-item:hover > .menu-link {
-  color: var(--theme-light);
+  color: var(--theme-highlight);
   opacity: 1;
   transform: translate(0, 0);
 }
 .menu-item:hover > .menu-link:hover {
-  color: var(--theme-white);
+  color: var(--theme-action);
   transition-delay: 0s;
 }
 .menu-item:hover ~ .menu-item > .menu-link {
-  transition-duration: calc(var(--delay) * 3);
-  transform: translate(0, var(--pull));
-}
-@keyframes blink {
-  50%,
-  100% {
-    opacity: 0;
-  }
+  transition-duration: calc(var(--delay));
 }
 
 /* footer stylings */
@@ -407,8 +471,4 @@ footer {
   height: 4rem;
   line-height: 4rem;
   padding: 1rem;
-}
-
-footer a {
-  font
 }
