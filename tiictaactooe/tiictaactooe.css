@@ -1,0 +1,65 @@
+* {
+  margin: 0;
+  padding: 0;
+}
+
+:root {
+  --theme-white: #eee;
+  --theme-black: #08080f;
+
+  --font-family-heading: Impact, Haettenschweiler, "Arial Narrow Bold", sans-serif;
+  --font-family-body: "Segoe UI", Tahoma, Geneva, Verdana, sans-serif;
+}
+
+body {
+  box-sizing: border-box;
+}
+
+.grid-container {
+  display: grid;
+  height: 100vh;
+  justify-content: center;
+  align-content: center;
+}
+
+.game-container {
+}
+
+.heading {
+  padding: 10px;
+  margin: 10px;
+  background-color: var(--theme-white);
+}
+
+.title {
+  font-family: var(--font-family-heading);
+  font-size: 3rem;
+  text-align: center;
+}
+
+.subtitle {
+  font-family: var(--font-family-heading);
+  font-size: 1.5rem;
+  text-align: center;
+}
+
+.board-container {
+  padding: 10px;
+  margin: 10px;
+  background-color: var(--theme-white);
+}
+
+.cell {
+  display: inline-block;
+  text-align: center;
+  width: 4rem;
+  height: 4rem;
+}
+
+h1 {
+  font-size: 3rem;
+}
+
+h2 {
+  font-size: 2rem;
+}
