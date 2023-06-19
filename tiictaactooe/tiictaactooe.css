@@ -1,13 +1,16 @@
+@import url("https://fonts.googleapis.com/css2?family=Permanent+Marker&display=swap");
+
 * {
   margin: 0;
   padding: 0;
 }
 
 :root {
-  --theme-white: #eee;
-  --theme-black: #08080f;
+  --game-white: #eee;
+  --game-black: #08080f;
+  --game-highlight: #ddd;
 
-  --font-family-heading: Impact, Haettenschweiler, "Arial Narrow Bold", sans-serif;
+  --font-family-heading: "Permanent Marker", Haettenschweiler, "Arial Narrow Bold", sans-serif;
   --font-family-body: "Segoe UI", Tahoma, Geneva, Verdana, sans-serif;
 }
 
@@ -15,45 +18,56 @@ body {
   box-sizing: border-box;
 }
 
-.grid-container {
+.page-container {
   display: grid;
   height: 100vh;
   justify-content: center;
   align-content: center;
 }
 
-.game-container {
+.app-container {
 }
 
 .heading {
   padding: 10px;
   margin: 10px;
-  background-color: var(--theme-white);
+  border-radius: 5px;
+  background-color: var(--game-white);
 }
 
 .title {
   font-family: var(--font-family-heading);
-  font-size: 3rem;
+  font-size: 2rem;
   text-align: center;
 }
 
 .subtitle {
   font-family: var(--font-family-heading);
-  font-size: 1.5rem;
+  font-size: 1rem;
   text-align: center;
 }
 
 .board-container {
   padding: 10px;
   margin: 10px;
-  background-color: var(--theme-white);
+  background-color: var(--game-white);
 }
 
 .cell {
   display: inline-block;
+  font-family: var(--font-family-heading);
+  font-size: 4rem;
   text-align: center;
+  border-radius: 5px;
   width: 4rem;
   height: 4rem;
+}
+
+.cell:hover {
+  background-color: var(--game-highlight);
+}
+
+.clicked {
 }
 
 h1 {
