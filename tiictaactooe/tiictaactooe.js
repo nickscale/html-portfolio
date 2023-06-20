@@ -20,6 +20,7 @@ document.addEventListener("keydown", function () {
     // if game is not in progress, initialise it
 
     playing = true; // i.e. let's begin a game
+    $('board-container').removeClass(flash);
     board = defaultBoard;
     turn = "X";
 
@@ -91,12 +92,15 @@ function checkWin() {
 
       if (thisString === "XXXX") {
         updateStatus("Player X wins!");
+        $('board-container').addClass(flash);
         playing = false;
       } else if (thisString == "OOOO") {
         updateStatus("Player O wins!");
+        $('board-container').addClass(flash);
         playing = false;
       } else if (turnCount == 16) {
         updateStatus("Stalemate!");
+        $('board-container').addClass(flash);
         playing = false;
       }
 
@@ -113,9 +117,11 @@ function checkWin() {
 
       if (thisString === "XXXX") {
         updateStatus("Player X wins!");
+        $('board-container').addClass(flash);
         playing = false;
       } else if (thisString == "OOOO") {
         updateStatus("Player O wins!");
+        $('board-container').addClass(flash);
         playing = false;
       }
 
@@ -129,9 +135,11 @@ function checkWin() {
     // console.log(`Check diag2: ${diag2}`);
     if (diag1 === "XXXX" || diag2 === "XXXX") {
       updateStatus("Player X wins!");
+      $('board-container').addClass(flash);
       playing = false;
     } else if (diag1 === "OOOO" || diag2 === "OOOO") {
       updateStatus("Player O wins!");
+      $('board-container').addClass(flash);
       playing = false;
     }
   }
@@ -139,6 +147,12 @@ function checkWin() {
 
 function updateStatus(string) {
   $("#subtitle").text(string);
+}
+
+
+function setCopyrightYear() {
+  let thisYear = new Date();
+  $("#copyright-year").text(thisYear.getUTCFullYear());
 }
 
 updateStatus("Player X to play");

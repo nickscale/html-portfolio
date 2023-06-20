@@ -3,12 +3,16 @@
 * {
   margin: 0;
   padding: 0;
+  box-sizing: border-box;
 }
 
 :root {
   --game-white: #eee;
   --game-black: #08080f;
   --game-highlight: #ddd;
+  --DEBUG: #f00;
+
+  --cell-size: 75px;
 
   --font-family-heading: "Permanent Marker", Haettenschweiler, "Arial Narrow Bold", sans-serif;
   --font-family-body: "Segoe UI", Tahoma, Geneva, Verdana, sans-serif;
@@ -21,13 +25,13 @@ body {
 .page-container {
   display: grid;
   height: 100vh;
-  justify-content: center;
-  align-content: center;
+  justify-items: center;
+  align-items: center;
 }
 
 .app-container {
   margin: 0 auto;
-  max-width: min-content;
+  width: 400px;
 }
 
 .heading {
@@ -39,27 +43,30 @@ body {
 
 .title {
   font-family: var(--font-family-heading);
-  font-size: 2rem;
+  font-size: 3rem;
   text-align: center;
 }
 
 .subtitle {
-  font-family: var(--font-family-heading);
+  font-family: var(--font-family-body);
   font-size: 1rem;
   text-align: center;
 }
 
 .board-container {
-  display: flex;
-  flex-direction: row;
-  flex-wrap: nowrap;
-  gap: 15px;
-  justify-content: space-evenly;
-  align-content: space-evenly;
+  display: grid;
+  grid-template-columns: repeat(4, auto);
+  grid-template-rows: repeat(4, auto);
+  justify-items: stretch;
+  align-items: center;
   padding: 10px;
   margin: 10px;
   border-radius: 5px;
   background-color: var(--game-white);
+}
+
+.row {
+  display: block;
 }
 
 .cell {
@@ -67,17 +74,26 @@ body {
   font-family: var(--font-family-heading);
   font-size: 4rem;
   line-height: 4rem;
-  text-align: center;
+  width: 80px;
+  height: 80px;
   border-radius: 5px;
-  width: 4rem;
-  height: 4rem;
+  text-align: center;
 }
 
 .cell:hover {
   background-color: var(--game-highlight);
 }
 
-.clicked {
+.flash {
+  animation: flashing 0.4s 4 ease-out;
+}
+@keyframes flashing {
+  0% {
+    background-color: green;
+  }
+  100% {
+    background-color: white;
+  }
 }
 
 h1 {
