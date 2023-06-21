@@ -20,18 +20,18 @@
     <header>
       <button class="home-btn">◀︎ Home</button>
     </header>
-
-    <div class="app-container">
-      <div class="main-title">
-        <h1>Left To Write</h1>
-      </div>
-      <div class="form-container">
-        <form action="" id="">
-          <p>
-            Today is
-            <input type="date" name="" id="date-today" onchange="update()" />
-          </p>
-          <!-- <p>
+    <div class="page-wrapper">
+      <div class="app-container">
+        <div class="main-title">
+          <h1>Left To Write</h1>
+        </div>
+        <div class="form-container">
+          <form action="" id="">
+            <p>
+              Today is
+              <input type="date" name="" id="date-today" onchange="update()" />
+            </p>
+            <!-- <p>
             I write
             <select id="days-per-week" name="" onchange="update()">
               <option value="1">1</option>
@@ -44,84 +44,47 @@
             </select>
             days per week.
           </p> -->
-          <p>
-            Current word count:
-            <input
-              type="number"
-              min="1"
-              max="999999"
-              name=""
-              id="words-current"
-              onchange="update()"
-            />
-          </p>
-          <p>
-            Target word count:
-            <input
-              type="number"
-              min="2"
-              max="999999"
-              name=""
-              id="words-target"
-              onchange="update()"
-            />
-          </p>
+            <p>
+              Current word count:
+              <input type="number" min="1" max="999999" name="" id="words-current" onchange="update()" />
+            </p>
+            <p>
+              Target word count:
+              <input type="number" min="2" max="999999" name="" id="words-target" onchange="update()" />
+            </p>
 
-          <p><strong>Choose either:</strong></p>
+            <p><strong>Choose either:</strong></p>
+            <p>
+              <input type="radio" name="time-type" id="choose-days-current" checked="checked" onchange="update()" />
+              <label for="days-current">I have been writing for</label>
+              <input type="number" name="time-type" id="days-current" min="1" max="9999" onchange="update()" />
+              days.
+            </p>
+            <p>
+              <input type="radio" name="time-type" id="choose-date-start" onchange="update()" />
+              <label for="date-start">I started writing on</label>
+              <input type="date" name="time-type2" id="date-start" onchange="update()" />
+            </p>
+          </form>
+        </div>
+        <div class="results-container">
           <p>
-            <input
-              type="radio"
-              name="time-type"
-              id="choose-days-current"
-              checked="checked"
-              onchange="update()"
-            />
-            <label for="days-current">I have been writing for</label>
-            <input
-              type="number"
-              name="time-type"
-              id="days-current"
-              min="1"
-              max="9999"
-              onchange="update()"
-            />
-            days.
+            Your current rate is
+            <strong><span id="rate-current"></span> words per day</strong>.
           </p>
           <p>
-            <input
-              type="radio"
-              name="time-type"
-              id="choose-date-start"
-              onchange="update()"
-            />
-            <label for="date-start">I started writing on</label>
-            <input
-              type="date"
-              name="time-type2"
-              id="date-start"
-              onchange="update()"
-            />
+            At this rate, you should finish by
+            <strong><span id="date-predicted"></span></strong>.
           </p>
-        </form>
-      </div>
-      <div class="results-container">
-        <p>
-          Your current rate is
-          <strong><span id="rate-current"></span> words per day</strong>.
-        </p>
-        <p>
-          At this rate, you should finish by
-          <strong><span id="date-predicted"></span></strong>.
-        </p>
-        <p>
-          To finish by
-          <input type="date" name="" id="date-target" onchange="update()" />
-          you need to write
-          <strong><span id="rate-required"></span> words per day</strong>.
-        </p>
+          <p>
+            To finish by
+            <input type="date" name="" id="date-target" onchange="update()" />
+            you need to write
+            <strong><span id="rate-required"></span> words per day</strong>.
+          </p>
+        </div>
       </div>
     </div>
-
     <footer>
       <p>v0.2a © <span id="copyright-year"></span></p>
     </footer>
