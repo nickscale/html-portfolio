@@ -20,6 +20,9 @@
 
 body {
   box-sizing: border-box;
+  background: linear-gradient(45deg, #999, #666);
+  font-family: var(--font-family-body);
+  color: var(--game-black);
 }
 
 .page-container {
@@ -102,4 +105,11 @@ h1 {
 
 h2 {
   font-size: 2rem;
+}
+
+footer {
+  position: fixed;
+  font-size: small;
+  bottom: 5px;
+  right: 5px;
 }

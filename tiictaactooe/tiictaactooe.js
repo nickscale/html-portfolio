@@ -82,32 +82,31 @@ function checkWin() {
   let thisString = "";
 
   if (playing === true) {
-    // check horizontals
+    // check columns
     for (row = 0; row <= 3; row++) {
       for (col = 0; col <= 3; col++) {
         thisString += board[row][col];
       }
 
     //   console.log(`Check row${row}: ${thisString}`);
-
       if (thisString === "XXXX") {
-        updateStatus("Player X wins!");
-        $('board-container').addClass(flash);
+        updateStatus("Player X filled a column!");
+        $('board-container').addClass("flash");
         playing = false;
       } else if (thisString == "OOOO") {
-        updateStatus("Player O wins!");
-        $('board-container').addClass(flash);
+        updateStatus("Player O filled a column!");
+        $('board-container').addClass("flash");
         playing = false;
       } else if (turnCount == 16) {
         updateStatus("Stalemate!");
-        $('board-container').addClass(flash);
+        $('board-container').addClass("flash");
         playing = false;
       }
 
       thisString = "";
     }
 
-    // check verticals
+    // check rows
     for (col = 0; col <= 3; col++) {
       for (row = 0; row <= 3; row++) {
         thisString += board[row][col];
@@ -116,12 +115,12 @@ function checkWin() {
     //   console.log(`Check col${col}: ${thisString}`);
 
       if (thisString === "XXXX") {
-        updateStatus("Player X wins!");
-        $('board-container').addClass(flash);
+        updateStatus("Player X filled a row!");
+        $('board-container').addClass("flash");
         playing = false;
       } else if (thisString == "OOOO") {
-        updateStatus("Player O wins!");
-        $('board-container').addClass(flash);
+        updateStatus("Player O filled a row!");
+        $('board-container').addClass("flash");
         playing = false;
       }
 
@@ -134,25 +133,34 @@ function checkWin() {
     // console.log(`Check diag1: ${diag1}`);
     // console.log(`Check diag2: ${diag2}`);
     if (diag1 === "XXXX" || diag2 === "XXXX") {
-      updateStatus("Player X wins!");
-      $('board-container').addClass(flash);
+      updateStatus("Player X got a diagonal!");
+      $('board-container').addClass("flash");
       playing = false;
     } else if (diag1 === "OOOO" || diag2 === "OOOO") {
-      updateStatus("Player O wins!");
-      $('board-container').addClass(flash);
+      updateStatus("Player O got a diagonal!");
+      $('board-container').addClass("flash");
       playing = false;
     }
   }
+}
+
+function flashBoard () {
+  $('board-container').addClass("flash");
+  setTimeout() {
+    $('board-container').removeClass("flash");
+  }, 1000
 }
 
 function updateStatus(string) {
   $("#subtitle").text(string);
 }
 
+/* various useful functions */
 
 function setCopyrightYear() {
   let thisYear = new Date();
-  $("#copyright-year").text(thisYear.getUTCFullYear());
+  document.getElementById("copyright-year").textContent = thisYear.getUTCFullYear();
 }
 
+setCopyrightYear();
 updateStatus("Player X to play");

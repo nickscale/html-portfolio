@@ -150,5 +150,5 @@ function niceDate(thisDate) {
 
 function setCopyrightYear() {
     let thisYear = new Date();
-    $("#copyright-year").text(thisYear.getUTCFullYear());
+    document.getElementById("copyright-year").textContent = thisYear.getUTCFullYear();
 }
