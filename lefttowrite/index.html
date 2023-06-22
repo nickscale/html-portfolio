@@ -8,18 +8,19 @@
 
     <!-- link stylesheet -->
     <link rel="stylesheet" href="style.css" />
+    <link rel="shortcut icon" href="favicon.ico" type="image/x-icon" />
 
     <!-- Link jQuery -->
-    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.7.0/jquery.min.js"></script>
+    <!-- <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.7.0/jquery.min.js"></script> -->
 
     <!-- Link JavaScript -->
     <script src="./script.js" defer></script>
   </head>
   <body>
     <!-- Standard header -->
-    <header>
+    <!-- <header>
       <button class="home-btn">◀︎ Home</button>
-    </header>
+    </header> -->
     <div class="page-wrapper">
       <div class="app-container">
         <div class="main-title">
@@ -52,36 +53,45 @@
               Target word count:
               <input type="number" min="2" max="999999" name="" id="words-target" onchange="update()" />
             </p>
-
-            <p><strong>Choose either:</strong></p>
             <p>
-              <input type="radio" name="time-type" id="choose-days-current" checked="checked" onchange="update()" />
-              <label for="days-current">I have been writing for</label>
-              <input type="number" name="time-type" id="days-current" min="1" max="9999" onchange="update()" />
-              days.
+              <strong>Choose either:</strong>
             </p>
-            <p>
-              <input type="radio" name="time-type" id="choose-date-start" onchange="update()" />
-              <label for="date-start">I started writing on</label>
-              <input type="date" name="time-type2" id="date-start" onchange="update()" />
-            </p>
+            <label for="choose-days-to-date">
+              <p>
+                <input type="radio" name="time-type" id="choose-days-to-date" checked="checked" onchange="update()" />
+                I have been writing for
+                <input type="number" id="days-to-date" min="1" max="9999" onchange="update()" />
+                days.
+              </p>
+            </label>
+            <label for="choose-date-start">
+              <p>
+                <input type="radio" name="time-type" id="choose-date-start" onchange="update()" />
+                I started writing on
+                <input type="date" id="date-start" onchange="update()" />
+              </p>
+            </label>
           </form>
         </div>
         <div class="results-container">
           <p>
             Your current rate is
-            <strong><span id="rate-current"></span> words per day</strong>.
+            <strong><span id="rate-current">___</span> words per day</strong>.
           </p>
           <p>
             At this rate, you should finish by
-            <strong><span id="date-predicted"></span></strong>.
+            <strong><span id="date-predicted">___</span></strong
+            >.
           </p>
           <p>
-            To finish by
-            <input type="date" name="" id="date-target" onchange="update()" />
-            you need to write
-            <strong><span id="rate-required"></span> words per day</strong>.
+            <label
+              >To finish by
+              <input type="date" name="date-target" id="date-target" onchange="update()" />
+              you need to write</label
+            >
+            <strong><span id="rate-required">___</span> words per day</strong>.
           </p>
+          <p><button id="reset">Reset</button></p>
         </div>
       </div>
     </div>
