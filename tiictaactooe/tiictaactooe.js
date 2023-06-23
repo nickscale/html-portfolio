@@ -83,23 +83,24 @@ function checkWin() {
 
   if (playing === true) {
     // check columns
+
     for (row = 0; row <= 3; row++) {
       for (col = 0; col <= 3; col++) {
         thisString += board[row][col];
       }
-
-    //   console.log(`Check row${row}: ${thisString}`);
+      
+      // console.log(`Check row${row}: ${thisString}`);
       if (thisString === "XXXX") {
         updateStatus("Player X filled a column!");
-        $('board-container').addClass("flash");
+        flashBoard();
         playing = false;
       } else if (thisString == "OOOO") {
         updateStatus("Player O filled a column!");
-        $('board-container').addClass("flash");
+        flashBoard();
         playing = false;
       } else if (turnCount == 16) {
         updateStatus("Stalemate!");
-        $('board-container').addClass("flash");
+        flashBoard();
         playing = false;
       }
 
@@ -116,11 +117,11 @@ function checkWin() {
 
       if (thisString === "XXXX") {
         updateStatus("Player X filled a row!");
-        $('board-container').addClass("flash");
+        flashBoard();
         playing = false;
       } else if (thisString == "OOOO") {
         updateStatus("Player O filled a row!");
-        $('board-container').addClass("flash");
+        flashBoard();
         playing = false;
       }
 
@@ -134,21 +135,20 @@ function checkWin() {
     // console.log(`Check diag2: ${diag2}`);
     if (diag1 === "XXXX" || diag2 === "XXXX") {
       updateStatus("Player X got a diagonal!");
-      $('board-container').addClass("flash");
+      flashBoard();
       playing = false;
     } else if (diag1 === "OOOO" || diag2 === "OOOO") {
       updateStatus("Player O got a diagonal!");
-      $('board-container').addClass("flash");
+      flashBoard();
       playing = false;
     }
   }
 }
 
 function flashBoard () {
-  $('board-container').addClass("flash");
-  setTimeout() {
-    $('board-container').removeClass("flash");
-  }, 1000
+  let thisBoard = $('#board-container');
+  thisBoard.addClass("flash");
+  setTimeout(function() {thisBoard.removeClass("flash")}, 1000);
 }
 
 function updateStatus(string) {
