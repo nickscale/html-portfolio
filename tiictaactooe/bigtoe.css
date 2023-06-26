@@ -12,7 +12,7 @@
   --game-highlight: #ddd;
   --DEBUG: #f00;
 
-  --cell-size: 75px;
+  --cell-size: 80px;
 
   --font-family-heading: "Permanent Marker", Haettenschweiler, "Arial Narrow Bold", sans-serif;
   --font-family-body: "Segoe UI", Tahoma, Geneva, Verdana, sans-serif;
@@ -20,7 +20,7 @@
 
 body {
   box-sizing: border-box;
-  background: linear-gradient(45deg, #999, #666);
+  background: linear-gradient(45deg, #aaa, #272040);
   font-family: var(--font-family-body);
   color: var(--game-black);
 }
@@ -34,7 +34,6 @@ body {
 
 #app-container {
   margin: 0 auto;
-  width: 400px;
 }
 
 .heading {
@@ -57,11 +56,6 @@ body {
 }
 
 #board-container {
-  display: grid;
-  grid-template-columns: repeat(4, auto);
-  grid-template-rows: repeat(4, auto);
-  justify-items: stretch;
-  align-items: center;
   padding: 10px;
   margin: 10px;
   border-radius: 5px;
@@ -70,33 +64,41 @@ body {
 
 .row {
   display: block;
+  margin: 5px;
+  text-align: center;
 }
 
 .cell {
   display: inline-block;
-  font-family: var(--font-family-heading);
-  font-size: 4rem;
-  line-height: 4rem;
-  width: 80px;
-  height: 80px;
   border-radius: 5px;
+  font-family: var(--font-family-heading);
+  font-size: 3rem;
+  line-height: var(--cell-size);
+  height: var(--cell-size);
+  width: var(--cell-size);
   text-align: center;
-}
-
-.cell:hover {
-  background-color: var(--game-highlight);
+  vertical-align: middle;
 }
 
 .flash {
-  animation: flashing 0.4s 4 ease-out;
+  animation: flashing 0.5s 4 ease-in;
 }
 @keyframes flashing {
   0% {
     background-color: green;
   }
   100% {
-    background-color: white;
+    background-color: var(--game-white);
   }
+}
+
+.red {
+  background-color: red;
+}
+
+.hoverable:hover {
+  cursor: pointer;
+  background-color: var(--game-highlight);
 }
 
 h1 {
