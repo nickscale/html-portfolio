@@ -3,23 +3,25 @@
 * {
   margin: 0;
   padding: 0;
-  box-sizing: border-box;
+  /* box-sizing: border-box; */
 }
 
 :root {
   --game-white: #eee;
   --game-black: #08080f;
-  --game-highlight: #ddd;
+  --game-highlight: #ccc;
+  --game-good: #6a6;
+  --game-bad: #f66;
+
   --DEBUG: #f00;
 
-  --cell-size: 80px;
+  --cell-size: 70px;
 
   --font-family-heading: "Permanent Marker", Haettenschweiler, "Arial Narrow Bold", sans-serif;
   --font-family-body: "Segoe UI", Tahoma, Geneva, Verdana, sans-serif;
 }
 
 body {
-  box-sizing: border-box;
   background: linear-gradient(45deg, #aaa, #272040);
   font-family: var(--font-family-body);
   color: var(--game-black);
@@ -32,82 +34,151 @@ body {
   align-items: center;
 }
 
-#app-container {
-  margin: 0 auto;
+.app-container {
+  /* width: 600px; */
 }
 
 .heading {
   padding: 10px;
+  margin: 20px 10px;
+  border-radius: 5px;
+  background: var(--game-white);
+  box-shadow: 0px 0px 40px #666;
+}
+
+.board-container {
+  padding: 10px 14px;
   margin: 10px;
   border-radius: 5px;
-  background-color: var(--game-white);
-}
-
-.title {
-  font-family: var(--font-family-heading);
-  font-size: 3rem;
-  text-align: center;
-}
-
-.subtitle {
-  font-family: var(--font-family-body);
-  font-size: 1rem;
-  text-align: center;
-}
-
-#board-container {
-  padding: 10px;
-  margin: 10px;
-  border-radius: 5px;
-  background-color: var(--game-white);
+  background: var(--game-white);
+  box-shadow: 0px 0px 40px #666;
 }
 
 .row {
   display: block;
-  margin: 5px;
   text-align: center;
 }
 
 .cell {
   display: inline-block;
-  border-radius: 5px;
   font-family: var(--font-family-heading);
   font-size: 3rem;
   line-height: var(--cell-size);
   height: var(--cell-size);
   width: var(--cell-size);
-  text-align: center;
   vertical-align: middle;
+  margin: 0px -3px;
+  border-radius: 0px;
+  border-width: 2px;
+  border-color: var(--game-black);
 }
 
-.flash {
+.cell.top-left {
+  border-style: none solid solid none;
+  border-radius: 5px 0 0 0;
+}
+
+.cell.top {
+  border-style: none solid solid solid;
+}
+
+.cell.top-right {
+  border-style: none none solid solid;
+  border-radius: 0 5px 0 0;
+}
+
+.cell.left {
+  border-style: solid solid solid none;
+}
+
+.cell.center {
+  border-style: solid;
+}
+
+.cell.right {
+  border-style: solid none solid solid;
+}
+
+.cell.bottom-left {
+  border-style: solid solid none none;
+  border-radius: 0 0 0 5px;
+}
+
+.cell.bottom {
+  border-style: solid solid none solid;
+}
+
+.cell.bottom-right {
+  border-style: solid none none solid;
+  border-radius: 0 0 5px 0;
+}
+/* flashes, highlights, animation */
+
+.animate {
+  animation: animate 0.5s infinite ease-in-out alternate;
+}
+
+@keyframes animate {
+  from {
+    transform: skewY(5deg);
+  }
+  to {
+    transform: skewY(-5deg);
+  }
+}
+
+.flashing {
   animation: flashing 0.5s 4 ease-in;
 }
 @keyframes flashing {
   0% {
-    background-color: green;
+    background: var(--game-good);
   }
   100% {
-    background-color: var(--game-white);
+    background: var(--game-white);
   }
 }
 
+.blink {
+  animation: blink 0.5s 1 ease-in;
+}
+@keyframes blink {
+  0% {
+    background: var(--game-good);
+  }
+  100% {
+    background: var(--game-white);
+  }
+}
+
+.green {
+  background: var(--game-good);
+}
+
 .red {
-  background-color: red;
+  background: var(--game-bad);
 }
 
 .hoverable:hover {
   cursor: pointer;
-  background-color: var(--game-highlight);
+  background: var(--game-highlight);
 }
 
-h1 {
+/* text stylings */
+
+#main-title {
+  font-family: var(--font-family-heading);
   font-size: 3rem;
+  text-align: center;
 }
 
-h2 {
-  font-size: 2rem;
+#subtitle {
+  font-family: var(--font-family-body);
+  font-size: 1rem;
+  text-align: center;
 }
+
+/* misc stylings */
 
 footer {
   position: fixed;

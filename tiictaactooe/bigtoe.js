@@ -1,159 +1,162 @@
-const defaultBoard = [
-  ["-", "-", "-", "-"],
-  ["-", "-", "-", "-"],
-  ["-", "-", "-", "-"],
-  ["-", "-", "-", "-"]
-];
 const swatch = ["#06D6A0", "#1B9AAA", "#EF476F", "#FFC43D", "#F8FFE5"];
-const players = ["X", "O"];
 const colors = ["color1", "color2", "color3", "color4"];
+const players = ["X", "O"];
 
-let board = defaultBoard;
-let playing = false;
-let turn = players[0];
+let board = [
+  ["-", "-", "-", "-"],
+  ["-", "-", "-", "-"],
+  ["-", "-", "-", "-"],
+  ["-", "-", "-", "-"],
+];
+let playing = true;
+let gameOver = false;
+let turn = players[0]; // set player X to start
 let turnCount = 1;
-let refresh = true;
+let waiting = false;
 
-// click to begin a game
-document.addEventListener("click", function () {
-  if (playing === false && refresh === true) {
-    // if game is not in progress, initialise it
-    initialiseGame();
-    refresh = false;
-  }
+$(document).ready(function () {
+  // when page first loads, initialise game immediately
+  $("#subtitle").text("Player X to start");
+  $(".cell").addClass("hoverable");
 });
 
-function initialiseGame () {
-  playing = true; // i.e. let's begin a game
-  $("#board-container").removeClass("red");
-  $(".cell").addClass("hoverable");
-  turn = players[0];
-  turnCount = 1;
-  board = defaultBoard;
-  resetBoard();
-  $("#subtitle").text('Click to begin');
-  console.log("Initialised game");
+$(document).on("click", function () {
+
+  if (playing === false && gameOver === true) {
+    $("#subtitle").text("Click to play again");
+    gameOver = false;
+    return;
+  }
+
+  if (playing === false && gameOver === false) {
+
+    // clear the board and get ready to play again
+    resetBoard();
+
+    $(".board-container").removeClass("red");
+    $(".cell").removeClass("green");
+    $(".heading").removeClass('green');
+    $(".heading").removeClass('red');
+    $("#main-title").text("BIG TOE");
+    $("#main-title").removeClass("animate");
+    $("#subtitle").text("Player X to start");
+    $(".cell").addClass("hoverable");
+
+    turn = players[0]; // set player X to start
+    turnCount = 1;
+    playing = true;
+    gameOver = false;
+    waiting = false;
+  }
+
+});
+
+// draw empty board and reset values to '-'
+function resetBoard() {
+  for (row = 0; row <= 3; row++) {
+    for (col = 0; col <= 3; col++) {
+      board[row][col] = '-';
+      thisCell = "#c"+col+"r"+row;
+      $(thisCell).text('');
+    }
+  }
 }
 
-// during play, handle button clicks
-$(".cell").on("mousedown", function () {
-  thisCell = this.id;
-  col = thisCell[1]; // e.g. x value is column
-  row = thisCell[3]; // e.g. y value is row
-
-  // REMEMBER: coordinate (2,1) refers to board[1][2] !!!!
-
+// while playing, handle button clicks on cells
+$(".cell").on("click", function () {
   if (playing === true) {
-    // check the cell is available
+    thisCell = this.id;
+
+    // REMEMBER the value of cell coordinate (2,1) is at board[1][2]
+    col = thisCell[1]; // x value is column
+    row = thisCell[3]; // y value is row  
+
+    // check if the cell is available
     if (board[row][col] === "-") {
       board[row][col] = `${turn}`;
-      this.innerText = `${turn}`;
+      $(this).text(`${turn}`);
       $(this).removeClass("hoverable");
-      console.log(`${turnCount}: player ${turn} chose ${thisCell}`);
+      console.log(`${turnCount}: ${turn} chose ${thisCell}`);
 
-      // check win state
+      // check if player has won
       checkWin();
     }
   }
 });
 
-function resetBoard() {
-  console.log("Resetting board");
-  for (row = 0; row <= 3; row++) {
-    for (col = 0; col <= 3; col++) {
-      thisCell = $("#c" + col + "r" + row);
-      if (board[row][col] === '-') {
-        thisCell.innerText = '';
-      } else {
-        thisCell.innerText = board[row][col];
-      }
-    }
-  }
-}
-
 function checkWin() {
-  // minimum 7 turns required before anyone can win
-  if (turnCount >= 7 && playing === true) {
+  // minimum 7 turns required for a win, saves CPU
+  if (turnCount >= 7) {
     // check columns
     for (x = 0; x <= 3; x++) {
-      theseCoords = [[x,0],[x,1],[x,2],[x,3]];
+      theseCoords = [
+        [x, 0],
+        [x, 1],
+        [x, 2],
+        [x, 3],
+      ];
       theseValues = [board[0][x], board[1][x], board[2][x], board[3][x]];
 
-      // if this player is in this array 4 times...
+      // if this player's glyph is in this array 4 times, they've won
       if (theseValues.filter((item) => item === turn).length == 4) {
-        $("#subtitle").text(`Player ${turn} has won! [COL]`);
-        $(".cell").removeClass("hoverable");
-        flashCells(theseCoords);
-        playing = false;
-
-        setTimeout(function (){
-          initialiseGame();
-          return true;
-        }, 2500); // pause in ms
+        playerWins(theseCoords);
+        return;
       }
     }
 
     // check rows
     for (y = 0; y <= 3; y++) {
-      theseCoords = [[0,y],[1,y],[2,y],[3,y]];
+      theseCoords = [
+        [0, y],
+        [1, y],
+        [2, y],
+        [3, y],
+      ];
       theseValues = [board[y][0], board[y][1], board[y][2], board[y][3]];
-
-      // if this player is in this array 4 times...
       if (theseValues.filter((item) => item === turn).length == 4) {
-        $("#subtitle").text(`Player ${turn} has won! [ROW]`);
-        $(".cell").removeClass("hoverable");
-        flashCells(theseCoords);
-        playing = false;
-
-        setTimeout(function (){
-          initialiseGame();
-          return true;
-        }, 2500); // pause in ms
+        playerWins(theseCoords);
+        return;
       }
     }
 
     // check diagonal 1
-    theseCoords = [[0, 0],[1, 1],[2, 2],[3, 3]];
+    theseCoords = [
+      [0, 0],
+      [1, 1],
+      [2, 2],
+      [3, 3],
+    ];
     theseValues = [board[0][0], board[1][1], board[2][2], board[3][3]];
     if (theseValues.filter((item) => item === turn).length == 4) {
-      $("#subtitle").text(`Player ${turn} has won! [DIAG]`);
-      $(".cell").removeClass("hoverable");
-      flashCells(theseCoords);
-      playing = false;
-
-      setTimeout(function (){
-        initialiseGame();
-        return true;
-      }, 2500); // pause in ms
+      playerWins(theseCoords);
+      return;
     }
 
     // check diagonal 2
-    theseCoords = [[0, 3],[1, 2],[2, 1],[3, 0]];
+    theseCoords = [
+      [0, 3],
+      [1, 2],
+      [2, 1],
+      [3, 0],
+    ];
     theseValues = [board[3][0], board[2][1], board[1][2], board[0][3]];
     if (theseValues.filter((item) => item === turn).length == 4) {
-      $("#subtitle").text(`Player ${turn} has won! [DIAG]`);
-      $(".cell").removeClass("hoverable");
-      flashCells(theseCoords);
-      playing = false;
-
-      setTimeout(function (){
-        initialiseGame();
-        return true;
-      }, 2500); // pause in ms
+      playerWins(theseCoords);
+      return;
     }
   }
 
   // stalemate
   if (turnCount == 16) {
-    $("#subtitle").text("It's a stalemate!");
+    $(".heading").addClass('red');
+    $(".board-container").addClass('red');
     $(".cell").removeClass("hoverable");
-    $("#board-container").addClass("red");
+    $("#main-title").text("STALEMATE!");
+    $("#main-title").addClass("animate");
     playing = false;
-
-    setTimeout(function (){
-      initialiseGame();
-      return true;
-    }, 2500); // pause in ms
+    gameOver = true;
+    turnCount = 1;
+    return;
   }
 
   // if no win and no stalemate, continue to next player
@@ -161,50 +164,45 @@ function checkWin() {
     turnCount++;
     if (turn == players[0]) {
       turn = players[1];
-      $("#subtitle").text(`Player ${turn} to play.`);
     } else {
-      turn = "X";
-      $("#subtitle").text(`Player ${turn} to play.`);
+      turn = players[0];
     }
+    $("#subtitle").text(`Player ${turn} to play`);
   }
 }
 
-function flashCells(arr) {
-  // arr is coordinates = [[x1][y1],[x2][y2],[x3][y3],...]
-  console.log("Flashing", arr);
-  for (i = 0; i < arr.length; i++) {
-    cell = $("#c" + arr[i][0] + "r" + arr[i][1]);
-    cell.addClass("flash");
+function playerWins(cellCoords) {
+  $("#main-title").addClass("animate");
+  $("#main-title").text(`${turn} wins!`);
+  $(".heading").addClass('green');
+  $("#subtitle").text('');
+  $(".cell").removeClass("hoverable");
+
+  highlightCells(cellCoords);
+  playing = false;
+  gameOver = true;
+  waiting = false;
+}
+
+function highlightCells(cells){
+  // cells is coords = [[x1][y1],[x2][y2],[x3][y3],...]
+  for (i = 0; i < cells.length; i++) {
+    cell = $("#c" + cells[i][0] + "r" + cells[i][1]);
+    cell.addClass("green");
+  }
+}
+
+// NOT CURRENTLY IMPLEMENTED
+function flashCells(cells) {
+  // cells is coords = [[x1][y1],[x2][y2],[x3][y3],...]
+  for (i = 0; i < cells.length; i++) {
+    cell = $("#c" + cells[i][0] + "r" + cells[i][1]);
+    cell.addClass("flashing");
   }
   setTimeout(function () {
-    for (i = 0; i < arr.length; i++) {
-      cell = $("#c" + arr[i][0] + "r" + arr[i][1]);
-      cell.removeClass("flash");
+    for (i = 0; i < cells.length; i++) {
+      cell = $("#c" + cells[i][0] + "r" + cells[i][1]);
+      cell.removeClass("flashing");
     }
   }, 3000);
 }
-
-function flashBoard() {
-  $("#board-container").addClass("flash-red");
-  setTimeout(function () {
-    $("#board-container").removeClass("flash-red");
-  }, 3000);
-}
-
-function allEqual(array) {
-  for (i = 1; i < array.length - 1; i++) {
-    if (array[i] !== array[0]) {
-      return false;
-    } else {
-      return true;
-    }
-  }
-}
-
-/* various useful functions */
-
-function setCopyrightYear() {
-  let thisYear = new Date();
-  document.getElementById("copyright-year").textContent = thisYear.getUTCFullYear();
-}
-setCopyrightYear();
