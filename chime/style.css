@@ -1,26 +1,50 @@
+@import url("https://fonts.googleapis.com/css2?family=Poppins&family=Roboto+Mono&display=swap");
+
 * {
   margin: 0;
   padding: 0;
-  --theme-white: #ddd;
+  --app-black: #08080f;
+  --app-white: #eee;
+  --app-grey: #aaa;
+  --app-selected: #afa;
+  --app-highlight: #bbf;
+
+  --font-body: "Poppins", sans-serif;
+  --font-heading: "Poppins", sans-serif;
+
+  --gradient: linear-gradient(90deg, #6584cc 0%, #2d487f 100%);
+
+  --DEBUG: #f00;
 }
 
 body {
-  background-color: var(--theme-white);
+  background: var(--app-black);
+  font-family: var(--font-body);
 }
 
+.page-container {
+  width: 100vw;
+  height: 100vh;
+  display: grid;
+  justify-content: center;
+  align-content: center;
+}
 .app-container {
-  width: max-content;
-  height: 100%;
   margin: 0 auto;
-  background-color: orange;
+  padding: 10px;
+  border-radius: 5px;
+  background: var(--gradient);
 }
 
 .board-container {
 }
 
 .controls-container {
-  background-color: #999;
+  display: flex;
+  flex-direction: row;
+  justify-content: center;
   height: 8vh;
+  line-height: 8vh;
   text-align: center;
 }
 
@@ -28,17 +52,119 @@ body {
   display: inline-block;
   height: 8vh;
   width: 8vh;
-  border: 2px solid black;
-  margin: 2px;
+  margin: 4px;
   border-radius: 10%;
+  background: var(--app-white);
+  text-align: center;
+  line-height: 8vh;
 }
 
-.button:hover {
-  background-color: var(--theme-white);
+.button.hoverable:hover {
+  background: var(--app-highlight);
+  box-shadow: 0px 0px 10px 5px var(--app-white);
+  cursor: pointer;
 }
 
-.active {
-  background-color: var(--theme-white);
+.selected {
+  /* when a note has been clicked */
+  background: var(--app-selected);
+}
+
+.highlighted {
+  /* when a note is hovered or scrolled over */
+  background: var(--app-highlight);
+}
+
+/* controls stylings */
+
+#btn-play,
+#btn-pause,
+#btn-random,
+#btn-reset {
+  margin: 20px;
+  height: 3rem;
+  width: 6rem;
+  font-size: 2rem;
+  line-height: 3rem;
+}
+
+#btn-play {
+  display: inline-block;
+}
+
+#btn-pause {
+  display: none;
+}
+
+#btn-random {
+}
+
+/* toggle switch */
+
+.switch {
+  position: relative;
+  display: inline-block;
+  vertical-align: middle;
+  width: 60px;
+  height: 34px;
+  margin-inline: 10px;
+}
+
+/* hide HTML checkbox */
+.switch input {
+  display: none;
+}
+
+/* The slider */
+.slider {
+  position: absolute;
+  cursor: pointer;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background-color: var(--app-white);
+  transition: 0.4s;
+}
+
+.slider:before {
+  position: absolute;
+  content: "";
+  height: 26px;
+  width: 26px;
+  left: 4px;
+  bottom: 4px;
+  background-color: var(--app-grey);
+  transition: 0.4s;
+}
+
+input:checked + .slider {
+  background-color: var(--app-selected);
+}
+
+input:focus + .slider {
+  box-shadow: 0 0 1px var(--app-highlight);
+}
+
+input:checked + .slider:before {
+  transform: translateX(26px);
+}
+
+/* Rounded sliders */
+.slider.round {
+  border-radius: 34px;
+}
+
+.slider.round:before {
+  border-radius: 50%;
+}
+
+/* misc furniture stylings */
+
+.btn-home {
+  position: absolute;
+  top: 5px;
+  left: 5px;
 }
 
 footer {

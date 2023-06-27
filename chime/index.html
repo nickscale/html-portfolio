@@ -6,125 +6,123 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>Chime</title>
     <link rel="stylesheet" href="style.css" />
-
-    <!-- Link jQuery -->
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.7.0/jquery.min.js"></script>
-    <link
-      rel="stylesheet"
-      href="https://ajax.googleapis.com/ajax/libs/jqueryui/1.13.2/themes/smoothness/jquery-ui.css"
-    />
-    <script src="https://ajax.googleapis.com/ajax/libs/jqueryui/1.13.2/jquery-ui.min.js"></script>
+    <script src="./script.js" defer></script>
   </head>
   <body>
     <!-- Standard header -->
     <header>
-      <button class="home-btn">◀︎ Home</button>
+      <button class="btn-home">◀︎ Home</button>
     </header>
 
     <!-- app container -->
-    <div class="app-container">
-      <div class="board-container">
-        <!-- div>div.button.note$@0.pitch1{note$@0 pitch1}*8 -->
-        <div>
-          <div class="button note0 pitch8">note0 pitch8</div>
-          <div class="button note1 pitch8">note1 pitch8</div>
-          <div class="button note2 pitch8">note2 pitch8</div>
-          <div class="button note3 pitch8">note3 pitch8</div>
-          <div class="button note4 pitch8">note4 pitch8</div>
-          <div class="button note5 pitch8">note5 pitch8</div>
-          <div class="button note6 pitch8">note6 pitch8</div>
-          <div class="button note7 pitch8">note7 pitch8</div>
+    <div class="page-container">
+      <div class="app-container">
+        <div class="board-container">
+          <div class="row">
+            <!-- div.button[id=b$$@0p07]{b$$@0p07}*8 -->
+            <div class="button" id="b00p07">b00p07</div>
+            <div class="button" id="b01p07">b01p07</div>
+            <div class="button" id="b02p07">b02p07</div>
+            <div class="button" id="b03p07">b03p07</div>
+            <div class="button" id="b04p07">b04p07</div>
+            <div class="button" id="b05p07">b05p07</div>
+            <div class="button" id="b06p07">b06p07</div>
+            <div class="button" id="b07p07">b07p07</div>
+          </div>
+          <div class="row">
+            <div class="button" id="b00p06">b00p06</div>
+            <div class="button" id="b01p06">b01p06</div>
+            <div class="button" id="b02p06">b02p06</div>
+            <div class="button" id="b03p06">b03p06</div>
+            <div class="button" id="b04p06">b04p06</div>
+            <div class="button" id="b05p06">b05p06</div>
+            <div class="button" id="b06p06">b06p06</div>
+            <div class="button" id="b07p06">b07p06</div>
+          </div>
+          <div class="row">
+            <div class="button" id="b00p05">b00p05</div>
+            <div class="button" id="b01p05">b01p05</div>
+            <div class="button" id="b02p05">b02p05</div>
+            <div class="button" id="b03p05">b03p05</div>
+            <div class="button" id="b04p05">b04p05</div>
+            <div class="button" id="b05p05">b05p05</div>
+            <div class="button" id="b06p05">b06p05</div>
+            <div class="button" id="b07p05">b07p05</div>
+          </div>
+          <div class="row">
+            <div class="button" id="b00p04">b00p04</div>
+            <div class="button" id="b01p04">b01p04</div>
+            <div class="button" id="b02p04">b02p04</div>
+            <div class="button" id="b03p04">b03p04</div>
+            <div class="button" id="b04p04">b04p04</div>
+            <div class="button" id="b05p04">b05p04</div>
+            <div class="button" id="b06p04">b06p04</div>
+            <div class="button" id="b07p04">b07p04</div>
+          </div>
+          <div class="row">
+            <div class="button" id="b00p03">b00p03</div>
+            <div class="button" id="b01p03">b01p03</div>
+            <div class="button" id="b02p03">b02p03</div>
+            <div class="button" id="b03p03">b03p03</div>
+            <div class="button" id="b04p03">b04p03</div>
+            <div class="button" id="b05p03">b05p03</div>
+            <div class="button" id="b06p03">b06p03</div>
+            <div class="button" id="b07p03">b07p03</div>
+          </div>
+          <div class="row">
+            <div class="button" id="b00p02">b00p02</div>
+            <div class="button" id="b01p02">b01p02</div>
+            <div class="button" id="b02p02">b02p02</div>
+            <div class="button" id="b03p02">b03p02</div>
+            <div class="button" id="b04p02">b04p02</div>
+            <div class="button" id="b05p02">b05p02</div>
+            <div class="button" id="b06p02">b06p02</div>
+            <div class="button" id="b07p02">b07p02</div>
+          </div>
+          <div class="row">
+            <div class="button" id="b00p01">b00p01</div>
+            <div class="button" id="b01p01">b01p01</div>
+            <div class="button" id="b02p01">b02p01</div>
+            <div class="button" id="b03p01">b03p01</div>
+            <div class="button" id="b04p01">b04p01</div>
+            <div class="button" id="b05p01">b05p01</div>
+            <div class="button" id="b06p01">b06p01</div>
+            <div class="button" id="b07p01">b07p01</div>
+          </div>
+          <div class="row">
+            <div class="button" id="b00p00">b00p00</div>
+            <div class="button" id="b01p00">b01p00</div>
+            <div class="button" id="b02p00">b02p00</div>
+            <div class="button" id="b03p00">b03p00</div>
+            <div class="button" id="b04p00">b04p00</div>
+            <div class="button" id="b05p00">b05p00</div>
+            <div class="button" id="b06p00">b06p00</div>
+            <div class="button" id="b07p00">b07p00</div>
+          </div>
         </div>
-        <div>
-          <div class="button note0 pitch7">note0 pitch7</div>
-          <div class="button note1 pitch7">note1 pitch7</div>
-          <div class="button note2 pitch7">note2 pitch7</div>
-          <div class="button note3 pitch7">note3 pitch7</div>
-          <div class="button note4 pitch7">note4 pitch7</div>
-          <div class="button note5 pitch7">note5 pitch7</div>
-          <div class="button note6 pitch7">note6 pitch7</div>
-          <div class="button note7 pitch7">note7 pitch7</div>
-        </div>
-        <div>
-          <div class="button note0 pitch6">note0 pitch6</div>
-          <div class="button note1 pitch6">note1 pitch6</div>
-          <div class="button note2 pitch6">note2 pitch6</div>
-          <div class="button note3 pitch6">note3 pitch6</div>
-          <div class="button note4 pitch6">note4 pitch6</div>
-          <div class="button note5 pitch6">note5 pitch6</div>
-          <div class="button note6 pitch6">note6 pitch6</div>
-          <div class="button note7 pitch6">note7 pitch6</div>
-        </div>
-        <div>
-          <div class="button note0 pitch5">note0 pitch5</div>
-          <div class="button note1 pitch5">note1 pitch5</div>
-          <div class="button note2 pitch5">note2 pitch5</div>
-          <div class="button note3 pitch5">note3 pitch5</div>
-          <div class="button note4 pitch5">note4 pitch5</div>
-          <div class="button note5 pitch5">note5 pitch5</div>
-          <div class="button note6 pitch5">note6 pitch5</div>
-          <div class="button note7 pitch5">note7 pitch5</div>
-        </div>
-        <div>
-          <div class="button note0 pitch4">note0 pitch4</div>
-          <div class="button note1 pitch4">note1 pitch4</div>
-          <div class="button note2 pitch4">note2 pitch4</div>
-          <div class="button note3 pitch4">note3 pitch4</div>
-          <div class="button note4 pitch4">note4 pitch4</div>
-          <div class="button note5 pitch4">note5 pitch4</div>
-          <div class="button note6 pitch4">note6 pitch4</div>
-          <div class="button note7 pitch4">note7 pitch4</div>
-        </div>
-        <div>
-          <div class="button note0 pitch3">note0 pitch3</div>
-          <div class="button note1 pitch3">note1 pitch3</div>
-          <div class="button note2 pitch3">note2 pitch3</div>
-          <div class="button note3 pitch3">note3 pitch3</div>
-          <div class="button note4 pitch3">note4 pitch3</div>
-          <div class="button note5 pitch3">note5 pitch3</div>
-          <div class="button note6 pitch3">note6 pitch3</div>
-          <div class="button note7 pitch3">note7 pitch3</div>
-        </div>
-        <div>
-          <div class="button note0 pitch2">note0 pitch2</div>
-          <div class="button note1 pitch2">note1 pitch2</div>
-          <div class="button note2 pitch2">note2 pitch2</div>
-          <div class="button note3 pitch2">note3 pitch2</div>
-          <div class="button note4 pitch2">note4 pitch2</div>
-          <div class="button note5 pitch2">note5 pitch2</div>
-          <div class="button note6 pitch2">note6 pitch2</div>
-          <div class="button note7 pitch2">note7 pitch2</div>
-        </div>
-        <div>
-          <div class="button note0 pitch1">note0 pitch1</div>
-          <div class="button note1 pitch1">note1 pitch1</div>
-          <div class="button note2 pitch1">note2 pitch1</div>
-          <div class="button note3 pitch1">note3 pitch1</div>
-          <div class="button note4 pitch1">note4 pitch1</div>
-          <div class="button note5 pitch1">note5 pitch1</div>
-          <div class="button note6 pitch1">note6 pitch1</div>
-          <div class="button note7 pitch1">note7 pitch1</div>
-        </div>
+        <div class="controls-container">
+          <span><input type="checkbox" name="toggle-play" id="toggle-play" hidden /></span>
+          <span class="control" id="btn-pause" onclick="playPattern()">▶</span>
+          <span class="control" id="btn-play" onclick="playPattern()">▷</span>
+          <span class="control" id="btn-random" onclick="randomise()"><img src="./dice.png" height="40px" alt="Randomise" /></span>
+          <!-- <span class="control" id="btn-reset" onclick="clearPattern()"><img src="./rotate-left-circular-arrow-interface-symbol.png" height="30px" alt="Reset" /></span> -->
 
-        <div>
-          <div class="button note0 pitch0">note0 pitch0</div>
-          <div class="button note1 pitch0">note1 pitch0</div>
-          <div class="button note2 pitch0">note2 pitch0</div>
-          <div class="button note3 pitch0">note3 pitch0</div>
-          <div class="button note4 pitch0">note4 pitch0</div>
-          <div class="button note5 pitch0">note5 pitch0</div>
-          <div class="button note6 pitch0">note6 pitch0</div>
-          <div class="button note7 pitch0">note7 pitch0</div>
+          <span class="control" id=""><label for="">Synth</label></span>
+          <span class="control" id="mode-toggle">
+            <label class="switch">
+              <input type="checkbox" />
+              <span class="slider round"></span>
+            </label>
+          </span>
+          <span class="control" id=""><label for="">Perc</label></span>
         </div>
       </div>
-      <div class="controls-container"><h1>controls</h1></div>
     </div>
 
     <!-- Standard footer -->
     <footer>
-      <p>© Nick Swinglehurst 2023</p>
+      <p>© 2023</p>
     </footer>
-
-    <script src="./chime.js"></script>
   </body>
 </html>
