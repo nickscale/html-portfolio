@@ -36,9 +36,6 @@ body {
   background: var(--gradient);
 }
 
-.board-container {
-}
-
 .controls-container {
   display: flex;
   flex-direction: row;
