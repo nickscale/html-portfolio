@@ -4,15 +4,16 @@
   margin: 0;
   padding: 0;
   --app-black: #08080f;
-  --app-white: #eee;
-  --app-grey: #aaa;
-  --app-selected: #8f8;
+  --app-white: #f8f8f8;
+  --app-grey: #ddd;
+  --app-select-green: #4d4;
   --app-highlight: #88f;
+  --app-select-red: #d44;
 
   --font-body: "Poppins", sans-serif;
   --font-heading: "Poppins", sans-serif;
 
-  --gradient: linear-gradient(90deg, #6584cc 0%, #2d487f 100%);
+  --gradient: linear-gradient(45deg, #ddd 0%, #aaa 100%);
 
   --DEBUG: #f00;
 }
@@ -32,10 +33,10 @@ body {
 
 .app-container {
   margin: 0 auto;
-  padding: 10px;
-  max-height: 90vh;
+  padding: 30px;
   border-radius: 5px;
   background: var(--gradient);
+  box-shadow: -5px -5px 10px 0px #0004 inset, 5px 5px 10px 0px #ddd2 inset;
 }
 
 /* board stylings */
@@ -59,24 +60,29 @@ body {
   aspect-ratio: 1 / 1;
   display: flex;
   align-items: start;
-  min-height: 6vw;
-  margin: 4px;
+  height: 7vh;
+  margin: 5px;
   border-radius: 10%;
-  background: var(--app-white);
+  background: var(--app-grey);
+  box-shadow: 0px 0px 10px 10px #fff4 inset, 2px 2px 5px 5px #1111;
 }
 
-.button.hoverable:hover {
-  background: var(--app-highlight);
-  box-shadow: 0px 0px 3px 3px var(--app-white);
+.button:hover,
+.control:hover {
   cursor: pointer;
 }
 
-.selected {
-  /* when a note has been clicked */
-  background: var(--app-selected);
+/* when a melodic note has been clicked */
+.select-green {
+  background: var(--app-select-green);
 }
 
-.highlighted {
+/* when a percussion note has been clicked */
+.select-red {
+  background: var(--app-select-red);
+}
+
+.highlight {
   /* when a note is hovered or scrolled over */
   background: var(--app-highlight);
 }
@@ -86,20 +92,24 @@ body {
 .controls-container {
   display: flex;
   flex-direction: row;
-  justify-content: center;
-  height: 8vh;
-  line-height: 8vh;
-  text-align: center;
+  justify-content: space-between;
+  align-items: center;
+  margin: 1rem 0 0 0;
+}
+
+.control {
+  margin: 0 4px;
+}
+
+.control label {
+  margin: 4px 6px;
 }
 
 #btn-play,
 #btn-pause,
 #btn-random,
 #btn-reset {
-  margin: 4px 2vw;
-  height: 40px;
   font-size: 2rem;
-  line-height: 2rem;
 }
 
 #btn-play {
@@ -115,13 +125,11 @@ body {
 .switch {
   position: relative;
   display: inline-block;
-  vertical-align: middle;
   width: 60px;
   height: 34px;
-  margin-inline: 10px;
 }
 
-/* hide HTML checkbox */
+/* HTML checkbox hidden */
 .switch input {
   display: none;
 }
@@ -134,7 +142,7 @@ body {
   left: 0;
   right: 0;
   bottom: 0;
-  background-color: var(--app-white);
+  background-color: var(--app-select-green);
   transition: 0.4s;
 }
 
@@ -145,23 +153,18 @@ body {
   width: 26px;
   left: 4px;
   bottom: 4px;
-  background-color: var(--app-grey);
+  background-color: var(--app-white);
   transition: 0.4s;
 }
 
-input:checked + .slider {
-  background-color: var(--app-selected);
+.switch input:checked + .slider {
+  background-color: var(--app-select-red);
 }
 
-input:focus + .slider {
-  box-shadow: 0 0 1px var(--app-highlight);
-}
-
-input:checked + .slider:before {
+.switch input:checked + .slider:before {
   transform: translateX(26px);
 }
 
-/* Rounded sliders */
 .slider.round {
   border-radius: 34px;
 }
