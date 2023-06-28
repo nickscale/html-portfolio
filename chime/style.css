@@ -6,8 +6,8 @@
   --app-black: #08080f;
   --app-white: #eee;
   --app-grey: #aaa;
-  --app-selected: #afa;
-  --app-highlight: #bbf;
+  --app-selected: #8f8;
+  --app-highlight: #88f;
 
   --font-body: "Poppins", sans-serif;
   --font-heading: "Poppins", sans-serif;
@@ -29,36 +29,45 @@ body {
   justify-content: center;
   align-content: center;
 }
+
 .app-container {
   margin: 0 auto;
   padding: 10px;
+  max-height: 90vh;
   border-radius: 5px;
   background: var(--gradient);
 }
 
-.controls-container {
+/* board stylings */
+
+.board-container {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+}
+
+.row {
   display: flex;
   flex-direction: row;
-  justify-content: center;
-  height: 8vh;
-  line-height: 8vh;
-  text-align: center;
+  margin: 0;
+  padding: 0;
 }
 
 .button {
   display: inline-block;
-  height: 8vh;
-  width: 8vh;
+  aspect-ratio: 1 / 1;
+  display: flex;
+  align-items: start;
+  min-height: 6vw;
   margin: 4px;
   border-radius: 10%;
   background: var(--app-white);
-  text-align: center;
-  line-height: 8vh;
 }
 
 .button.hoverable:hover {
   background: var(--app-highlight);
-  box-shadow: 0px 0px 10px 5px var(--app-white);
+  box-shadow: 0px 0px 3px 3px var(--app-white);
   cursor: pointer;
 }
 
@@ -74,15 +83,23 @@ body {
 
 /* controls stylings */
 
+.controls-container {
+  display: flex;
+  flex-direction: row;
+  justify-content: center;
+  height: 8vh;
+  line-height: 8vh;
+  text-align: center;
+}
+
 #btn-play,
 #btn-pause,
 #btn-random,
 #btn-reset {
-  margin: 20px;
-  height: 3rem;
-  width: 6rem;
+  margin: 4px 2vw;
+  height: 40px;
   font-size: 2rem;
-  line-height: 3rem;
+  line-height: 2rem;
 }
 
 #btn-play {
@@ -166,4 +183,6 @@ footer {
   position: fixed;
   bottom: 0px;
   right: 0px;
+  font-size: x-small;
+  color: var(--app-white);
 }
