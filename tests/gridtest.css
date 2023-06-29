@@ -1,43 +1,64 @@
 * {
-  margin: 0px;
-  padding: 0px;
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
 }
 
-.gridcontainer {
-  display: grid; /*set the display property of container to grid*/
+body {
+  background: #000;
+}
+.page-container {
+  width: 100vw;
   height: 100vh;
-  grid-gap: 0px;
-  grid-template-rows: 150px 80px auto 80px;
-  grid-template-areas:
-    "header"
-    "nav"
-    "main"
-    "footer";
-}
-.gridcontainer header {
-  grid-area: header;
-  background-color: #ff9999;
-}
-.gridcontainer nav {
-  grid-area: nav;
-  background-color: aqua;
-}
-.gridcontainer main {
-  grid-area: main;
-  background-color: #ddd;
-}
-.gridcontainer footer {
-  grid-area: footer;
+  display: flex;
+  justify-content: center;
+  align-items: center;
 }
 
-/* .gridcontainer .div1{ */
-/* grid-area: header; */
-/* grid-column: 1/4;  */
-/* grid-row: 1/1; */
-/* } */
+.app-container {
+  background: grey;
+  padding: 1vh;
+}
 
-/*
-  
-  The gap property is a shorthand property for the row-gap and the column-gap properties:
-   gap: 50px 100px;
-  */
+.board-container {
+  display: flex;
+  flex-direction: column;
+  padding: 1vh;
+  background: #008;
+}
+
+/* rows */
+.board-container > div {
+  display: flex;
+}
+
+/* cells */
+.board-container > div > div {
+  margin: 1vh;
+  width: 17vh;
+  height: 17vh;
+  background: #800;
+}
+
+.controls-container {
+  height: 16vh;
+  background: #080;
+}
+
+@media screen and (max-width: 480px) {
+  body {
+    background: #fff;
+  }
+
+  .board-container > div > div {
+    margin: 1vh;
+    width: 19vw;
+    height: 19vw;
+    background: #00f;
+  }
+
+  .controls-container {
+    height: 16vw;
+    background: #080;
+  }
+}
