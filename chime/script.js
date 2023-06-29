@@ -1,4 +1,3 @@
-const notes = ["C", "D", "E", "F", "G", "A", "B", "C2"];
 let melody = [
   [0, 0, 0, 0, 0, 0, 0, 0],
   [0, 0, 0, 0, 0, 0, 0, 0],
@@ -167,7 +166,7 @@ function playPattern() {
 // play the notes at the current beat
 function playNote(pitch, perc) {
   // play a melodic note, adjusted for pitch
-  var thisNote = new Audio("./sounds/Synth_C (5)-single.mp3");
+  var thisNote = new Audio("./sounds/Synth_C (5).mp3");
   thisNote.preservesPitch = false;
 
   // alter playback rate of sample to set pitch
@@ -177,28 +176,28 @@ function playNote(pitch, perc) {
       thisNote = undefined;
       break;
     case 1:
-      thisNote.playbackRate = 1.122;
+      thisNote.playbackRate = 1.122; // D
       break;
     case 2:
-      thisNote.playbackRate = 1.26;
+      thisNote.playbackRate = 1.26; // E
       break;
     case 3:
-      thisNote.playbackRate = 1.335;
+      thisNote.playbackRate = 1.335; // F
       break;
     case 4:
-      thisNote.playbackRate = 1.498;
+      thisNote.playbackRate = 1.498; // G
       break;
     case 5:
-      thisNote.playbackRate = 1.682;
+      thisNote.playbackRate = 1.682; // A
       break;
     case 6:
-      thisNote.playbackRate = 1.888;
+      thisNote.playbackRate = 1.888; // B
       break;
     case 7:
-      thisNote.playbackRate = 2.0;
+      thisNote.playbackRate = 2.0; // C2
       break;
     default:
-      thisNote.playbackRate = 1.0;
+      thisNote.playbackRate = 1.0; // C1
       break;
   }
 
@@ -220,7 +219,7 @@ function playNote(pitch, perc) {
       var thisPerc = new Audio("./sounds/clap.mp3");
       break;
     case 5:
-      var thisPerc = new Audio("./sounds/tambourine.wav");
+      var thisPerc = new Audio("./sounds/tambourine.mp3");
       break;
     case 6:
       var thisPerc = new Audio("./sounds/FX1.mp3");
