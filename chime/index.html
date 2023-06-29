@@ -102,18 +102,28 @@
           </div>
         </div>
         <div class="controls-container">
-          <span><input type="checkbox" name="toggle-play" id="toggle-play" hidden /></span>
-          <span class="control" id="btn-pause" onclick="playPattern()"><img src="./pause.svg" height="60px" alt="Play" /></span>
-          <span class="control" id="btn-play" onclick="playPattern()"><img src="./play.svg" height="60px" alt="Pause" /></span>
-          <span class="control" id="btn-random" onclick="randomise()"><img src="./dice.png" height="35" alt="Randomise" /></span>
-          <span class="control" id="btn-reset" onclick="clearPattern()"><img src="./rotate-left-circular-arrow-interface-symbol.png" height="30px" alt="Reset" /></span>
-          <span class="control">
-            <label><img src="./musical-note.svg" alt="Synth mode" height="35px" /></label>
+          <span class="control" id="mode-controls">
+            <label>
+              <img src="./images/musical-note.svg" alt="Synth mode" height="35px" />
+            </label>
             <label class="switch">
               <input id="toggle-mode" type="checkbox" />
               <span class="slider round"></span>
             </label>
-            <label><img src="./drum-kit.svg" alt="Percussion mode" height="35px" /></label>
+            <label>
+              <img src="./images/drum-kit.svg" alt="Percussion mode" height="35px" />
+            </label>
+          </span>
+          <span class="control" id="play-controls">
+            <input type="checkbox" name="toggle-play" id="toggle-play" />
+            <span id="btn-play" onclick="playPattern()"><img src="./images/play.svg" height="60" alt="Play" /></span>
+            <span id="btn-pause" onclick="playPattern()"><img src="./images/pause.svg" height="60" alt="Pause" /></span>
+          </span>
+          <span class="control" id="misc-controls">
+            <span id="btn-tempo" onclick="changeTempo()"><img src="./images/metronome.png" height="35" alt="Tempo" /></span>
+            <span id="tempo">BPM</span>
+            <span id="btn-random" onclick="randomise()"><img src="./images/dice.png" height="35" alt="Randomise" /></span>
+            <span id="btn-reset" onclick="clearPattern()"><img src="./images/cancel-cross.png" height="30px" alt="Reset" /> </span>
           </span>
         </div>
       </div>

@@ -1,0 +1,111 @@
+@import url("https://fonts.googleapis.com/css2?family=Roboto+Serif:ital,wght@0,100;0,300;0,500;0,700;0,900;1,100;1,300;1,500;1,700;1,900&display=swap");
+
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+  line-height: calc(1em + 1ex);
+}
+
+html {
+  hyphens: auto;
+  font-size: 85%;
+}
+
+:root {
+  --app-white: #eee;
+  --app-grey: #ccc;
+  --app-black: #08080f;
+  --app-highlight: #17b5e5;
+  --app-midlight: #007599;
+  --app-lowlight: #003a4d;
+  --app-action: #c60;
+  --DEBUG: #f00;
+
+  --font-heading: "Poppins", sans-serif;
+  --font-body: "Roboto Serif", "Georgia", serif;
+}
+
+/* layout stylings */
+
+body {
+  font-family: var(--font-body);
+  font-weight: 300;
+  color: var(--app-black);
+}
+
+.page-wrapper {
+  width: 100vw;
+  height: 100vh;
+}
+
+#app-container {
+  padding: 10px;
+  margin: 0 auto;
+  width: 400px;
+  border-radius: 10px;
+  background: var(--app-grey);
+}
+
+/* search container stylings */
+
+#search-container {
+}
+
+#search-input {
+  display: block;
+  position: relative;
+  font-size: 1rem;
+  padding: 10px;
+  border-radius: 5px;
+  border-width: 0;
+  width: 100%;
+}
+
+#search-results {
+  display: inline-block;
+  position: absolute;
+  z-index: 1;
+  margin: 10px 0;
+  padding: 10px;
+  border-radius: 5px;
+  background: var(--app-white);
+  box-shadow: 0px 0px 10px 10px #1111;
+}
+
+/* dictionary entry container stylings */
+
+.entry {
+  margin: 10px 0;
+  position: relative;
+}
+
+.term {
+  font-size: 2rem;
+  font-weight: 500;
+}
+
+.type {
+  font-size: 1rem;
+  font-weight: 100;
+  font-style: italic;
+}
+
+.definition {
+  font-weight: 300;
+}
+
+.related {
+  margin: 0 2rem;
+}
+
+ol,
+li {
+  margin: 1rem;
+}
+
+/* misc other stylings */
+
+h1 {
+  margin: 1rem;
+}

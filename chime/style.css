@@ -3,11 +3,13 @@
 * {
   margin: 0;
   padding: 0;
+  box-sizing: border-box;
+
   --app-black: #08080f;
   --app-white: #f8f8f8;
   --app-grey: #ddd;
-  --app-select-green: #4d4;
   --app-highlight: #88f;
+  --app-select-green: #4d4;
   --app-select-red: #d44;
 
   --font-body: "Poppins", sans-serif;
@@ -19,24 +21,43 @@
 }
 
 body {
-  background: var(--app-black);
   font-family: var(--font-body);
 }
 
 .page-container {
   width: 100vw;
   height: 100vh;
-  display: grid;
-  justify-content: center;
-  align-content: center;
+  display: flex;
+  align-items: center;
+  background: var(--app-black);
 }
 
 .app-container {
-  margin: 0 auto;
+  position: relative;
   padding: 30px;
   border-radius: 5px;
   background: var(--gradient);
+  max-height: 95vh;
   box-shadow: -5px -5px 10px 0px #0004 inset, 5px 5px 10px 0px #ddd2 inset;
+}
+
+/* For very portraited screens <640px */
+@media screen and (max-width: 640px) {
+  .app-container {
+    box-shadow: none;
+    border-radius: 0;
+    width: 100%;
+    padding: 4%;
+  }
+
+  .controls-container {
+    justify-content: center;
+    align-items: flex-start;
+  }
+
+  .button {
+    width: 13%;
+  }
 }
 
 /* board stylings */
@@ -44,26 +65,18 @@ body {
 .board-container {
   display: flex;
   flex-direction: column;
-  justify-content: center;
-  align-items: center;
 }
 
 .row {
   display: flex;
-  flex-direction: row;
-  margin: 0;
-  padding: 0;
+  flex-wrap: nowrap;
 }
 
 .button {
   display: inline-block;
   aspect-ratio: 1 / 1;
-  display: flex;
-  align-items: start;
-  height: 7vh;
-  margin: 5px;
-  border-radius: 10%;
-  background: var(--app-grey);
+  margin: 4px;
+  border-radius: 5px;
   box-shadow: 0px 0px 10px 10px #fff4 inset, 2px 2px 5px 5px #1111;
 }
 
@@ -71,6 +84,8 @@ body {
 .control:hover {
   cursor: pointer;
 }
+
+/* color stylings */
 
 /* when a melodic note has been clicked */
 .select-green {
@@ -91,36 +106,38 @@ body {
 
 .controls-container {
   display: flex;
-  flex-direction: row;
+  flex-wrap: wrap;
   justify-content: space-between;
-  align-items: center;
-  margin: 1rem 0 0 0;
+  align-items: flex-end;
+  margin: 5px 0;
 }
 
-.control {
-  margin: 0 4px;
+.control #mode-controls,
+#misc-controls {
+  align-self: flex-end;
+  flex-basis: 50%;
 }
 
-.control label {
-  margin: 4px 6px;
+.control #play-controls {
+  align-self: flex-start;
 }
 
-#btn-play,
-#btn-pause,
-#btn-random,
-#btn-reset {
-  font-size: 2rem;
+#toggle-play {
+  display: none;
+  visibility: hidden;
 }
 
 #btn-play {
   display: inline-block;
+  height: 3rem;
 }
 
 #btn-pause {
   display: none;
+  height: 3rem;
 }
 
-/* toggle switch */
+/* mode toggle switch */
 
 .switch {
   position: relative;
@@ -129,12 +146,11 @@ body {
   height: 34px;
 }
 
-/* HTML checkbox hidden */
 .switch input {
   display: none;
+  visibility: hidden;
 }
 
-/* The slider */
 .slider {
   position: absolute;
   cursor: pointer;

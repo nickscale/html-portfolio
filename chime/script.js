@@ -22,11 +22,15 @@ let percussion = [
 let nowPlaying = false;
 let playing;
 let currentBeat = 0;
-let beatLength = 250; // ms
 let mode = "synth";
 
+// beat duration = 1000*(60/bpm), or bpm = 1000*(60/beat duration)
+let beatLength = 250; // 315ms = 96bpm, 280 = 108bpm, 250ms = 120bpm, 215ms = 138bpm
+let tempoChange = false;
+$("#tempo").text("120");
+
 $(document).ready(function () {
-  $('.button').text(this.id);
+  $(".button").text(this.id);
 });
 
 // hover over button to play the note
@@ -110,7 +114,6 @@ function playPattern() {
 
     // start playing with interval timer
     playing = setInterval(function () {
-
       console.log(`Playing ${currentBeat} m${melody[currentBeat].join("")} p${percussion[currentBeat].join("")}`);
 
       // find selected pitch at this beat
@@ -120,14 +123,14 @@ function playPattern() {
 
       // highlight all notes of the current beat, except the selected note
       $(".button").removeClass("highlight");
-      for (p=0;p<=7;p++) {
-        if (mode === 'synth' && p != thisPitch) {
+      for (p = 0; p <= 7; p++) {
+        if (mode === "synth" && p != thisPitch) {
           $(`#b0${currentBeat}p0${p}`).addClass("highlight");
-        } else if (mode === 'perc' && p != thisPerc) {
+        } else if (mode === "perc" && p != thisPerc) {
           $(`#b0${currentBeat}p0${p}`).addClass("highlight");
         }
       }
-    
+
       // only play note if there is a note is selected
       switch (true) {
         case thisPitch >= 0 && thisPerc >= 0:
@@ -145,20 +148,29 @@ function playPattern() {
         currentBeat++;
       }
     }, beatLength);
-
   } else if (nowPlaying == true) {
-    // if playing, stop playing
-    clearInterval(playing);
-    nowPlaying = false;
-    console.log("Stop playing");
 
-    // toggle display of play/pause buttons
-    $("#btn-play").css("display", "inline-block");
-    $("#btn-pause").css("display", "none");
+    // if tempo changed, stop and restart at new tempo
+    if (tempoChange == true) {
+      console.log("Tempo changed");
+      clearInterval(playing);
+      nowPlaying = false;
+      tempoChange = false;
+      playPattern();
+    } else {
+      
+      // if no tempo change, just stop playing
+      clearInterval(playing);
+      nowPlaying = false;
+      console.log("Stop playing");
 
-    // remove any highlighting
-    $(".button").removeClass("highlight");
+      // toggle display of play/pause button
+      $("#btn-play").css("display", "inline-block");
+      $("#btn-pause").css("display", "none");
 
+      // remove any highlighting
+      $(".button").removeClass("highlight");
+    }
     return;
   }
 }
@@ -247,7 +259,6 @@ $("#toggle-mode").on("change", (e) => {
 
   this.checkboxValue = e.target.checked;
 
-
   if (this.checkboxValue === true) {
     mode = "perc";
 
@@ -274,6 +285,39 @@ $("#toggle-mode").on("change", (e) => {
   console.log(`Mode set to ${mode}`);
 });
 
+// change tempo
+// 315ms = 96bpm, 280 = 108bpm, 250ms = 120bpm, 215ms = 138bpm
+
+function changeTempo() {
+  console.log(`Beatlength changed to ${beatLength}ms`);
+  switch (Number(beatLength)) {
+    case 315: // if it's 120bpm
+      beatLength = 280; // set it to 108bpm
+      $("#tempo").text("108");
+      tempoChange = true;
+      playPattern();
+      return;
+    case 280: // if it's 120bpm
+      beatLength = 250; // set it to 108bpm
+      $("#tempo").text("120");
+      tempoChange = true;
+      playPattern();
+      return;
+    case 250: // if it's 120bpm
+      beatLength = 215; // set it to 108bpm
+      $("#tempo").text("138");
+      tempoChange = true;
+      playPattern();
+      return;
+    case 215: // if it's 120bpm
+      beatLength = 315; // set it to 108bpm
+      $("#tempo").text("96");
+      tempoChange = true;
+      playPattern();
+      return;
+  }
+  // trigger playPattern to reset at new tempo
+}
 
 // randomly fill some notes
 function randomise() {
@@ -281,7 +325,6 @@ function randomise() {
   // clear current button selections
   $(`.button`).removeClass("select-green");
   $(`.button`).removeClass("select-red");
-
 
   if (mode === "synth") {
     for (b = 0; b <= 7; b++) {
@@ -294,7 +337,7 @@ function randomise() {
         melody[b][randomPitch] = 1;
         $(`#b0${b}p0${randomPitch}`).addClass("select-green");
       }
-      console.log(`Random m${b}=${melody[b].join('')}`);
+      console.log(`Random m${b}=${melody[b].join("")}`);
     }
   }
 
@@ -309,7 +352,7 @@ function randomise() {
         percussion[b][randomPitch] = 1;
         $(`#b0${b}p0${randomPitch}`).addClass("select-red");
       }
-      console.log(`Random p${b}=${percussion[b].join('')}`);
+      console.log(`Random p${b}=${percussion[b].join("")}`);
     }
   }
 }
