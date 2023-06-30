@@ -1,0 +1,12 @@
+body {
+  height: 100vh;
+  display: grid;
+  place-content: center; /* aligns objects, not text inside objects*/
+  align-items: center;
+}
+
+div > div {
+  background: aquamarine;
+  height: 10vh;
+  width: 10vh;
+}

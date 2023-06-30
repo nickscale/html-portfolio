@@ -102,7 +102,7 @@
           </div>
         </div>
         <div class="controls-container">
-          <span class="control" id="mode-controls">
+          <span class="controls-section" id="mode-controls">
             <label>
               <img src="./images/musical-note.svg" alt="Synth mode" height="35px" />
             </label>
@@ -114,16 +114,16 @@
               <img src="./images/drum-kit.svg" alt="Percussion mode" height="35px" />
             </label>
           </span>
-          <span class="control" id="play-controls">
+          <span class="controls-section" id="play-controls">
             <input type="checkbox" name="toggle-play" id="toggle-play" />
             <span id="btn-play" onclick="playPattern()"><img src="./images/play.svg" height="60" alt="Play" /></span>
             <span id="btn-pause" onclick="playPattern()"><img src="./images/pause.svg" height="60" alt="Pause" /></span>
           </span>
-          <span class="control" id="misc-controls">
-            <span id="btn-tempo" onclick="changeTempo()"><img src="./images/metronome.png" height="35" alt="Tempo" /></span>
-            <span id="tempo">BPM</span>
-            <span id="btn-random" onclick="randomise()"><img src="./images/dice.png" height="35" alt="Randomise" /></span>
-            <span id="btn-reset" onclick="clearPattern()"><img src="./images/cancel-cross.png" height="30px" alt="Reset" /> </span>
+          <span class="controls-section" id="misc-controls">
+            <span class="control" id="btn-tempo" onclick="changeTempo()"><img src="./images/metronome.png" height="30" alt="Tempo" /><span id="tempo">BPM</span></span>
+
+            <span class="control" id="btn-random" onclick="randomise()"><img src="./images/dice.png" height="30" alt="Randomise" /></span>
+            <span class="control" id="btn-reset" onclick="clearPattern()"><img src="./images/cancel-cross.png" height="30px" alt="Reset" /> </span>
           </span>
         </div>
       </div>

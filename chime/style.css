@@ -33,7 +33,7 @@ body {
 }
 
 .app-container {
-  padding: 3vh;
+  padding: 2vh;
   margin: 0 auto;
   border-radius: 5px;
   background: var(--gradient);
@@ -53,10 +53,13 @@ body {
 }
 
 .button {
-  display: inline-block;
+  display: inline-flex;
   height: 7.5vh;
   width: 7.5vh;
   margin: 1vh;
+  justify-content: center;
+  align-items: center;
+  text-align: center;
   border-radius: 5px;
   box-shadow: 0px 0px 10px 10px #fff4 inset, 2px 2px 5px 5px #1111;
 }
@@ -64,6 +67,7 @@ body {
 .button:hover,
 .control:hover {
   cursor: pointer;
+  background: var(--app-highlight);
 }
 
 /* color stylings */
@@ -88,29 +92,33 @@ body {
 .controls-container {
   display: flex;
   justify-content: space-between;
-  align-items: center;
-  margin: 2vh 0 0 0;
-  height: auto;
-  background: var(--DEBUG);
+}
+
+.controls-section {
+  display: flex;
+  align-content: flex-end;
+}
+
+#mode-controls {
+  padding: 12px 0 0 0;
+}
+
+#play-controls {
+  text-align: center;
+}
+
+#misc-controls {
+  text-align: right;
 }
 
 .control {
+  display: inline-flex;
+  align-items: center;
+  padding: 6px 0;
   margin: 1vh 0;
-}
-
-#toggle-play {
-  display: none;
-  visibility: hidden;
-}
-
-#btn-play {
-  display: inline-block;
-  height: 3rem;
-}
-
-#btn-pause {
-  display: none;
-  height: 3rem;
+  height: fit-content;
+  border-radius: 5px;
+  box-shadow: 0px 0px 10px 10px #fff4 inset, 2px 2px 5px 5px #1111;
 }
 
 /* mode toggle switch */
@@ -165,6 +173,35 @@ body {
   border-radius: 50%;
 }
 
+#toggle-play {
+  display: none;
+  visibility: hidden;
+}
+
+/* other controls */
+
+#btn-play {
+  display: inline-block;
+  height: 3rem;
+}
+
+#btn-pause {
+  display: none;
+  height: 3rem;
+}
+
+#btn-tempo,
+#btn-random,
+#btn-reset {
+  vertical-align: middle;
+  margin-left: 0.5vw;
+}
+
+#btn-tempo {
+  width: 66px;
+  text-align: left;
+}
+
 /* misc furniture stylings */
 
 .btn-home {
@@ -182,8 +219,8 @@ footer {
   color: var(--app-white);
 }
 
-/* For portrait screens <800px */
-@media screen and (max-width: 800px) {
+/* For portrait screens <700px */
+@media screen and (max-width: 700px) {
   .page-container {
     align-content: center;
   }
@@ -198,8 +235,14 @@ footer {
   }
 
   .button {
-    height: 7.5vw;
+    height: 7.5vh;
     width: 7.5vw;
-    margin: 1vw;
   }
 }
+
+/* for extreme landscape screens */
+@media screen and (max-height: 700px) {
+  .button {
+    height: 7.5vh;
+    width: 7.5vw;
+  }

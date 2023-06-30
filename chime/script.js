@@ -219,28 +219,28 @@ function playNote(pitch, perc) {
       thisPerc = undefined;
       break;
     case 1:
-      var thisPerc = new Audio("./sounds/snare.mp3");
+      var thisPerc = new Audio("./sounds/kr55/KR55SNAR.mp3");
       break;
     case 2:
-      var thisPerc = new Audio("./sounds/closed-hi-hat.mp3");
+      var thisPerc = new Audio("./sounds/kr55/KR55CHAT.mp3");
       break;
     case 3:
-      var thisPerc = new Audio("./sounds/open-hi-hat.mp3");
+      var thisPerc = new Audio("./sounds/kr55/KR55OHAT.mp3");
       break;
     case 4:
-      var thisPerc = new Audio("./sounds/clap.mp3");
+      var thisPerc = new Audio("./sounds/kr55/KR55TOM.mp3");
       break;
     case 5:
-      var thisPerc = new Audio("./sounds/tambourine.mp3");
+      var thisPerc = new Audio("./sounds/kr55/KR55CNGA.mp3");
       break;
     case 6:
-      var thisPerc = new Audio("./sounds/FX1.mp3");
+      var thisPerc = new Audio("./sounds/kr55/KR55CYMB.mp3");
       break;
     case 7:
       var thisPerc = new Audio("./sounds/FX1.mp3");
       break;
     default:
-      var thisPerc = new Audio("./sounds/kick.mp3");
+      var thisPerc = new Audio("./sounds/kr55/KR55KICK.mp3");
       break;
   }
 
@@ -291,26 +291,20 @@ $("#toggle-mode").on("change", (e) => {
 function changeTempo() {
   console.log(`Beatlength changed to ${beatLength}ms`);
   switch (Number(beatLength)) {
-    case 315: // if it's 120bpm
-      beatLength = 280; // set it to 108bpm
-      $("#tempo").text("108");
-      tempoChange = true;
-      playPattern();
-      return;
-    case 280: // if it's 120bpm
-      beatLength = 250; // set it to 108bpm
+    case 315: // if it's 96bpm
+      beatLength = 250; // set it to 120bpm
       $("#tempo").text("120");
       tempoChange = true;
       playPattern();
       return;
     case 250: // if it's 120bpm
-      beatLength = 215; // set it to 108bpm
+      beatLength = 215; // set it to 138bpm
       $("#tempo").text("138");
       tempoChange = true;
       playPattern();
       return;
-    case 215: // if it's 120bpm
-      beatLength = 315; // set it to 108bpm
+    case 215: // if it's 138bpm
+      beatLength = 315; // set it to 96bpm
       $("#tempo").text("96");
       tempoChange = true;
       playPattern();
