@@ -228,13 +228,13 @@ function playNote(pitch, perc) {
       var thisPerc = new Audio("./sounds/kr55/KR55OHAT.mp3");
       break;
     case 4:
-      var thisPerc = new Audio("./sounds/kr55/KR55TOM.mp3");
+      var thisPerc = new Audio("./sounds/kr55/KR55CYMB.mp3");
       break;
     case 5:
       var thisPerc = new Audio("./sounds/kr55/KR55CNGA.mp3");
       break;
     case 6:
-      var thisPerc = new Audio("./sounds/kr55/KR55CYMB.mp3");
+      var thisPerc = new Audio("./sounds/kr55/KR55TOM.mp3");
       break;
     case 7:
       var thisPerc = new Audio("./sounds/FX1.mp3");

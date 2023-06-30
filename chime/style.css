@@ -97,6 +97,7 @@ body {
 .controls-section {
   display: flex;
   align-content: flex-end;
+  padding: 1vh;
 }
 
 #mode-controls {
@@ -128,6 +129,7 @@ body {
   display: inline-block;
   width: 60px;
   height: 34px;
+  margin: 0 5px;
 }
 
 .switch input {
@@ -182,12 +184,10 @@ body {
 
 #btn-play {
   display: inline-block;
-  height: 3rem;
 }
 
 #btn-pause {
   display: none;
-  height: 3rem;
 }
 
 #btn-tempo,
@@ -246,3 +246,4 @@ footer {
     height: 7.5vh;
     width: 7.5vw;
   }
+}
