@@ -1,0 +1,80 @@
+@import url("https://fonts.googleapis.com/css2?family=DM+Sans:ital,wght@0,400;0,500;0,700;1,400;1,500;1,700&family=DM+Serif+Display:ital@0;1&display=swap");
+
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+:root {
+  --theme-bg: #020;
+  --theme-white: #eee;
+  --theme-black: #080808;
+  --theme-highlight: #446;
+  --theme-lowlight: #223;
+  --theme-action: #ff6200;
+
+  --font-body: "DM Sans", sans-serif;
+  --font-heading: "DM Serif Display", serif;
+
+  font-size: 150%;
+  font-weight: 100;
+
+  --gradient: linear-gradient(90deg, hsla(205, 46%, 10%, 1) 0%, hsla(191, 28%, 23%, 1) 50%, hsla(207, 41%, 27%, 1) 100%);
+
+  filter: progid: DXImageTransform.Microsoft.gradient( startColorstr="#0E1C26", endColorstr="#2A454B", GradientType=1 );
+}
+
+body {
+  color: var(--theme-white);
+  font-family: var(--font-body);
+}
+
+.page-wrapper {
+  height: 100vh;
+  width: 100vw;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  background: var(--gradient);
+}
+section {
+  padding: 2rem;
+  margin: 2rem;
+  max-width: 65vw;
+}
+
+h1 {
+  font-size: 4rem;
+  font-weight: 100;
+  font-family: var(--font-heading);
+  margin: 2rem 1rem;
+}
+h2 {
+  font-size: 2rem;
+  font-weight: 100;
+  font-family: var(--font-heading);
+  margin: 2rem 1rem;
+}
+
+a {
+  font-size: 1rem;
+  font-weight: 700;
+  color: var(--theme-white);
+  text-decoration: none;
+}
+
+ul {
+  list-style: none;
+  margin: calc(1rem - 5px);
+}
+
+li * {
+  padding: 5px;
+}
+
+li:hover {
+  background: var(--theme-highlight);
+}
+
+li: link;

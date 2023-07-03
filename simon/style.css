@@ -1,5 +1,11 @@
 @import url("https://fonts.googleapis.com/css2?family=Monoton&family=Oxanium&display=swap");
 
+* {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+}
+
 :root {
   --color1: #06d6a0; /* light yellow */
   --color2: #1b9aaa; /* blue munsell */
@@ -7,102 +13,50 @@
   --color4: #ffc43d; /* amber */
   --color5: #f8ffe5; /* light yellow */
   --color6: #ffffff; /* pure white */
+  --DEBUG: red;
 
-  margin: 0;
-  padding: 0;
-}
+  --gradient: linear-gradient(0deg, var(--color1), var(--color2), var(--color3), var(--color4), var(--color5));
 
-* {
-  font-family: "Oxanium", sans-serif;
-  box-sizing: border-box;
+  --gradient-reverse: linear-gradient(180deg, var(--color1), var(--color2), var(--color3), var(--color4), var(--color5));
 }
 
 body {
+  background: var(--gradient);
+  font-family: "Oxanium", sans-serif;
+}
+
+/* layout stylings */
+
+.page-container {
+  width: 100vw;
+  height: 100vh;
   display: flex;
-  flex-direction: column;
-  flex-wrap: nowrap;
-  align-items: center;
   justify-content: center;
-  background-color: #333;
+  align-items: center;
 }
-
-h1 {
-  font-size: 6rem;
-  line-height: 6rem;
-  font-weight: 800;
-  font-family: "Monoton";
-  margin: 0px;
-  background: -webkit-linear-gradient(
-    90deg,
-    var(--color1),
-    var(--color2),
-    var(--color3),
-    var(--color4)
-  );
-  -webkit-background-clip: text;
-  -webkit-text-fill-color: transparent;
-  background-clip: text;
-  -webkit-text-fill-color: transparent;
-}
-
-h2 {
-  font-size: 2rem;
-  margin: 10px;
-}
-
-footer {
-  position: fixed;
-  font-size: small;
-  bottom: 5px;
-  right: 5px;
-}
-
-/* game container stylings */
 
 .game-container {
-  position: absolute;
-  top: 50%;
-  transform: translateY(-50%);
-  height: fit-content;
-  width: 550px;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  width: 65vh;
+  gap: 2vh;
+  padding: 2vh;
   text-align: center;
-  padding: 20px;
   background-color: var(--color5);
-}
-
-#main-title {
-  display: grid;
-  grid-template-rows: auto auto auto;
-  grid-template-areas: "top" "middle" "bottom";
-  height: 200px;
-}
-
-#game-title {
-  grid-area: middle;
-  display: block;
-}
-
-#game-over {
-  grid-area: middle;
-  display: none;
-}
-
-#level {
-  grid-area: middle;
-  display: none;
 }
 
 .board-container {
   animation-name: board-landing;
-  animation-timing-function: ease;
+  animation-timing-function: ease-out;
   animation-duration: 1s;
 }
-
 @keyframes board-landing {
   0% {
     scale: 0%;
-    translate: 0px -200px;
-    rotate: -4turn;
+    translate: 0px 200px;
+    rotate: -8turn;
   }
   100% {
     scale: 100%;
@@ -111,12 +65,39 @@ footer {
   }
 }
 
+/* text area stylings */
+
+#main-title {
+  display: flex;
+  align-items: center;
+  height: 25vh;
+}
+
+#sub-title {
+  height: 10vh;
+}
+
+/* text holders toggled to display 2-line content */
+#game-title {
+  display: block;
+}
+
+#game-over {
+  display: none;
+}
+
+#level {
+  display: none;
+}
+
+/* the four main game buttons */
+
 .btn {
   display: inline-block;
-  height: 200px;
-  width: 200px;
-  margin: 5px;
-  border-radius: 20%;
+  height: 25vh;
+  width: 25vh;
+  margin: 0.5vh;
+  border-radius: 10%;
 }
 
 .hoverable:hover {
@@ -125,26 +106,48 @@ footer {
 
 .color1 {
   background-color: var(--color1);
-  border-top-left-radius: 250px;
+  border-top-left-radius: 100%;
 }
 
 .color2 {
   background-color: var(--color2);
-  border-top-right-radius: 250px;
+  border-top-right-radius: 100%;
 }
 
 .color3 {
   background-color: var(--color3);
-  border-bottom-left-radius: 250px;
+  border-bottom-left-radius: 100%;
 }
 
 .color4 {
   background-color: var(--color4);
-  border-bottom-right-radius: 250px;
+  border-bottom-right-radius: 100%;
 }
 
 .color5 {
   background-color: var(--color5);
+}
+
+/* text and highlight stylings */
+
+h1 {
+  font-size: 12vh;
+  line-height: 12vh;
+  font-weight: 800;
+  font-family: "Monoton";
+  margin: 0;
+
+  /* add gradient to title */
+  background: var(--gradient-reverse);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  background-clip: text;
+  -webkit-text-fill-color: transparent;
+}
+
+h2 {
+  font-size: 4vh;
+  margin: 1vh;
 }
 
 .pressed {
@@ -158,13 +161,47 @@ footer {
 /* misc furniture */
 
 .home-btn {
-  margin: 10px;
-  padding: 4px;
   position: absolute;
-  top: 0px;
-  left: 0px;
+  margin: 5px;
+  padding: 5px;
+  border: none;
 }
 
 .home-btn:hover {
   background-color: #888;
+}
+
+footer {
+  position: fixed;
+  font-size: x-small;
+  bottom: 5px;
+  right: 5px;
+}
+
+/* MEDIA QUERIES */
+
+/* For portrait screens <760px wide */
+@media (max-width: 760px) {
+  body {
+    background: none;
+  }
+  .game-container {
+    justify-content: center;
+    height: 100vh;
+    width: 100vw;
+    margin: 20vh 0;
+  }
+  .btn {
+    height: 42vw;
+    width: 42vw;
+    margin: 0.5vw;
+  }
+  h1 {
+    font-size: 16vw;
+    line-height: 16vw;
+  }
+  h2 {
+    font-size: 4vw;
+    margin: 1vw;
+  }
 }

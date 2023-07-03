@@ -31,7 +31,7 @@ document.addEventListener("keydown", function () {
     $("#game-over").css("display", "none");
     $("#level").text("Level " + String(level+1));
     $("#level").css("display", "block");
-    $("#press-key").css("visibility", "hidden");
+    $("#sub-title").css("visibility", "hidden");
 
 
     setTimeout(function (){
@@ -91,7 +91,7 @@ $(".btn").on("mousedown", function () {
       setTimeout(function (){
         $("#game-over").css("display", "none");
         $("#game-title").css("display", "block");
-        $("#press-key").css("visibility", "visible");
+        $("#sub-title").css("visibility", "visible");
       }, 2500); // pause in milliseconds
 
     }
@@ -121,9 +121,4 @@ function flashButton(buttonColor) {
 function flashScreen() {
   $(".game-container").addClass("error");
   $(".game-container").removeClass("error", 1500);
-}
-
-function setCopyrightYear() {
-  let thisYear = new Date();
-  $("#copyright-year").text(thisYear.getUTCFullYear());
 }

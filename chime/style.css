@@ -33,6 +33,7 @@ body {
 }
 
 .app-container {
+  height: 90vh;
   padding: 2vh;
   margin: 0 auto;
   border-radius: 5px;
@@ -173,12 +174,12 @@ body {
   border-radius: 50%;
 }
 
+/* other controls */
+
 #toggle-play {
   display: none;
   visibility: hidden;
 }
-
-/* other controls */
 
 #btn-play {
   display: inline-block;
@@ -204,10 +205,15 @@ body {
 
 /* misc furniture stylings */
 
-.btn-home {
+.home-btn {
   position: absolute;
-  top: 5px;
-  left: 5px;
+  margin: 5px;
+  padding: 5px;
+  border: none;
+}
+
+.home-btn:hover {
+  background-color: #888;
 }
 
 footer {
@@ -221,28 +227,47 @@ footer {
 
 /* For portrait screens <700px */
 @media screen and (max-width: 700px) {
-  .page-container {
-    align-content: center;
+  .app-container {
+    height: 100vh;
+    width: 100vw;
+    padding: 1vh 1vw;
+    border-radius: 0;
   }
 
-  .app-container {
-    height: auto;
+  .board-container {
+    height: 80vh;
+    margin: 0;
+    padding: 4vh 1vw;
   }
 
   .controls-container {
+    flex-direction: row;
     flex-wrap: wrap;
-    align-content: center;
+    justify-content: space-between;
+    padding: 4vw;
+    gap: 10px;
+  }
+
+  .control {
+    display: inline-flex;
+    align-items: center;
+    padding: 6px 1vw;
+    margin: 1vw;
+    height: fit-content;
   }
 
   .button {
     height: 7.5vh;
-    width: 7.5vw;
+    width: 12vw;
+  }
+
+  #play-controls {
+    order: 1;
+    flex-basis: 100%;
+  }
+
+  #mode-controls,
+  #misc-controls {
+    order: 2;
   }
 }
-
-/* for extreme landscape screens */
-@media screen and (max-height: 700px) {
-  .button {
-    height: 7.5vh;
-    width: 7.5vw;
-  }

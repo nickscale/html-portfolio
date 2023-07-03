@@ -2,16 +2,15 @@
 <html lang="en" dir="ltr">
   <head>
     <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1, minimum-scale=1" />
+
     <title>Simple Simon</title>
     <link rel="stylesheet" href="style.css" />
     <link rel="shortcut icon" href="favicon.ico" type="image/x-icon" />
 
     <!-- Link jQuery -->
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.7.0/jquery.min.js"></script>
-    <link
-      rel="stylesheet"
-      href="https://ajax.googleapis.com/ajax/libs/jqueryui/1.13.2/themes/smoothness/jquery-ui.css"
-    />
+    <link rel="stylesheet" href="https://ajax.googleapis.com/ajax/libs/jqueryui/1.13.2/themes/smoothness/jquery-ui.css" />
     <script src="https://ajax.googleapis.com/ajax/libs/jqueryui/1.13.2/jquery-ui.min.js"></script>
 
     <!-- Link JavaScript -->
@@ -21,34 +20,36 @@
   <body>
     <!-- Standard header -->
     <header>
-      <button class="home-btn">◀︎ Home</button>
+      <a href="../projects.html"><button class="home-btn">◀︎ Home</button></a>
     </header>
 
     <!-- game/app container -->
-    <div class="game-container">
-      <div id="main-title">
-        <h1 id="game-title">Simple<br />Simon</h1>
-        <h1 id="game-over">Game<br />Over</h1>
-        <h1 id="level">Level 1</h1>
-      </div>
-      <div id="press-key">
-        <h2>Press any key to play</h2>
-      </div>
-      <div class="board-container">
-        <div>
-          <div class="btn color1" id="color1"></div>
-          <div class="btn color2" id="color2"></div>
+    <div class="page-container">
+      <div class="game-container">
+        <div id="main-title">
+          <h1 id="game-title">Simple<br />Simon</h1>
+          <h1 id="game-over">Game<br />Over</h1>
+          <h1 id="level">Level 1</h1>
         </div>
-        <div>
-          <div class="btn color3" id="color3"></div>
-          <div class="btn color4" id="color4"></div>
+        <div id="sub-title">
+          <h2>Press any key to play</h2>
+        </div>
+        <div class="board-container">
+          <div>
+            <div class="btn color1" id="color1"></div>
+            <div class="btn color2" id="color2"></div>
+          </div>
+          <div>
+            <div class="btn color3" id="color3"></div>
+            <div class="btn color4" id="color4"></div>
+          </div>
         </div>
       </div>
     </div>
 
     <!-- Standard footer -->
     <footer>
-      <p>v0.3a © <span id="copyright-year"></span></p>
+      <p>v0.3a</p>
     </footer>
   </body>
 </html>
