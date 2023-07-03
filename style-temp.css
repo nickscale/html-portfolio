@@ -39,8 +39,8 @@ body {
   background: var(--gradient);
 }
 section {
-  padding: 2rem;
-  margin: 2rem;
+  padding: 1rem;
+  margin: 1rem;
   max-width: 65vw;
 }
 
@@ -48,13 +48,26 @@ h1 {
   font-size: 4rem;
   font-weight: 100;
   font-family: var(--font-heading);
-  margin: 2rem 1rem;
+  margin: 1rem;
 }
 h2 {
   font-size: 2rem;
   font-weight: 100;
   font-family: var(--font-heading);
-  margin: 2rem 1rem;
+  margin: 1rem;
+}
+
+h3 {
+  font-size: 1rem;
+  font-weight: 100;
+  font-family: var(--font-heading);
+}
+
+p {
+  font-size: 1rem;
+  font-weight: 100;
+  font-family: var(--font-body);
+  font-style: italic;
 }
 
 a {
@@ -66,7 +79,7 @@ a {
 
 ul {
   list-style: none;
-  margin: calc(1rem - 5px);
+  margin: 0 calc(1rem - 5px);
 }
 
 li * {
