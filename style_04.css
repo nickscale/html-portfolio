@@ -6,47 +6,53 @@
 }
 
 :root {
-  /* set theme styles */
+  /* set theme colours and fonts */
   --theme-white: #eff2f1;
   --theme-black: #08080f;
-
-  --theme-text: var(--theme-black); /* defaults to black text on white bg */
-  --theme-bg: var(--theme-white); /* defaults to black text on white bg */
   --theme-action: #98ce00;
   --theme-highlight: #648800;
+  --font-family-heading: "Libre Baskerville", serif;
+  --font-family-body: "Poppins", sans-serif;
 
-  /* original colors */
-  --theme-color1: #4059ad;
-  --theme-color2: #6b9ac4;
-  --theme-color3: #98ce00;
-  --theme-color4: #ddbea8;
-  --theme-color5: #eff2f1;
-  --gradient1: ;
-  --DEBUG1: #f00;
-  --DEBUG2: #0f0;
-  --DEBUG3: #00f;
+  /* DARK MODE - toggle text and bg colours */
+  --theme-text: var(--theme-black); /* default black text on white bg. DARK mode toggles this */
+  --theme-bg: var(--theme-white); /* default black text on white bg. DARK mode toggles this */
 
+  /* original colors CURRENTLY UNUSED */
+  --grad-color1: #4059ad;
+  --grad-color2: #6b9ac4;
+  --grad-color3: #98ce00;
+  --grad-color4: #ddbea8;
+  --grad-color5: #eff2f1;
+  --grad1: linear-gradient(15deg, var(--grad-color1), var(--grad-color2), var(--grad-color3), var(--grad-color4), var(--grad-color5));
+  --grad2: linear-gradient(45deg, #dde9dc, #318f26);
+  --grad3: linear-gradient(45deg, #318f26, #dde9dc);
+  --grad4: linear-gradient(45deg, #dde9dc, #318f26);
+
+  /* layout sizing */
   --content-width: 90vw;
   --content-height: 90vh;
-  --content-space-x: 15vh;
-  --content-space-y: 15vh;
-
-  --font-family-heading: "Poppins", serif;
-  --font-family-body: "Poppins", sans-serif;
+  --content-space-x: 10vw;
+  --content-space-y: 10vh;
 
   /* animation styling */
   --delay: 150ms;
   --ease: cubic-bezier(0.215, 0.61, 0.355, 1);
+
+  /* COLORS FOR DEBUGGING */
+  --DEBUG1: #f00;
+  --DEBUG2: #0f0;
+  --DEBUG3: #00f;
 }
 
 body {
-  font-size: clamp(1.2rem, 5vw, 1.5rem);
-  font-family: var(--font-primary);
+  font-size: clamp(0.5rem, 1rem, 4rem);
+  font-family: var(--font-family-body);
   color: var(--theme-white);
   display: grid;
 }
 
-/* dark mode stylings */
+/* dark mode toggle stylings */
 
 #toggleMode {
   position: absolute;
@@ -55,7 +61,7 @@ body {
 
 .toggleDark,
 .toggleLight {
-  position: absolute;
+  position: fixed;
   top: 20px;
   left: 20px;
   z-index: 20;
@@ -106,32 +112,35 @@ body {
 }
 
 .site-wrapper {
-  /* default to light mode: black text on white bg */
+  /* LIGHT MODE set black text on white bg */
   --theme-text: var(--theme-black);
   --theme-bg: var(--theme-white);
 }
 
-/* toggle to dark mode: white text on black bg */
+/* DARK MODE set white text on black bg */
 #toggleMode:checked ~ .site-wrapper {
   --theme-text: var(--theme-white);
   --theme-bg: var(--theme-black);
 }
 
+/* text stylings */
+
 h1 {
-  font-weight: bold;
-  font-size: 3rem;
+  font-weight: 700;
+  font-size: 5rem;
 }
 
 h2 {
-  font-size: 1.5rem;
+  font-weight: 100;
+  font-size: 2rem;
 }
 
 p {
-  font-size: 0.8rem;
+  font-size: 1rem;
 }
 
 a {
-  color: var(--theme-action);
+  color: var(--theme-text);
   text-decoration: none;
 }
 
@@ -139,31 +148,38 @@ a:hover {
   color: var(--theme-highlight);
 }
 
+/* master page layout grid */
+
 .page-container {
   width: 100vw;
   height: 100vh;
   display: grid;
   gap: 20px;
   grid-template-columns: var(--content-space-y) 2fr 1fr var(--content-space-y);
-  grid-template-rows: var(--content-space-x) 1fr 1fr var(--content-space-x);
+  grid-template-rows: var(--content-space-x) auto auto var(--content-space-x);
+}
 
-  background-color: var(--theme-bg);
+/* specific page stylings */
+
+.page-container#page1 {
+  background: var(--theme-bg);
   color: var(--theme-text);
+  background: var(--grad1);
 }
 
 .page-container#page2 {
-  background-color: var(--theme-bg);
+  background: var(--grad2);
 }
 
 .page-container#page3 {
-  background-color: var(--theme-bg);
+  background: var(--grad3);
 }
 
 .page-container#page4 {
-  background-color: var(--theme-bg);
+  background: var(--grad4);
 }
 
-/* front page styling */
+/* headline stylings */
 
 .headline {
   grid-column: 2 / 3;
@@ -179,12 +195,7 @@ a:hover {
   display: flex;
   align-items: flex-start;
   display: block;
-}
-
-button {
-  padding: 10px;
-  font-size: 1rem;
-  margin: 20px 0px;
+  font-family: var(--font-family-body);
 }
 
 .lead-image {
@@ -193,12 +204,28 @@ button {
   background-color: var(--DEBUG1);
 }
 
+/* button stylings */
+
+button {
+  padding: 1vh 1vw;
+  margin: 3vh 0;
+  border: 0;
+  border-radius: 5px;
+  background: var(--theme-action);
+  color: var(--theme-text);
+}
+
+button:hover {
+  background: var(--theme-text);
+  color: var(--theme-bg);
+}
+
 /* portfolio page styling */
 
-.portfolio {
+.portfolio-scroller {
   grid-column: 1 / 5;
   grid-row: 2 / 4;
-  padding: 0px 20px;
+  padding: var(--content-space-y) 2vw;
   display: flex;
   overflow-x: auto;
   gap: 20px;
@@ -206,24 +233,30 @@ button {
 
 .project-card {
   background-color: var(--theme-bg);
+  width: min-content;
 }
 
 .project-thumb {
-  width: 300px;
-  height: 200px;
-  background-color: var(--DEBUG2);
+  width: 320px;
+  height: 180px;
+  background-color: var(--DEBUG3);
 }
 
 .project-title {
   font-size: 2rem;
   font-family: var(--font-family-heading);
+  color: var(--theme-text);
+}
+
+.project-skills {
+  color: var(--theme-text);
 }
 
 .project-stub {
-  font-family: var(--font-family-body);
+  color: var(--theme-text);
 }
 
-/* about page styling */
+/* About page styling */
 
 .about {
   grid-column: 1 / 5;
@@ -231,7 +264,7 @@ button {
   padding: 0px 20px;
 }
 
-/* contact page styling */
+/* Contact page styling */
 
 .contact {
   grid-column: 1 / 5;
@@ -459,13 +492,13 @@ button {
   transition-duration: calc(var(--delay));
 }
 
-/* footer stylings */
+/* Footer stylings */
 
 footer {
   display: flex;
   justify-content: space-between;
-  background-color: var(--theme-white);
   height: 4rem;
   line-height: 4rem;
   padding: 1rem;
+  background: var(--grad1);
 }
