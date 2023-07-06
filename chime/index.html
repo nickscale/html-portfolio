@@ -3,7 +3,8 @@
   <head>
     <meta charset="UTF-8" />
     <meta http-equiv="X-UA-Compatible" content="IE=edge" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta name="viewport" content="width=device-width, initial-scale=1, minimum-scale=1" />
+
     <title>Chime</title>
     <link rel="stylesheet" href="style.css" />
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.7.0/jquery.min.js"></script>
@@ -12,7 +13,7 @@
   <body>
     <!-- Standard header -->
     <header>
-      <button class="btn-home">◀︎ Home</button>
+      <a href="../projects.html"><button class="home-btn">◀︎ Home</button></a>
     </header>
 
     <!-- app container -->
@@ -102,6 +103,7 @@
           </div>
         </div>
         <div class="controls-container">
+          <!-- mode toggle section -->
           <span class="controls-section" id="mode-controls">
             <label>
               <img src="./images/musical-note.svg" alt="Synth mode" height="35px" />
@@ -114,11 +116,13 @@
               <img src="./images/drum-kit.svg" alt="Percussion mode" height="35px" />
             </label>
           </span>
+          <!-- play button section -->
           <span class="controls-section" id="play-controls">
             <input type="checkbox" name="toggle-play" id="toggle-play" />
             <span id="btn-play" onclick="playPattern()"><img src="./images/play.svg" height="60" alt="Play" /></span>
             <span id="btn-pause" onclick="playPattern()"><img src="./images/pause.svg" height="60" alt="Pause" /></span>
           </span>
+          <!-- misc controls section -->
           <span class="controls-section" id="misc-controls">
             <span class="control" id="btn-tempo" onclick="changeTempo()"><img src="./images/metronome.png" height="30" alt="Tempo" /><span id="tempo">BPM</span></span>
 
