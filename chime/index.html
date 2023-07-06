@@ -3,22 +3,23 @@
   <head>
     <meta charset="UTF-8" />
     <meta http-equiv="X-UA-Compatible" content="IE=edge" />
-    <meta name="viewport" content="width=device-width, initial-scale=1, minimum-scale=1" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
 
     <title>Chime</title>
     <link rel="stylesheet" href="style.css" />
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.7.0/jquery.min.js"></script>
     <script src="./script.js" defer></script>
   </head>
+
   <body>
     <!-- Standard header -->
     <header>
       <a href="../projects.html"><button class="home-btn">◀︎ Home</button></a>
     </header>
 
-    <!-- app container -->
     <div class="page-container">
       <div class="app-container">
+        <!-- board container -->
         <div class="board-container">
           <!-- div.button[id=b$$@0p07]{b$$@0p07}*8 -->
           <div class="row">
@@ -102,6 +103,8 @@
             <div class="button" id="b07p00"></div>
           </div>
         </div>
+
+        <!-- controls container -->
         <div class="controls-container">
           <!-- mode toggle section -->
           <span class="controls-section" id="mode-controls">
@@ -116,18 +119,19 @@
               <img src="./images/drum-kit.svg" alt="Percussion mode" height="35px" />
             </label>
           </span>
+
           <!-- play button section -->
           <span class="controls-section" id="play-controls">
             <input type="checkbox" name="toggle-play" id="toggle-play" />
-            <span id="btn-play" onclick="playPattern()"><img src="./images/play.svg" height="60" alt="Play" /></span>
-            <span id="btn-pause" onclick="playPattern()"><img src="./images/pause.svg" height="60" alt="Pause" /></span>
+            <span id="btn-play" onclick="playPattern()"><img src="./images/play.svg" height="55" alt="Play" /></span>
+            <span id="btn-pause" onclick="playPattern()"><img src="./images/pause.svg" height="55" alt="Pause" /></span>
           </span>
+
           <!-- misc controls section -->
           <span class="controls-section" id="misc-controls">
-            <span class="control" id="btn-tempo" onclick="changeTempo()"><img src="./images/metronome.png" height="30" alt="Tempo" /><span id="tempo">BPM</span></span>
-
             <span class="control" id="btn-random" onclick="randomise()"><img src="./images/dice.png" height="30" alt="Randomise" /></span>
-            <span class="control" id="btn-reset" onclick="clearPattern()"><img src="./images/cancel-cross.png" height="30px" alt="Reset" /> </span>
+            <span class="control" id="btn-tempo" onclick="changeTempo()"><img src="./images/metronome.png" height="30" alt="Tempo" /><span id="tempo">BPM</span></span>
+            <span class="control" id="btn-reset" onclick="clearPattern()"><img src="./images/cancel-cross.png" height="30px" alt="Reset" /></span>
           </span>
         </div>
       </div>

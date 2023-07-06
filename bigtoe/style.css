@@ -3,7 +3,7 @@
 * {
   margin: 0;
   padding: 0;
-  /* box-sizing: border-box; */
+  box-sizing: border-box;
 }
 
 :root {
@@ -15,8 +15,6 @@
 
   --DEBUG: #f00;
 
-  --cell-size: 70px;
-
   --font-family-heading: "Permanent Marker", Haettenschweiler, "Arial Narrow Bold", sans-serif;
   --font-family-body: "Segoe UI", Tahoma, Geneva, Verdana, sans-serif;
 }
@@ -27,47 +25,62 @@ body {
   color: var(--game-black);
 }
 
-#page-container {
-  display: grid;
+.page-container {
+  width: 100vw;
   height: 100vh;
-  justify-items: center;
+  display: flex;
+  justify-content: center;
   align-items: center;
 }
 
 .app-container {
-  /* width: 600px; */
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
 }
 
-.heading {
-  padding: 10px;
-  margin: 20px 10px;
+.heading-container {
+  width: 100%;
+  height: auto;
+  padding: 0 0 2vw 0;
+  margin: 0 0 2vw 0;
   border-radius: 5px;
   background: var(--game-white);
-  box-shadow: 0px 0px 40px #666;
+  box-shadow: 0px 0px 20px #666;
 }
 
 .board-container {
-  padding: 10px 14px;
-  margin: 10px;
+  width: fit-content;
+  display: flex;
+  flex-direction: column;
+  flex-wrap: nowrap;
+  justify-content: center;
+  align-items: center;
+
+  padding: 10px;
   border-radius: 5px;
   background: var(--game-white);
-  box-shadow: 0px 0px 40px #666;
+  box-shadow: 0px 0px 20px #666;
 }
 
 .row {
-  display: block;
-  text-align: center;
+  display: flex;
+  flex-direction: row;
 }
 
 .cell {
-  display: inline-block;
+  width: 20vw;
+  height: 20vw;
+
+  display: flex;
+  justify-content: center;
+  align-items: center;
+
   font-family: var(--font-family-heading);
-  font-size: 3rem;
-  line-height: var(--cell-size);
-  height: var(--cell-size);
-  width: var(--cell-size);
-  vertical-align: middle;
-  margin: 0px -3px;
+  font-size: 18vw;
+  text-align: center;
+
   border-radius: 0px;
   border-width: 2px;
   border-color: var(--game-black);
@@ -168,13 +181,13 @@ body {
 
 #main-title {
   font-family: var(--font-family-heading);
-  font-size: 3rem;
+  font-size: 14vw;
   text-align: center;
 }
 
 #subtitle {
   font-family: var(--font-family-body);
-  font-size: 1rem;
+  font-size: 6vw;
   text-align: center;
 }
 
@@ -185,4 +198,25 @@ footer {
   font-size: small;
   bottom: 5px;
   right: 5px;
+}
+
+/* media query for landscape screens */
+@media only screen and (min-width: 500px) {
+  .heading-container {
+    padding: 0 0 2vh 0;
+    margin: 0 0 2vh 0;
+  }
+
+  .cell {
+    height: 15vh;
+    width: 15vh;
+    font-size: 13vh;
+  }
+  #main-title {
+    font-size: 9vh;
+  }
+
+  #subtitle {
+    font-size: 4vh;
+  }
 }
