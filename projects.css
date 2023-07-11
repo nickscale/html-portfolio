@@ -32,7 +32,7 @@ body {
 
 .page-wrapper {
   height: 100vh;
-  width: 100vw;
+  width: 100%;
   display: flex;
   justify-content: center;
   align-items: center;
@@ -41,24 +41,24 @@ body {
 section {
   padding: 1rem;
   margin: 1rem;
-  max-width: 65vw;
+  width: clamp(90%, 90%, 200px);
 }
 
 h1 {
-  font-size: 4rem;
-  font-weight: 100;
-  font-family: var(--font-heading);
-  margin: 1rem;
-}
-h2 {
   font-size: 3rem;
   font-weight: 100;
   font-family: var(--font-heading);
   margin: 1rem;
 }
+h2 {
+  font-size: 2rem;
+  font-weight: 100;
+  font-family: var(--font-heading);
+  margin: 1vh 1rem;
+}
 
 h3 {
-  font-size: 2rem;
+  font-size: 1rem;
   font-weight: 100;
   font-family: var(--font-heading);
 }
