@@ -11,7 +11,22 @@
   </head>
 
   <body>
-    <!-- Sitewide toggles -->
+    <!-- theme controls -->
+    <form action="" class="color-picker">
+      <fieldset>
+        <legend class="sr-only">Change theme</legend>
+        <label for="theme" class="sr-only">Light</label>
+        <input type="radio" name="theme" id="light" checked />
+        <label for="theme" class="sr-only">Dark</label>
+        <input type="radio" name="theme" id="dark" />
+        <label for="theme" class="sr-only">Red</label>
+        <input type="radio" name="theme" id="red" />
+        <label for="theme" class="sr-only">Blue</label>
+        <input type="radio" name="theme" id="blue" />
+        <label for="theme" class="sr-only">Green</label>
+        <input type="radio" name="theme" id="green" />
+      </fieldset>
+    </form>
     <input type="checkbox" id="toggleMode" />
     <label for="toggleMode" class="toggleDark"><img src="./images/icons/dark-mode.svg" alt="Click for dark mode" height="30px" /></label>
     <label for="toggleMode" class="toggleLight"><img src="./images/icons/dark-mode.svg" alt="Click for light mode" height="30px" /></label>
@@ -98,9 +113,7 @@
               <h2 class="subtitle">It's not all about me. Except this.</h2>
             </div>
           </div>
-          <div class="content-body">
-            <div class="lead-image"></div>
-          </div>
+          <div class="content-body"></div>
         </div>
       </div>
 

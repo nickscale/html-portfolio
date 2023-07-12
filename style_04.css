@@ -10,22 +10,28 @@
   /* set theme colours and fonts */
   --theme-white: #d7dad9;
   --theme-black: #08080f;
-  --theme-action: #98ce00;
-  --theme-highlight: #648800;
+  --theme-highlight: #98ce00;
+  --theme-midlight: #648800;
+  --theme-lowlight: #263400;
+  --theme-comp1: #4059ad;
+  --theme-comp2: #6b9ac4;
+
+  /* THEME color variables */
+  --theme-body: var(--theme-lowlight);
+  --theme-bg: var(--theme-white); /* -THESE-TWO- are toggled for dark mode */
+  --theme-text: var(--theme-black); /* -THESE-TWO- are toggled for dark mode */
+  --theme-cta: var(--theme-highlight);
+
+  /* THEME font variables */
   --font-family-heading: "Libre Baskerville", serif;
   --font-family-body: "Poppins", sans-serif;
 
-  /* LIGHT MODE defaults */
-  --theme-text: var(--theme-black);
-  --theme-bg: var(--theme-white);
-
   /* gradient colors */
-  --grad-color1: #4059ad;
-  --grad-color2: #6b9ac4;
-  --grad-color3: #98ce00;
-  --grad-color4: #ddbea8;
-  --grad-color5: #eff2f1;
-  --grad1: linear-gradient(90deg, var(--grad-color1), var(--grad-color2), var(--grad-color3), var(--grad-color4), var(--grad-color5));
+  --grad-color1: var(--theme-comp1);
+  --grad-color2: var(--theme-comp2);
+  --grad-color3: var(--theme-highlight);
+  --grad-color4: var(--theme-midlight);
+  --grad1: linear-gradient(90deg, var(--grad-color1), var(--grad-color2), var(--grad-color3), var(--grad-color4));
 
   /* content sizing */
   --content-width: 960px;
@@ -35,7 +41,7 @@
 
   /* size of top buttons, and also the margin tweak to compensate for them */
   --button-height: 30px;
-  --nav-correction: var(--button-height); /* This should be the same as button-height but might need tweaking... */
+  --nav-correction: -25px; /* ...why isn't this the same as button-height??? */
 
   /* animation styling */
   --delay: 150ms;
@@ -77,12 +83,10 @@ body {
   flex-direction: column;
   justify-content: center;
   align-items: flex-start;
-  background: var(--DEBUG3);
 }
 
 .content-header {
   height: fit-content;
-  background: var(--DEBUG1);
 }
 
 .content-body {
@@ -100,7 +104,7 @@ body {
 /* div placeholder for an image/widget */
 .lead-image {
   height: 400px;
-  background: var(--DEBUG2);
+  background: var(--DEBUG1);
 }
 
 /***** AESTHETIC STYLINGS *****/
@@ -137,8 +141,10 @@ a:hover {
 /* specific page stylings */
 
 .page-container#front {
-  height: calc(100vh + var(--nav-correction));
-  margin: -37px 0 0 0; /* margin tweak compensates for settings buttons */
+  /* the corrections below compensate for toggle bar */
+  height: calc(100vh - var(--nav-correction));
+  margin: calc(var(--nav-correction)) 0 0 0; /* margin hack, doesn't work with var? */
+  background: var(--theme-body);
 }
 
 .page-container#projects {
@@ -146,7 +152,7 @@ a:hover {
 }
 
 .page-container#about {
-  background: var(--theme-bg);
+  background: var(--theme-body);
 }
 
 .page-container#skills {
@@ -154,7 +160,7 @@ a:hover {
 }
 
 .page-container#contact {
-  background: var(--theme-bg);
+  background: var(--theme-body);
 }
 
 footer {
@@ -193,6 +199,50 @@ footer {
 .project-stub {
 }
 
+/* theme changer stylings */
+
+.color-picker > fieldset {
+  border: 0;
+  display: flex;
+  gap: 1rem;
+  width: fit-content;
+  background: var(--theme-body);
+  padding: 1rem 2rem;
+  margin-inline: auto;
+  border-radius: 0 0 10px 10px;
+}
+
+.color-picker input[type="radio"] {
+  appearance: none; /* strips default stylings */
+  width: 1rem;
+  height: 1rem;
+  outline: 2px solid var(--control-color, currentColor);
+  outline-offset: 4px;
+  border-radius: 50%;
+}
+
+.color-picker input[type="radio"]:checked {
+  background: var(--control-color);
+}
+.color-picker input[type="radio"]#light {
+  --control-color: var(--theme-white);
+}
+.color-picker input[type="radio"]#dark {
+  --control-color: var(--theme-black);
+}
+.color-picker input[type="radio"]#red {
+  --control-color: red;
+}
+.color-picker input[type="radio"]#green {
+  --control-color: green;
+}
+.color-picker input[type="radio"]#blue {
+  --control-color: blue;
+}
+
+:root:has(#light:checked) {
+}
+
 /* dark mode toggle stylings */
 
 .toggleDark,
@@ -205,17 +255,17 @@ footer {
 
 .toggleDark {
   display: inline-block;
-  left: 10px;
+  left: 110px;
 }
 
 .toggleLight {
   display: none;
-  left: 10px;
+  left: 110px;
 }
 
 .toggleMute {
   display: inline-block;
-  left: 45px;
+  left: 145px;
 }
 
 .toggleDark > img,
@@ -246,6 +296,19 @@ footer {
 
 #toggleMode:checked ~ .toggleMute {
   filter: invert(100%);
+}
+
+/* misc stylings */
+
+/* for hiding labels used by screen readers */
+.sr-only {
+  clip: rect(0 0 0 0);
+  clip-path: inset(50%);
+  width: 1px;
+  height: 1px;
+  overflow: hidden;
+  position: absolute;
+  white-space: nowrap;
 }
 
 /* SET DARK MODE: white text on black bg */
