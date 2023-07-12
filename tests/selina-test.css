@@ -1,0 +1,47 @@
+* {
+  padding: 0;
+  margin: 0;
+}
+
+body {
+  background: lightgray;
+}
+
+.navigation {
+  position: fixed;
+  top: 0px;
+  width: 90%;
+  background: darkred;
+}
+
+.navbar {
+  display: inline-block;
+  background: red;
+  overflow: hidden;
+}
+
+.video {
+  position: fixed;
+  top: 0px;
+  width: 100%;
+  height: 200px;
+  background: darkgreen;
+}
+
+.page-logo {
+  display: inline-block;
+}
+
+.testimonials {
+  position: absolute;
+  width: 100%;
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(200px, 1fr));
+  gap: 10px;
+}
+
+.testimonial {
+  width: 200px;
+  height: 200px;
+  background: darkblue;
+}
