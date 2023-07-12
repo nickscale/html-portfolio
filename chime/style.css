@@ -41,6 +41,7 @@ body {
   border-radius: 5px;
   background: var(--gradient);
   box-shadow: -5px -5px 10px 0px #0004 inset, 5px 5px 10px 0px #ddd2 inset;
+  user-select: none;
 }
 
 /* board stylings */

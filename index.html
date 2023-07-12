@@ -4,33 +4,29 @@
     <meta charset="UTF-8" />
     <meta http-equiv="X-UA-Compatible" content="IE=edge" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <meta title="Remixable" />
-    <link rel="stylesheet" href="style_04.css" />
+    <meta title="NS" />
+    <link rel="stylesheet" href="style.css" />
     <link rel="stylesheet" href="nav.css" />
-    <script src="./index_04.js" defer></script>
+    <script src="./main.js" defer></script>
   </head>
 
   <body>
     <!-- theme controls -->
-    <form action="" class="color-picker">
+    <form action="" class="theme-picker">
       <fieldset>
         <legend class="sr-only">Change theme</legend>
-        <label for="theme" class="sr-only">Light</label>
+        <label for="light" class="sr-only">Light</label>
         <input type="radio" name="theme" id="light" checked />
-        <label for="theme" class="sr-only">Dark</label>
+        <label for="dark" class="sr-only">Dark</label>
         <input type="radio" name="theme" id="dark" />
-        <label for="theme" class="sr-only">Red</label>
+        <label for="red" class="sr-only">Red</label>
         <input type="radio" name="theme" id="red" />
-        <label for="theme" class="sr-only">Blue</label>
+        <label for="blue" class="sr-only">Blue</label>
         <input type="radio" name="theme" id="blue" />
-        <label for="theme" class="sr-only">Green</label>
+        <label for="green" class="sr-only">Green</label>
         <input type="radio" name="theme" id="green" />
       </fieldset>
     </form>
-    <input type="checkbox" id="toggleMode" />
-    <label for="toggleMode" class="toggleDark"><img src="./images/icons/dark-mode.svg" alt="Click for dark mode" height="30px" /></label>
-    <label for="toggleMode" class="toggleLight"><img src="./images/icons/dark-mode.svg" alt="Click for light mode" height="30px" /></label>
-    <label for="toggleMute" class="toggleMute"><img src="./images/icons/mute.svg" alt="Toggle mute" height="30px" /></label>
 
     <!-- navigation -->
     <input type="checkbox" id="main-navigation-toggle" class="btn btn-close" title="Toggle main navigation" />
@@ -38,27 +34,27 @@
     <nav id="main-navigation" class="nav-main">
       <ul class="menu">
         <li class="menu-item">
-          <a class="menu-link" href="#">HOME</a>
+          <a class="menu-link" href="#">Home</a>
         </li>
         <li class="menu-item">
-          <a class="menu-link" href="#">PROJECTS</a>
+          <a class="menu-link" href="#">Projects</a>
           <ul class="submenu">
             <li class="menu-item">
-              <a class="menu-link" href="./chime/">CHIME</a>
+              <a class="menu-link" href="./chime/">Chime</a>
             </li>
             <li class="menu-item">
-              <a class="menu-link" href="./lefttowrite/">LEFT TO WRITE</a>
+              <a class="menu-link" href="./lefttowrite/">Left To Write</a>
             </li>
             <li class="menu-item">
-              <a class="menu-link" href="./simon/">SIMPLE SIMON</a>
+              <a class="menu-link" href="./bigtoe/">Big Toe</a>
             </li>
           </ul>
         </li>
         <li class="menu-item">
-          <a class="menu-link" href="#0">PERSONAL</a>
+          <a class="menu-link" href="#0">About</a>
         </li>
         <li class="menu-item">
-          <a class="menu-link" href="#0">CONTACT</a>
+          <a class="menu-link" href="#0">Contact</a>
         </li>
       </ul>
     </nav>
@@ -68,12 +64,12 @@
       <div class="page-container" id="front">
         <div class="content-container">
           <div class="content-header">
-            <h1 class="headline">Lean, green coding machine</h1>
-            <h2 class="subtitle">Fresh code delivered straight to your repo</h2>
+            <h1 class="headline">Good morning!</h1>
+            <h2 class="subtitle">Delivering on time. Every time.</h2>
           </div>
           <div class="content-body">
             <div class="lead-image">
-              <p>IMAGE</p>
+              <p>Image</p>
             </div>
           </div>
         </div>
@@ -146,7 +142,14 @@
       <!-- Footer copyright and socials -->
       <footer>
         <div>
-          <a href="#">© Nick Swinglehurst 2023</a>
+          <a href="#">© 2023</a>
+        </div>
+        <div class="contact-form">
+          <form action="mailto:nickswinglehurst@gmail.com?subject=Message via contact form">
+            <input type="email" name="" id="" size="20" placeholder="your@email.com" />
+            <input type="text" name="" id="" size="42" placeholder="Reach out! It's good for your shoulders" />
+            <button type="submit">Send</button>
+          </form>
         </div>
         <div>
           <a href="#">LinkedIn</a>

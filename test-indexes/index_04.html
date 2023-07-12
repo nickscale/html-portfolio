@@ -1,0 +1,161 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta title="Remixable" />
+    <link rel="stylesheet" href="style_04.css" />
+    <link rel="stylesheet" href="nav.css" />
+    <script src="./index_04.js" defer></script>
+  </head>
+
+  <body>
+    <!-- theme controls -->
+    <form action="" class="color-picker">
+      <fieldset>
+        <legend class="sr-only">Change theme</legend>
+        <label for="theme" class="sr-only">Light</label>
+        <input type="radio" name="theme" id="light" checked />
+        <label for="theme" class="sr-only">Dark</label>
+        <input type="radio" name="theme" id="dark" />
+        <label for="theme" class="sr-only">Red</label>
+        <input type="radio" name="theme" id="red" />
+        <label for="theme" class="sr-only">Blue</label>
+        <input type="radio" name="theme" id="blue" />
+        <label for="theme" class="sr-only">Green</label>
+        <input type="radio" name="theme" id="green" />
+      </fieldset>
+    </form>
+
+    <input type="checkbox" id="toggleMode" />
+    <label for="toggleMode" class="toggleDark"><img src="./images/icons/dark-mode.svg" alt="Click for dark mode" height="30px" /></label>
+    <label for="toggleMode" class="toggleLight"><img src="./images/icons/dark-mode.svg" alt="Click for light mode" height="30px" /></label>
+    <label for="toggleMute" class="toggleMute"><img src="./images/icons/mute.svg" alt="Toggle mute" height="30px" /></label>
+
+    <!-- navigation -->
+    <input type="checkbox" id="main-navigation-toggle" class="btn btn-close" title="Toggle main navigation" />
+    <label for="main-navigation-toggle"><span></span></label>
+    <nav id="main-navigation" class="nav-main">
+      <ul class="menu">
+        <li class="menu-item">
+          <a class="menu-link" href="#">HOME</a>
+        </li>
+        <li class="menu-item">
+          <a class="menu-link" href="#">PROJECTS</a>
+          <ul class="submenu">
+            <li class="menu-item">
+              <a class="menu-link" href="./chime/">CHIME</a>
+            </li>
+            <li class="menu-item">
+              <a class="menu-link" href="./lefttowrite/">LEFT TO WRITE</a>
+            </li>
+            <li class="menu-item">
+              <a class="menu-link" href="./simon/">SIMPLE SIMON</a>
+            </li>
+          </ul>
+        </li>
+        <li class="menu-item">
+          <a class="menu-link" href="#0">PERSONAL</a>
+        </li>
+        <li class="menu-item">
+          <a class="menu-link" href="#0">CONTACT</a>
+        </li>
+      </ul>
+    </nav>
+
+    <div class="site-wrapper">
+      <!-- Page 1 - Front page -->
+      <div class="page-container" id="front">
+        <div class="content-container">
+          <div class="content-header">
+            <h1 class="headline">Lean, green coding machine</h1>
+            <h2 class="subtitle">Fresh code delivered straight to your repo</h2>
+          </div>
+          <div class="content-body">
+            <div class="lead-image">
+              <p>IMAGE</p>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <!-- Page 2 - Projects -->
+      <div class="page-container" id="projects">
+        <div class="content-container">
+          <div class="content-header">
+            <h1 class="headline">Projects</h1>
+            <h2 class="subtitle">Things what I done</h2>
+          </div>
+          <div class="content-body">
+            <!-- project gallery -->
+            <div class="project-gallery">
+              <div class="project-card" id="proj1">
+                <div class="project-thumb">A nice wee picture</div>
+                <div class="project-title">Project Title</div>
+                <div class="project-stub">A short description of this fascinating project.</div>
+              </div>
+              <div class="project-card" id="proj2">
+                <div class="project-thumb">A nice wee picture</div>
+                <div class="project-title">Project Title</div>
+                <div class="project-stub">A short description of this fascinating project.</div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <!-- Page 3 - About -->
+      <div class="page-container" id="about">
+        <div class="content-container">
+          <div class="content-header">
+            <div class="about">
+              <h1 class="headline">About</h1>
+              <h2 class="subtitle">It's not all about me. Except this.</h2>
+            </div>
+          </div>
+          <div class="content-body"></div>
+        </div>
+      </div>
+
+      <!-- Page 4 - Skills -->
+      <div class="page-container" id="skills">
+        <div class="content-container">
+          <div class="content-header">
+            <h1 class="headline">Skills</h1>
+            <h2 class="subtitle">What I'm able of</h2>
+          </div>
+          <div class="content-body">
+            <div class="contact-form"></div>
+          </div>
+        </div>
+      </div>
+
+      <!-- Page 5 - Contact -->
+      <div class="page-container" id="contact">
+        <div class="content-container">
+          <div class="content-header">
+            <h1 class="headline">Reach out</h1>
+            <h2 class="subtitle">It's good for your shoulders.</h2>
+          </div>
+          <div class="content-body">
+            <div class="contact"></div>
+          </div>
+        </div>
+      </div>
+
+      <!-- Footer copyright and socials -->
+      <footer>
+        <div>
+          <a href="#">© Nick Swinglehurst 2023</a>
+        </div>
+        <div>
+          <a href="#">LinkedIn</a>
+          <a href="#">GitHub</a>
+          <a href="#">Vocal</a>
+          <a href="#">Vimeo</a>
+        </div>
+      </footer>
+    </div>
+  </body>
+</html>

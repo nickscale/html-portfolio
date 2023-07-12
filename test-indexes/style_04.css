@@ -16,16 +16,6 @@
   --theme-comp1: #4059ad;
   --theme-comp2: #6b9ac4;
 
-  /* THEME color variables */
-  --theme-body: var(--theme-lowlight);
-  --theme-bg: var(--theme-white); /* -THESE-TWO- are toggled for dark mode */
-  --theme-text: var(--theme-black); /* -THESE-TWO- are toggled for dark mode */
-  --theme-cta: var(--theme-highlight);
-
-  /* THEME font variables */
-  --font-family-heading: "Libre Baskerville", serif;
-  --font-family-body: "Poppins", sans-serif;
-
   /* gradient colors */
   --grad-color1: var(--theme-comp1);
   --grad-color2: var(--theme-comp2);
@@ -199,16 +189,16 @@ footer {
 .project-stub {
 }
 
-/* theme changer stylings */
+/* THEME CHANGER stylings */
 
 .color-picker > fieldset {
+  position: absolute;
   border: 0;
   display: flex;
   gap: 1rem;
   width: fit-content;
-  background: var(--theme-body);
+  /* background: var(--theme-body); */
   padding: 1rem 2rem;
-  margin-inline: auto;
   border-radius: 0 0 10px 10px;
 }
 
@@ -219,6 +209,7 @@ footer {
   outline: 2px solid var(--control-color, currentColor);
   outline-offset: 4px;
   border-radius: 50%;
+  cursor: pointer;
 }
 
 .color-picker input[type="radio"]:checked {
@@ -241,6 +232,26 @@ footer {
 }
 
 :root:has(#light:checked) {
+  /* THEME color variables */
+  --theme-body: var(--theme-lowlight);
+  --theme-bg: var(--theme-white); /* -THESE-TWO- are toggled for dark mode */
+  --theme-text: var(--theme-black); /* -THESE-TWO- are toggled for dark mode */
+  --theme-cta: var(--theme-highlight);
+
+  /* THEME font variables */
+  --font-family-heading: "Libre Baskerville", serif;
+  --font-family-body: "Poppins", sans-serif;
+}
+
+:root:has(#dark:checked) {
+  --theme-body: var(--theme-highlight);
+  --theme-bg: var(--theme-black); /* -THESE-TWO- are toggled for dark mode */
+  --theme-text: var(--theme-white); /* -THESE-TWO- are toggled for dark mode */
+  --theme-cta: var(--theme-highlight);
+
+  /* THEME font variables */
+  --font-family-heading: "Libre Baskerville", serif;
+  --font-family-body: "Poppins", sans-serif;
 }
 
 /* dark mode toggle stylings */

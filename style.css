@@ -1,0 +1,342 @@
+@import url("https://fonts.googleapis.com/css2?family=Libre+Baskerville:ital@0;1&family=Poppins:wght@100;300;500&family=Comforter+Brush&display=swap");
+
+*,
+*:before,
+*:after {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+:root {
+  /* basic colours */
+  --theme-white: #d7dad9;
+  --theme-black: #08080f;
+
+  /* basic fonts */
+  --font-body: "Poppins", sans-serif;
+
+  /* content sizing */
+  --content-width: 960px;
+  --content-height: 82vh;
+  --content-margin-x: 5vw;
+  --content-margin-y: 9vh;
+
+  /* controls stylings */
+  --button-size: 1rem;
+
+  /* animation styling */
+  --delay: 150ms;
+  --ease: cubic-bezier(0.215, 0.61, 0.355, 1);
+
+  /* COLORS FOR DEBUGGING */
+  --DEBUG1: #f00;
+  --DEBUG2: #0f0;
+  --DEBUG3: #00f;
+}
+
+body {
+  font: 1rem var(--font-body);
+}
+
+/***** LAYOUT STYLINGS *****/
+
+.site-wrapper {
+  width: 100dvw;
+  height: 100dvh;
+}
+
+.page-container {
+  width: 100%;
+  display: flex;
+  flex-direction: row;
+  justify-content: center;
+  align-items: center;
+  gap: 0;
+  background: var(--theme-bg);
+}
+
+/* content container layout stylings */
+
+.content-container {
+  width: 80%;
+  max-width: var(--content-width);
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: flex-start;
+}
+
+.content-header {
+  height: fit-content;
+}
+
+.headline {
+  font: var(--font-heading);
+  color: var(--theme-text-heading);
+}
+
+.subtitle {
+  color: var(--theme-text);
+}
+
+/* div placeholder for an image/widget */
+.lead-image {
+  width: 300px;
+  height: 200px;
+  background: var(--theme-bg);
+  color: var(--theme-text);
+  margin: 3vh 0;
+  padding: 3vh;
+}
+
+.content-body {
+  width: 100%;
+}
+
+/***** AESTHETIC STYLINGS *****/
+
+/* text stylings */
+
+h1 {
+  font: var(--font-heading);
+  /* font-size: clamp(2rem, 6vw, 4rem);
+  font-weight: 700;
+  line-height: 120%;
+  padding: 1vh 0; */
+  color: var(--theme-text-heading);
+}
+
+h2 {
+  font-weight: 300;
+  font-size: clamp(1rem, 3vw, 3rem);
+}
+
+h2 {
+  font-weight: 300;
+  font-size: clamp(1rem, 2vw, 2rem);
+}
+
+p {
+  font-size: 1rem;
+}
+
+a {
+  color: var(--theme-text);
+  text-decoration: none;
+}
+
+a:hover {
+  color: var(--theme-highlight);
+}
+
+/* specific page stylings */
+
+.page-container#front {
+  height: 100vh;
+  background: var(--theme-body);
+}
+
+.page-container#projects {
+  height: 100vh;
+  background: var(--grad1);
+}
+
+.page-container#about {
+  height: 100vh;
+  background: var(--theme-body);
+}
+
+.page-container#skills {
+  height: 100vh;
+  background: var(--grad1);
+}
+
+.page-container#contact {
+  height: 100vh;
+  background: var(--theme-body);
+}
+
+footer {
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+  padding: 4vh 2vw;
+  background: var(--grad1);
+  margin: 0;
+}
+
+/* projects page styling */
+
+.project-gallery {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+  grid-gap: 1em;
+}
+
+.project-card {
+  background: var(--theme-bg);
+}
+
+.project-thumb {
+  height: 100px;
+  background: var(--DEBUG3);
+}
+
+.project-title {
+  font: var(--font-heading);
+  font-size: 2rem;
+}
+
+.project-skills {
+}
+
+.project-stub {
+}
+
+/* theme picker stylings */
+
+.theme-picker > fieldset {
+  position: fixed;
+  top: 46px;
+  right: 24px;
+  border: 0;
+  display: flex;
+  flex-direction: column;
+  gap: 6px;
+  width: fit-content;
+  border-radius: 0 0 10px 10px;
+}
+
+.theme-picker input[type="radio"] {
+  appearance: none; /* strips default stylings */
+  width: min(var(--button-size), 25px);
+  height: min(var(--button-size), 25px);
+  border: 2px solid var(--control-color, currentColor);
+  border-radius: 50%;
+  cursor: pointer;
+}
+
+.theme-picker input[type="radio"]:hover {
+  border: 5px solid var(--control-color);
+}
+
+.theme-picker input[type="radio"]:checked {
+  background: var(--control-color);
+}
+.theme-picker input[type="radio"]#light {
+  --control-color: var(--theme-white);
+}
+.theme-picker input[type="radio"]#dark {
+  --control-color: var(--theme-black);
+}
+.theme-picker input[type="radio"]#red {
+  --control-color: red;
+}
+.theme-picker input[type="radio"]#green {
+  --control-color: green;
+}
+.theme-picker input[type="radio"]#blue {
+  --control-color: blue;
+}
+
+/*** THEMES STYLINGS ***/
+
+/* LIGHT (default) theme stylings */
+.light,
+:root:has(#light:checked) {
+  --theme-body: #eee;
+  --theme-bg: var(--theme-white);
+  --theme-text: var(--theme-black);
+  --theme-text-heading: var(--theme-text);
+  --theme-cta: #08f;
+  --grad1: linear-gradient(90deg, #4059ad, #6b9ac4, #98ce00, #648800);
+  --font-heading: 3rem "Libre Baskerville";
+}
+
+/* DARK theme stylings */
+.dark,
+:root:has(#dark:checked) {
+  --theme-body: #222;
+  --theme-bg: var(--theme-black);
+  --theme-text: var(--theme-white);
+  --theme-text-heading: var(--theme-text);
+  --theme-cta: #08f;
+  --grad1: linear-gradient(90deg, #4059ad, #6b9ac4, #98ce00, #648800);
+  --font-heading: 3rem "Libre Baskerville";
+}
+
+/* RED theme stylings */
+.red,
+:root:has(#red:checked) {
+  --theme-body: var(--grad1);
+  --theme-bg: #800;
+  --theme-text: var(--theme-white);
+  --theme-text-heading: rgb(214, 0, 103);
+  --theme-cta: #08f;
+  --grad1: linear-gradient(-45deg, #3c3938, #2e2b38, #424547, #831e42);
+  --font-heading: 5rem "Comforter Brush";
+}
+
+.site-wrapper:has(#red:checked) {
+  /*** why isn't this working????? ***/
+  background: var(--theme-body);
+  background-size: 100% 100%;
+  animation: gradient 10s ease infinite;
+}
+
+@keyframes gradient {
+  0% {
+    background-position: 0% 50%;
+  }
+  50% {
+    background-position: 100% 50%;
+  }
+  100% {
+    background-position: 0% 50%;
+  }
+}
+
+/* GREEN theme stylings */
+.green,
+:root:has(#green:checked) {
+  --theme-body: #040;
+  --theme-bg: #080;
+  --theme-text: var(--theme-white);
+  --theme-text-heading: var(--theme-text);
+  --theme-cta: #08f;
+  --grad1: linear-gradient(90deg, #4059ad, #6b9ac4, #98ce00, #648800);
+  --font-heading: 3rem "Libre Baskerville";
+}
+
+/* BLUE theme stylings */
+.blue,
+:root:has(#blue:checked) {
+  --theme-body: #004;
+  --theme-bg: #008;
+  --theme-text: var(--theme-white);
+  --font-heading: 3rem "Libre Baskerville";
+}
+
+/* misc stylings */
+
+.contact-form input,
+.contact-form button {
+  padding: 4px;
+  background: var(--theme-body);
+  font-family: var(--font-primary);
+  color: var(--theme-dark);
+  border: none;
+  border-bottom: 3px solid var(--theme-black);
+}
+
+/* for hiding labels used by screen readers */
+.sr-only {
+  clip: rect(0 0 0 0);
+  clip-path: inset(50%);
+  width: 1px;
+  height: 1px;
+  overflow: hidden;
+  position: absolute;
+  white-space: nowrap;
+}

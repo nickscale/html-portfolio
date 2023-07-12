@@ -27,7 +27,7 @@ body {
 
 .grid-container {
   /* static grain texture */
-  background-image: url("./images/whitenoise_200px.png");
+  background: url("./images/whitenoise_200px.png");
   background-repeat: repeat-x-y;
 
   display: grid;
@@ -104,9 +104,9 @@ footer,
   z-index: -1;
 
   /* background moving gradient */
-  background: linear-gradient(, #3c3938, #2e2b38, #5c6163, #831e42);
+  background: linear-gradient(-45deg, #3c3938, #2e2b38, #5c6163, #831e42);
   background-size: 200% 200%;
-  animation: gradient 15s ease infinite;
+  animation: gradient 30s ease infinite;
 }
 
 @keyframes gradient {

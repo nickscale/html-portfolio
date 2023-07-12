@@ -45,6 +45,7 @@ body {
   padding: 2vh;
   text-align: center;
   background-color: var(--color5);
+  user-select: none;
 }
 
 .board-container {
