@@ -2,7 +2,6 @@
 document.addEventListener("DOMContentLoaded", () => {
 
     console.log("Initialising on DOM load")
-    setCopyrightYear();
 
     // default today field to today's date
     let todayDate = new Date();
@@ -199,9 +198,4 @@ function niceDate(thisDate) {
 
     dateString = `${thisDayOfWeek} ${thisDayNumber}${suffix} ${thisMonth} ${thisYear}`;
     return dateString
-}
-
-function setCopyrightYear() {
-    let thisYear = new Date();
-    document.getElementById("copyright-year").textContent = thisYear.getUTCFullYear();
 }

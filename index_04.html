@@ -13,91 +13,84 @@
   <body>
     <!-- Sitewide toggles -->
     <input type="checkbox" id="toggleMode" />
-    <label for="toggleMode" class="toggleDark"><img src="./images/icons/dark-mode.svg" alt="Click for dark mode" /></label>
-    <label for="toggleMode" class="toggleLight"><img src="./images/icons/dark-mode.svg" alt="Click for light mode" /></label>
-    <label for="toggleMute" class="toggleMute"><img src="./images/icons/mute.svg" alt="Toggle mute" /></label>
+    <label for="toggleMode" class="toggleDark"><img src="./images/icons/dark-mode.svg" alt="Click for dark mode" height="30px" /></label>
+    <label for="toggleMode" class="toggleLight"><img src="./images/icons/dark-mode.svg" alt="Click for light mode" height="30px" /></label>
+    <label for="toggleMute" class="toggleMute"><img src="./images/icons/mute.svg" alt="Toggle mute" height="30px" /></label>
+
+    <!-- navigation -->
+    <input type="checkbox" id="main-navigation-toggle" class="btn btn-close" title="Toggle main navigation" />
+    <label for="main-navigation-toggle"><span></span></label>
+    <nav id="main-navigation" class="nav-main">
+      <ul class="menu">
+        <li class="menu-item">
+          <a class="menu-link" href="#">HOME</a>
+        </li>
+        <li class="menu-item">
+          <a class="menu-link" href="#">PROJECTS</a>
+          <ul class="submenu">
+            <li class="menu-item">
+              <a class="menu-link" href="./chime/">CHIME</a>
+            </li>
+            <li class="menu-item">
+              <a class="menu-link" href="./lefttowrite/">LEFT TO WRITE</a>
+            </li>
+            <li class="menu-item">
+              <a class="menu-link" href="./simon/">SIMPLE SIMON</a>
+            </li>
+          </ul>
+        </li>
+        <li class="menu-item">
+          <a class="menu-link" href="#0">PERSONAL</a>
+        </li>
+        <li class="menu-item">
+          <a class="menu-link" href="#0">CONTACT</a>
+        </li>
+      </ul>
+    </nav>
 
     <div class="site-wrapper">
-      <!-- navigation -->
-      <input type="checkbox" id="main-navigation-toggle" class="btn btn-close" title="Toggle main navigation" />
-      <label for="main-navigation-toggle"><span></span></label>
-      <nav id="main-navigation" class="nav-main">
-        <ul class="menu">
-          <li class="menu-item">
-            <a class="menu-link" href="#">HOME</a>
-          </li>
-          <li class="menu-item">
-            <a class="menu-link" href="#">PROJECTS</a>
-            <ul class="submenu">
-              <li class="menu-item">
-                <a class="menu-link" href="./chime/">CHIME</a>
-              </li>
-              <li class="menu-item">
-                <a class="menu-link" href="./lefttowrite/">LEFT TO WRITE</a>
-              </li>
-              <li class="menu-item">
-                <a class="menu-link" href="./simon/">SIMPLE SIMON</a>
-              </li>
-            </ul>
-          </li>
-          <li class="menu-item">
-            <a class="menu-link" href="#0">PERSONAL</a>
-          </li>
-          <li class="menu-item">
-            <a class="menu-link" href="#0">CONTACT</a>
-          </li>
-        </ul>
-      </nav>
-
       <!-- Page 1 - Front page -->
-      <div class="page-container" id="page1">
+      <div class="page-container" id="front">
         <div class="content-container">
           <div class="content-header">
             <h1 class="headline">Lean, green coding machine</h1>
             <h2 class="subtitle">Fresh code delivered straight to your repo</h2>
-            <!-- <button><h2>Find out more</h2></button> -->
           </div>
-          <div class="lead-image">
-            <p>IMAGE</p>
+          <div class="content-body">
+            <div class="lead-image">
+              <p>IMAGE</p>
+            </div>
           </div>
         </div>
       </div>
 
-      <!-- Page 2 - Portfolio -->
-      <div class="page-container" id="page2">
+      <!-- Page 2 - Projects -->
+      <div class="page-container" id="projects">
         <div class="content-container">
           <div class="content-header">
             <h1 class="headline">Projects</h1>
             <h2 class="subtitle">Things what I done</h2>
           </div>
-          <div class="portfolio-scroller">
-            <div class="project-card" id="proj1">
-              <div class="project-thumb">A nice wee picture</div>
-              <div class="project-title">Project Title</div>
-              <div class="project-stub">A short description of this fascinating project. Gee whiz.</div>
-            </div>
-            <div class="project-card" id="proj2">
-              <div class="project-thumb">A nice wee picture</div>
-              <div class="project-title">Project Title</div>
-              <div class="project-stub">A short description of this fascinating project. Gee whiz.</div>
-            </div>
-            <div class="project-card" id="proj3">
-              <div class="project-thumb">A nice wee picture</div>
-              <div class="project-title">Project Title</div>
-              <div class="project-stub">A short description of this fascinating project. Gee whiz.</div>
-            </div>
-            <div class="project-card" id="proj4">
-              <div class="project-thumb">A nice wee picture</div>
-              <div class="project-title">Project Title</div>
-              <div class="project-skills">HTML, CSS, JavaScript</div>
-              <div class="project-stub">A short description of this fascinating project. Gee whiz.</div>
+          <div class="content-body">
+            <!-- project gallery -->
+            <div class="project-gallery">
+              <div class="project-card" id="proj1">
+                <div class="project-thumb">A nice wee picture</div>
+                <div class="project-title">Project Title</div>
+                <div class="project-stub">A short description of this fascinating project.</div>
+              </div>
+              <div class="project-card" id="proj2">
+                <div class="project-thumb">A nice wee picture</div>
+                <div class="project-title">Project Title</div>
+                <div class="project-stub">A short description of this fascinating project.</div>
+              </div>
             </div>
           </div>
         </div>
       </div>
 
       <!-- Page 3 - About -->
-      <div class="page-container" id="page3">
+      <div class="page-container" id="about">
         <div class="content-container">
           <div class="content-header">
             <div class="about">
@@ -105,29 +98,35 @@
               <h2 class="subtitle">It's not all about me. Except this.</h2>
             </div>
           </div>
-          <div class="lead-image"></div>
+          <div class="content-body">
+            <div class="lead-image"></div>
+          </div>
         </div>
       </div>
 
       <!-- Page 4 - Skills -->
-      <div class="page-container" id="page4">
+      <div class="page-container" id="skills">
         <div class="content-container">
           <div class="content-header">
             <h1 class="headline">Skills</h1>
             <h2 class="subtitle">What I'm able of</h2>
           </div>
-          <div class="contact-form"></div>
+          <div class="content-body">
+            <div class="contact-form"></div>
+          </div>
         </div>
       </div>
 
       <!-- Page 5 - Contact -->
-      <div class="page-container" id="page5">
+      <div class="page-container" id="contact">
         <div class="content-container">
           <div class="content-header">
             <h1 class="headline">Reach out</h1>
             <h2 class="subtitle">It's good for your shoulders.</h2>
           </div>
-          <div class="contact"></div>
+          <div class="content-body">
+            <div class="contact"></div>
+          </div>
         </div>
       </div>
 
