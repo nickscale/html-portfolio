@@ -52,13 +52,14 @@ body {
   flex-direction: row;
   justify-content: center;
   align-items: center;
-  gap: 0;
   background: var(--theme-bg);
 }
 
 /* content container layout stylings */
 
 .content-container {
+  position: relative;
+  z-index: 5;
   width: 80%;
   max-width: var(--content-width);
   display: flex;
@@ -67,31 +68,62 @@ body {
   align-items: flex-start;
 }
 
-.content-header {
-  height: fit-content;
+.content-component {
+  position: relative;
+  padding: 1rem;
+  border-radius: 10px;
+  box-shadow: 0px 0px 10px 10px #ddd8;
+  background: var(--theme-bg);
 }
 
 .headline {
+  position: relative;
   font: var(--font-heading);
   color: var(--theme-text-heading);
 }
 
-.subtitle {
-  color: var(--theme-text);
-}
-
-/* div placeholder for an image/widget */
+/* image placeholder */
 .lead-image {
-  width: 300px;
-  height: 200px;
-  background: var(--theme-bg);
-  color: var(--theme-text);
-  margin: 3vh 0;
-  padding: 3vh;
+  position: relative;
+  width: 100%;
+  height: 100px;
+  background: var(--DEBUG2);
+  margin: 1rem 0;
+  padding: 1rem;
 }
 
-.content-body {
-  width: 100%;
+/* background components */
+
+.vertical-bg {
+  position: absolute;
+  right: -15rem;
+  font-family: "Libre Baskerville";
+  font-size: 8rem;
+  color: #ccc;
+  z-index: 1;
+  overflow: clip;
+  white-space: nowrap;
+  animation: scrolling 10s linear infinite;
+}
+
+@keyframes scrolling {
+  0% {
+    transform: translateY(100%) rotate(90deg);
+  }
+  100% {
+    transform: translateY(-100%) rotate(90deg);
+  }
+}
+
+.horizontal-dots {
+  position: absolute;
+  left: 2rem;
+  bottom: 1rem;
+  font-size: 3rem;
+  color: #ccc;
+  z-index: 1;
+  overflow: clip;
+  white-space: nowrap;
 }
 
 /***** AESTHETIC STYLINGS *****/
@@ -100,16 +132,16 @@ body {
 
 h1 {
   font: var(--font-heading);
-  /* font-size: clamp(2rem, 6vw, 4rem);
+  font-size: clamp(2rem, 6vw, 4rem);
   font-weight: 700;
   line-height: 120%;
-  padding: 1vh 0; */
+  padding: 1vh 0;
   color: var(--theme-text-heading);
 }
 
 h2 {
   font-weight: 300;
-  font-size: clamp(1rem, 3vw, 3rem);
+  font-size: max(1vw, 2rem);
 }
 
 h2 {
@@ -133,7 +165,7 @@ a:hover {
 /* specific page stylings */
 
 .page-container#front {
-  height: 100vh;
+  min-height: 100vh;
   background: var(--theme-body);
 }
 
@@ -251,7 +283,7 @@ footer {
   --theme-text-heading: var(--theme-text);
   --theme-cta: #08f;
   --grad1: linear-gradient(90deg, #4059ad, #6b9ac4, #98ce00, #648800);
-  --font-heading: 3rem "Libre Baskerville";
+  --font-heading: 2.5rem "Libre Baskerville";
 }
 
 /* DARK theme stylings */
