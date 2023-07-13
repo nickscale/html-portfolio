@@ -8,8 +8,8 @@ body {
 :root {
   --black: #1b1e23;
   --white: #f4eed7;
-  --feature: #4b9aaa;
-  --size: 200px;
+  --feature: orange;
+  --size: 100px;
 }
 
 body {
@@ -25,17 +25,22 @@ body {
   position: absolute;
   height: var(--size);
   width: var(--size);
-  border-radius: 100px;
   display: flex;
   justify-content: center;
 }
 
-.clock__second,
-.clock__minute,
-.clock__hour,
 .offset__second,
 .offset__minute,
 .offset__hour {
+  position: relative;
+  left: calc(50% - 1px);
+  background: var(--white);
+  transform-origin: bottom center;
+}
+
+.clock__second,
+.clock__minute,
+.clock__hour {
   position: relative;
   left: calc(50% - 1px);
   width: 2px;
@@ -45,14 +50,15 @@ body {
   border-radius: 1px;
 }
 
-.clock__indicator {
+.clock__grad {
   position: absolute;
   left: calc(50% - 1px);
-  width: 2px;
-  background: var(--white);
-  transform-origin: bottom center;
+  transform-origin: 0px 100px;
   z-index: 2;
-  border-radius: 1px;
+  width: 4px;
+  height: 4px; /* calc(var(--size) / 2) - 2; */
+  border-radius: 50%;
+  background: var(--feature);
 }
 
 .offset__second,
@@ -79,14 +85,6 @@ body {
   margin-top: 40px;
   animation: time 43200s linear infinite;
 }
-.clock__indicator {
-  height: 48px; /* calc(var(--size) / 2) - 2; */
-  border-top: 2px solid var(--feature);
-}
-/* .clock__indicator:nth-of-type(5n) {
-  height: 93px; /* calc(var(--size) / 2) - 7;
-  border-top: 7px solid var(--white);
-} */
 
 section:nth-of-type(1) {
   transform: rotateZ(calc(30deg * 1));

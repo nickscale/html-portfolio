@@ -4,7 +4,6 @@ let minutes = now.getMinutes();
 let seconds = now.getSeconds();
 console.log(hours, minutes, seconds);
 
-
 setTime(seconds, "second");
 setTime(minutes, "minute");
 setTime(hours, "hour");
