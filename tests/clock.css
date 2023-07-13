@@ -9,7 +9,8 @@ body {
   --black: #1b1e23;
   --white: #f4eed7;
   --feature: orange;
-  --size: 100px;
+  --size: 200px;
+  --width: 4px;
 }
 
 body {
@@ -27,104 +28,103 @@ body {
   width: var(--size);
   display: flex;
   justify-content: center;
+  isolation: isolate;
+  background: black;
+  border: 15px solid black;
+  border-radius: 50%;
+  outline: 1px solid var(--white);
 }
 
-.offset__second,
-.offset__minute,
-.offset__hour {
-  position: relative;
-  left: calc(50% - 1px);
-  background: var(--white);
-  transform-origin: bottom center;
-}
-
-.clock__second,
-.clock__minute,
-.clock__hour {
-  position: relative;
-  left: calc(50% - 1px);
-  width: 2px;
-  background: var(--white);
-  transform-origin: bottom center;
-  z-index: 2;
-  border-radius: 1px;
-}
-
-.clock__grad {
+.offset_second,
+.offset_minute,
+.offset_hour {
   position: absolute;
-  left: calc(50% - 1px);
-  transform-origin: 0px 100px;
-  z-index: 2;
-  width: 4px;
-  height: 4px; /* calc(var(--size) / 2) - 2; */
+  width: var(--size);
+  height: var(--size);
+  /* background: #5553; */
+}
+
+.hand_second,
+.hand_minute,
+.hand_hour {
+  position: relative;
+  background: var(--white);
+  transform-origin: bottom center;
+  border-radius: 5px;
+}
+
+.dial_mark {
+  position: absolute;
+  left: 50%;
+  transform-origin: 0px calc(var(--size) * 0.5);
+  width: var(--width);
+  height: var(--width);
   border-radius: 50%;
   background: var(--feature);
 }
-
-.offset__second,
-.offset__minute,
-.offset__hour {
-  position: absolute;
-  background: none;
-}
-
-.clock__second {
-  height: 90px; /* calc((var(--size) / 2) - 10); */
-  margin-top: 10px;
+.hand_second {
+  left: calc(50% - 1px); /* tweak by half width */
+  width: 2px;
+  height: calc((var(--size) * 0.45));
+  margin-top: calc((var(--size) * 0.05));
   background: var(--feature);
   animation: time 60s infinite steps(60);
-  z-index: 3;
 }
-.clock__minute {
-  height: 80px; /* calc((var(--size) / 2) - 20); */
-  margin-top: 20px;
+.hand_minute {
+  left: calc(50% - 2px); /* tweak by half width */
+  width: var(--width);
+  height: calc((var(--size) * 0.42));
+  margin-top: calc((var(--size) * 0.08));
   animation: time 3600s linear infinite;
 }
-.clock__hour {
-  height: 60px; /* calc(var(--size) / 2) - 40; */
-  margin-top: 40px;
+.hand_hour {
+  left: calc(50% - 2px); /* tweak by half width */
+  width: var(--width);
+  height: calc((var(--size) * 0.35));
+  margin-top: calc((var(--size) * 0.15));
   animation: time 43200s linear infinite;
 }
-
-section:nth-of-type(1) {
-  transform: rotateZ(calc(30deg * 1));
-}
-section:nth-of-type(2) {
-  transform: rotateZ(calc(30deg * 2));
-}
-section:nth-of-type(3) {
-  transform: rotateZ(calc(30deg * 3));
-}
-section:nth-of-type(4) {
-  transform: rotateZ(calc(30deg * 4));
-}
-section:nth-of-type(5) {
-  transform: rotateZ(calc(30deg * 5));
-}
-section:nth-of-type(6) {
-  transform: rotateZ(calc(30deg * 6));
-}
-section:nth-of-type(7) {
-  transform: rotateZ(calc(30deg * 7));
-}
-section:nth-of-type(8) {
-  transform: rotateZ(calc(30deg * 8));
-}
-section:nth-of-type(9) {
-  transform: rotateZ(calc(30deg * 9));
-}
-section:nth-of-type(10) {
-  transform: rotateZ(calc(30deg * 10));
-}
-section:nth-of-type(11) {
-  transform: rotateZ(calc(30deg * 11));
-}
-section:nth-of-type(12) {
-  transform: rotateZ(calc(30deg * 12));
-}
-
 @keyframes time {
   to {
     transform: rotateZ(360deg);
   }
+}
+
+/* dial markings */
+
+.dial_mark:nth-of-type(1) {
+  transform: rotateZ(calc(30deg * 1));
+}
+.dial_mark:nth-of-type(2) {
+  transform: rotateZ(calc(30deg * 2));
+}
+.dial_mark:nth-of-type(3) {
+  transform: rotateZ(calc(30deg * 3));
+}
+.dial_mark:nth-of-type(4) {
+  transform: rotateZ(calc(30deg * 4));
+}
+.dial_mark:nth-of-type(5) {
+  transform: rotateZ(calc(30deg * 5));
+}
+.dial_mark:nth-of-type(6) {
+  transform: rotateZ(calc(30deg * 6));
+}
+.dial_mark:nth-of-type(7) {
+  transform: rotateZ(calc(30deg * 7));
+}
+.dial_mark:nth-of-type(8) {
+  transform: rotateZ(calc(30deg * 8));
+}
+.dial_mark:nth-of-type(9) {
+  transform: rotateZ(calc(30deg * 9));
+}
+.dial_mark:nth-of-type(10) {
+  transform: rotateZ(calc(30deg * 10));
+}
+.dial_mark:nth-of-type(11) {
+  transform: rotateZ(calc(30deg * 11));
+}
+.dial_mark:nth-of-type(12) {
+  transform: rotateZ(calc(30deg * 12));
 }

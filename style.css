@@ -35,6 +35,10 @@
   --DEBUG3: #00f;
 }
 
+html {
+  /* color-scheme: dark; how does this interact with themes? */
+}
+
 body {
   font: 1rem var(--font-body);
 }
