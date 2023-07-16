@@ -1,8 +1,8 @@
 @import url("https://api.fonts.coollabs.io/css2?family=Libre+Baskerville:ital@0;1&family=Poppins:wght@100;300;500&family=Comforter+Brush&family=Elephant&display=swap");
 
 *,
-*:before,
-*:after {
+*::before,
+*::after {
   margin: 0;
   padding: 0;
   border: 0;
@@ -35,6 +35,9 @@
   --DEBUG1: #f00;
   --DEBUG2: #0f0;
   --DEBUG3: #00f;
+  --DEBUG4: #ff0;
+  --DEBUG5: #f0f;
+  --DEBUG6: #0ff;
 }
 
 html {
@@ -52,59 +55,60 @@ body {
 }
 
 .page-container {
-  position: static;
-  inset: 0;
   width: 100%;
   display: flex;
   justify-content: center;
   align-items: center;
+  /* background: var(--DEBUG1); */
 }
 
-.background {
-  background: var(--theme-body);
+.background-container {
+  /* background: var(--DEBUG2); */
 }
 
 .content-container {
-  position: relative;
-  /* background: var(--DEBUG1); */
+  /* background: var(--DEBUG3); */
 }
 
 /*** SPECIFIC SECTION STYLINGS ***/
 
+/* Page 1 - Front Page */
+
 .page-container#page1 {
-  height: 100dvh;
-  width: 100dvw;
-  z-index: 0;
-  /* background: var(--DEBUG1); */
+  height: 100vh;
+  width: 100%;
+  isolation: isolate;
 }
 
 .front-page-template {
-  height: 100dvh;
-  display: flex;
-  justify-content: center;
-  flex-direction: row;
-  /* background: var(--DEBUG2); */
+  width: 100%;
+  background: var(--DEBUG2);
 }
 
-.front-page-zone1,
-.front-page-zone3 {
-  width: calc(100vw - 17rem);
+.front-page-zone1 {
+  background: var(--DEBUG1);
 }
 
 .front-page-zone2 {
-  width: 30rem;
-  height: 100dvh;
-  display: flex;
-  flex-direction: column;
-  justify-content: center;
-  align-items: start;
-  background: url("https://picsum.photos/960/540");
+  /* transform: skewY(-8deg); */
+  /* background: url("https://picsum.photos/1920/1080");
   background-clip: content-box;
+  background-size: cover; */
+  background: var(--DEBUG2);
+}
+
+.front-page-zone3 {
+  background: var(--DEBUG3);
 }
 
 .front-page-zone4 {
+  position: absolute;
+  z-index: 4;
   width: 4rem;
-  background: var(--theme-highlight);
+  height: 100vh;
+  right: 0%;
+  top: 0%;
+  background: var(--DEBUG1);
 }
 
 .lead-image {
@@ -118,13 +122,14 @@ body {
   flex-shrink: 0;
   min-width: 100%;
   min-height: 100%;
-  object-fit: cover;
+  overflow: hidden;
 }
 
-/* projects page styling */
+/* Page 2 - Projects page styling */
 
 .page-container#page2 {
   z-index: 2;
+  background: var(--theme-body);
 }
 
 .project-gallery {
@@ -227,7 +232,7 @@ body {
   left: 50%;
   top: 50%;
   transform: translate(-50%, -50%);
-  font-size: 42rem;
+  font-size: 50rem;
   z-index: 0;
 }
 .monogram-fg {
@@ -235,8 +240,8 @@ body {
   left: 50%;
   top: 50%;
   transform: translate(-50%, -50%);
-  font-size: 42rem;
-  -webkit-text-stroke: 8px var(--theme-bg);
+  font-size: 50rem;
+  -webkit-text-stroke: 4px var(--theme-text);
   -webkit-text-fill-color: transparent;
   z-index: 100;
 }
@@ -353,7 +358,7 @@ li {
 
 /*** THEMES STYLINGS ***/
 
-/* LIGHT (default) theme stylings */
+/* LIGHT (DEFAULT) theme stylings */
 .light,
 :root:has(#light:checked) {
   --theme-body: #eee;

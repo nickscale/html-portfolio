@@ -6,7 +6,7 @@ const storeTheme = function (theme) {
 };
 
 // retrieve and set the theme
-const setTheme = function () {
+const setTheme = function (theme) {
   const activeTheme = localStorage.getItem("theme");
   console.log(activeTheme);
   colorThemes.forEach((themeOption) => {
@@ -14,7 +14,7 @@ const setTheme = function () {
       themeOption.checked = true;
     }
   });
-  // fallback for browsers without :has support
+  // fallback for browsers without :has() support
   document.documentElement.className = theme;
 };
 
