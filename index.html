@@ -11,23 +11,6 @@
   </head>
 
   <body>
-    <!-- theme controls -->
-    <form action="" class="theme-picker">
-      <fieldset>
-        <legend class="sr-only">Change theme</legend>
-        <label for="light" class="sr-only">Light</label>
-        <input type="radio" name="theme" id="light" checked />
-        <label for="dark" class="sr-only">Dark</label>
-        <input type="radio" name="theme" id="dark" />
-        <label for="red" class="sr-only">Red</label>
-        <input type="radio" name="theme" id="red" />
-        <label for="blue" class="sr-only">Blue</label>
-        <input type="radio" name="theme" id="blue" />
-        <label for="green" class="sr-only">Green</label>
-        <input type="radio" name="theme" id="green" />
-      </fieldset>
-    </form>
-
     <!-- navigation -->
     <input type="checkbox" id="main-navigation-toggle" class="btn btn-close" title="Toggle main navigation" />
     <label for="main-navigation-toggle"><span></span></label>
@@ -58,103 +41,112 @@
         </li>
       </ul>
     </nav>
+    <!-- theme controls -->
+    <form action="" class="theme-picker">
+      <fieldset>
+        <legend class="sr-only">Change theme</legend>
+        <label for="light" class="sr-only">Light</label>
+        <input type="radio" name="theme" id="light" checked />
+        <label for="dark" class="sr-only">Dark</label>
+        <input type="radio" name="theme" id="dark" />
+        <label for="red" class="sr-only">Red</label>
+        <input type="radio" name="theme" id="red" />
+        <label for="blue" class="sr-only">Blue</label>
+        <input type="radio" name="theme" id="blue" />
+        <label for="green" class="sr-only">Green</label>
+        <input type="radio" name="theme" id="green" />
+      </fieldset>
+    </form>
 
     <div class="site-wrapper">
       <!-- Page 1 - Front page -->
-      <div class="page-container" id="front">
-        <div class="vertical-bg">Junior Dev</div>
-        <div class="horizontal-dots">_ . . . _ _ _ _ _ _</div>
-
+      <section id="page1" class="page-container">
+        <div class="background"></div>
+        <div class="monogram-bg">NS</div>
+        <div class="monogram-fg">NS</div>
         <div class="content-container">
-          <div class="content-component">
-            <h1 class="headline">Good morning!</h1>
-            <h2 class="subtitle">Your code. On time. Every time.</h2>
-            <div class="lead-image">Image</div>
+          <div class="front-page-template">
+            <div class="front-page-zone1">
+              <!-- <div class="horizontal-dots">_... ___ ___</div> -->
+            </div>
+            <div class="front-page-zone2 lead-image">
+              <h1 class="headline">On time.<br />Every time.</h1>
+              <h3 class="subtitle">Your code when you need it.</h3>
+            </div>
+            <div class="front-page-zone3">&nbsp;</div>
+            <div class="front-page-zone4">&nbsp;</div>
           </div>
         </div>
-      </div>
+        <!-- <div class="vertical-bg">Junior Dev</div> -->
+      </section>
 
       <!-- Page 2 - Projects -->
-      <div class="page-container" id="projects">
+      <section id="page2" class="page-container diagonal">
         <div class="content-container">
-          <div class="content-header">
+          <div>
             <h1 class="headline">Projects</h1>
-            <h2 class="subtitle">Things what I done</h2>
+            <h3 class="subtitle">Things what I done</h3>
           </div>
-          <div class="content-body">
+          <div>
             <!-- project gallery -->
             <div class="project-gallery">
               <div class="project-card" id="proj1">
-                <div class="project-thumb">A nice wee picture</div>
-                <div class="project-title">Project Title</div>
-                <div class="project-stub">A short description of this fascinating project.</div>
+                <div class="project-thumb" alt="PLACEHOLDER FOR IMAGE" style="height: 135px; width: 240px; background: green">Chime</div>
+                <h2 class="project-title">Chime</h2>
+                <p class="project-stub">A musical toy.</p>
               </div>
               <div class="project-card" id="proj2">
-                <div class="project-thumb">A nice wee picture</div>
-                <div class="project-title">Project Title</div>
-                <div class="project-stub">A short description of this fascinating project.</div>
+                <div class="project-thumb">Left To Write</div>
+                <div class="project-title">Left To Write</div>
+                <div class="project-stub">A tool to help writers meet their deadlines.</div>
               </div>
             </div>
           </div>
         </div>
-      </div>
+      </section>
 
       <!-- Page 3 - About -->
-      <div class="page-container" id="about">
+      <section id="page3" class="page-container">
         <div class="content-container">
           <div class="content-header">
             <div class="about">
               <h1 class="headline">About</h1>
-              <h2 class="subtitle">It's not all about me. Except this.</h2>
+              <h3 class="subtitle">It's not all about me.<br />Except this bit.</h3>
             </div>
           </div>
           <div class="content-body"></div>
         </div>
-      </div>
+      </section>
 
-      <!-- Page 4 - Skills -->
-      <div class="page-container" id="skills">
-        <div class="content-container">
-          <div class="content-header">
-            <h1 class="headline">Skills</h1>
-            <h2 class="subtitle">What I'm able of</h2>
+      <!-- Footer / Page 4 -->
+      <footer id="page4" class="page-container diagonal">
+        <div class="content-container footer">
+          <div class="footer-column">
+            <ul>
+              <li>About</li>
+              <li>Projects</li>
+              <li>Skills</li>
+              <li>Creative</li>
+              <li>Ethical</li>
+            </ul>
           </div>
-          <div class="content-body">
-            <div class="contact-form"></div>
+          <div class="footer-column">
+            <ul>
+              <li>LinkedIn</li>
+              <li>GitHub</li>
+              <li>Vocal</li>
+              <li>Vimeo</li>
+              <li>&nbsp;</li>
+              <li>© 2023</li>
+            </ul>
           </div>
-        </div>
-      </div>
-
-      <!-- Page 5 - Contact -->
-      <div class="page-container" id="contact">
-        <div class="content-container">
-          <div class="content-header">
-            <h1 class="headline">Reach out</h1>
-            <h2 class="subtitle">It's good for your shoulders.</h2>
+          <div class="footer-column">
+            <form action="mailto:nickswinglehurst@gmail.com?subject=Message via website" class="contact-form">
+              <textarea name="Your message" placeholder="Reach out! It's good for your shoulders..." min="32" required></textarea>
+              <input type="email" name="Your email" placeholder="your@email.com" required />
+              <button type="submit">Send</button>
+            </form>
           </div>
-          <div class="content-body">
-            <div class="contact"></div>
-          </div>
-        </div>
-      </div>
-
-      <!-- Footer copyright and socials -->
-      <footer>
-        <div>
-          <a href="#">© 2023</a>
-        </div>
-        <div class="contact-form">
-          <form action="mailto:nickswinglehurst@gmail.com?subject=Message via contact form">
-            <input type="email" name="" id="" size="20" placeholder="your@email.com" />
-            <input type="text" name="" id="" size="42" placeholder="Reach out! It's good for your shoulders" />
-            <button type="submit">Send</button>
-          </form>
-        </div>
-        <div>
-          <a href="#">LinkedIn</a>
-          <a href="#">GitHub</a>
-          <a href="#">Vocal</a>
-          <a href="#">Vimeo</a>
         </div>
       </footer>
     </div>

@@ -1,20 +1,22 @@
-@import url("https://fonts.googleapis.com/css2?family=Libre+Baskerville:ital@0;1&family=Poppins:wght@100;300;500&family=Comforter+Brush&display=swap");
+@import url("https://api.fonts.coollabs.io/css2?family=Libre+Baskerville:ital@0;1&family=Poppins:wght@100;300;500&family=Comforter+Brush&family=Elephant&display=swap");
 
 *,
 *:before,
 *:after {
   margin: 0;
   padding: 0;
+  border: 0;
   box-sizing: border-box;
 }
 
 :root {
-  /* basic colours */
+  /* global colours - see THEME stylings for main colours) */
   --theme-white: #d7dad9;
   --theme-black: #08080f;
 
-  /* basic fonts */
+  /* global fonts */
   --font-body: "Poppins", sans-serif;
+  font-weight: 100;
 
   /* content sizing */
   --content-width: 960px;
@@ -29,7 +31,7 @@
   --delay: 150ms;
   --ease: cubic-bezier(0.215, 0.61, 0.355, 1);
 
-  /* COLORS FOR DEBUGGING */
+  /* TESTING PURPOSES */
   --DEBUG1: #f00;
   --DEBUG2: #0f0;
   --DEBUG3: #00f;
@@ -41,66 +43,156 @@ html {
 
 body {
   font: 1rem var(--font-body);
+  background: var(--theme-body);
 }
 
 /***** LAYOUT STYLINGS *****/
 
 .site-wrapper {
-  width: 100dvw;
-  height: 100dvh;
 }
 
 .page-container {
+  position: static;
+  inset: 0;
   width: 100%;
   display: flex;
-  flex-direction: row;
   justify-content: center;
   align-items: center;
-  background: var(--theme-bg);
 }
 
-/* content container layout stylings */
+.background {
+  background: var(--theme-body);
+}
 
 .content-container {
   position: relative;
-  z-index: 5;
-  width: 80%;
-  max-width: var(--content-width);
+  /* background: var(--DEBUG1); */
+}
+
+/*** SPECIFIC SECTION STYLINGS ***/
+
+.page-container#page1 {
+  height: 100dvh;
+  width: 100dvw;
+  z-index: 0;
+  /* background: var(--DEBUG1); */
+}
+
+.front-page-template {
+  height: 100dvh;
+  display: flex;
+  justify-content: center;
+  flex-direction: row;
+  /* background: var(--DEBUG2); */
+}
+
+.front-page-zone1,
+.front-page-zone3 {
+  width: calc(100vw - 17rem);
+}
+
+.front-page-zone2 {
+  width: 30rem;
+  height: 100dvh;
   display: flex;
   flex-direction: column;
   justify-content: center;
-  align-items: flex-start;
+  align-items: start;
+  background: url("https://picsum.photos/960/540");
+  background-clip: content-box;
 }
 
-.content-component {
-  position: relative;
-  padding: 1rem;
-  border-radius: 10px;
-  box-shadow: 0px 0px 10px 10px #ddd8;
+.front-page-zone4 {
+  width: 4rem;
+  background: var(--theme-highlight);
+}
+
+.lead-image {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  overflow: hidden;
+}
+
+.lead-image img {
+  flex-shrink: 0;
+  min-width: 100%;
+  min-height: 100%;
+  object-fit: cover;
+}
+
+/* projects page styling */
+
+.page-container#page2 {
+  z-index: 2;
+}
+
+.project-gallery {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+  grid-gap: 1em;
+}
+
+.project-card {
   background: var(--theme-bg);
 }
 
-.headline {
-  position: relative;
+.project-thumb {
+}
+
+.project-title {
   font: var(--font-heading);
-  color: var(--theme-text-heading);
 }
 
-/* image placeholder */
-.lead-image {
-  position: relative;
+/* about page styling */
+
+.page-container#page3 {
+  height: 50vh; /* PLACEHOLDER until it has content */
+}
+
+/* footer stylings */
+
+.footer {
+  display: flex;
+  justify-content: space-between;
+  align-items: end;
+  gap: 2rem;
+  color: var(--theme-bg);
+}
+
+.footer-column {
+  color: var(--theme-bg);
+  width: min(260px, 25%);
+  /* background: var(--DEBUG3); */
+}
+
+.contact-form textarea,
+.contact-form input,
+.contact-form button {
   width: 100%;
-  height: 100px;
-  background: var(--DEBUG2);
-  margin: 1rem 0;
-  padding: 1rem;
+  margin: 5px 0;
+  border: 0;
+  border-bottom: 3px solid var(--theme-white);
+  padding: 0.5rem;
+  background: var(--theme-bg);
+  font-family: var(--font-primary);
+  color: var(--theme-black);
+  text-align: left;
 }
 
-/* background components */
+.contact-form textarea {
+  height: 4rem;
+}
+
+.contact-form button:hover {
+  background: var(--theme-cta);
+}
+
+/*** ORNAMENTS ***/
 
 .vertical-bg {
   position: absolute;
-  right: -15rem;
+  right: -5rem;
   font-family: "Libre Baskerville";
   font-size: 8rem;
   color: #ccc;
@@ -112,45 +204,63 @@ body {
 
 @keyframes scrolling {
   0% {
-    transform: translateY(100%) rotate(90deg);
+    transform: translateY(200%) rotate(90deg);
   }
   100% {
-    transform: translateY(-100%) rotate(90deg);
+    transform: translateY(-250%) rotate(90deg);
   }
 }
 
 .horizontal-dots {
-  position: absolute;
-  left: 2rem;
-  bottom: 1rem;
-  font-size: 3rem;
-  color: #ccc;
-  z-index: 1;
-  overflow: clip;
-  white-space: nowrap;
+  position: relative;
+  font-size: 2rem;
+  font-weight: 900;
+  color: #cc0000;
 }
 
 /***** AESTHETIC STYLINGS *****/
 
 /* text stylings */
 
+.monogram-bg {
+  position: absolute;
+  left: 50%;
+  top: 50%;
+  transform: translate(-50%, -50%);
+  font-size: 42rem;
+  z-index: 0;
+}
+.monogram-fg {
+  position: absolute;
+  left: 50%;
+  top: 50%;
+  transform: translate(-50%, -50%);
+  font-size: 42rem;
+  -webkit-text-stroke: 8px var(--theme-bg);
+  -webkit-text-fill-color: transparent;
+  z-index: 100;
+}
+
 h1 {
   font: var(--font-heading);
   font-size: clamp(2rem, 6vw, 4rem);
-  font-weight: 700;
+  font-weight: 500;
   line-height: 120%;
-  padding: 1vh 0;
+  margin: 1vh 0;
   color: var(--theme-text-heading);
 }
 
 h2 {
   font-weight: 300;
-  font-size: max(1vw, 2rem);
+  font-size: clamp(2rem, 4vw, 3rem);
+  margin: 1vh 0;
+  color: var(--theme-text-heading);
 }
 
-h2 {
-  font-weight: 300;
+h3 {
+  font-weight: 100;
   font-size: clamp(1rem, 2vw, 2rem);
+  color: var(--theme-text-heading);
 }
 
 p {
@@ -166,74 +276,39 @@ a:hover {
   color: var(--theme-highlight);
 }
 
-/* specific page stylings */
-
-.page-container#front {
-  min-height: 100vh;
-  background: var(--theme-body);
+ul {
+  list-style: none;
 }
 
-.page-container#projects {
-  height: 100vh;
-  background: var(--grad1);
+li {
+  font-weight: 300;
 }
 
-.page-container#about {
-  height: 100vh;
-  background: var(--theme-body);
+/* section edge stylings */
+
+.diagonal {
+  --skew-angle: -1.5deg;
+  --background: var(--grad1);
+  margin: -5vh 0 -5vh 0;
+  position: relative;
+  isolation: isolate; /* isolate keeps the z-index of the contained elements within the scope of the parent so other elements can't interfere */
 }
 
-.page-container#skills {
-  height: 100vh;
-  background: var(--grad1);
-}
-
-.page-container#contact {
-  height: 100vh;
-  background: var(--theme-body);
-}
-
-footer {
-  display: flex;
-  flex-direction: row;
-  justify-content: space-between;
-  padding: 4vh 2vw;
-  background: var(--grad1);
-  margin: 0;
-}
-
-/* projects page styling */
-
-.project-gallery {
-  display: grid;
-  grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
-  grid-gap: 1em;
-}
-
-.project-card {
-  background: var(--theme-bg);
-}
-
-.project-thumb {
-  height: 100px;
-  background: var(--DEBUG3);
-}
-
-.project-title {
-  font: var(--font-heading);
-  font-size: 2rem;
-}
-
-.project-skills {
-}
-
-.project-stub {
+.diagonal::after {
+  content: "";
+  background: var(--background);
+  position: absolute;
+  z-index: -1;
+  inset: 0; /* shorthand for top/bottom/left/right = 0 */
+  transform: skewY(var(--skew-angle));
 }
 
 /* theme picker stylings */
 
 .theme-picker > fieldset {
   position: fixed;
+  z-index: 10000;
+  isolation: isolate;
   top: 46px;
   right: 24px;
   border: 0;
@@ -248,7 +323,7 @@ footer {
   appearance: none; /* strips default stylings */
   width: min(var(--button-size), 25px);
   height: min(var(--button-size), 25px);
-  border: 2px solid var(--control-color, currentColor);
+  border: 3px solid var(--control-color, currentColor);
   border-radius: 50%;
   cursor: pointer;
 }
@@ -355,16 +430,6 @@ footer {
 }
 
 /* misc stylings */
-
-.contact-form input,
-.contact-form button {
-  padding: 4px;
-  background: var(--theme-body);
-  font-family: var(--font-primary);
-  color: var(--theme-dark);
-  border: none;
-  border-bottom: 3px solid var(--theme-black);
-}
 
 /* for hiding labels used by screen readers */
 .sr-only {

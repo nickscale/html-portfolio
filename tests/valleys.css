@@ -1,0 +1,50 @@
+*,
+*::before,
+*::after {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+:root {
+  --green1: green;
+  --green2: green;
+  --green3: green;
+  --green4: green;
+  --green5: green;
+  --green6: green;
+}
+
+body {
+  background: #333;
+}
+
+.valley {
+  position: relative;
+}
+
+.background:nth-child(1) {
+  z-index: 1;
+  fill: var(--green1);
+}
+valley:nth-child(2) {
+  z-index: 2;
+  fill: var(--green2);
+}
+valley:nth-child(3) {
+  z-index: 3;
+  fill: var(--green3);
+}
+valley:nth-child(4) {
+  z-index: 4;
+  fill: var(--green4);
+}
+valley:nth-child(5) {
+  z-index: 5;
+  fill: var(--green5);
+}
+valley:nth-child(6) {
+  z-index: 6;
+  fill: var(--green6);
+  background: red;
+}

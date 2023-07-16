@@ -8,9 +8,9 @@ body {
 :root {
   --black: #1b1e23;
   --white: #f4eed7;
-  --feature: orange;
-  --size: 200px;
-  --width: 4px;
+  --feature: hotpink;
+  --size: 300px;
+  --width: calc(var(--size) * 0.1);
 }
 
 body {
@@ -29,12 +29,22 @@ body {
   display: flex;
   justify-content: center;
   isolation: isolate;
-  background: black;
+  /* background: black;
   border: 15px solid black;
-  border-radius: 50%;
-  outline: 1px solid var(--white);
+  border-radius: 50%; */
+  /* outline: 1px solid var(--white); */
 }
 
+.axle {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  height: var(--width);
+  width: var(--width);
+  border-radius: 50%;
+  background: red;
+}
 .offset_second,
 .offset_minute,
 .offset_hour {
@@ -48,39 +58,47 @@ body {
 .hand_minute,
 .hand_hour {
   position: relative;
+  left: calc(50% - 0.5 * var(--size));
+  top: calc(50% - 0.5 * var(--size));
   background: var(--white);
-  transform-origin: bottom center;
+  transform-origin: calc(var(--width) * 0.5) calc(var(--size) * 0.5);
   border-radius: 5px;
 }
 
 .dial_mark {
   position: absolute;
+  top: 0%;
   left: 50%;
-  transform-origin: 0px calc(var(--size) * 0.5);
+  /* transform: translate(-50%, -50%); */
+  transform-origin: calc(var(--width) * -0.5) calc(var(--size) * 0.5);
   width: var(--width);
   height: var(--width);
   border-radius: 50%;
   background: var(--feature);
 }
+
 .hand_second {
   left: calc(50% - 1px); /* tweak by half width */
-  width: 2px;
+  width: var(--width);
   height: calc((var(--size) * 0.45));
   margin-top: calc((var(--size) * 0.05));
-  background: var(--feature);
+  /* transform-origin: bottom center; */
   animation: time 60s infinite steps(60);
+  background: var(--feature);
 }
 .hand_minute {
   left: calc(50% - 2px); /* tweak by half width */
   width: var(--width);
   height: calc((var(--size) * 0.42));
   margin-top: calc((var(--size) * 0.08));
+  transform-origin: bottom center;
   animation: time 3600s linear infinite;
 }
 .hand_hour {
   left: calc(50% - 2px); /* tweak by half width */
   width: var(--width);
   height: calc((var(--size) * 0.35));
+  transform-origin: bottom center;
   margin-top: calc((var(--size) * 0.15));
   animation: time 43200s linear infinite;
 }

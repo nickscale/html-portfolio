@@ -7,7 +7,9 @@
   height: 100%;
   justify-content: center;
   left: -100%;
-  position: fixed;
+  position: absolute;
+  z-index: 1000;
+  isolation: isolate;
   transition: left 0s calc(var(--delay) * 2), transform 0s calc(var(--delay) * 2);
   width: 100%;
 }
@@ -45,7 +47,7 @@
   position: fixed;
   right: 1rem;
   top: 1rem;
-  z-index: 100;
+  z-index: 10000;
 }
 [id="main-navigation-toggle"] ~ label span {
   display: block;

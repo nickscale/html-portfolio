@@ -16,14 +16,7 @@
   --color4: #affc41; /* green yellow */
   --color5: #b2ff9e; /* light green */
 
-  --gradient1: linear-gradient(
-    45deg,
-    var(--color1),
-    var(--color2),
-    var(--color3),
-    var(--color4),
-    var(--color5)
-  );
+  --gradient1: linear-gradient(45deg, var(--color1), var(--color2), var(--color3), var(--color4), var(--color5));
 }
 
 html {
@@ -56,7 +49,6 @@ section {
 .site-title {
   font-size: 3rem;
   text-align: center;
-  mask-image: ;
 }
 
 .section-title {
@@ -125,14 +117,7 @@ section {
   /* Different technique from the spikes, using set of radial gradients made by css-generators.com/wavy-shapes/ (which could do spikes in a similar way) */
   background: var(--gradient1);
 
-  --mask: radial-gradient(55.9px at 50% 75px, #000 99%, #0000 101%)
-      calc(50% - 50px) 0/100px 51% repeat-x,
-    radial-gradient(55.9px at 50% -50px, #0000 99%, #000 101%) 50% 25px/100px
-      calc(51% - 25px) repeat-x,
-    radial-gradient(55.9px at 50% calc(100% - 75px), #000 99%, #0000 101%)
-      calc(50% - 50px) 100%/100px 51% repeat-x,
-    radial-gradient(55.9px at 50% calc(100% + 50px), #0000 99%, #000 101%) 50%
-      calc(100% - 25px) / 100px calc(51% - 25px) repeat-x;
+  --mask: radial-gradient(55.9px at 50% 75px, #000 99%, #0000 101%) calc(50% - 50px) 0/100px 51% repeat-x, radial-gradient(55.9px at 50% -50px, #0000 99%, #000 101%) 50% 25px/100px calc(51% - 25px) repeat-x, radial-gradient(55.9px at 50% calc(100% - 75px), #000 99%, #0000 101%) calc(50% - 50px) 100%/100px 51% repeat-x, radial-gradient(55.9px at 50% calc(100% + 50px), #0000 99%, #000 101%) 50% calc(100% - 25px) / 100px calc(51% - 25px) repeat-x;
   -webkit-mask: var(--mask);
   mask: var(--mask);
 }
