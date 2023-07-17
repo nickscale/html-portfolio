@@ -82,11 +82,11 @@ body {
 
 .front-page-template {
   width: 100%;
-  background: var(--DEBUG2);
+  /* background: var(--DEBUG2); */
 }
 
 .front-page-zone1 {
-  background: var(--DEBUG1);
+  /* background: var(--DEBUG1); */
 }
 
 .front-page-zone2 {
@@ -94,11 +94,11 @@ body {
   /* background: url("https://picsum.photos/1920/1080");
   background-clip: content-box;
   background-size: cover; */
-  background: var(--DEBUG2);
+  /* background: var(--DEBUG2); */
 }
 
 .front-page-zone3 {
-  background: var(--DEBUG3);
+  /* background: var(--DEBUG3); */
 }
 
 .front-page-zone4 {
@@ -108,7 +108,7 @@ body {
   height: 100vh;
   right: 0%;
   top: 0%;
-  background: var(--DEBUG1);
+  /* background: var(--DEBUG1); */
 }
 
 .lead-image {
@@ -191,6 +191,16 @@ body {
 
 .contact-form button:hover {
   background: var(--theme-cta);
+}
+
+/*** COMPONENT STYLINGS ***/
+
+.nice-box-light {
+  padding: 2rem;
+  background: var(--grad1);
+  margin: 2rem;
+  box-shadow: 0px 0px 15px 15px #ddd8;
+  border-radius: 10px;
 }
 
 /*** ORNAMENTS ***/
@@ -361,24 +371,27 @@ li {
 /* LIGHT (DEFAULT) theme stylings */
 .light,
 :root:has(#light:checked) {
-  --theme-body: #eee;
+  --theme-body: var(--grad1);
   --theme-bg: var(--theme-white);
   --theme-text: var(--theme-black);
   --theme-text-heading: var(--theme-text);
-  --theme-cta: #08f;
-  --grad1: linear-gradient(90deg, #4059ad, #6b9ac4, #98ce00, #648800);
+  --theme-cta: #d82121;
+  --grad1: radial-gradient(at 80% 30%, #eee, #ccc);
+  /* --grad-linear-light-grey: linear-gradient(-45deg, #888, #aaa, #eee); */
+
+  /* -grad-blue-green: linear-gradient(90deg, #4059ad, #6b9ac4, #98ce00, #648800); */
   --font-heading: 2.5rem "Libre Baskerville";
 }
 
 /* DARK theme stylings */
 .dark,
 :root:has(#dark:checked) {
-  --theme-body: #222;
+  --theme-body: var(--grad1);
   --theme-bg: var(--theme-black);
   --theme-text: var(--theme-white);
   --theme-text-heading: var(--theme-text);
-  --theme-cta: #08f;
-  --grad1: linear-gradient(90deg, #4059ad, #6b9ac4, #98ce00, #648800);
+  --theme-cta: #2d2;
+  --grad1: linear-gradient(-45deg, #111, #222, #444);
   --font-heading: 3rem "Libre Baskerville";
 }
 
@@ -389,8 +402,8 @@ li {
   --theme-bg: #800;
   --theme-text: var(--theme-white);
   --theme-text-heading: rgb(214, 0, 103);
-  --theme-cta: #08f;
-  --grad1: linear-gradient(-45deg, #3c3938, #2e2b38, #424547, #831e42);
+  --theme-cta: #d22;
+  --grad1: linear-gradient(-45deg, #111, #222, #400);
   --font-heading: 5rem "Comforter Brush";
 }
 
@@ -416,22 +429,30 @@ li {
 /* GREEN theme stylings */
 .green,
 :root:has(#green:checked) {
-  --theme-body: #040;
+  --theme-body: var(--grad1);
   --theme-bg: #080;
   --theme-text: var(--theme-white);
   --theme-text-heading: var(--theme-text);
-  --theme-cta: #08f;
-  --grad1: linear-gradient(90deg, #4059ad, #6b9ac4, #98ce00, #648800);
+  --theme-cta: #2d2;
+  --grad1: linear-gradient(-45deg, #111, #222, #040);
   --font-heading: 3rem "Libre Baskerville";
 }
 
 /* BLUE theme stylings */
 .blue,
 :root:has(#blue:checked) {
-  --theme-body: #004;
+  --theme-body: var(--grad1);
   --theme-bg: #008;
   --theme-text: var(--theme-white);
+  --theme-text-heading: var(--theme-text);
+  --theme-cta: #22d;
+  --grad1: linear-gradient(-45deg, #111, #222, #004);
   --font-heading: 3rem "Libre Baskerville";
+}
+
+/* PREV page stylings */
+.up,
+:root:has(#up:checked) {
 }
 
 /* misc stylings */

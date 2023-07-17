@@ -5,9 +5,11 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <meta title="NS" />
-    <link rel="stylesheet" href="style.css" />
-    <link rel="stylesheet" href="nav.css" />
-    <script src="./main.js" defer></script>
+    <link rel="stylesheet" href="/css/style.css" />
+    <link rel="stylesheet" href="/css/nav.css" />
+    <link rel="stylesheet" href="/css/clock.css" />
+    <script src="./js/main.js" defer></script>
+    <script src="./js/clock.js" defer></script>
   </head>
 
   <body>
@@ -51,10 +53,14 @@
         <input type="radio" name="theme" id="dark" />
         <label for="red" class="sr-only">Red</label>
         <input type="radio" name="theme" id="red" />
-        <label for="blue" class="sr-only">Blue</label>
-        <input type="radio" name="theme" id="blue" />
         <label for="green" class="sr-only">Green</label>
         <input type="radio" name="theme" id="green" />
+        <label for="blue" class="sr-only">Blue</label>
+        <input type="radio" name="theme" id="blue" />
+        <!-- <label for="up" class="sr-only">Previous page</label>
+        <input type="radio" name="scroll" id="up" />
+        <label for="down" class="sr-only">Next page</label>
+        <input type="radio" name="scroll" id="down" /> -->
       </fieldset>
     </form>
 
@@ -66,9 +72,41 @@
         <!-- <div class="monogram-fg">NS</div> -->
         <div class="content-container">
           <div class="front-page-template">
-            <div class="front-page-zone1">&nbsp;</div>
-            <div class="front-page-zone2">On time. Every time.</div>
-            <div class="front-page-zone3">&nbsp;</div>
+            <div class="front-page-zone1 nice-box-light">
+              <h1 class="greeting">Good morning!</h1>
+              <h3 class="tagline">Your projects delivered on time. Every time.</h3>
+            </div>
+            <div class="front-page-zone3 nice-box-light">
+              <div class="widget">
+                <!-- clock widget -->
+                <div class="clock">
+                  <div class="offset_dial_marks">
+                    <div class="dial_mark"></div>
+                    <div class="dial_mark"></div>
+                    <div class="dial_mark"></div>
+                    <div class="dial_mark"></div>
+                    <div class="dial_mark"></div>
+                    <div class="dial_mark"></div>
+                    <div class="dial_mark"></div>
+                    <div class="dial_mark"></div>
+                    <div class="dial_mark"></div>
+                    <div class="dial_mark"></div>
+                    <div class="dial_mark"></div>
+                    <div class="dial_mark"></div>
+                  </div>
+                  <div class="offset_hour">
+                    <div class="hand_hour"></div>
+                  </div>
+                  <div class="offset_minute">
+                    <div class="hand_minute"></div>
+                  </div>
+                  <div class="offset_second">
+                    <div class="hand_second"></div>
+                  </div>
+                  <div class="axle"></div>
+                </div>
+
+              </div>
             <div class="front-page-zone4">&nbsp;</div>
           </div>
         </div>

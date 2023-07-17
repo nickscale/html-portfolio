@@ -8,9 +8,9 @@ body {
 :root {
   --black: #1b1e23;
   --white: #f4eed7;
-  --feature: hotpink;
+  --feature: rgb(166, 9, 87);
   --size: 300px;
-  --width: calc(var(--size) * 0.1);
+  --width: 15px;
 }
 
 body {
@@ -29,77 +29,52 @@ body {
   display: flex;
   justify-content: center;
   isolation: isolate;
-  /* background: black;
-  border: 15px solid black;
-  border-radius: 50%; */
-  /* outline: 1px solid var(--white); */
+  border-radius: 50%;
+  outline: 1px solid var(--white);
 }
 
-.axle {
-  position: absolute;
-  top: 50%;
-  left: 50%;
-  transform: translate(-50%, -50%);
-  height: var(--width);
-  width: var(--width);
-  border-radius: 50%;
-  background: red;
-}
+.offset_dial_marks,
 .offset_second,
 .offset_minute,
 .offset_hour {
   position: absolute;
   width: var(--size);
   height: var(--size);
+  outline: 1px solid var(--white);
   /* background: #5553; */
 }
 
 .hand_second,
 .hand_minute,
-.hand_hour {
-  position: relative;
-  left: calc(50% - 0.5 * var(--size));
-  top: calc(50% - 0.5 * var(--size));
-  background: var(--white);
-  transform-origin: calc(var(--width) * 0.5) calc(var(--size) * 0.5);
-  border-radius: 5px;
-}
-
+.hand_hour,
 .dial_mark {
   position: absolute;
-  top: 0%;
-  left: 50%;
-  /* transform: translate(-50%, -50%); */
-  transform-origin: calc(var(--width) * -0.5) calc(var(--size) * 0.5);
+  left: calc(50% - 0.5 * var(--width));
+  background: var(--white);
+  transform-origin: bottom center;
+  z-index: 2;
   width: var(--width);
-  height: var(--width);
-  border-radius: 50%;
-  background: var(--feature);
+  border-radius: 2px;
+  background: var(--white);
 }
 
 .hand_second {
-  left: calc(50% - 1px); /* tweak by half width */
-  width: var(--width);
-  height: calc((var(--size) * 0.45));
-  margin-top: calc((var(--size) * 0.05));
-  /* transform-origin: bottom center; */
+  left: calc(50% - 0.5 * var(--width)); /* tweak by half width */
+  height: calc((var(--size) * 0.41));
+  margin-top: calc((var(--size) * 0.09));
   animation: time 60s infinite steps(60);
   background: var(--feature);
 }
 .hand_minute {
-  left: calc(50% - 2px); /* tweak by half width */
-  width: var(--width);
-  height: calc((var(--size) * 0.42));
-  margin-top: calc((var(--size) * 0.08));
-  transform-origin: bottom center;
+  left: calc(50% - 0.5 * var(--width)); /* tweak by half width */
+  height: calc((var(--size) * 0.41));
+  margin-top: calc((var(--size) * 0.09));
   animation: time 3600s linear infinite;
 }
 .hand_hour {
-  left: calc(50% - 2px); /* tweak by half width */
-  width: var(--width);
-  height: calc((var(--size) * 0.35));
-  transform-origin: bottom center;
-  margin-top: calc((var(--size) * 0.15));
+  left: calc(50% - 0.5 * var(--width)); /* tweak by half width */
+  height: calc((var(--size) * 0.33));
+  margin-top: calc((var(--size) * 0.17));
   animation: time 43200s linear infinite;
 }
 @keyframes time {
@@ -108,7 +83,26 @@ body {
   }
 }
 
-/* dial markings */
+/* markings */
+
+.axle {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  z-index: 4;
+  height: var(--width);
+  width: var(--width);
+  border-radius: 50%;
+  background: var(--feature);
+}
+
+.dial_mark {
+  height: calc(0.5 * var(--size) - var(--width));
+  background: none;
+  border-radius: 0;
+  border-top: var(--width) solid var(--feature);
+}
 
 .dial_mark:nth-of-type(1) {
   transform: rotateZ(calc(30deg * 1));
@@ -145,4 +139,10 @@ body {
 }
 .dial_mark:nth-of-type(12) {
   transform: rotateZ(calc(30deg * 12));
+}
+
+#digital {
+  font-family: "Segoe UI", Tahoma, Geneva, Verdana, sans-serif;
+  font-size: 20vw;
+  color: #333;
 }

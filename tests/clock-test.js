@@ -2,7 +2,8 @@ let now = new Date();
 let hours = now.getHours();
 let minutes = now.getMinutes();
 let seconds = now.getSeconds();
-console.log(hours+':'+minutes+':'+seconds);
+let timeString = hours+':'+minutes+':'+seconds;
+console.log(timeString);
 
 setTime(seconds, "second");
 setTime(minutes, "minute");
@@ -21,4 +22,5 @@ function setTime(angle, hand) {
             break;
     }
   document.querySelector("div.offset_"+hand).style.cssText = "transform: rotate("+offset+"deg);";
+  document.getElementById("digital").textContent = timeString;
 }

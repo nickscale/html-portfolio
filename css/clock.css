@@ -1,0 +1,124 @@
+:root {
+  /* clock stylings */
+  --size: 16rem;
+  --width: 0.4rem;
+}
+.clock {
+  position: relative;
+  height: var(--size);
+  width: var(--size);
+  isolation: isolate;
+}
+.offset_dial_marks,
+.offset_hour,
+.offset_minute,
+.offset_second {
+  position: absolute;
+  width: var(--size);
+  height: var(--size);
+  z-index: 0;
+}
+
+.hand_second,
+.hand_minute,
+.hand_hour,
+.axle {
+  position: absolute;
+  transform-origin: top;
+  width: var(--width);
+  border-radius: var(--width);
+  background: var(--theme-text);
+}
+
+.hand_second {
+  z-index: 3;
+  height: calc(0.45 * var(--size));
+  left: calc(50% - 0.5 * var(--width));
+  top: 50%;
+  animation: time 60s infinite steps(60);
+  background: var(--theme-cta);
+}
+.hand_minute {
+  z-index: 2;
+  height: calc(0.4 * var(--size));
+  left: calc(50% - 0.5 * var(--width));
+  top: 50%;
+  animation: time 3600s linear infinite;
+}
+.hand_hour {
+  z-index: 1;
+  height: calc(0.3 * var(--size));
+  left: calc(50% - 0.5 * var(--width));
+  top: 50%;
+  animation: time 43200s linear infinite;
+}
+@keyframes time {
+  to {
+    transform: rotateZ(360deg);
+  }
+}
+
+.axle {
+  z-index: 5;
+  height: var(--width);
+  left: calc(50% - 0.5 * var(--width));
+  top: calc(50% - 0.5 * var(--width));
+  background: var(--theme-text);
+  outline: var(--width) solid var(--theme-text);
+  /* outline-offset: var(--width); */
+}
+
+/* markings */
+.dial_mark {
+  position: absolute;
+  transform-origin: calc(0.5 * var(--size));
+  z-index: 6;
+  left: 0%;
+  top: calc(50% - 0.5 * var(--width));
+  width: var(--width);
+  height: var(--width);
+  border-radius: 10px;
+  background: var(--theme-text);
+}
+.dial_mark:nth-of-type(1) {
+  transform: rotateZ(calc(30deg * 1));
+}
+.dial_mark:nth-of-type(2) {
+  transform: rotateZ(calc(30deg * 2));
+}
+.dial_mark:nth-of-type(3) {
+  transform: rotateZ(calc(30deg * 3));
+}
+.dial_mark:nth-of-type(4) {
+  transform: rotateZ(calc(30deg * 4));
+}
+.dial_mark:nth-of-type(5) {
+  transform: rotateZ(calc(30deg * 5));
+}
+.dial_mark:nth-of-type(6) {
+  transform: rotateZ(calc(30deg * 6));
+}
+.dial_mark:nth-of-type(7) {
+  transform: rotateZ(calc(30deg * 7));
+}
+.dial_mark:nth-of-type(8) {
+  transform: rotateZ(calc(30deg * 8));
+}
+.dial_mark:nth-of-type(9) {
+  transform: rotateZ(calc(30deg * 9));
+}
+.dial_mark:nth-of-type(10) {
+  transform: rotateZ(calc(30deg * 10));
+}
+.dial_mark:nth-of-type(11) {
+  transform: rotateZ(calc(30deg * 11));
+}
+.dial_mark:nth-of-type(12) {
+  transform: rotateZ(calc(30deg * 12));
+}
+
+#digital {
+  font-family: "Segoe UI", Tahoma, Geneva, Verdana, sans-serif;
+  font-size: 20vw;
+  color: #333;
+}

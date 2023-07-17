@@ -1,12 +1,12 @@
 const colorThemes = document.querySelectorAll('[name="theme"]');
 
-// store the chosen theme
+// store user chosen theme
 const storeTheme = function (theme) {
   localStorage.setItem("theme", theme);
 };
 
-// retrieve and set the theme
-const setTheme = function (theme) {
+// retrieve saved theme
+const setTheme = function () {
   const activeTheme = localStorage.getItem("theme");
   console.log(activeTheme);
   colorThemes.forEach((themeOption) => {
@@ -14,14 +14,15 @@ const setTheme = function (theme) {
       themeOption.checked = true;
     }
   });
-  // fallback for browsers without :has() support
-  document.documentElement.className = theme;
+  // fallback for browsers without :has() support (i.e. Firefox)
+  document.documentElement.className = activeTheme;
 };
 
 // check for clicks on theme picker
 colorThemes.forEach((themeOption) => {
   themeOption.addEventListener("click", () => {
     storeTheme(themeOption.id);
+    console.log(themeOption.id);
   });
 });
 
