@@ -16,7 +16,7 @@
 
   /* global fonts */
   --font-body: "Poppins", sans-serif;
-  font-weight: 100;
+  font-weight: 500;
 
   /* content sizing */
   --content-width: 960px;
@@ -41,7 +41,7 @@
 }
 
 html {
-  /* color-scheme: dark; how does this interact with themes? */
+  /* color-scheme: dark; how does this interact with theme? */
 }
 
 body {
@@ -143,10 +143,16 @@ body {
 }
 
 .project-thumb {
+  color: var(--theme-text);
 }
 
 .project-title {
   font: var(--font-heading);
+  color: var(--theme-text);
+}
+
+.project-stub {
+  color: var(--theme-text);
 }
 
 /* about page styling */
@@ -197,13 +203,42 @@ body {
 
 .nice-box-light {
   padding: 2rem;
-  background: var(--grad1);
+  background: var(--theme-bg);
   margin: 2rem;
-  box-shadow: 0px 0px 15px 15px #ddd8;
+  /* border: 1px dashed black; */
+  box-shadow: 0px 0px 15px 15px var(--theme-shadow);
   border-radius: 10px;
 }
 
 /*** ORNAMENTS ***/
+
+
+.sticker-theme {
+  position: absolute;
+  right: 10%;
+  top: 10%;
+}
+.sticker-theme .spinner {
+  position: absolute;
+  right: 0%;
+  animation: spin 60s linear infinite;
+}
+@keyframes spin {
+  0% {transform; rotate(0deg)}
+  100% {transform: rotate(360deg)}
+}
+
+.sticker-theme .pointer {
+  position: absolute;
+  right: 50%;
+  font-size: 10rem;
+  animation: point 1.5s ease-in-out infinite;
+}
+@keyframes point {
+  0%, 100% {transform: rotate(-30deg) translate(-10%, -7%)}
+  50% {transform: rotate(-30deg) translate(-30%, -7%)}
+
+}
 
 .vertical-bg {
   position: absolute;
@@ -273,8 +308,8 @@ h2 {
 }
 
 h3 {
-  font-weight: 100;
-  font-size: clamp(1rem, 2vw, 2rem);
+  font-weight: 500;
+  font-size: clamp(0.5rem, 2vw, 0.75rem);
   color: var(--theme-text-heading);
 }
 
@@ -375,6 +410,7 @@ li {
   --theme-bg: var(--theme-white);
   --theme-text: var(--theme-black);
   --theme-text-heading: var(--theme-text);
+  --theme-shadow: #cacaca8a;
   --theme-cta: #d82121;
   --grad1: radial-gradient(at 80% 30%, #eee, #ccc);
   /* --grad-linear-light-grey: linear-gradient(-45deg, #888, #aaa, #eee); */
@@ -390,6 +426,7 @@ li {
   --theme-bg: var(--theme-black);
   --theme-text: var(--theme-white);
   --theme-text-heading: var(--theme-text);
+  --theme-shadow: #28282866;
   --theme-cta: #2d2;
   --grad1: linear-gradient(-45deg, #111, #222, #444);
   --font-heading: 3rem "Libre Baskerville";
@@ -399,12 +436,12 @@ li {
 .red,
 :root:has(#red:checked) {
   --theme-body: var(--grad1);
-  --theme-bg: #800;
+  --theme-bg: #7e7e7e;
   --theme-text: var(--theme-white);
-  --theme-text-heading: rgb(214, 0, 103);
-  --theme-cta: #d22;
-  --grad1: linear-gradient(-45deg, #111, #222, #400);
-  --font-heading: 5rem "Comforter Brush";
+  --theme-text-heading: #bc1a68;
+  --theme-shadow: #1114;
+  --theme-cta: #bc1a68;
+  --grad1: linear-gradient(-45deg, #000000, #222, #38071f);
 }
 
 .site-wrapper:has(#red:checked) {
@@ -433,8 +470,9 @@ li {
   --theme-bg: #080;
   --theme-text: var(--theme-white);
   --theme-text-heading: var(--theme-text);
+  --theme-shadow: #4444;
   --theme-cta: #2d2;
-  --grad1: linear-gradient(-45deg, #111, #222, #040);
+  --grad1: linear-gradient(-45deg, #071f06, #006300);
   --font-heading: 3rem "Libre Baskerville";
 }
 
@@ -445,6 +483,7 @@ li {
   --theme-bg: #008;
   --theme-text: var(--theme-white);
   --theme-text-heading: var(--theme-text);
+  --theme-shadow: #1116;
   --theme-cta: #22d;
   --grad1: linear-gradient(-45deg, #111, #222, #004);
   --font-heading: 3rem "Libre Baskerville";
@@ -453,6 +492,11 @@ li {
 /* PREV page stylings */
 .up,
 :root:has(#up:checked) {
+}
+
+/* NEXT page stylings */
+.down,
+:root:has(#down:checked) {
 }
 
 /* misc stylings */

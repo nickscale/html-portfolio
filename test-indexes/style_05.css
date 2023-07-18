@@ -1,0 +1,48 @@
+@import url("https://api.fonts.coollabs.io/css2?family=Azeret+Mono:wght@100;300;500;700;900&family=Dekko&family=Major+Mono+Display&family=Mr+Dafoe&display=swap");
+
+*,
+*::before,
+*::after {
+  margin: 0;
+  padding: 0;
+  border: 0;
+  box-sizing: border-box;
+}
+
+.page-container {
+  width: 100dvw;
+  height: 100dvh;
+}
+
+.content-wrapper {
+  width: 100%;
+  background: pink;
+}
+
+.letter-matrix {
+  padding: 1rem;
+  display: grid;
+  gap: 1rem;
+  grid-template-columns: repeat(auto-fit, minmax(12vw, 1fr));
+}
+
+.pixel {
+  font-family: "Azeret Mono";
+  font-size: clamp(4rem, 9vw, 15vh);
+  text-align: center;
+  /* background: green; */
+}
+
+.pointer {
+  color: red;
+  animation: point 1.5s ease-in-out infinite;
+}
+@keyframes point {
+  0%,
+  100% {
+    transform: translate(50%, 0%);
+  }
+  50% {
+    transform: translate(50%, 50%);
+  }
+}
