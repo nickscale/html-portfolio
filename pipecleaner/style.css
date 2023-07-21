@@ -1,0 +1,128 @@
+:root {
+  --enemy: red;
+  --tank: #00f;
+  --shoot: #88f;
+  --black: #111;
+  --white: #ddd;
+  --empty: #666;
+  --scale: 0.95dvh;
+  --track: 58deg; /* out of 60deg max */
+}
+
+body {
+  background: var(--black);
+}
+
+.board-container {
+  position: absolute;
+  left: 50%;
+  top: 50%;
+  transform-origin: center;
+  /* rotate below for accelerometer */
+  transform: translate(-50%, -50%) rotate(-1deg);
+}
+
+.divider {
+  position: absolute;
+  left: 50%;
+  top: 50%;
+  aspect-ratio: 1;
+  border-radius: 50%;
+  transform: translate(-50%, -50%);
+  background: var(--black);
+}
+
+#divider0 {
+  width: calc(1 * var(--scale) + 2px);
+}
+#divider1 {
+  width: calc(2 * var(--scale) + 3px);
+}
+#divider2 {
+  width: calc(4 * var(--scale) + 4px);
+}
+#divider3 {
+  width: calc(8 * var(--scale) + 5px);
+}
+#divider4 {
+  width: calc(16 * var(--scale) + 6px);
+}
+#divider5 {
+  width: calc(28 * var(--scale) + 7px);
+}
+#divider6 {
+  width: calc(52 * var(--scale) + 8px);
+}
+#divider7 {
+  width: calc(100 * var(--scale) + 9px);
+}
+
+.section {
+  position: absolute;
+  left: 50%;
+  top: 50%;
+  transform: translate(-50%, -50%);
+}
+
+.section0 {
+  width: var(--scale);
+  height: var(--scale);
+}
+.section1 {
+  width: calc(2 * var(--scale));
+  height: calc(2 * var(--scale));
+}
+.section2 {
+  width: calc(4 * var(--scale));
+  height: calc(4 * var(--scale));
+}
+.section3 {
+  width: calc(8 * var(--scale));
+  height: calc(8 * var(--scale));
+}
+.section4 {
+  width: calc(16 * var(--scale));
+  height: calc(16 * var(--scale));
+}
+.section5 {
+  width: calc(28 * var(--scale));
+  height: calc(28 * var(--scale));
+}
+.section6 {
+  width: calc(52 * var(--scale));
+  height: calc(52 * var(--scale));
+}
+.section7 {
+  width: calc(100 * var(--scale));
+  height: calc(100 * var(--scale));
+}
+.section8 {
+  width: calc(500 * var(--scale));
+  height: calc(500 * var(--scale));
+}
+
+.segment {
+  width: inherit;
+  height: inherit;
+  position: absolute;
+  border-radius: 50%;
+}
+
+.seg1 {
+  background: conic-gradient(transparent 0deg calc(60deg - var(--track)), var(--empty) calc(60deg - var(--track)) 60deg, transparent 60deg 360deg);
+}
+.seg2 {
+  background: conic-gradient(transparent 0deg calc(120deg - var(--track)), var(--enemy) calc(120deg - var(--track)) 120deg, transparent 120deg 360deg);
+}
+.seg3 {
+  background: conic-gradient(transparent 0deg calc(180deg - var(--track)), var(--empty) calc(180deg - var(--track)) 180deg, transparent 180deg 360deg);
+}
+.seg4 {
+  background: conic-gradient(transparent 0deg calc(240deg - var(--track)), var(--empty) calc(240deg - var(--track)) 240deg, transparent 240deg 360deg);
+}
+.seg5 {
+  background: conic-gradient(transparent 0deg calc(300deg - var(--track)), var(--empty) calc(300deg - var(--track)) 300deg, transparent 300deg 360deg);
+}
+.seg6 {
+  background: conic-gradient(transparent 0deg calc(360deg - var(--track)), var(--empty) calc(360deg - var(--track)) 360deg);
+}
