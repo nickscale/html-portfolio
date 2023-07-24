@@ -270,14 +270,15 @@ body {
   z-index: 1;
   overflow: clip;
   white-space: nowrap;
-  animation: scrolling 10s linear infinite;
+  animation: scrolling 20s linear infinite;
 }
 
 @keyframes scrolling {
-  0% {
-    transform: translateY(200%) rotate(90deg);
-  }
+  0%,
   100% {
+    transform: translateY(250%) rotate(90deg);
+  }
+  50% {
     transform: translateY(-250%) rotate(90deg);
   }
 }
@@ -360,7 +361,8 @@ li {
 .diagonal {
   --skew-angle: -1.5deg;
   --background: var(--grad1);
-  margin: -5vh 0 -5vh 0;
+  margin: -10vh 0;
+  padding: 10vh 0;
   position: relative;
   isolation: isolate; /* isolate keeps the z-index of the contained elements within the scope of the parent so other elements can't interfere */
 }

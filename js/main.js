@@ -1,6 +1,6 @@
 const colorThemes = document.querySelectorAll('[name="theme"]');
 
-// store user chosen theme
+// store selected theme
 const storeTheme = function (theme) {
   localStorage.setItem("theme", theme);
 };
@@ -27,3 +27,9 @@ colorThemes.forEach((themeOption) => {
 });
 
 document.onload = setTheme();
+
+const letterShaker () {
+  letters = document.getElementsByClassName("pixel");
+  console.log(letters);
+  
+}
