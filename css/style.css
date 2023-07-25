@@ -1,4 +1,4 @@
-@import url("https://api.fonts.coollabs.io/css2?family=Libre+Baskerville:ital@0;1&family=Poppins:wght@100;300;500&family=Comforter+Brush&family=Elephant&display=swap");
+@import url("https://fonts.googleapis.com/css2?family=Libre+Baskerville:ital@0;1&family=Poppins:wght@100;300;500&family=Comforter+Brush&family=Elephant&family=Azeret+Mono:wght@100;300;500;700;900&family=Dekko&family=Major+Mono+Display&family=Mr+Dafoe&display=swap");
 
 *,
 *::before,
@@ -10,19 +10,21 @@
 }
 
 :root {
-  /* global colours - see THEME stylings for main colours) */
-  --theme-white: #d7dad9;
+  /* Global white and black */
+  /* All other colours set in THEME stylings */
+  --theme-white: #d8d8d8;
   --theme-black: #08080f;
 
-  /* global fonts */
+  /* Global fonts */
   --font-body: "Poppins", sans-serif;
-  font-weight: 500;
+  --font-mono: "Azeret Mono", monospace;
+  --font-heading: var(--font-mono);
 
-  /* content sizing */
-  --content-width: 960px;
-  --content-height: 82vh;
-  --content-margin-x: 5vw;
-  --content-margin-y: 9vh;
+  /* Layout sizing defaults */
+  /* For all pages except hero/full-width page */
+  --content-width: 960px; /* i.e. maximum width */
+  --content-margin-x: 3vw;
+  --content-margin-y: 8vh;
 
   /* controls stylings */
   --button-size: 1rem;
@@ -31,7 +33,7 @@
   --delay: 150ms;
   --ease: cubic-bezier(0.215, 0.61, 0.355, 1);
 
-  /* TESTING PURPOSES */
+  /* FOR TESTING */
   --DEBUG1: #f00;
   --DEBUG2: #0f0;
   --DEBUG3: #00f;
@@ -41,12 +43,13 @@
 }
 
 html {
-  /* color-scheme: dark; how does this interact with theme? */
+  /* color-scheme: dark; /* This breaks theming... */
 }
 
 body {
-  font: 1rem var(--font-body);
+  font-family: var(--font-body);
   background: var(--theme-body);
+  color: var(--theme-text);
 }
 
 /***** LAYOUT STYLINGS *****/
@@ -55,98 +58,115 @@ body {
 }
 
 .page-container {
-  width: 100%;
+  position: relative;
+  padding: var(--content-margin-y) var(--content-margin-x);
   display: flex;
   justify-content: center;
-  align-items: center;
   /* background: var(--DEBUG1); */
+}
+
+.hero-container {
+  position: relative;
+  padding: 0 3rem 0 0;
+  z-index: 1;
+  /* background: var(--DEBUG1); */
+}
+
+/* this constrains content to max-width */
+.content-container {
+  position: relative;
+  width: 100%;
+  max-width: 960px;
+  display: flex;
+  justify-content: start;
+  align-items: start;
+  gap: 0;
+  transform: skewY(var(--skew-angle)); /* only applied with diagonal class */
+  /* background: var(--DEBUG1); */
+}
+
+.content-body {
+  width: 100%;
+  margin: 0 0 0 var(--content-margin-x);
+  /* background: var(--DEBUG5); */
+}
+
+.columns {
+  display: grid;
+  padding: 0;
+  margin: 0;
+  grid-template-columns: repeat(auto-fill, minmax(240px, 1fr));
+  grid-gap: 1em;
+  /* background: var(--DEBUG4); */
 }
 
 .background-container {
   position: absolute;
   z-index: 0;
-  width: 100dvw;
-  height: 100dvh;
+  width: 100%;
   top: 0;
   left: 0;
 
   background-image: var(--background-image);
   background-attachment: fixed;
   background-size: cover;
-
   /* background: var(--DEBUG2); */
 }
 
-.content-container {
-  /* background: var(--DEBUG3); */
-}
+/*** SPECIFIC PAGE STYLINGS ***/
 
-/*** SPECIFIC SECTION STYLINGS ***/
+/* FRONT page stylings */
 
-/* Page 1 - Front Page */
-
-.page-container#page1 {
+.page-container #front {
   height: 100vh;
-  width: 100%;
-  isolation: isolate;
-}
-
-.front-page-template {
-  width: 100%;
-  /* background: var(--DEBUG2); */
-}
-
-.front-page-zone1 {
   /* background: var(--DEBUG1); */
 }
 
-.front-page-zone2 {
-  /* transform: skewY(-8deg); */
-  /* background: url("https://picsum.photos/1920/1080");
-  background-clip: content-box;
-  background-size: cover; */
-  /* background: var(--DEBUG2); */
-}
-
-.front-page-zone3 {
-  /* background: var(--DEBUG3); */
-}
-
-.front-page-zone4 {
-  position: absolute;
-  z-index: 4;
-  width: 4rem;
-  height: 100vh;
-  right: 0%;
-  top: 0%;
-  /* background: var(--DEBUG1); */
-}
-
-.lead-image {
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  overflow: hidden;
-}
-
-.lead-image img {
-  flex-shrink: 0;
-  min-width: 100%;
-  min-height: 100%;
-  overflow: hidden;
-}
-
-/* Page 2 - Projects page styling */
-
-.page-container#page2 {
-  z-index: 2;
-  background: var(--theme-body);
-}
-
-.project-gallery {
+.letter-matrix {
+  position: relative;
+  padding: 1rem;
   display: grid;
-  grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
-  grid-gap: 1em;
+  grid-template-columns: repeat(9, 1fr);
+  grid-template-rows: repeat(4, 1fr);
+  gap: 2rem;
+}
+
+.letter-matrix a {
+  display: inline-block;
+  text-decoration: none;
+}
+
+.letter-matrix a:hover {
+  background-color: var(--theme-cta);
+}
+
+.pixel {
+  font-family: var(--font-mono);
+  font-size: clamp(4rem, 9vw, 15vh);
+  text-align: center;
+  color: var(--theme-text);
+  /* background: green; */
+}
+
+.pointer {
+  position: relative;
+  font-size: 3rem;
+  text-align: center;
+  animation: point 2s ease-in-out infinite;
+}
+@keyframes point {
+  0%,
+  100% {
+    transform: translateY(-20%);
+  }
+  50% {
+    transform: translateY(0%);
+  }
+}
+
+/* PROJECTS page styling */
+
+.page-container#projects {
 }
 
 .project-card {
@@ -154,11 +174,11 @@ body {
 }
 
 .project-thumb {
-  color: var(--theme-text);
+  color: var(--theme-cta);
 }
 
 .project-title {
-  font: var(--font-heading);
+  font-family: var(--font-heading);
   color: var(--theme-text);
 }
 
@@ -166,28 +186,49 @@ body {
   color: var(--theme-text);
 }
 
-/* about page styling */
+/* ABOUT page styling */
 
-.page-container#page3 {
-  height: 50vh; /* PLACEHOLDER until it has content */
+.page-container#about {
 }
 
-/* footer stylings */
+/* SKILLS page stylings */
+
+.page-container#skills {
+}
+
+.skill {
+  padding: 0 1rem 1rem 1rem;
+  text-align: center;
+}
+
+/* CONTACT page styling */
+
+.page-container#contact {
+}
+
+.qr-code {
+  width: 200px;
+  height: 200px;
+  background: var(--theme-bg);
+  border-radius: 1rem;
+}
+
+/* FOOTER page stylings */
+
+.page-container#footer {
+}
 
 .footer {
   display: flex;
   justify-content: space-between;
-  align-items: end;
+  align-items: start;
   gap: 2rem;
-  color: var(--theme-bg);
 }
 
-.footer-column {
-  color: var(--theme-bg);
+.column {
   width: min(260px, 25%);
   /* background: var(--DEBUG3); */
 }
-
 .contact-form textarea,
 .contact-form input,
 .contact-form button {
@@ -196,9 +237,7 @@ body {
   border: 0;
   border-bottom: 3px solid var(--theme-white);
   padding: 0.5rem;
-  background: var(--theme-bg);
-  font-family: var(--font-primary);
-  color: var(--theme-black);
+  font-family: var(--font-body);
   text-align: left;
 }
 
@@ -224,119 +263,33 @@ body {
   border-radius: 3px;
 }
 
-/*** ORNAMENTS ***/
-
-.sticker-theme {
-  position: absolute;
-  right: 10%;
-  top: 10%;
-}
-.sticker-theme .spinner {
-  position: absolute;
-  right: 0%;
-  animation: spin 60s linear infinite;
-}
-@keyframes spin {
-  0% {
-    transform: rotate(0deg);
-  }
-  100% {
-    transform: rotate(360deg);
-  }
-}
-
-.sticker-theme .pointer {
-  position: absolute;
-  right: 50%;
-  font-size: 10rem;
-  animation: point 1.5s ease-in-out infinite;
-}
-@keyframes point {
-  0%,
-  100% {
-    transform: rotate(-30deg) translate(-10%, -7%);
-  }
-  50% {
-    transform: rotate(-30deg) translate(-30%, -7%);
-  }
-}
-
-.vertical-bg {
-  position: absolute;
-  right: -5rem;
-  font-family: "Libre Baskerville";
-  font-size: 8rem;
-  color: #ccc;
-  z-index: 1;
-  overflow: clip;
-  white-space: nowrap;
-  animation: scrolling 20s linear infinite;
-}
-
-@keyframes scrolling {
-  0%,
-  100% {
-    transform: translateY(250%) rotate(90deg);
-  }
-  50% {
-    transform: translateY(-250%) rotate(90deg);
-  }
-}
-
-.horizontal-dots {
-  position: relative;
-  font-size: 2rem;
-  font-weight: 900;
-  color: #cc0000;
-}
-
 /***** AESTHETIC STYLINGS *****/
 
 /* text stylings */
 
-.monogram-bg {
-  position: absolute;
-  left: 50%;
-  top: 50%;
-  transform: translate(-50%, -50%);
-  font-size: 50rem;
-  z-index: 0;
-}
-.monogram-fg {
-  position: absolute;
-  left: 50%;
-  top: 50%;
-  transform: translate(-50%, -50%);
-  font-size: 50rem;
-  -webkit-text-stroke: 4px var(--theme-text);
-  -webkit-text-fill-color: transparent;
-  z-index: 100;
-}
-
 h1 {
-  font: var(--font-heading);
+  font-family: var(--font-heading);
   font-size: clamp(2rem, 6vw, 3rem);
   font-weight: 500;
   line-height: 120%;
   margin: 1vh 0;
-  color: var(--theme-text-heading);
 }
 
 h2 {
-  font-weight: 300;
   font-size: clamp(2rem, 4vw, 3rem);
+  font-weight: 300;
   margin: 1vh 0;
-  color: var(--theme-text-heading);
 }
 
 h3 {
-  font-weight: 500;
   font-size: clamp(0.5rem, 2vw, 0.9rem);
-  color: var(--theme-text-heading);
+  font-weight: 500;
 }
 
 p {
   font-size: 1rem;
+  font-weight: 300;
+  margin: 1rem 0;
 }
 
 a {
@@ -345,7 +298,7 @@ a {
 }
 
 a:hover {
-  color: var(--theme-highlight);
+  color: var(--theme-cta);
 }
 
 ul {
@@ -356,20 +309,32 @@ li {
   font-weight: 300;
 }
 
-/* section edge stylings */
+.vertical-bg {
+  position: absolute;
+  top: 0;
+  left: 0;
+  transform-origin: left top;
+  transform: rotate(90deg);
+}
+
+.text-heading,
+.text-cta {
+  color: var(--theme-cta);
+}
+
+/** section edge stylings **/
 
 .diagonal {
-  --skew-angle: -1.5deg;
-  --background: var(--grad1);
-  margin: -10vh 0;
-  padding: 10vh 0;
+  --skew-angle: -2deg;
+  --diag-background: var(--theme-text);
+  color: var(--theme-bg);
   position: relative;
-  isolation: isolate; /* isolate keeps the z-index of the contained elements within the scope of the parent so other elements can't interfere */
+  isolation: isolate;
 }
 
 .diagonal::after {
   content: "";
-  background: var(--background);
+  background: var(--diag-background);
   position: absolute;
   z-index: -1;
   inset: 0; /* shorthand for top/bottom/left/right = 0 */
@@ -429,59 +394,52 @@ li {
 /* LIGHT (DEFAULT) theme stylings */
 .light,
 :root:has(#light:checked) {
-  --theme-body: #eee;
-  --theme-bg: #eee7;
+  --theme-body: var(--grad1); /* this can be a gradient */
+  --theme-bg: var(--theme-white); /* all others must be solid */
   --theme-text: var(--theme-black);
-  --theme-text-heading: var(--theme-text);
+  --theme-text-heading: var(--theme-black);
   --theme-shadow: #6664;
   --theme-cta: #d82121;
-  --grad1: radial-gradient(at 80% 30%, #eee, #ccc);
-  --grad2: radial-gradient(at 80% 30%, #eee, #ccc);
+  --grad1: radial-gradient(at 100% 0%, var(--theme-white), #888);
+  --grad2: radial-gradient(at 0% 100%, var(--theme-white), #888);
+  --background-image: var(--grad1); /* only used in background-container */
 
-  --background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='100%25' height='100%25' viewBox='0 0 1200 800'%3E%3Cdefs%3E%3ClinearGradient id='a' gradientUnits='userSpaceOnUse' x1='600' y1='25' x2='600' y2='777'%3E%3Cstop offset='0' stop-color='%23FFFFFF'/%3E%3Cstop offset='1' stop-color='%23DDDDDD'/%3E%3C/linearGradient%3E%3ClinearGradient id='b' gradientUnits='userSpaceOnUse' x1='650' y1='25' x2='650' y2='777'%3E%3Cstop offset='0' stop-color='%23fcfcfc'/%3E%3Cstop offset='1' stop-color='%23d5d5d5'/%3E%3C/linearGradient%3E%3ClinearGradient id='c' gradientUnits='userSpaceOnUse' x1='700' y1='25' x2='700' y2='777'%3E%3Cstop offset='0' stop-color='%23f9f9f9'/%3E%3Cstop offset='1' stop-color='%23cecece'/%3E%3C/linearGradient%3E%3ClinearGradient id='d' gradientUnits='userSpaceOnUse' x1='750' y1='25' x2='750' y2='777'%3E%3Cstop offset='0' stop-color='%23f6f6f6'/%3E%3Cstop offset='1' stop-color='%23c6c6c6'/%3E%3C/linearGradient%3E%3ClinearGradient id='e' gradientUnits='userSpaceOnUse' x1='800' y1='25' x2='800' y2='777'%3E%3Cstop offset='0' stop-color='%23f3f3f3'/%3E%3Cstop offset='1' stop-color='%23bebebe'/%3E%3C/linearGradient%3E%3ClinearGradient id='f' gradientUnits='userSpaceOnUse' x1='850' y1='25' x2='850' y2='777'%3E%3Cstop offset='0' stop-color='%23f0f0f0'/%3E%3Cstop offset='1' stop-color='%23b6b6b6'/%3E%3C/linearGradient%3E%3ClinearGradient id='g' gradientUnits='userSpaceOnUse' x1='900' y1='25' x2='900' y2='777'%3E%3Cstop offset='0' stop-color='%23ececec'/%3E%3Cstop offset='1' stop-color='%23afafaf'/%3E%3C/linearGradient%3E%3ClinearGradient id='h' gradientUnits='userSpaceOnUse' x1='950' y1='25' x2='950' y2='777'%3E%3Cstop offset='0' stop-color='%23e9e9e9'/%3E%3Cstop offset='1' stop-color='%23a7a7a7'/%3E%3C/linearGradient%3E%3ClinearGradient id='i' gradientUnits='userSpaceOnUse' x1='1000' y1='25' x2='1000' y2='777'%3E%3Cstop offset='0' stop-color='%23e6e6e6'/%3E%3Cstop offset='1' stop-color='%239f9f9f'/%3E%3C/linearGradient%3E%3ClinearGradient id='j' gradientUnits='userSpaceOnUse' x1='1050' y1='25' x2='1050' y2='777'%3E%3Cstop offset='0' stop-color='%23e3e3e3'/%3E%3Cstop offset='1' stop-color='%23979797'/%3E%3C/linearGradient%3E%3ClinearGradient id='k' gradientUnits='userSpaceOnUse' x1='1100' y1='25' x2='1100' y2='777'%3E%3Cstop offset='0' stop-color='%23e0e0e0'/%3E%3Cstop offset='1' stop-color='%23909090'/%3E%3C/linearGradient%3E%3ClinearGradient id='l' gradientUnits='userSpaceOnUse' x1='1150' y1='25' x2='1150' y2='777'%3E%3Cstop offset='0' stop-color='%23DDDDDD'/%3E%3Cstop offset='1' stop-color='%23888888'/%3E%3C/linearGradient%3E%3C/defs%3E%3Cg %3E%3Crect fill='url(%23a)' width='1200' height='800'/%3E%3Crect fill='url(%23b)' x='100' width='1100' height='800'/%3E%3Crect fill='url(%23c)' x='200' width='1000' height='800'/%3E%3Crect fill='url(%23d)' x='300' width='900' height='800'/%3E%3Crect fill='url(%23e)' x='400' width='800' height='800'/%3E%3Crect fill='url(%23f)' x='500' width='700' height='800'/%3E%3Crect fill='url(%23g)' x='600' width='600' height='800'/%3E%3Crect fill='url(%23h)' x='700' width='500' height='800'/%3E%3Crect fill='url(%23i)' x='800' width='400' height='800'/%3E%3Crect fill='url(%23j)' x='900' width='300' height='800'/%3E%3Crect fill='url(%23k)' x='1000' width='200' height='800'/%3E%3Crect fill='url(%23l)' x='1100' width='100' height='800'/%3E%3C/g%3E%3C/svg%3E");
-
-  --font-heading: 2.5rem "Libre Baskerville"; /** 'font:' not 'font-family:' */
+  scrollbar-color: var(--theme-cta) var(--theme-bg);
 }
 
 /* DARK theme stylings */
 .dark,
 :root:has(#dark:checked) {
-  --theme-body: #333;
-  --theme-bg: var(--grad2);
+  --theme-body: var(--grad1);
+  --theme-bg: var(--theme-black);
   --theme-text: var(--theme-white);
   --theme-text-heading: var(--theme-text);
   --theme-shadow: #28282866;
   --theme-cta: #d82121;
-  --grad1: linear-gradient(-45deg, #111, #444);
-  --grad2: linear-gradient(45deg, #333, #444);
-
-  --background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='100%25' height='100%25' viewBox='0 0 1200 800'%3E%3Cdefs%3E%3ClinearGradient id='a' gradientUnits='userSpaceOnUse' x1='600' y1='25' x2='600' y2='777'%3E%3Cstop offset='0' stop-color='%23333333'/%3E%3Cstop offset='1' stop-color='%23222222'/%3E%3C/linearGradient%3E%3ClinearGradient id='b' gradientUnits='userSpaceOnUse' x1='650' y1='25' x2='650' y2='777'%3E%3Cstop offset='0' stop-color='%23313131'/%3E%3Cstop offset='1' stop-color='%231f1f1f'/%3E%3C/linearGradient%3E%3ClinearGradient id='c' gradientUnits='userSpaceOnUse' x1='700' y1='25' x2='700' y2='777'%3E%3Cstop offset='0' stop-color='%23303030'/%3E%3Cstop offset='1' stop-color='%231c1c1c'/%3E%3C/linearGradient%3E%3ClinearGradient id='d' gradientUnits='userSpaceOnUse' x1='750' y1='25' x2='750' y2='777'%3E%3Cstop offset='0' stop-color='%232e2e2e'/%3E%3Cstop offset='1' stop-color='%23191919'/%3E%3C/linearGradient%3E%3ClinearGradient id='e' gradientUnits='userSpaceOnUse' x1='800' y1='25' x2='800' y2='777'%3E%3Cstop offset='0' stop-color='%232d2d2d'/%3E%3Cstop offset='1' stop-color='%23161616'/%3E%3C/linearGradient%3E%3ClinearGradient id='f' gradientUnits='userSpaceOnUse' x1='850' y1='25' x2='850' y2='777'%3E%3Cstop offset='0' stop-color='%232b2b2b'/%3E%3Cstop offset='1' stop-color='%23131313'/%3E%3C/linearGradient%3E%3ClinearGradient id='g' gradientUnits='userSpaceOnUse' x1='900' y1='25' x2='900' y2='777'%3E%3Cstop offset='0' stop-color='%232a2a2a'/%3E%3Cstop offset='1' stop-color='%230f0f0f'/%3E%3C/linearGradient%3E%3ClinearGradient id='h' gradientUnits='userSpaceOnUse' x1='950' y1='25' x2='950' y2='777'%3E%3Cstop offset='0' stop-color='%23282828'/%3E%3Cstop offset='1' stop-color='%230c0c0c'/%3E%3C/linearGradient%3E%3ClinearGradient id='i' gradientUnits='userSpaceOnUse' x1='1000' y1='25' x2='1000' y2='777'%3E%3Cstop offset='0' stop-color='%23272727'/%3E%3Cstop offset='1' stop-color='%23090909'/%3E%3C/linearGradient%3E%3ClinearGradient id='j' gradientUnits='userSpaceOnUse' x1='1050' y1='25' x2='1050' y2='777'%3E%3Cstop offset='0' stop-color='%23252525'/%3E%3Cstop offset='1' stop-color='%23060606'/%3E%3C/linearGradient%3E%3ClinearGradient id='k' gradientUnits='userSpaceOnUse' x1='1100' y1='25' x2='1100' y2='777'%3E%3Cstop offset='0' stop-color='%23242424'/%3E%3Cstop offset='1' stop-color='%23030303'/%3E%3C/linearGradient%3E%3ClinearGradient id='l' gradientUnits='userSpaceOnUse' x1='1150' y1='25' x2='1150' y2='777'%3E%3Cstop offset='0' stop-color='%23222222'/%3E%3Cstop offset='1' stop-color='%23000000'/%3E%3C/linearGradient%3E%3C/defs%3E%3Cg %3E%3Crect fill='url(%23a)' width='1200' height='800'/%3E%3Crect fill='url(%23b)' x='100' width='1100' height='800'/%3E%3Crect fill='url(%23c)' x='200' width='1000' height='800'/%3E%3Crect fill='url(%23d)' x='300' width='900' height='800'/%3E%3Crect fill='url(%23e)' x='400' width='800' height='800'/%3E%3Crect fill='url(%23f)' x='500' width='700' height='800'/%3E%3Crect fill='url(%23g)' x='600' width='600' height='800'/%3E%3Crect fill='url(%23h)' x='700' width='500' height='800'/%3E%3Crect fill='url(%23i)' x='800' width='400' height='800'/%3E%3Crect fill='url(%23j)' x='900' width='300' height='800'/%3E%3Crect fill='url(%23k)' x='1000' width='200' height='800'/%3E%3Crect fill='url(%23l)' x='1100' width='100' height='800'/%3E%3C/g%3E%3C/svg%3E");
-
-  --font-heading: 3rem "Libre Baskerville";
+  --grad1: radial-gradient(at 0% 100%, #000, #222);
+  --grad2: radial-gradient(at 100% 0%, #000, #222);
+  --background-image: var(--grad1);
 }
 
 /* RED theme stylings */
 .red,
 :root:has(#red:checked) {
-  --theme-body: #a50153;
-  --theme-bg: #7e7e7e;
+  --theme-body: #861452;
+  --theme-bg: var(--theme-black);
   --theme-text: var(--theme-white);
-  --theme-text-heading: #bc1a68;
+  --theme-text-heading: #e0218a;
   --theme-shadow: #1114;
-  --theme-cta: #bc1a68;
+  --theme-cta: #e0218a; /* Barbie pink (TM) */
   --grad1: linear-gradient(-45deg, #000000, #222, #38071f);
-
-  /* source: https://www.svgbackgrounds.com/ */
-  --background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='100%25' height='100%25' viewBox='0 0 1200 800'%3E%3Cdefs%3E%3ClinearGradient id='a' gradientUnits='userSpaceOnUse' x1='600' y1='25' x2='600' y2='777'%3E%3Cstop offset='0' stop-color='%23A50153'/%3E%3Cstop offset='1' stop-color='%23111111'/%3E%3C/linearGradient%3E%3ClinearGradient id='b' gradientUnits='userSpaceOnUse' x1='650' y1='25' x2='650' y2='777'%3E%3Cstop offset='0' stop-color='%2392084d'/%3E%3Cstop offset='1' stop-color='%23161518'/%3E%3C/linearGradient%3E%3ClinearGradient id='c' gradientUnits='userSpaceOnUse' x1='700' y1='25' x2='700' y2='777'%3E%3Cstop offset='0' stop-color='%23800e47'/%3E%3Cstop offset='1' stop-color='%23191920'/%3E%3C/linearGradient%3E%3ClinearGradient id='d' gradientUnits='userSpaceOnUse' x1='750' y1='25' x2='750' y2='777'%3E%3Cstop offset='0' stop-color='%23701241'/%3E%3Cstop offset='1' stop-color='%231d1b29'/%3E%3C/linearGradient%3E%3ClinearGradient id='e' gradientUnits='userSpaceOnUse' x1='800' y1='25' x2='800' y2='777'%3E%3Cstop offset='0' stop-color='%2360163b'/%3E%3Cstop offset='1' stop-color='%231f1d33'/%3E%3C/linearGradient%3E%3ClinearGradient id='f' gradientUnits='userSpaceOnUse' x1='850' y1='25' x2='850' y2='777'%3E%3Cstop offset='0' stop-color='%23521835'/%3E%3Cstop offset='1' stop-color='%23211f3e'/%3E%3C/linearGradient%3E%3ClinearGradient id='g' gradientUnits='userSpaceOnUse' x1='900' y1='25' x2='900' y2='777'%3E%3Cstop offset='0' stop-color='%23441a2f'/%3E%3Cstop offset='1' stop-color='%23221f49'/%3E%3C/linearGradient%3E%3ClinearGradient id='h' gradientUnits='userSpaceOnUse' x1='950' y1='25' x2='950' y2='777'%3E%3Cstop offset='0' stop-color='%23381a29'/%3E%3Cstop offset='1' stop-color='%23231f55'/%3E%3C/linearGradient%3E%3ClinearGradient id='i' gradientUnits='userSpaceOnUse' x1='1000' y1='25' x2='1000' y2='777'%3E%3Cstop offset='0' stop-color='%232c1a23'/%3E%3Cstop offset='1' stop-color='%23231d62'/%3E%3C/linearGradient%3E%3ClinearGradient id='j' gradientUnits='userSpaceOnUse' x1='1050' y1='25' x2='1050' y2='777'%3E%3Cstop offset='0' stop-color='%2322181d'/%3E%3Cstop offset='1' stop-color='%23221b6f'/%3E%3C/linearGradient%3E%3ClinearGradient id='k' gradientUnits='userSpaceOnUse' x1='1100' y1='25' x2='1100' y2='777'%3E%3Cstop offset='0' stop-color='%23191517'/%3E%3Cstop offset='1' stop-color='%2321197e'/%3E%3C/linearGradient%3E%3ClinearGradient id='l' gradientUnits='userSpaceOnUse' x1='1150' y1='25' x2='1150' y2='777'%3E%3Cstop offset='0' stop-color='%23111111'/%3E%3Cstop offset='1' stop-color='%231F158D'/%3E%3C/linearGradient%3E%3C/defs%3E%3Cg %3E%3Crect fill='url(%23a)' width='1200' height='800'/%3E%3Crect fill='url(%23b)' x='100' width='1100' height='800'/%3E%3Crect fill='url(%23c)' x='200' width='1000' height='800'/%3E%3Crect fill='url(%23d)' x='300' width='900' height='800'/%3E%3Crect fill='url(%23e)' x='400' width='800' height='800'/%3E%3Crect fill='url(%23f)' x='500' width='700' height='800'/%3E%3Crect fill='url(%23g)' x='600' width='600' height='800'/%3E%3Crect fill='url(%23h)' x='700' width='500' height='800'/%3E%3Crect fill='url(%23i)' x='800' width='400' height='800'/%3E%3Crect fill='url(%23j)' x='900' width='300' height='800'/%3E%3Crect fill='url(%23k)' x='1000' width='200' height='800'/%3E%3Crect fill='url(%23l)' x='1100' width='100' height='800'/%3E%3C/g%3E%3C/svg%3E");
+  --background-image: var(--grad1);
 }
 
+/*** why isn't this working????? ***/
 .site-wrapper:has(#red:checked) {
-  /*** why isn't this working????? ***/
   background: var(--theme-body);
   background-size: 100% 100%;
   animation: gradient 10s ease infinite;
 }
-
 @keyframes gradient {
   0% {
     background-position: 0% 50%;
@@ -497,46 +455,32 @@ li {
 /* GREEN theme stylings */
 .green,
 :root:has(#green:checked) {
-  --theme-body: #25e900;
-  --theme-bg: #4844;
+  --theme-body: #240;
+  --theme-bg: var(--theme-black);
   --theme-text: var(--theme-white);
   --theme-text-heading: var(--theme-text);
   --theme-shadow: #4442;
   --theme-cta: #2d2;
   --grad1: linear-gradient(-45deg, #071f06, #006300);
-  --font-heading: 3rem "Libre Baskerville";
-
-  --background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='100%25' height='100%25' viewBox='0 0 1200 800'%3E%3Cdefs%3E%3ClinearGradient id='a' gradientUnits='userSpaceOnUse' x1='600' y1='25' x2='600' y2='777'%3E%3Cstop offset='0' stop-color='%2325E900'/%3E%3Cstop offset='1' stop-color='%23616161'/%3E%3C/linearGradient%3E%3ClinearGradient id='b' gradientUnits='userSpaceOnUse' x1='650' y1='25' x2='650' y2='777'%3E%3Cstop offset='0' stop-color='%232cdb0a'/%3E%3Cstop offset='1' stop-color='%23586a6a'/%3E%3C/linearGradient%3E%3ClinearGradient id='c' gradientUnits='userSpaceOnUse' x1='700' y1='25' x2='700' y2='777'%3E%3Cstop offset='0' stop-color='%2332cd15'/%3E%3Cstop offset='1' stop-color='%234f7373'/%3E%3C/linearGradient%3E%3ClinearGradient id='d' gradientUnits='userSpaceOnUse' x1='750' y1='25' x2='750' y2='777'%3E%3Cstop offset='0' stop-color='%2338c01e'/%3E%3Cstop offset='1' stop-color='%23467b7b'/%3E%3C/linearGradient%3E%3ClinearGradient id='e' gradientUnits='userSpaceOnUse' x1='800' y1='25' x2='800' y2='777'%3E%3Cstop offset='0' stop-color='%233eb328'/%3E%3Cstop offset='1' stop-color='%233e8484'/%3E%3C/linearGradient%3E%3ClinearGradient id='f' gradientUnits='userSpaceOnUse' x1='850' y1='25' x2='850' y2='777'%3E%3Cstop offset='0' stop-color='%2344a631'/%3E%3Cstop offset='1' stop-color='%23358d8d'/%3E%3C/linearGradient%3E%3ClinearGradient id='g' gradientUnits='userSpaceOnUse' x1='900' y1='25' x2='900' y2='777'%3E%3Cstop offset='0' stop-color='%23499a3a'/%3E%3Cstop offset='1' stop-color='%232c9595'/%3E%3C/linearGradient%3E%3ClinearGradient id='h' gradientUnits='userSpaceOnUse' x1='950' y1='25' x2='950' y2='777'%3E%3Cstop offset='0' stop-color='%234e8e42'/%3E%3Cstop offset='1' stop-color='%23239e9e'/%3E%3C/linearGradient%3E%3ClinearGradient id='i' gradientUnits='userSpaceOnUse' x1='1000' y1='25' x2='1000' y2='777'%3E%3Cstop offset='0' stop-color='%2353824a'/%3E%3Cstop offset='1' stop-color='%231aa7a7'/%3E%3C/linearGradient%3E%3ClinearGradient id='j' gradientUnits='userSpaceOnUse' x1='1050' y1='25' x2='1050' y2='777'%3E%3Cstop offset='0' stop-color='%23587752'/%3E%3Cstop offset='1' stop-color='%2312b0b0'/%3E%3C/linearGradient%3E%3ClinearGradient id='k' gradientUnits='userSpaceOnUse' x1='1100' y1='25' x2='1100' y2='777'%3E%3Cstop offset='0' stop-color='%235d6c5a'/%3E%3Cstop offset='1' stop-color='%2309b8b8'/%3E%3C/linearGradient%3E%3ClinearGradient id='l' gradientUnits='userSpaceOnUse' x1='1150' y1='25' x2='1150' y2='777'%3E%3Cstop offset='0' stop-color='%23616161'/%3E%3Cstop offset='1' stop-color='%2300C1C1'/%3E%3C/linearGradient%3E%3C/defs%3E%3Cg %3E%3Crect fill='url(%23a)' width='1200' height='800'/%3E%3Crect fill='url(%23b)' x='100' width='1100' height='800'/%3E%3Crect fill='url(%23c)' x='200' width='1000' height='800'/%3E%3Crect fill='url(%23d)' x='300' width='900' height='800'/%3E%3Crect fill='url(%23e)' x='400' width='800' height='800'/%3E%3Crect fill='url(%23f)' x='500' width='700' height='800'/%3E%3Crect fill='url(%23g)' x='600' width='600' height='800'/%3E%3Crect fill='url(%23h)' x='700' width='500' height='800'/%3E%3Crect fill='url(%23i)' x='800' width='400' height='800'/%3E%3Crect fill='url(%23j)' x='900' width='300' height='800'/%3E%3Crect fill='url(%23k)' x='1000' width='200' height='800'/%3E%3Crect fill='url(%23l)' x='1100' width='100' height='800'/%3E%3C/g%3E%3C/svg%3E");
+  --background-image: var(--grad1);
 }
 
 /* BLUE theme stylings */
 .blue,
 :root:has(#blue:checked) {
-  --theme-body: #0200e9;
-  --theme-bg: #fff8; /* include alpha for backdrop blur */
-  --theme-text: var(--theme-black);
-  --theme-text-heading: var(--theme-text);
+  --theme-body: #106;
+  --theme-bg: var(--theme-black);
+  --theme-text: var(--theme-white);
+  --theme-text-heading: var(--theme-white);
   --theme-shadow: #aaa2;
-  --theme-cta: #22d;
+  --theme-cta: #44f;
   --grad1: linear-gradient(-45deg, #111, #222, #004);
-  --font-heading: 3rem "Libre Baskerville";
-
-  --background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='100%25' height='100%25' viewBox='0 0 1200 800'%3E%3Cdefs%3E%3ClinearGradient id='a' gradientUnits='userSpaceOnUse' x1='600' y1='25' x2='600' y2='777'%3E%3Cstop offset='0' stop-color='%230200E9'/%3E%3Cstop offset='1' stop-color='%23D5D5D5'/%3E%3C/linearGradient%3E%3ClinearGradient id='b' gradientUnits='userSpaceOnUse' x1='650' y1='25' x2='650' y2='777'%3E%3Cstop offset='0' stop-color='%230d0bef'/%3E%3Cstop offset='1' stop-color='%23c6cfcf'/%3E%3C/linearGradient%3E%3ClinearGradient id='c' gradientUnits='userSpaceOnUse' x1='700' y1='25' x2='700' y2='777'%3E%3Cstop offset='0' stop-color='%232523e9'/%3E%3Cstop offset='1' stop-color='%23b4cbcb'/%3E%3C/linearGradient%3E%3ClinearGradient id='d' gradientUnits='userSpaceOnUse' x1='750' y1='25' x2='750' y2='777'%3E%3Cstop offset='0' stop-color='%233f3de0'/%3E%3Cstop offset='1' stop-color='%23a1c9c8'/%3E%3C/linearGradient%3E%3ClinearGradient id='e' gradientUnits='userSpaceOnUse' x1='800' y1='25' x2='800' y2='777'%3E%3Cstop offset='0' stop-color='%235756d9'/%3E%3Cstop offset='1' stop-color='%238cc9c8'/%3E%3C/linearGradient%3E%3ClinearGradient id='f' gradientUnits='userSpaceOnUse' x1='850' y1='25' x2='850' y2='777'%3E%3Cstop offset='0' stop-color='%236e6dd4'/%3E%3Cstop offset='1' stop-color='%2375cbc9'/%3E%3C/linearGradient%3E%3ClinearGradient id='g' gradientUnits='userSpaceOnUse' x1='900' y1='25' x2='900' y2='777'%3E%3Cstop offset='0' stop-color='%238382d0'/%3E%3Cstop offset='1' stop-color='%235ccfcc'/%3E%3C/linearGradient%3E%3ClinearGradient id='h' gradientUnits='userSpaceOnUse' x1='950' y1='25' x2='950' y2='777'%3E%3Cstop offset='0' stop-color='%239696ce'/%3E%3Cstop offset='1' stop-color='%2341d5d1'/%3E%3C/linearGradient%3E%3ClinearGradient id='i' gradientUnits='userSpaceOnUse' x1='1000' y1='25' x2='1000' y2='777'%3E%3Cstop offset='0' stop-color='%23a8a8cd'/%3E%3Cstop offset='1' stop-color='%2324dcd8'/%3E%3C/linearGradient%3E%3ClinearGradient id='j' gradientUnits='userSpaceOnUse' x1='1050' y1='25' x2='1050' y2='777'%3E%3Cstop offset='0' stop-color='%23b9b9ce'/%3E%3Cstop offset='1' stop-color='%2315d6d1'/%3E%3C/linearGradient%3E%3ClinearGradient id='k' gradientUnits='userSpaceOnUse' x1='1100' y1='25' x2='1100' y2='777'%3E%3Cstop offset='0' stop-color='%23c8c8d1'/%3E%3Cstop offset='1' stop-color='%230accc7'/%3E%3C/linearGradient%3E%3ClinearGradient id='l' gradientUnits='userSpaceOnUse' x1='1150' y1='25' x2='1150' y2='777'%3E%3Cstop offset='0' stop-color='%23D5D5D5'/%3E%3Cstop offset='1' stop-color='%2300C1BC'/%3E%3C/linearGradient%3E%3C/defs%3E%3Cg %3E%3Crect fill='url(%23a)' width='1200' height='800'/%3E%3Crect fill='url(%23b)' x='100' width='1100' height='800'/%3E%3Crect fill='url(%23c)' x='200' width='1000' height='800'/%3E%3Crect fill='url(%23d)' x='300' width='900' height='800'/%3E%3Crect fill='url(%23e)' x='400' width='800' height='800'/%3E%3Crect fill='url(%23f)' x='500' width='700' height='800'/%3E%3Crect fill='url(%23g)' x='600' width='600' height='800'/%3E%3Crect fill='url(%23h)' x='700' width='500' height='800'/%3E%3Crect fill='url(%23i)' x='800' width='400' height='800'/%3E%3Crect fill='url(%23j)' x='900' width='300' height='800'/%3E%3Crect fill='url(%23k)' x='1000' width='200' height='800'/%3E%3Crect fill='url(%23l)' x='1100' width='100' height='800'/%3E%3C/g%3E%3C/svg%3E");
-}
-
-/* PREV page stylings */
-.up,
-:root:has(#up:checked) {
-}
-
-/* NEXT page stylings */
-.down,
-:root:has(#down:checked) {
+  --background-image: var(--grad1);
 }
 
 /* misc stylings */
 
-/* for hiding labels used by screen readers */
+/* hide labels which are read by screen readers */
 .sr-only {
   clip: rect(0 0 0 0);
   clip-path: inset(50%);

@@ -39,7 +39,7 @@
 }
 [id="main-navigation-toggle"] {
   opacity: 0;
-  position: fixed;
+  position: absolute;
   top: -100%;
 }
 [id="main-navigation-toggle"] ~ label {

@@ -8,7 +8,7 @@ const storeTheme = function (theme) {
 // retrieve saved theme
 const setTheme = function () {
   const activeTheme = localStorage.getItem("theme");
-  console.log(activeTheme);
+  console.log('Load theme:',activeTheme);
   colorThemes.forEach((themeOption) => {
     if (themeOption.id === activeTheme) {
       themeOption.checked = true;
@@ -22,14 +22,8 @@ const setTheme = function () {
 colorThemes.forEach((themeOption) => {
   themeOption.addEventListener("click", () => {
     storeTheme(themeOption.id);
-    console.log(themeOption.id);
+    console.log('Set theme:',themeOption.id);
   });
 });
 
 document.onload = setTheme();
-
-const letterShaker () {
-  letters = document.getElementsByClassName("pixel");
-  console.log(letters);
-  
-}

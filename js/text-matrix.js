@@ -8,20 +8,25 @@ for (i=0;i<pixels.length;i++) {
 }
 
 let currentLetter = 0;
-let interval = setInterval(flipLetters, 100);
+let interval = setInterval(flipLetters, 75);
+let thisFlippingSound = new Audio("/audio/split-flap-display.mp3");
+thisFlippingSound.volume = 0;
+thisFlippingSound.play();
 
 function flipLetters(n) {
+
+
 
     // set every letter to a random character, starting from the current letter
     for (j=currentLetter;j<pixels.length;j++) {
         randomChar = alphabet.charAt(Math.floor(Math.random() * alphabet.length));
         pixels[j].textContent = randomChar;
-        pixels[j].style.color = 'red';
+        pixels[j].classList.add("text-heading");
     }
     
     // but set the current letter back to its original
     pixels[currentLetter].textContent = originalLetters.charAt(currentLetter);
-    pixels[currentLetter].style.color = 'Initial';
+    pixels[currentLetter].classList.remove("text-heading");
 
     // move on to the next letter
     currentLetter += 1;
@@ -29,5 +34,6 @@ function flipLetters(n) {
     // if all the letters have been flipped and restored, then stop
     if (currentLetter == originalLetters.length) {
         clearInterval(interval);
+        thisFlippingSound.pause();
     }
 }
