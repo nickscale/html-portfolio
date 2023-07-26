@@ -21,45 +21,55 @@
 
   <body>
     <!-- navigation -->
-    <nav role="navigation">
-      <div id="menuToggle">
-        <input type="checkbox" />
-        <span></span>
-        <span></span>
-        <span></span>
-        <ul id="menu">
-          <a href="#"><li>Home</li></a>
-          <a href="#"><li>Projects</li></a>
-          <a href="#"><li>Layovr&emsp;</li></a>
-          <a href="#"><li>Chime&emsp;</li></a>
-          <a href="#"><li>Left To Write&emsp;</li></a>
-          <a href="#"><li>Info</li></a>
-          <a href="#"><li>Skills</li></a>
-          <a href="#"><li>Contact</li></a>
-        </ul>
-      </div>
-      <form action="" class="theme-picker">
-        <fieldset>
-          <legend class="sr-only">Change theme</legend>
-          <label for="light" class="sr-only">Light</label>
-          <input type="radio" name="theme" id="light" checked />
-          <label for="dark" class="sr-only">Dark</label>
-          <input type="radio" name="theme" id="dark" />
-          <label for="pink" class="sr-only">Pink</label>
-          <input type="radio" name="theme" id="pink" />
-          <label for="green" class="sr-only">Green</label>
-          <input type="radio" name="theme" id="green" />
-          <label for="blue" class="sr-only">Blue</label>
-          <input type="radio" name="theme" id="blue" />
-          <!-- <label for="up" class="sr-only">Previous page</label>
-          <input type="radio" name="scroll" id="up" />
-          <label for="down" class="sr-only">Next page</label>
-          <input type="radio" name="scroll" id="down" /> -->
-        </fieldset>
-      </form>
+    <input type="checkbox" id="main-navigation-toggle" class="btn btn-close" title="Toggle main navigation" />
+    <label for="main-navigation-toggle"><span></span></label>
+    <nav id="main-navigation" class="nav-main">
+      <ul class="menu">
+        <li class="menu-item">
+          <a class="menu-link" href="#">Home</a>
+        </li>
+        <li class="menu-item">
+          <a class="menu-link" href="#">Projects</a>
+          <ul class="submenu">
+            <li class="menu-item">
+              <a class="menu-link" href="./chime/">Chime</a>
+            </li>
+            <li class="menu-item">
+              <a class="menu-link" href="./lefttowrite/">Left To Write</a>
+            </li>
+            <li class="menu-item">
+              <a class="menu-link" href="./bigtoe/">Big Toe</a>
+            </li>
+          </ul>
+        </li>
+        <li class="menu-item">
+          <a class="menu-link" href="#0">About</a>
+        </li>
+        <li class="menu-item">
+          <a class="menu-link" href="#0">Contact</a>
+        </li>
+      </ul>
     </nav>
-
     <!-- theme controls -->
+    <form action="" class="theme-picker">
+      <fieldset>
+        <legend class="sr-only">Change theme</legend>
+        <label for="light" class="sr-only">Light</label>
+        <input type="radio" name="theme" id="light" checked />
+        <label for="dark" class="sr-only">Dark</label>
+        <input type="radio" name="theme" id="dark" />
+        <label for="pink" class="sr-only">Pink</label>
+        <input type="radio" name="theme" id="pink" />
+        <label for="green" class="sr-only">Green</label>
+        <input type="radio" name="theme" id="green" />
+        <label for="blue" class="sr-only">Blue</label>
+        <input type="radio" name="theme" id="blue" />
+        <!-- <label for="up" class="sr-only">Previous page</label>
+        <input type="radio" name="scroll" id="up" />
+        <label for="down" class="sr-only">Next page</label>
+        <input type="radio" name="scroll" id="down" /> -->
+      </fieldset>
+    </form>
 
     <div class="site-wrapper">
       <!-- Front page -->

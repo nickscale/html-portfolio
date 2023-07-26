@@ -10,12 +10,10 @@ for (i=0;i<pixels.length;i++) {
 let currentLetter = 0;
 let interval = setInterval(flipLetters, 75);
 let thisFlippingSound = new Audio("/audio/split-flap-display.mp3");
-thisFlippingSound.volume = 0;
+thisFlippingSound.volume = 0.25;
 thisFlippingSound.play();
 
 function flipLetters(n) {
-
-
 
     // set every letter to a random character, starting from the current letter
     for (j=currentLetter;j<pixels.length;j++) {

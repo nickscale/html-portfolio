@@ -23,8 +23,8 @@
   /* Layout sizing defaults */
   /* For all pages except hero/full-width page */
   --content-width: 960px; /* i.e. maximum width */
-  --content-margin-x: 3vw;
-  --content-margin-y: 8vh;
+  --content-margin-x: 5vw;
+  --content-margin-y: 10vh;
 
   /* controls stylings */
   --button-size: 1rem;
@@ -48,31 +48,63 @@ html {
 
 body {
   font-family: var(--font-body);
-  background: var(--theme-body);
   color: var(--theme-text);
+  user-select: none;
 }
 
 /***** LAYOUT STYLINGS *****/
 
 .site-wrapper {
+  background: var(--theme-body);
 }
 
+/* for front page (hero) content */
+.hero-container {
+  position: relative;
+  padding: 0 10vmin 0 2vmin;
+  z-index: 1;
+  height: 96vh;
+  margin: 0 0 -4vmin 0;
+
+  background: var(--grad1);
+  background-size: 200% 200%;
+  animation: gradient 10s ease infinite;
+}
+
+@keyframes gradient {
+  0% {
+    background-position: 0% 50%;
+  }
+  50% {
+    background-position: 100% 50%;
+  }
+  100% {
+    background-position: 0% 50%;
+  }
+}
+
+/* additional effects for front page */
+.background {
+  width: 100%;
+  height: 100%;
+  position: absolute;
+  top: 0;
+  left: 0;
+  opacity: 0.05;
+  background-image: url("../images/whitenoise.gif");
+  background-repeat: repeat;
+  /* background: red; */
+}
+
+/* for all other pages except front page */
 .page-container {
   position: relative;
   padding: var(--content-margin-y) var(--content-margin-x);
   display: flex;
   justify-content: center;
-  /* background: var(--DEBUG1); */
 }
 
-.hero-container {
-  position: relative;
-  padding: 0 3rem 0 0;
-  z-index: 1;
-  /* background: var(--DEBUG1); */
-}
-
-/* this constrains content to max-width */
+/* non full width content */
 .content-container {
   position: relative;
   width: 100%;
@@ -82,35 +114,22 @@ body {
   align-items: start;
   gap: 0;
   transform: skewY(var(--skew-angle)); /* only applied with diagonal class */
+}
+
+.section-title {
+  width: 6rem;
   /* background: var(--DEBUG1); */
 }
 
-.content-body {
+.section-body {
   width: 100%;
-  margin: 0 0 0 var(--content-margin-x);
-  /* background: var(--DEBUG5); */
 }
 
 .columns {
   display: grid;
-  padding: 0;
-  margin: 0;
   grid-template-columns: repeat(auto-fill, minmax(240px, 1fr));
   grid-gap: 1em;
   /* background: var(--DEBUG4); */
-}
-
-.background-container {
-  position: absolute;
-  z-index: 0;
-  width: 100%;
-  top: 0;
-  left: 0;
-
-  background-image: var(--background-image);
-  background-attachment: fixed;
-  background-size: cover;
-  /* background: var(--DEBUG2); */
 }
 
 /*** SPECIFIC PAGE STYLINGS ***/
@@ -119,33 +138,23 @@ body {
 
 .page-container #front {
   height: 100vh;
-  /* background: var(--DEBUG1); */
 }
 
 .letter-matrix {
   position: relative;
-  padding: 1rem;
+  padding: 0;
   display: grid;
   grid-template-columns: repeat(9, 1fr);
   grid-template-rows: repeat(4, 1fr);
-  gap: 2rem;
-}
-
-.letter-matrix a {
-  display: inline-block;
-  text-decoration: none;
-}
-
-.letter-matrix a:hover {
-  background-color: var(--theme-cta);
+  gap: 2px;
 }
 
 .pixel {
   font-family: var(--font-mono);
-  font-size: clamp(4rem, 9vw, 15vh);
+  font-size: 12vmin;
+  line-height: 20vh;
   text-align: center;
   color: var(--theme-text);
-  /* background: green; */
 }
 
 .pointer {
@@ -189,6 +198,7 @@ body {
 /* ABOUT page styling */
 
 .page-container#about {
+  padding: var(--content-margin-y);
 }
 
 /* SKILLS page stylings */
@@ -197,8 +207,8 @@ body {
 }
 
 .skill {
-  padding: 0 1rem 1rem 1rem;
   text-align: center;
+  /* background: var(--DEBUG4); */
 }
 
 /* CONTACT page styling */
@@ -210,7 +220,7 @@ body {
   width: 200px;
   height: 200px;
   background: var(--theme-bg);
-  border-radius: 1rem;
+  padding: 0.25rem;
 }
 
 /* FOOTER page stylings */
@@ -249,20 +259,6 @@ body {
   background: var(--theme-cta);
 }
 
-/*** COMPONENT STYLINGS ***/
-
-.nice-box-light {
-  padding: 1rem;
-  background: var(--theme-bg); /* needs alpha for blur */
-  backdrop-filter: blur(5px);
-  -webkit-backdrop-filter: blur(5px);
-
-  margin: 1rem;
-  /* border: 1px dashed black; */
-  box-shadow: 0px 0px 10px 10px var(--theme-shadow);
-  border-radius: 3px;
-}
-
 /***** AESTHETIC STYLINGS *****/
 
 /* text stylings */
@@ -289,7 +285,7 @@ h3 {
 p {
   font-size: 1rem;
   font-weight: 300;
-  margin: 1rem 0;
+  margin: 0 0 1rem 0;
 }
 
 a {
@@ -310,31 +306,42 @@ li {
 }
 
 .vertical-bg {
-  position: absolute;
-  top: 0;
-  left: 0;
-  transform-origin: left top;
-  transform: rotate(90deg);
+  position: relative;
+  transform-origin: left bottom;
+  transform: translateY(-100%) rotate(90deg);
 }
 
-.text-heading,
+.text-heading {
+  color: var(--theme-cta);
+}
+
 .text-cta {
   color: var(--theme-cta);
+  animation: glow 2s var(--ease) infinite;
+}
+@keyframes glow {
+  0%,
+  100% {
+    opacity: 0;
+  }
+  50% {
+    opacity: 1;
+  }
 }
 
 /** section edge stylings **/
 
 .diagonal {
   --skew-angle: -2deg;
-  --diag-background: var(--theme-text);
   color: var(--theme-bg);
   position: relative;
+  z-index: 2;
   isolation: isolate;
 }
 
 .diagonal::after {
   content: "";
-  background: var(--diag-background);
+  background: var(--theme-text);
   position: absolute;
   z-index: -1;
   inset: 0; /* shorthand for top/bottom/left/right = 0 */
@@ -345,16 +352,13 @@ li {
 
 .theme-picker > fieldset {
   position: fixed;
-  z-index: 10000;
-  isolation: isolate;
-  top: 46px;
-  right: 24px;
-  border: 0;
+  top: 7.5vmin;
+  right: 3.8vmin;
+  z-index: 100;
   display: flex;
   flex-direction: column;
-  gap: 6px;
-  width: fit-content;
-  border-radius: 0 0 10px 10px;
+  gap: 0.5rem;
+  isolation: isolate;
 }
 
 .theme-picker input[type="radio"] {
@@ -362,14 +366,13 @@ li {
   width: min(var(--button-size), 25px);
   height: min(var(--button-size), 25px);
   border: 3px solid var(--control-color, currentColor);
-  border-radius: 50%;
+  /* border-radius: 50%; */
   cursor: pointer;
 }
 
 .theme-picker input[type="radio"]:hover {
   border: 5px solid var(--control-color);
 }
-
 .theme-picker input[type="radio"]:checked {
   background: var(--control-color);
 }
@@ -379,7 +382,7 @@ li {
 .theme-picker input[type="radio"]#dark {
   --control-color: black;
 }
-.theme-picker input[type="radio"]#red {
+.theme-picker input[type="radio"]#pink {
   --control-color: #fa027e;
 }
 .theme-picker input[type="radio"]#green {
@@ -394,16 +397,17 @@ li {
 /* LIGHT (DEFAULT) theme stylings */
 .light,
 :root:has(#light:checked) {
-  --theme-body: var(--grad1); /* this can be a gradient */
-  --theme-bg: var(--theme-white); /* all others must be solid */
+  --theme-body: #999;
+  --theme-bg: var(--theme-white);
   --theme-text: var(--theme-black);
   --theme-text-heading: var(--theme-black);
   --theme-shadow: #6664;
   --theme-cta: #d82121;
   --grad1: radial-gradient(at 100% 0%, var(--theme-white), #888);
   --grad2: radial-gradient(at 0% 100%, var(--theme-white), #888);
-  --background-image: var(--grad1); /* only used in background-container */
 
+  /* UNUSED properties */
+  --background-image: none; /* for background-container */
   scrollbar-color: var(--theme-cta) var(--theme-bg);
 }
 
@@ -417,39 +421,20 @@ li {
   --theme-shadow: #28282866;
   --theme-cta: #d82121;
   --grad1: radial-gradient(at 0% 100%, #000, #222);
-  --grad2: radial-gradient(at 100% 0%, #000, #222);
-  --background-image: var(--grad1);
+  --grad2: radial-gradient(at 100% 0%, #000, #111);
 }
 
 /* RED theme stylings */
-.red,
-:root:has(#red:checked) {
+.pink,
+:root:has(#pink:checked) {
   --theme-body: #861452;
   --theme-bg: var(--theme-black);
   --theme-text: var(--theme-white);
   --theme-text-heading: #e0218a;
   --theme-shadow: #1114;
   --theme-cta: #e0218a; /* Barbie pink (TM) */
-  --grad1: linear-gradient(-45deg, #000000, #222, #38071f);
-  --background-image: var(--grad1);
-}
-
-/*** why isn't this working????? ***/
-.site-wrapper:has(#red:checked) {
-  background: var(--theme-body);
-  background-size: 100% 100%;
-  animation: gradient 10s ease infinite;
-}
-@keyframes gradient {
-  0% {
-    background-position: 0% 50%;
-  }
-  50% {
-    background-position: 100% 50%;
-  }
-  100% {
-    background-position: 0% 50%;
-  }
+  --grad1: linear-gradient(-45deg, #ee7752, #e73c7e, #23a6d5, #23d5ab);
+  --grad2: linear-gradient(-45deg, #000000, #222, #38071f);
 }
 
 /* GREEN theme stylings */
@@ -461,8 +446,8 @@ li {
   --theme-text-heading: var(--theme-text);
   --theme-shadow: #4442;
   --theme-cta: #2d2;
-  --grad1: linear-gradient(-45deg, #071f06, #006300);
-  --background-image: var(--grad1);
+  --grad1: linear-gradient(90deg, #71870f 0%, #008552 100%);
+  --grad2: linear-gradient(-45deg, #071f06, #006300);
 }
 
 /* BLUE theme stylings */
@@ -475,7 +460,6 @@ li {
   --theme-shadow: #aaa2;
   --theme-cta: #44f;
   --grad1: linear-gradient(-45deg, #111, #222, #004);
-  --background-image: var(--grad1);
 }
 
 /* misc stylings */
@@ -489,4 +473,28 @@ li {
   overflow: hidden;
   position: absolute;
   white-space: nowrap;
+}
+
+/* media queries */
+
+@media screen and (max-width: 960px) and (min-width: 641px) {
+  .letter-matrix {
+    padding: 1vh 0 0 0;
+    grid-template-columns: repeat(6, 1fr);
+    grid-template-rows: repeat(6, 1fr);
+  }
+  .pixel {
+    line-height: 14vh;
+  }
+}
+
+@media screen and (max-width: 640px) {
+  .letter-matrix {
+    padding: 2vh 0 0 0;
+    grid-template-columns: repeat(4, 1fr);
+    grid-template-rows: repeat(9, 1fr);
+  }
+  .pixel {
+    line-height: 9vh;
+  }
 }

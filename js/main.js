@@ -22,6 +22,7 @@ const setTheme = function () {
 colorThemes.forEach((themeOption) => {
   themeOption.addEventListener("click", () => {
     storeTheme(themeOption.id);
+    location.reload();
     console.log('Set theme:',themeOption.id);
   });
 });

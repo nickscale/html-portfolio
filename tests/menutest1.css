@@ -1,5 +1,19 @@
 /* Based on https://codepen.io/erikterwan/pen/EVzeRP by Erik Terwan, 2015 */
 
+:root {
+  --black: #232323;
+  --white: #cdcdcd;
+  --grey: #cdcdcd;
+  --action: red;
+}
+
+body {
+  margin: 0;
+  padding: 0;
+  background: var(--action);
+  color: var(--white);
+}
+
 nav {
   display: block;
   position: absolute;
@@ -21,11 +35,11 @@ nav {
 #menuToggle a {
   text-decoration: none;
   text-align: right;
-  color: var(--theme-bg);
+  color: var(--black);
   transition: color 0.2s ease;
 }
 #menuToggle a:hover {
-  color: var(--theme-cta);
+  color: var(--action);
 }
 #menuToggle input {
   display: block;
@@ -47,7 +61,7 @@ nav {
   height: 4px;
   margin-bottom: 5px;
   position: relative;
-  background: var(--theme-text);
+  background: var(--grey);
   z-index: 1;
   transform-origin: 4px 0px;
   transition: transform 0.3s ease-in-out, background 0.3s ease-in-out, opacity 0.35s ease;
@@ -63,7 +77,7 @@ nav {
 #menuToggle input:checked ~ span {
   opacity: 1;
   transform: rotate(45deg) translate(-2px, -1px);
-  background: var(--theme-bg);
+  background: var(--black);
 }
 #menuToggle input:checked ~ span:nth-last-child(3) {
   opacity: 0;
@@ -79,9 +93,9 @@ nav {
   width: max(320px, 25dvw);
   height: 100dvh;
   margin: -100px 0 0 65px;
-  padding: 2vmin;
+  padding: 50px;
   padding-top: 125px;
-  background: var(--theme-text);
+  background: var(--white);
   list-style-type: none;
   transform-origin: 0% 0%;
   transform: none;
@@ -89,9 +103,8 @@ nav {
 }
 
 #menu li {
-  padding: 1vmin 2vmin;
-  font-family: var(--font-heading);
-  font-size: 3vh;
+  padding: 1vh 4rem;
+  font-size: 4vh;
 }
 
 /* remove transform when checked */
