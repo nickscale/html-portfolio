@@ -23,11 +23,14 @@
   /* Layout sizing defaults */
   /* For all pages except hero/full-width page */
   --content-width: 960px; /* i.e. maximum width */
-  --content-margin-x: 5vw;
-  --content-margin-y: 10vh;
+  --content-margin-x: 5dvw;
+  --content-margin-y: 10dvh;
 
   /* controls stylings */
-  --button-size: 1rem;
+  --button-size: max(30px, 1.25dvw);
+
+  /* layout angle */
+  --skew-angle: -2deg;
 
   /* animation styling */
   --delay: 150ms;
@@ -49,13 +52,13 @@ html {
 body {
   font-family: var(--font-body);
   color: var(--theme-text);
-  user-select: none;
 }
 
 /***** LAYOUT STYLINGS *****/
 
 .site-wrapper {
   background: var(--theme-body);
+  overflow: hidden;
 }
 
 /* for front page (hero) content */
@@ -63,7 +66,7 @@ body {
   position: relative;
   padding: 0 10vmin 0 2vmin;
   z-index: 1;
-  height: 96vh;
+  height: 99dvh;
   margin: 0 0 -4vmin 0;
 
   background: var(--grad1);
@@ -112,24 +115,21 @@ body {
   display: flex;
   justify-content: start;
   align-items: start;
-  gap: 0;
-  transform: skewY(var(--skew-angle)); /* only applied with diagonal class */
 }
 
 .section-title {
-  width: 6rem;
-  /* background: var(--DEBUG1); */
+  width: 12vw;
 }
 
 .section-body {
-  width: 100%;
+  width: 87vw;
 }
 
 .columns {
   display: grid;
-  grid-template-columns: repeat(auto-fill, minmax(240px, 1fr));
-  grid-gap: 1em;
-  /* background: var(--DEBUG4); */
+  width: 100%;
+  grid-template-columns: repeat(auto-fit, minmax(240px, 1fr));
+  gap: 1rem;
 }
 
 /*** SPECIFIC PAGE STYLINGS ***/
@@ -137,29 +137,25 @@ body {
 /* FRONT page stylings */
 
 .page-container #front {
-  height: 100vh;
+  height: 100dvh;
 }
 
 .letter-matrix {
   position: relative;
-  padding: 0;
   display: grid;
-  grid-template-columns: repeat(9, 1fr);
-  grid-template-rows: repeat(4, 1fr);
-  gap: 2px;
+  justify-items: center;
+  /* NOTE: grid template is set in media queries */
 }
 
 .pixel {
   font-family: var(--font-mono);
-  font-size: 12vmin;
-  line-height: 20vh;
-  text-align: center;
   color: var(--theme-text);
+  /* outline: solid 1px var(--DEBUG5); */
 }
 
 .pointer {
   position: relative;
-  font-size: 3rem;
+  line-height: 7dvh;
   text-align: center;
   animation: point 2s ease-in-out infinite;
 }
@@ -198,7 +194,6 @@ body {
 /* ABOUT page styling */
 
 .page-container#about {
-  padding: var(--content-margin-y);
 }
 
 /* SKILLS page stylings */
@@ -218,7 +213,8 @@ body {
 
 .qr-code {
   width: 200px;
-  height: 200px;
+  max-width: 80dvw;
+  aspect-ratio: 1;
   background: var(--theme-bg);
   padding: 0.25rem;
 }
@@ -226,6 +222,8 @@ body {
 /* FOOTER page stylings */
 
 .page-container#footer {
+  padding: 5vh 0 10vh 0;
+  margin: 0 0 -3vh 0;
 }
 
 .footer {
@@ -235,10 +233,6 @@ body {
   gap: 2rem;
 }
 
-.column {
-  width: min(260px, 25%);
-  /* background: var(--DEBUG3); */
-}
 .contact-form textarea,
 .contact-form input,
 .contact-form button {
@@ -265,25 +259,25 @@ body {
 
 h1 {
   font-family: var(--font-heading);
-  font-size: clamp(2rem, 6vw, 3rem);
+  font-size: clamp(2rem, 6vmin, 3rem);
   font-weight: 500;
   line-height: 120%;
   margin: 1vh 0;
 }
 
 h2 {
-  font-size: clamp(2rem, 4vw, 3rem);
+  font-size: clamp(2rem, 4vmin, 3rem);
   font-weight: 300;
-  margin: 1vh 0;
+  margin: 1dvh 0;
 }
 
 h3 {
-  font-size: clamp(0.5rem, 2vw, 0.9rem);
+  font-size: clamp(0.5rem, 2vmin, 0.9rem);
   font-weight: 500;
 }
 
 p {
-  font-size: 1rem;
+  font-size: 1.2rem;
   font-weight: 300;
   margin: 0 0 1rem 0;
 }
@@ -308,7 +302,7 @@ li {
 .vertical-bg {
   position: relative;
   transform-origin: left bottom;
-  transform: translateY(-100%) rotate(90deg);
+  transform: translate(0%, -100%) rotate(90deg);
 }
 
 .text-heading {
@@ -332,7 +326,6 @@ li {
 /** section edge stylings **/
 
 .diagonal {
-  --skew-angle: -2deg;
   color: var(--theme-bg);
   position: relative;
   z-index: 2;
@@ -431,26 +424,40 @@ li {
   white-space: nowrap;
 }
 
-/* media queries */
+/*** MEDIA QUERIES based on aspect ratio, not size ***/
 
-@media screen and (max-width: 960px) and (min-width: 641px) {
+/* for portrait screens taller than 3:4 */
+@media (max-aspect-ratio: 3/4) {
   .letter-matrix {
-    padding: 1vh 0 0 0;
-    grid-template-columns: repeat(6, 1fr);
-    grid-template-rows: repeat(6, 1fr);
-  }
-  .pixel {
-    line-height: 14vh;
-  }
-}
-
-@media screen and (max-width: 640px) {
-  .letter-matrix {
-    padding: 2vh 0 0 0;
     grid-template-columns: repeat(4, 1fr);
     grid-template-rows: repeat(9, 1fr);
   }
   .pixel {
-    line-height: 9vh;
+    font-size: 8dvh;
+    line-height: 10dvh;
+  }
+}
+
+/* for squareish screens between 3:4 and 4:3 */
+@media (min-aspect-ratio: 3/4) and (max-aspect-ratio: 4/3) {
+  .letter-matrix {
+    grid-template-columns: repeat(6, 1fr);
+    grid-template-rows: repeat(6, 1fr);
+  }
+  .pixel {
+    font-size: 13dvh;
+    line-height: 14.5dvh;
+  }
+}
+
+/* for landscape screens wider than 4:3 */
+@media (min-aspect-ratio: 4/3) {
+  .letter-matrix {
+    grid-template-columns: repeat(9, 1fr);
+    grid-template-rows: repeat(4, 1fr);
+  }
+  .pixel {
+    font-size: 17.5dvh;
+    line-height: 20.5dvh;
   }
 }

@@ -13,8 +13,8 @@
     <link rel="stylesheet" href="css/nav.css" />
 
     <!-- Link and defer JavaScript -->
-    <script src="./js/main.js" defer></script>
-    <script src="./js/text-matrix.js" defer></script>
+    <script src="js/main.js" defer></script>
+    <script src="js/text-matrix.js" defer></script>
   </head>
 
   <body>
@@ -27,14 +27,16 @@
           <span></span>
           <span></span>
           <ul id="menu">
-            <a href="#"><li>Home</li></a>
-            <a href="#"><li>Projects</li></a>
-            <a href="#"><li>Layovr&emsp;</li></a>
-            <a href="#"><li>Chime&emsp;</li></a>
-            <a href="#"><li>Left To Write&emsp;</li></a>
-            <a href="#"><li>Info</li></a>
-            <a href="#"><li>Skills</li></a>
-            <a href="#"><li>Contact</li></a>
+            <a href="/"><li>Home</li></a>
+            <a href="#projects"><li>Projects</li></a>
+            <ul>
+              <a href="./chime/"><li>Chime</li></a>
+              <a href="./lefttowrite/"><li>Left To Write</li></a>
+              <a href="./bigtoe/"><li>Big Toe</li></a>
+              <a href="./simon/"><li>Simple Simon</li></a>
+            </ul>
+            <a href="#skills"><li>Skills</li></a>
+            <a href="#contact"><li>Contact</li></a>
           </ul>
         </div>
         <div id="theme-picker">
@@ -100,7 +102,6 @@
           <span class="pixel">N</span>
         </div>
         <div class="pointer"><span class="material-symbols-outlined"> expand_more </span></div>
-        <!-- <div class="horizontal-dots">_... ___ ___</div> -->
       </section>
 
       <!-- Projects -->
@@ -111,29 +112,35 @@
               <h1>Projects<span class="text-cta">.</span></h1>
             </div>
           </div>
-          <div class="section-body">
+          <div class="section-body columns">
             <!-- project gallery -->
-            <div class="project-gallery columns">
-              <div class="project-card" id="proj1">
+            <div class="project-card" id="proj1">
+              <a href="./chime/">
                 <div class="project-thumb" alt="PLACEHOLDER FOR IMAGE"></div>
                 <h1 class="project-title">Chime</h1>
-                <p class="project-stub">A musical toy.</p>
-              </div>
-              <div class="project-card" id="proj2">
+                <p class="project-stub">A musical toy.</p></a
+              >
+            </div>
+            <div class="project-card" id="proj2">
+              <a href="./lefttowrite/">
                 <div class="project-thumb" alt="PLACEHOLDER FOR IMAGE"></div>
                 <h1 class="project-title">Left To Write</h1>
-                <p class="project-stub">Helping writers meet deadlines.</p>
-              </div>
-              <div class="project-card" id="proj3">
+                <p class="project-stub">Helping writers meet deadlines.</p></a
+              >
+            </div>
+            <div class="project-card" id="proj3">
+              <a href="./bigtoe/">
                 <div class="project-thumb" alt="PLACEHOLDER FOR IMAGE"></div>
                 <h1 class="project-title">Big Toe</h1>
                 <p class="project-stub">Tic tac toe - but bigger!</p>
-              </div>
-              <div class="project-card" id="proj4">
+              </a>
+            </div>
+            <div class="project-card" id="proj4">
+              <a href="projects.html">
                 <div class="project-thumb" alt="PLACEHOLDER FOR IMAGE"></div>
-                <h1 class="project-title">Simple Simon</h1>
-                <p class="project-stub">The classic 80s game revisited.</p>
-              </div>
+                <h1 class="project-title">More...</h1>
+                <p class="project-stub">See more projects.</p>
+              </a>
             </div>
           </div>
         </div>
@@ -181,11 +188,12 @@
       <!-- Contact -->
       <section class="page-container" id="contact">
         <div class="content-container">
-          <div class="vertical-bg">
-            <h1>Contact<span class="text-cta">.</span></h1>
+          <div class="section-title">
+            <div class="vertical-bg">
+              <h1>Contact<span class="text-cta">.</span></h1>
+            </div>
           </div>
           <div class="section-body columns">
-            <img class="qr-code" src="./images/vcf-qrcode.png" alt="QR code with my contact details" />
             <div>
               <form action="mailto:nickswinglehurst@gmail.com?subject=Message via website" class="contact-form">
                 <textarea name="Your message" placeholder="Reach out! It's good for your shoulders..." min="32" required></textarea>
@@ -193,12 +201,16 @@
                 <button type="submit">Send</button>
               </form>
             </div>
+            <div>
+              <p>Or scan my contact details...</p>
+              <img class="qr-code" src="./images/vcf-qrcode.png" alt="QR code with my contact details" />
+            </div>
           </div>
         </div>
       </section>
 
       <!-- Footer -->
-      <footer class="page-container" id="footer">
+      <footer class="page-container diagonal" id="footer">
         <div class="content-container">
           <div class="section-title">
             <div class="vertical-bg">
