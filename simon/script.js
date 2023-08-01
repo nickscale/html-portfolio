@@ -9,16 +9,12 @@ let playerColor = "";
 let level = 0;
 let thisItem = 0;
 
-$(document).ready( function() {
-  setCopyrightYear();
-});
+// detect mouse clicks
+$(document).on("click", function () {
 
-// detect keypress to begin game
-document.addEventListener("keydown", function () {
+  // if game is not in progress, initialise it
   if (playing === false) {
-
-    // if game is not in progress, initialise it
-
+  
     playing = true; // i.e. let's begin a game
     gamePattern = [];
     playerPattern = [];
@@ -32,7 +28,6 @@ document.addEventListener("keydown", function () {
     $("#level").text("Level " + String(level+1));
     $("#level").css("display", "block");
     $("#sub-title").css("visibility", "hidden");
-
 
     setTimeout(function (){
       gameColor = randomColor();
@@ -52,7 +47,7 @@ $(".btn").on("mousedown", function () {
     flashButton(playerColor);
     
     gameColor = gamePattern[thisItem];
-    console.log("Index:"+thisItem+" playerColor:" + playerColor + " gameColor:" + gameColor);
+    console.log("Index:"+thisItem+" player:" + playerColor + " game:" + gameColor);
 
     //check if it's the right button
     if (playerColor === gameColor) {
@@ -73,10 +68,8 @@ $(".btn").on("mousedown", function () {
           gamePattern.push(gameColor);
           flashButton(gameColor);
           playSound(gameColor);
-        }, 300); // pause in milliseconds
-         
-      }  
-      
+        }, 300); // pause in milliseconds         
+      }        
     } else {
       
       // if not correct, play 'wrong' sound and end game

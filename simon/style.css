@@ -56,8 +56,8 @@ body {
 @keyframes board-landing {
   0% {
     scale: 0%;
-    translate: 0px 200px;
-    rotate: -8turn;
+    translate: 0px -100px;
+    rotate: -4turn;
   }
   100% {
     scale: 100%;
@@ -71,11 +71,11 @@ body {
 #main-title {
   display: flex;
   align-items: center;
-  height: 25vh;
+  height: 25dvh;
 }
 
 #sub-title {
-  height: 10vh;
+  height: 10dvh;
 }
 
 /* text holders toggled to display 2-line content */
@@ -95,8 +95,8 @@ body {
 
 .btn {
   display: inline-block;
-  height: 25vh;
-  width: 25vh;
+  height: 23dvh;
+  width: 23dvh;
   margin: 0.5vh;
   border-radius: 10%;
 }

@@ -1,22 +1,30 @@
 /* Based on https://codepen.io/erikterwan/pen/EVzeRP by Erik Terwan, 2015 */
 
-nav {
-  display: block;
+.nav {
   position: absolute;
   z-index: 100;
   width: 100%;
   height: 100%;
+  padding: 2rem;
   overflow: hidden;
+  isolation: isolate;
+  display: flex;
+  flex-direction: column;
+  justify-content: start;
+  align-items: end;
+  gap: 0.5rem;
+  background: var(--DEBUG4);
 }
 
-/* main menu toggle */
-#menuToggle {
-  display: block;
+.nav-main {
+  display: inline-block;
   position: absolute;
   top: 3rem;
-  right: 2rem;
-  z-index: 1;
-  user-select: none;
+  right: 3rem;
+}
+/* main menu toggle */
+#menuToggle {
+  display: static;
 }
 #menuToggle a {
   text-decoration: none;
@@ -29,7 +37,7 @@ nav {
 }
 #menuToggle input {
   display: block;
-  width: 40px;
+  width: var(--button-size);
   height: 32px;
   position: absolute;
   top: -7px;
@@ -43,7 +51,7 @@ nav {
 /* hamburger menu */
 #menuToggle span {
   display: block;
-  width: 32px;
+  width: var(--button-size);
   height: 4px;
   margin-bottom: 5px;
   position: relative;
@@ -59,18 +67,17 @@ nav {
   transform-origin: 0% 100%;
 }
 
-/* transform spans into crosshair */
+/* transform burger into crosshair */
 #menuToggle input:checked ~ span {
   opacity: 1;
-  transform: rotate(45deg) translate(-2px, -1px);
+  transform: scale(3 0);
   background: var(--theme-bg);
 }
 #menuToggle input:checked ~ span:nth-last-child(3) {
-  opacity: 0;
-  transform: rotate(0deg) scale(0.2, 0.2);
+  transform: scale(4 0);
 }
 #menuToggle input:checked ~ span:nth-last-child(2) {
-  transform: rotate(-45deg) translate(0, -1px);
+  transform: scale(5 0);
 }
 
 /* position menu tab */
@@ -78,7 +85,7 @@ nav {
   position: absolute;
   width: max(320px, 25dvw);
   height: 100dvh;
-  margin: -100px 0 0 65px;
+  margin: -165px 0 0 65px;
   padding: 2vmin;
   padding-top: 125px;
   background: var(--theme-text);
@@ -97,4 +104,45 @@ nav {
 /* remove transform when checked */
 #menuToggle input:checked ~ ul {
   transform: translate(-100%, 0);
+}
+
+/* theme picker stylings */
+
+#theme-picker {
+  position: static;
+  display: flex;
+  flex-direction: column;
+  gap: 0.5rem;
+  isolation: isolate;
+}
+
+#theme-picker input[type="radio"] {
+  appearance: none; /* strips default stylings */
+  width: min(var(--button-size), 25px);
+  height: min(var(--button-size), 25px);
+  border: 3px solid var(--control-color, currentColor);
+  /* border-radius: 50%; */
+  cursor: pointer;
+}
+
+#theme-picker input[type="radio"]:hover {
+  border: 5px solid var(--control-color);
+}
+#theme-picker input[type="radio"]:checked {
+  background: var(--control-color);
+}
+#theme-picker input[type="radio"]#light {
+  --control-color: white;
+}
+#theme-picker input[type="radio"]#dark {
+  --control-color: black;
+}
+#theme-picker input[type="radio"]#pink {
+  --control-color: #fa027e;
+}
+#theme-picker input[type="radio"]#green {
+  --control-color: #0fba0f;
+}
+#theme-picker input[type="radio"]#blue {
+  --control-color: #2828df;
 }

@@ -348,50 +348,6 @@ li {
   transform: skewY(var(--skew-angle));
 }
 
-/* theme picker stylings */
-
-.theme-picker > fieldset {
-  position: fixed;
-  top: 7.5vmin;
-  right: 3.8vmin;
-  z-index: 100;
-  display: flex;
-  flex-direction: column;
-  gap: 0.5rem;
-  isolation: isolate;
-}
-
-.theme-picker input[type="radio"] {
-  appearance: none; /* strips default stylings */
-  width: min(var(--button-size), 25px);
-  height: min(var(--button-size), 25px);
-  border: 3px solid var(--control-color, currentColor);
-  /* border-radius: 50%; */
-  cursor: pointer;
-}
-
-.theme-picker input[type="radio"]:hover {
-  border: 5px solid var(--control-color);
-}
-.theme-picker input[type="radio"]:checked {
-  background: var(--control-color);
-}
-.theme-picker input[type="radio"]#light {
-  --control-color: white;
-}
-.theme-picker input[type="radio"]#dark {
-  --control-color: black;
-}
-.theme-picker input[type="radio"]#pink {
-  --control-color: #fa027e;
-}
-.theme-picker input[type="radio"]#green {
-  --control-color: #0fba0f;
-}
-.theme-picker input[type="radio"]#blue {
-  --control-color: #2828df;
-}
-
 /*** THEMES STYLINGS ***/
 
 /* LIGHT (DEFAULT) theme stylings */
