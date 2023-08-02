@@ -5,122 +5,130 @@
   padding: 0;
   box-sizing: border-box;
 
-  --app-black: #08080f;
-  --app-white: #f8f8f8;
-  --app-grey: #ddd;
-  --app-highlight: #88f;
-  --app-select-green: #4d4;
-  --app-select-red: #d44;
+  --max-width: 960px;
+
+  --black: #08080f;
+  --white: #f8f8f8;
+  --grey: #ddd;
+  --highlight: #88f;
+  --select-green: #4d4;
+  --select-red: #d44;
+  --shadow: 0px 0px 10px 10px #fff4 inset, 2px 2px 5px 5px #1111;
 
   --font-body: "Poppins", sans-serif;
   --font-heading: "Poppins", sans-serif;
 
-  --gradient: linear-gradient(45deg, #ddd 0%, #aaa 100%);
+  --gradient: linear-gradient(45deg, #fff 0%, #333 100%);
 
   --DEBUG: #f00;
 }
 
 body {
   font-family: var(--font-body);
+  background: var(--gradient);
 }
 
+/* container layout stylings */
+
 .page-container {
-  width: 100vw;
-  height: 100vh;
+  width: 100dvw;
+  height: 100dvh;
   display: flex;
   justify-content: center;
   align-items: center;
-  background: var(--app-black);
 }
 
 .app-container {
-  width: 90%;
-  max-width: 960px;
-  height: 90%;
-  max-height: 720px;
-  border-radius: 5px;
-  background: var(--gradient);
-  box-shadow: -5px -5px 10px 0px #0004 inset, 5px 5px 10px 0px #ddd2 inset;
+  width: 100%;
+  height: 100%;
+  padding: 4vmin;
+  gap: 4vmin;
+  display: flex;
+  flex-direction: column;
+  flex-wrap: nowrap;
+  justify-content: start;
+  align-items: center;
   user-select: none;
 }
 
-/* board stylings */
-
 .board-container {
-  height: 80%;
+  width: 100%;
+  height: 100%;
+  max-width: var(--max-width);
+  max-height: var(--max-width);
   display: flex;
   flex-direction: column;
-  gap: 0;
-  padding: 10px;
+  gap: 1vmin;
+  /* background: var(--DEBUG); */
 }
+
+.controls-container {
+  width: 100%;
+  height: auto;
+  max-width: var(--max-width);
+  display: flex;
+  justify-content: space-between;
+}
+
+/* element layout stylings */
 
 .row {
   display: flex;
   flex-direction: row;
-  flex-grow: 1;
-  gap: 5px;
+  flex-basis: 100%;
+  gap: 1vmin;
 }
 
 .button {
-  flex-grow: 1;
-  margin: 5px;
+  width: 100%;
   border-radius: 5px;
-  box-shadow: 0px 0px 10px 10px #fff4 inset, 2px 2px 5px 5px #1111;
+  box-shadow: var(--shadow);
 }
 
 .button:hover,
 .control:hover {
   cursor: pointer;
-  background: var(--app-highlight);
+  background: var(--highlight);
 }
 
 /* color stylings */
 
 /* when a melodic note has been clicked */
 .select-green {
-  background: var(--app-select-green);
+  background: var(--select-green);
 }
 
 /* when a percussion note has been clicked */
 .select-red {
-  background: var(--app-select-red);
+  background: var(--select-red);
 }
 
 .highlight {
   /* when a note is hovered or scrolled over */
-  background: var(--app-highlight);
+  background: var(--highlight);
 }
 
 /* controls stylings */
 
-.controls-container {
-  height: 20%;
-  display: flex;
-  justify-content: space-around;
-  padding: 10px;
-  max-height: 100px;
-}
-
 .controls-section {
   display: flex;
+  flex-basis: 25%;
+  gap: 1vmin;
   justify-content: center;
   align-items: center;
-  width: 20%;
-  height: 100%;
 }
 
 .control {
   display: inline-flex;
   align-items: center;
-  padding: 7px;
-  margin: 3px 0;
+  padding: 1vmin;
   height: fit-content;
   border-radius: 5px;
-  box-shadow: 0px 0px 10px 10px #fff4 inset, 2px 2px 5px 5px #1111;
+  box-shadow: var(--shadow);
 }
 
 #mode-controls {
-  padding: 12px 0 0 0;
+  text-align: left;
 }
 
 #play-controls {
@@ -153,7 +161,7 @@ body {
   left: 0;
   right: 0;
   bottom: 0;
-  background-color: var(--app-select-green);
+  background-color: var(--select-green);
   transition: 0.4s;
 }
 
@@ -164,12 +172,12 @@ body {
   width: 26px;
   left: 4px;
   bottom: 4px;
-  background-color: var(--app-white);
+  background-color: var(--white);
   transition: 0.4s;
 }
 
 .switch input:checked + .slider {
-  background-color: var(--app-select-red);
+  background-color: var(--select-red);
 }
 
 .switch input:checked + .slider:before {
@@ -203,94 +211,37 @@ body {
 #btn-random,
 #btn-reset {
   vertical-align: middle;
-  margin-left: 0.5vw;
+  margin-left: 0.5vmin;
 }
 
+/* tweak to fit 2 or 3 digits */
 #btn-tempo {
-  width: 66px;
-  text-align: left;
+  width: 68px;
 }
 
 /* misc furniture stylings */
 
-.home-btn {
-  position: absolute;
-  margin: 5px;
-  padding: 5px;
-  border: none;
-}
-
-.home-btn:hover {
-  background-color: #888;
-}
-
 footer {
-  margin: 10px;
   position: fixed;
   bottom: 0px;
   right: 0px;
-  font-size: x-small;
-  color: var(--app-white);
+  font-size: xx-small;
 }
 
-/* For mobile/portrait screens <700px */
-@media screen and (max-width: 700px) {
-  .app-container {
-    width: 100%;
-    max-width: none;
-    height: 100%;
-    max-height: none;
-    border-radius: 0px;
-    box-shadow: none;
-  }
-
-  .board-container {
-    height: 80%;
-  }
-
+@media (max-width: 480px) {
   .controls-container {
-    height: 20%;
-    padding: 2vh 2vw;
-    max-height: none;
-  }
-
-  .controls-section {
-    display: flex;
+    flex-wrap: wrap;
     justify-content: center;
-    align-items: flex-start;
   }
 
   #play-controls {
     flex-basis: 100%;
-  }
-
-  #mode-controls,
-  #misc-controls {
-    width: 50%;
-    align-items: flex-end;
-  }
-}
-
-@media screen and (max-width: 350px) {
-  .board-container {
-    height: 65%;
-  }
-
-  .controls-container {
-    height: 35%;
-    flex-direction: column;
-    align-items: center;
-  }
-
-  .button {
-    margin: 2px 1px;
-  }
-
-  #play-controls {
     order: 1;
   }
+
   #mode-controls,
   #misc-controls {
+    flex-basis: 50%;
     order: 2;
   }
 }

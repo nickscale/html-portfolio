@@ -13,132 +13,66 @@
   --color4: #ffc43d; /* amber */
   --color5: #f8ffe5; /* light yellow */
   --color6: #ffffff; /* pure white */
+  --shadow: #4444;
   --DEBUG: red;
 
-  --gradient: linear-gradient(0deg, var(--color1), var(--color2), var(--color3), var(--color4), var(--color5));
+  --gradient: linear-gradient(0deg, var(--color1), var(--color2), var(--color3), var(--color4));
 
   --gradient-reverse: linear-gradient(180deg, var(--color1), var(--color2), var(--color3), var(--color4), var(--color5));
+
+  --gradient-chrome: linear-gradient(180deg, var(--color1), var(--color6), var(--color2));
 }
 
 body {
-  background: var(--gradient);
   font-family: "Oxanium", sans-serif;
+  color: var(--color5);
 }
 
 /* layout stylings */
 
-.page-container {
-  width: 100vw;
-  height: 100vh;
-  display: flex;
-  justify-content: center;
-  align-items: center;
-}
-
 .game-container {
+  width: 100dvw;
+  height: 100dvh;
   display: flex;
   flex-direction: column;
   justify-content: center;
   align-items: center;
-  width: 65vh;
-  gap: 2vh;
-  padding: 2vh;
   text-align: center;
-  background-color: var(--color5);
+  gap: 2vmin;
+  padding: 2vmin;
+  /* background: var(--color5); */
+  background: var(--gradient);
+
   user-select: none;
+  overflow: hidden;
 }
 
-.board-container {
-  animation-name: board-landing;
-  animation-timing-function: ease-out;
-  animation-duration: 1s;
-}
-@keyframes board-landing {
-  0% {
-    scale: 0%;
-    translate: 0px -100px;
-    rotate: -4turn;
-  }
-  100% {
-    scale: 100%;
-    translate: 0px;
-    rotate: 0;
-  }
+/* hide board until game starts */
+#board-container {
+  display: none;
+  position: absolute;
+  left: center;
+  top: center;
+  margin-bottom: 10vmin;
+  z-index: 1;
+  isolation: isolate;
 }
 
-/* text area stylings */
+/* text areas stylings */
+
+#title-splash {
+  position: absolute;
+  top: 50%;
+  width: 100%;
+  z-index: 2;
+  padding: 5dvh 0;
+  transform: translateY(-65%) skewY(-15deg);
+  background: var(--gradient-chrome);
+  box-shadow: 0px 0px 30px 30px var(--shadow);
+}
 
 #main-title {
-  display: flex;
-  align-items: center;
-  height: 25dvh;
-}
-
-#sub-title {
-  height: 10dvh;
-}
-
-/* text holders toggled to display 2-line content */
-#game-title {
-  display: block;
-}
-
-#game-over {
-  display: none;
-}
-
-#level {
-  display: none;
-}
-
-/* the four main game buttons */
-
-.btn {
-  display: inline-block;
-  height: 23dvh;
-  width: 23dvh;
-  margin: 0.5vh;
-  border-radius: 10%;
-}
-
-.hoverable:hover {
-  cursor: pointer;
-}
-
-.color1 {
-  background-color: var(--color1);
-  border-top-left-radius: 100%;
-}
-
-.color2 {
-  background-color: var(--color2);
-  border-top-right-radius: 100%;
-}
-
-.color3 {
-  background-color: var(--color3);
-  border-bottom-left-radius: 100%;
-}
-
-.color4 {
-  background-color: var(--color4);
-  border-bottom-right-radius: 100%;
-}
-
-.color5 {
-  background-color: var(--color5);
-}
-
-/* text and highlight stylings */
-
-h1 {
-  font-size: 12vh;
-  line-height: 12vh;
-  font-weight: 800;
-  font-family: "Monoton";
-  margin: 0;
-
-  /* add gradient to title */
+  /* add gradient to title text */
   background: var(--gradient-reverse);
   -webkit-background-clip: text;
   -webkit-text-fill-color: transparent;
@@ -146,63 +80,78 @@ h1 {
   -webkit-text-fill-color: transparent;
 }
 
+#status {
+  position: absolute;
+  left: 50%;
+  transform: translateX(-50%);
+  bottom: 1vmin;
+}
+
+/* the four main game buttons */
+
+.btn {
+  display: inline-block;
+  border-radius: 10%;
+  height: 40vmin;
+  width: 40vmin;
+  margin: 1vmin;
+}
+
+.hoverable:hover {
+  cursor: pointer;
+}
+
+.color1 {
+  background: var(--color1);
+  border-top-left-radius: 100%;
+}
+
+.color2 {
+  background: var(--color2);
+  border-top-right-radius: 100%;
+}
+
+.color3 {
+  background: var(--color3);
+  border-bottom-left-radius: 100%;
+}
+
+.color4 {
+  background: var(--color4);
+  border-bottom-right-radius: 100%;
+}
+
+.color5 {
+  background: var(--color5);
+}
+
+/* text and highlight stylings */
+
+h1 {
+  font-weight: 800;
+  font-family: "Monoton";
+  font-size: 18vmin;
+  line-height: 20vmin;
+}
+
 h2 {
-  font-size: 4vh;
-  margin: 1vh;
+  font-size: 7vmin;
+  margin: 2vmin;
 }
 
 .pressed {
-  background-color: white;
+  background: var(--color6);
 }
 
 .error {
-  background-color: red;
+  background: red;
 }
 
 /* misc furniture */
 
-.home-btn {
-  position: absolute;
-  margin: 5px;
-  padding: 5px;
-  border: none;
-}
-
-.home-btn:hover {
-  background-color: #888;
-}
-
 footer {
   position: fixed;
-  font-size: x-small;
-  bottom: 5px;
-  right: 5px;
-}
-
-/* MEDIA QUERIES */
-
-/* For portrait screens <760px wide */
-@media (max-width: 760px) {
-  body {
-    background: none;
-  }
-  .game-container {
-    justify-content: center;
-    height: 100vh;
-    width: 100vw;
-    margin: 20vh 0;
-  }
-  .btn {
-    height: 42vw;
-    width: 42vw;
-    margin: 0.5vw;
-  }
-  h1 {
-    font-size: 16vw;
-    line-height: 16vw;
-  }
-  h2 {
-    font-size: 4vw;
-    margin: 1vw;
-  }
+  font-size: 7px;
+  bottom: 0;
+  right: 0;
 }

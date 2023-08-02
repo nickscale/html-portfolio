@@ -2,6 +2,8 @@
 const swatch = ["#06D6A0", "#1B9AAA", "#EF476F", "#FFC43D", "#F8FFE5"];
 const Colors = ["color1", "color2", "color3", "color4"];
 let playing = false;
+let gameOver = false;
+
 let gamePattern = [];
 let playerPattern = [];
 let gameColor = "";
@@ -12,8 +14,8 @@ let thisItem = 0;
 // detect mouse clicks
 $(document).on("click", function () {
 
-  // if game is not in progress, initialise it
-  if (playing === false) {
+  // if game is not in progress or over, initialise it
+  if (playing === false && gameOver === false) {
   
     playing = true; // i.e. let's begin a game
     gamePattern = [];
@@ -22,13 +24,12 @@ $(document).on("click", function () {
     playerColor = "";
     level = 0; // array index, so display as level+1
     thisItem = 0;
-    $(".btn").addClass("hoverable");
-    $("#game-title").css("display", "none");
-    $("#game-over").css("display", "none");
-    $("#level").text("Level " + String(level+1));
-    $("#level").css("display", "block");
-    $("#sub-title").css("visibility", "hidden");
 
+    $("#title-splash").css("display", "none");
+    $("#status").text("Level " + String(level+1));
+    $("#board-container").css("display", "block");
+    $(".btn").addClass("hoverable");
+    
     setTimeout(function (){
       gameColor = randomColor();
       gamePattern.push(gameColor);
@@ -62,29 +63,31 @@ $(".btn").on("mousedown", function () {
 
         // add another colour, and reset to start of pattern
         setTimeout(function (){
-          $("#level").text("Level " + String(level+1));
+          $("#status").text("Level " + String(level+1));
           thisItem = 0;
           gameColor = randomColor();
           gamePattern.push(gameColor);
           flashButton(gameColor);
           playSound(gameColor);
-        }, 300); // pause in milliseconds         
+        }, 350); // pause in milliseconds         
       }        
     } else {
       
-      // if not correct, play 'wrong' sound and end game
+      // if incorrect, play 'wrong' sound and end game
       playing = false;
-      $(".btn").removeClass("hoverable");
+      gameOver = true;
       playSound("wrong");
       flashScreen();
-      $("#game-over").css("display", "block");
-      $("#game-title").css("display", "none");
-      $("#level").css("display", "none");
+      $(".btn").removeClass("hoverable");
+      $("#title-splash").css("display", "block");
+      $("#main-title").text("Game Over");
 
+      // then after a delay, reset back to title page
       setTimeout(function (){
-        $("#game-over").css("display", "none");
-        $("#game-title").css("display", "block");
-        $("#sub-title").css("visibility", "visible");
+        $("#board-container").css("display", "none");
+        $("#main-title").text("Simple Simon");
+        $("#status").text("Tap to begin");
+        gameOver = false;
       }, 2500); // pause in milliseconds
 
     }

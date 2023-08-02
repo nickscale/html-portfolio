@@ -18,36 +18,26 @@
   </head>
 
   <body>
-    <!-- Standard header -->
-    <!-- <header>
-      <a href="../projects.html"><button class="home-btn">◀︎ Home</button></a>
-    </header> -->
-
     <!-- game/app container -->
-    <div class="page-container">
-      <div class="game-container">
-        <div id="main-title">
-          <h1 id="game-title">Simple<br />Simon</h1>
-          <h1 id="game-over">Game<br />Over</h1>
-          <h1 id="level">Level 1</h1>
+    <div class="game-container">
+      <div id="title-splash">
+        <h1 id="main-title">Simple Simon</h1>
+      </div>
+      <div id="board-container">
+        <div id="top-row">
+          <div class="btn color1" id="color1"></div>
+          <div class="btn color2" id="color2"></div>
         </div>
-        <div id="sub-title">
-          <h2>Tap anywhere to begin</h2>
+        <div id="bottom-row">
+          <div class="btn color3" id="color3"></div>
+          <div class="btn color4" id="color4"></div>
         </div>
-        <div class="board-container">
-          <div>
-            <div class="btn color1" id="color1"></div>
-            <div class="btn color2" id="color2"></div>
-          </div>
-          <div>
-            <div class="btn color3" id="color3"></div>
-            <div class="btn color4" id="color4"></div>
-          </div>
-        </div>
+      </div>
+      <div>
+        <h2 id="status">Tap to begin</h2>
       </div>
     </div>
 
-    <!-- Standard footer -->
     <footer>
       <p>v0.3a</p>
     </footer>

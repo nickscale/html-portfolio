@@ -23,6 +23,7 @@ let nowPlaying = false;
 let playing;
 let currentBeat = 0;
 let mode = "synth";
+// const gainNode = audioContext.createGain();
 
 // beat duration = 1000*(60/bpm), or bpm = 1000*(60/beat duration)
 let beatLength = 250; // 315ms = 96bpm, 280 = 108bpm, 250ms = 120bpm, 215ms = 138bpm
