@@ -1,8 +1,6 @@
 // on DOM loading initialise fields and local storage
 document.addEventListener("DOMContentLoaded", () => {
 
-    console.log("Initialising on DOM load")
-
     // default today field to today's date
     let todayDate = new Date();
     document.getElementById('date-today').valueAsDate = todayDate;
@@ -11,11 +9,9 @@ document.addEventListener("DOMContentLoaded", () => {
 
     // verify localStorage
     if (localStorage.length == 0) {
-        console.log("localStorage on load is empty")
+        console.log("localStorage on load is empty");
     } else {
-        for (i=0;i<=localStorage.length;i++){
-            console.log("localStorage on load:",localStorage.key(i)+":",localStorage.getItem(localStorage.key(i)));
-        }
+        console.log("localStorage on load is:",localStorage);
     }
 
     // check for currentWords
@@ -23,7 +19,7 @@ document.addEventListener("DOMContentLoaded", () => {
         // none saved, SET default value
         currentWords = 1000;
         localStorage.setItem("currentWords",currentWords);
-        console.log("DEFAULT currentWords",currentWords);
+        console.log("SET DEFAULT currentWords",currentWords);
     } else {
         // else GET currentWords from storage
         currentWords = localStorage.getItem("currentWords");
@@ -35,7 +31,7 @@ document.addEventListener("DOMContentLoaded", () => {
         // none saved, SET default value
         targetWords = 5000;
         localStorage.setItem("targetWords",targetWords);
-        console.log("DEFAULT targetWords",targetWords);
+        console.log("SET DEFAULT targetWords",targetWords);
     } else {
         // else GET targetWords from storage
         targetWords = localStorage.getItem("targetWords");
@@ -58,7 +54,7 @@ document.addEventListener("DOMContentLoaded", () => {
         // none saved, SET default value
         daysToDate = 10;
         localStorage.setItem("daysToDate",daysToDate);
-        console.log("DEFAULT daysToDate",daysToDate);
+        console.log("SET DEFAULT daysToDate",daysToDate);
     } else {
         // else GET daysToDate from storage
         daysToDate = localStorage.getItem("daysToDate");
@@ -71,12 +67,10 @@ document.addEventListener("DOMContentLoaded", () => {
         // none saved, set default (today - 10 days)
         startDate.setDate(todayDate.getDate() - 10);
         localStorage.setItem("startDate",startDate);
-        console.log("DEFAULT startDate",startDate);
-        // console.log("SET startDate:",localStorage.setItem("startDate",startDate));
+        console.log("SET DEFAULT startDate",startDate);
     } else {
         // load it from local Storage
         startDate = new Date(localStorage.getItem("startDate"));
-        // console.log("GET startDate:",localStorage.getItem("startDate"));
     }
     document.getElementById('date-start').valueAsDate = startDate;
 
@@ -85,16 +79,18 @@ document.addEventListener("DOMContentLoaded", () => {
         // none saved, set default (today + 30 days)
         startDate.setDate(todayDate.getDate() + 30);
         localStorage.setItem("targetDate",targetDate);
-        console.log("DEFAULT targetDate",targetDate);
+        console.log("SET DEFAULT targetDate",targetDate);
     } else {
         // load it from local Storage
         targetDate = new Date(localStorage.getItem("targetDate"));
     }
     document.getElementById('date-target').valueAsDate = targetDate;
 
-    // set non-localStorage values to placeholder
+    // set non-localStorage values to placeholder value
+    document.getElementById("progress-percent").innerHTML = "";
     document.getElementById("rate-current").innerHTML = "TBD";
-    document.getElementById("date-predicted").innerHTML = "TBD";
+    document.getElementById("pages-current").innerHTML = "TBD";
+    document.getElementById("date-predicted").innerHTML = "You should finish by TBD";
     document.getElementById("rate-required").innerHTML = "TBD";
 
     update();
@@ -103,7 +99,9 @@ document.addEventListener("DOMContentLoaded", () => {
 
 /* RECALCULATE OUTPUT VALUES WHEN ANY FIELD IS UPDATED */
 
-function update() {
+function update(elementID) {
+
+    console.log('What changed:',elementID);
 
     // user can change the current date, say if they are planning ahead
     todayDate = document.getElementById('date-today').valueAsDate;
@@ -124,6 +122,12 @@ function update() {
     // daysPerWeek = document.getElementById('days-per-week option:selected').value;
     // localStorage.setItem("daysPerWeek", daysPerWeek);
 
+    // calculate current completion percentage and degrees
+    currentPercent = Math.floor(100 * currentWords / targetWords)
+    document.getElementById("progress-percent").innerHTML = currentPercent + "%";
+    currentDegrees = Math.floor(currentPercent * 360 / 100);
+    document.documentElement.style.setProperty("--progress-degrees", currentDegrees + "deg");
+
     // calculate daysElapsed - either daysToDate, or days between startDate and todayDate
     if(document.getElementById('choose-days-to-date').checked) {
         // if user has selected number of days
@@ -133,32 +137,63 @@ function update() {
         daysElapsed = diff_in_days(startDate, todayDate);
     }
     
-    // calculate currentRate
-    currentRate = (currentWords / daysElapsed);
+    // calculate current word rate
+    currentRate = Math.floor(currentWords / daysElapsed);
     if (isFinite(currentRate)) {
-        document.getElementById("rate-current").innerHTML = Math.floor(currentRate);
+        document.getElementById("rate-current").innerHTML = currentRate;
     } else {
         document.getElementById("rate-current").innerHTML = "∞";
     }
 
+    // calculate current page rate
+    // assuming 275 words per pages, then rounded to nearest 0.5 pages
+    currentPages = 0.5 * Math.round(2 * currentRate / 275);
+    if (isFinite(currentPages)) {
+        document.getElementById("pages-current").innerHTML = currentPages;
+    } else {
+        document.getElementById("pages-current").innerHTML = "∞";
+    }
+
     // calculate predicted finish date
-    predictedDate = new Date(todayDate);
-    addedDays = (targetWords - currentWords) / currentRate;
-    predictedDate.setDate(predictedDate.getDate() + addedDays);
-    document.getElementById('date-predicted').innerHTML = niceDate(predictedDate);
+    currentProgress = currentWords / targetWords;
+    switch(true) {
+        case (currentProgress < 0.001):
+            document.getElementById('date-predicted').innerHTML = "You've got a way to go...";
+            break;
+        case (currentProgress > 1):
+            document.getElementById('date-predicted').innerHTML = "You already exceeded your target!";
+            break;
+        default:
+            predictedDate = new Date(todayDate);
+            addedDays = (targetWords - currentWords) / currentRate;
+            predictedDate.setDate(predictedDate.getDate() + addedDays);
+            document.getElementById('date-predicted').innerHTML = "You should finish by <strong>"+niceDate(predictedDate)+"</strong>.";
+    }
 
     // calculate required rate
     daysRemaining = diff_in_days(targetDate,todayDate);
+    console.log('daysRemaining',daysRemaining);
     requiredRate = (targetWords - currentWords) / daysRemaining;
     if (isFinite(requiredRate)) {
         document.getElementById("rate-required").innerHTML = Math.floor(requiredRate);
     } else {
         document.getElementById("rate-required").innerHTML = "∞";
     }
+
+    // calculate required page rate
+    // assuming 275 words per pages, then rounded to nearest 0.5 pages
+    requiredPages = 0.5 * Math.round(2 * requiredRate / 275);
+    if (isFinite(requiredPages)) {
+        document.getElementById("pages-required").innerHTML = requiredPages;
+    } else {
+        document.getElementById("pages-required").innerHTML = "∞";
+    }
+
 }
 
 // clear localstorage
 document.getElementById('reset').onclick = function(){
+    console.log('Resetting form and clearing localStorage');
     localStorage.clear();
     location.reload();
 }
@@ -180,22 +215,27 @@ function niceDate(thisDate) {
     thisDayNumber = thisDate.toLocaleDateString('en-UK', {day: 'numeric'});
     thisDayOfWeek = thisDate.toLocaleDateString('en-UK', {weekday: 'long' });
     
-    // get ordinal suffix
-    let lastDigit = thisDayNumber.toString().slice(-1);
-    switch (lastDigit) {
-        case "1":
-            suffix = "st";
-            break;
-        case "2":
-            suffix = "nd";
-            break;
-        case "3":
-            suffix = "rd";
-            break;
-        default:
-            suffix = "th";
-    }
+    let suffix = ordinalSuffix(thisDayNumber)
 
     dateString = `${thisDayOfWeek} ${thisDayNumber}${suffix} ${thisMonth} ${thisYear}`;
     return dateString
+}
+
+// determine whether ordinal suffix is -st, -nd or -rd
+function ordinalSuffix(thisNumber) {
+    if (thisNumber == 11 || thisNumber == 12 || thisNumber == 13) {
+        return "th";
+    } else {
+        let lastDigit = thisNumber.toString().slice(-1);
+        switch (lastDigit) {
+            case "1":
+                return "st";
+            case "2":
+                return "nd";
+            case "3":
+                return "rd";
+            default:
+                return "th";
+        }
+    } 
 }

@@ -77,19 +77,19 @@ $(".btn").on("mousedown", function () {
       playing = false;
       gameOver = true;
       playSound("wrong");
-      flashScreen();
+      $(".game-container").addClass("error");
       $(".btn").removeClass("hoverable");
       $("#title-splash").css("display", "block");
       $("#main-title").text("Game Over");
 
       // then after a delay, reset back to title page
       setTimeout(function (){
+        $(".game-container").removeClass("error");
         $("#board-container").css("display", "none");
         $("#main-title").text("Simple Simon");
         $("#status").text("Tap to begin");
         gameOver = false;
       }, 2500); // pause in milliseconds
-
     }
   }
 });

@@ -23,8 +23,8 @@
   /* Layout sizing defaults */
   /* For all pages except hero/full-width page */
   --content-width: 960px; /* i.e. maximum width */
-  --content-margin-x: 5dvw;
-  --content-margin-y: 10dvh;
+  --content-margin-x: 5vw;
+  --content-margin-y: 10vh;
 
   /* layout angle */
   --skew-angle: -2deg;
@@ -139,7 +139,7 @@ body {
 
 .letter-matrix {
   position: relative;
-  top: 2dvh;
+  top: 2vh;
   display: grid;
   justify-items: center;
   /* NOTE: grid template is set in media queries */
@@ -153,7 +153,7 @@ body {
 
 .pointer {
   position: relative;
-  line-height: 7dvh;
+  line-height: 7vh;
   text-align: center;
   animation: point 2s ease-in-out infinite;
 }
@@ -211,7 +211,7 @@ body {
 
 .qr-code {
   width: 200px;
-  max-width: 80dvw;
+  max-width: 80vw;
   aspect-ratio: 1;
   background: var(--theme-bg);
   padding: 0.25rem;
@@ -266,7 +266,7 @@ h1 {
 h2 {
   font-size: clamp(2rem, 4vmin, 3rem);
   font-weight: 300;
-  margin: 1dvh 0;
+  margin: 1vh 0;
 }
 
 h3 {
@@ -431,8 +431,8 @@ li {
     grid-template-rows: repeat(9, 1fr);
   }
   .pixel {
-    font-size: 8dvh;
-    line-height: 10dvh;
+    font-size: 8vh;
+    line-height: 10vh;
   }
 }
 
@@ -443,8 +443,8 @@ li {
     grid-template-rows: repeat(6, 1fr);
   }
   .pixel {
-    font-size: 13dvh;
-    line-height: 14.5dvh;
+    font-size: 13vh;
+    line-height: 14.5vh;
   }
 }
 
@@ -455,7 +455,7 @@ li {
     grid-template-rows: repeat(4, 1fr);
   }
   .pixel {
-    font-size: 17.5dvh;
-    line-height: 20.5dvh;
+    font-size: 17.5vh;
+    line-height: 20.5vh;
   }
 }

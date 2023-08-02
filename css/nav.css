@@ -2,7 +2,8 @@
 
 :root {
   /* controls stylings */
-  --button-size: max(20px, 1.25dvw);
+  --button-size: 3vh;
+  --DEBUG: red;
 }
 
 .nav {
@@ -16,22 +17,23 @@
   align-items: end;
   overflow: hidden;
   isolation: isolate;
-  /* background: var(--DEBUG4); */
 }
 
 /* position set of controls */
 .nav-main {
   display: block;
   position: absolute;
-  top: 4dvh;
+  top: 6vh;
   right: 0;
-  margin: 0 3dvw 0 0;
+  margin: 0 3vw 0 0;
   user-select: none;
 }
 /* main menu toggle */
 #menuToggle {
   display: static;
 }
+
+/* menu item link styling */
 #menuToggle a {
   text-decoration: none;
   color: var(--theme-bg);
@@ -40,10 +42,12 @@
 #menuToggle a:hover {
   color: var(--theme-cta);
 }
+
+/* invisible menu toggle */
 #menuToggle input {
   display: block;
   width: var(--button-size);
-  height: 2.5rem;
+  height: var(--button-size);
   position: absolute;
   cursor: pointer;
   opacity: 0;
@@ -55,31 +59,26 @@
 #menuToggle span {
   display: block;
   width: var(--button-size);
-  height: calc(0.2 * var(--button-size));
-  margin-bottom: 0.5rem;
+  height: max(4px, 0.2vw);
+  margin-bottom: calc(0.25 * var(--button-size));
   position: relative;
   background: var(--theme-text);
   z-index: 1;
-  transform-origin: right top;
+  transform-origin: center;
   transition: transform 0.3s ease-in-out, background 0.3s ease-in-out, opacity 0.3s ease;
+  /* background: var(--DEBUG); */
 }
 #menuToggle span:first-child {
-  transform-origin: right center;
+  transform-origin: center;
 }
 #menuToggle span:nth-last-child(2) {
-  transform-origin: right bottom;
+  transform-origin: center;
 }
 
 /* transform burger into crosshair */
 #menuToggle input:checked ~ span {
   background: var(--theme-bg);
-  transform: translate(5px, 1rem) rotate(45deg);
-}
-#menuToggle input:checked ~ span:nth-last-child(3) {
-  transform: translate(0px, 0px) rotate(0deg);
-}
-#menuToggle input:checked ~ span:nth-last-child(2) {
-  transform: translate(5px, -1rem) rotate(-45deg);
+  transform: translateY(1vh) rotate(-35deg);
 }
 
 /* main menu list rollout */
@@ -87,10 +86,10 @@
   position: absolute;
   width: 100dvw;
   height: 100dvh;
-  top: -4dvh;
+  top: -6vh;
   left: 100%;
-  margin: 0 0 0 3dvw;
-  padding: 4dvh 15dvw;
+  margin: 0 0 0 3vw;
+  padding: 4vh 15vw;
   background: var(--theme-text);
   list-style-type: none;
   transition: transform 0.3s ease-in-out;
@@ -98,7 +97,7 @@
 
 /* sub menu indent */
 #menu > ul {
-  margin: 0 0 0 5dvw;
+  margin: 0 0 0 5vw;
 }
 
 /* menu items */
@@ -120,7 +119,7 @@
   display: flex;
   flex-direction: column;
   padding: 3vh 0;
-  gap: 0.5rem;
+  gap: 1vh;
   isolation: isolate;
 }
 
@@ -128,7 +127,7 @@
   appearance: none; /* strips default stylings */
   width: var(--button-size);
   height: var(--button-size);
-  border: max(4px, 0.2dvw) solid var(--control-color, currentColor);
+  border: max(4px, 0.2vw) solid var(--control-color, currentColor);
   cursor: pointer;
 }
 

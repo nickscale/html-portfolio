@@ -40,10 +40,7 @@ body {
   text-align: center;
   gap: 2vmin;
   padding: 2vmin;
-  /* background: var(--color5); */
   background: var(--gradient);
-
-  user-select: none;
   overflow: hidden;
 }
 
@@ -55,6 +52,7 @@ body {
   top: center;
   margin-bottom: 10vmin;
   z-index: 1;
+  user-select: none;
   isolation: isolate;
 }
 
@@ -78,6 +76,15 @@ body {
   -webkit-text-fill-color: transparent;
   background-clip: text;
   -webkit-text-fill-color: transparent;
+  animation: slide-in 0.5s ease-in-out 1;
+}
+@keyframes slide-in {
+  0% {
+    transform: translateX(-100%);
+  }
+  100% {
+    transform: translateX(0%);
+  }
 }
 
 #status {
@@ -95,6 +102,7 @@ body {
   height: 40vmin;
   width: 40vmin;
   margin: 1vmin;
+  user-select: none;
 }
 
 .hoverable:hover {
@@ -145,6 +153,16 @@ h2 {
 
 .error {
   background: red;
+  animation: flash 0.2s ease-in-out infinite;
+}
+@keyframes flash {
+  0%,
+  100% {
+    opacity: 0;
+  }
+  50% {
+    opacity: 1;
+  }
 }
 
 /* misc furniture */
