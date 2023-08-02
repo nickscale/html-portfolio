@@ -1,5 +1,10 @@
 /* Based on https://codepen.io/erikterwan/pen/EVzeRP by Erik Terwan, 2015 */
 
+:root {
+  /* controls stylings */
+  --button-size: max(20px, 1.25dvw);
+}
+
 .nav {
   position: absolute;
   width: 100%;

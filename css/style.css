@@ -26,9 +26,6 @@
   --content-margin-x: 5dvw;
   --content-margin-y: 10dvh;
 
-  /* controls stylings */
-  --button-size: max(30px, 1.25dvw);
-
   /* layout angle */
   --skew-angle: -2deg;
 
@@ -142,6 +139,7 @@ body {
 
 .letter-matrix {
   position: relative;
+  top: 2dvh;
   display: grid;
   justify-items: center;
   /* NOTE: grid template is set in media queries */
