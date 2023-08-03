@@ -1,16 +1,16 @@
-@import url("https://fonts.googleapis.com/css2?family=Rock+Salt&display=swap");
+@import url("https://fonts.googleapis.com/css2?family=Rock+Salt&family=Poppins:wght@100;300;500;700;900&display=swap");
 
 :root {
   /* color stylings */
-  --theme-white: hsl(200, 15%, 95%);
-  --theme-text: hsl(200, 15%, 5%);
-  --theme-grey: hsl(200, 15%, 90%);
-  --theme-highlight: hsl(200, 100%, 75%);
-  --theme-bg: hsl(200, 25%, 50%);
-  --theme-shadow: hsla(200, 0%, 40%, 20%);
+  --theme-black: hsl(200, 15%, 5%);
+  --theme-grey: hsl(200, 15%, 25%);
+  --theme-text: hsl(200, 15%, 90%);
+  --theme-action: hsl(200, 100%, 60%);
+  --theme-bg: hsl(0, 0%, 10%);
+  --theme-shadow: hsla(0, 0%, 40%, 30%);
 
   /* text stylings */
-  --font-body: "Segoe UI", Tahoma, Geneva, Verdana, sans-serif;
+  --font-body: "Poppins", sans-serif;
   --font-heading: "Rock Salt", cursive;
   --progress-degrees: 0deg;
   --progress-percent: 0;
@@ -27,7 +27,9 @@
 }
 
 body {
-  background: var(--theme-bg);
+  font-size: 0.75rem;
+  color: var(--theme-text);
+  background: var(--theme-grey);
 }
 
 /* layout stylings */
@@ -39,87 +41,107 @@ body {
   display: flex;
   justify-content: center;
   align-items: start;
+  background: linear-gradient(180deg, var(--theme-black), var(--theme-grey));
 }
 
 .app-container {
   display: flex;
   flex-direction: column;
-  flex-wrap: nowrap;
-  justify-content: center;
-  align-items: start;
-  gap: 1rem;
-  max-width: 960px;
+  padding: 2vh 2vw;
+  max-width: 640px;
   max-height: min-content;
-  color: var(--theme-text);
+}
+
+.input-row,
+.output-row {
+  display: flex;
+  flex-direction: row;
+  flex-wrap: nowrap;
+  padding: 0 1rem;
 }
 
 .input-container,
 .results-container {
-  width: 48%;
   display: flex;
-  flex-direction: column;
-  padding: 2vmin;
-  gap: 1rem;
-  border-radius: 5px;
-  background: var(--theme-white);
+  gap: 0.5rem;
+  padding: 1rem;
+  margin: 1rem;
+  border-radius: 1rem;
+  box-shadow: 5px 5px 25px 10px var(--theme-shadow);
+}
+
+.results-container {
+  flex-direction: row;
+  background: var(--theme-grey);
 }
 
 /* other elements stylings */
 
 input,
 select {
-  padding: 5px;
-  border: 1px solid var(--theme-white);
-  background: var(--theme-grey);
+  display: inline-block;
+  padding: 5px 0px;
+  border: none;
+  border-bottom: 1px solid var(--theme-text);
+  background: none;
   text-align: right;
   vertical-align: middle;
   cursor: text;
 }
 
 input:focus {
-  border: 1px solid var(--theme-highlight);
+  border: 1px solid var(--theme-action);
   transition: 0.35s linear;
 }
 
-/* for radio buttons */
+/* replace radio buttons with larger element */
 #choose-days-to-date,
 #choose-date-start {
-  width: 1.5rem;
-  height: 1.5rem;
+  --radio-size: 1.15rem;
+  width: var(--radio-size);
+  height: var(--radio-size);
   margin-inline-end: 0.5rem;
+  cursor: pointer;
 }
 
 input[type="radio"]:after {
-  width: 1.5rem;
-  height: 1.5rem;
-  border-radius: 1.5rem;
+  width: var(--radio-size);
+  height: var(--radio-size);
+  border-radius: var(--radio-size);
   position: relative;
   background-color: var(--theme-grey);
   content: "";
   display: inline-block;
   visibility: visible;
-  border: 3px solid var(--theme-white);
+  border: 3px solid var(--theme-text);
   outline: 1px solid var(--theme-text);
 }
 
 input[type="radio"]:checked:after {
-  width: 1.5rem;
-  height: 1.5rem;
-  border-radius: 1.5rem;
+  width: var(--radio-size);
+  height: var(--radio-size);
+  border-radius: var(--radio-size);
   position: relative;
-  background-color: var(--theme-highlight);
+  background-color: var(--theme-action);
   content: "";
   display: inline-block;
   visibility: visible;
-  border: 3px solid var(--theme-white);
+  border: 3px solid var(--theme-text);
   outline: 1px solid var(--theme-text);
 }
 
-/* data viz */
+/* data visualization */
+
+.visualisation {
+  display: flex;
+  justify-content: center;
+}
 
 .words-circle {
-  height: clamp(150px, 10vh, 200px);
-  width: clamp(150px, 10vh, 200px);
+  --size: 7rem;
+  width: var(--size);
+  height: var(--size);
+  margin: 0.5rem;
   isolation: isolate;
 }
 
@@ -131,9 +153,9 @@ input[type="radio"]:checked:after {
   z-index: 1;
   width: 100%;
   height: 100%;
-  background: conic-gradient(var(--theme-highlight) 0deg var(--progress-degrees), var(--theme-bg) var(--progress-degrees) 360deg);
+  background: conic-gradient(var(--theme-action) 0deg var(--progress-degrees), var(--theme-bg) var(--progress-degrees) 360deg);
   border-radius: 50%;
-  outline: 1px solid var(--theme-grey);
+  /* outline: 1px solid var(--theme-grey); */
 }
 .inner-circle {
   position: absolute;
@@ -143,7 +165,7 @@ input[type="radio"]:checked:after {
   z-index: 2;
   width: 84%;
   height: 84%;
-  background: var(--theme-white);
+  background: var(--theme-grey);
   border-radius: 50%;
   text-align: center;
   outline: 1px solid var(--theme-grey);
@@ -157,47 +179,68 @@ input[type="radio"]:checked:after {
   z-index: 3;
 }
 
-/* text stylings */
+/* text and form stylings */
 
 h1 {
   font-family: var(--font-heading);
-  font-size: 3rem;
-  padding: 10vmin 0;
   text-align: center;
-  /* text-shadow: 0px 0px 15px var(--theme-highlight); */
+  color: var(--theme-action);
+  text-shadow: 0px 0px 25px var(--theme-action);
+}
+
+main-title {
+  font-size: 2rem;
+  margin-bottom: 1rem;
 }
 
 h2 {
-  font-size: 1rem;
+  font-size: 1.5rem;
+  /* font-variant-caps: all-small-caps; */
+  margin: 1rem 0;
+}
+
+p,
+form,
+label {
+  font-weight: 300;
+  line-height: 1.5rem;
+}
+
+strong {
   font-weight: 700;
 }
 
-p {
-  font-weight: 100;
-  margin: 0.5rem 0;
+#reset {
+  font-weight: 700;
+  color: var(--theme-action);
 }
 
-.centered {
-  text-align: center;
+input {
+  margin: -6.5rem 0 0 0;
+  padding: 4rem 0 0.5rem 0;
+  width: 100%;
+  color: var(--theme-action);
 }
+
+select {
+  margin: -3rem 0 0 0;
+  width: 100%;
+  color: var(--theme-action);
+}
+
+input[type="radio"] {
+  margin: 0;
+}
+
 .material-symbols-outlined {
   font-variation-settings: "FILL" 0, "wght" 400, "GRAD" 0, "opsz" 48;
   font-size: 1.5rem;
   margin-inline-end: 0.5rem;
-
   vertical-align: middle;
 }
 
 /* misc furniture */
-
-#reset {
-  position: relative;
-  margin: 1rem;
-  padding: 3px;
-  right: 0;
-  bottom: 0;
-  font-weight: bold;
-  text-decoration: underline;
+s #reset {
 }
 
 footer {
@@ -211,12 +254,34 @@ footer {
 
 /* for portrait screens taller than 3:4 */
 @media (max-aspect-ratio: 3/4) {
+  .app-container {
+    max-width: 420px;
+  }
+  .main-title {
+    font-size: clamp(0.5rem, 4vw, 1.25rem);
+  }
+  .input-row,
+  .results-container {
+    flex-direction: column;
+  }
 }
 
 /* for squareish screens between 3:4 and 4:3 */
 @media (min-aspect-ratio: 3/4) and (max-aspect-ratio: 4/3) {
+  .main-title {
+    font-size: clamp(0.5rem, 4vw, 1.25rem);
+  }
+  .input-row {
+    gap: 1rem;
+  }
 }
 
 /* for landscape screens wider than 4:3 */
 @media (min-aspect-ratio: 4/3) {
+  .main-title {
+    font-size: clamp(0.5rem, 4vw, 1.25rem);
+  }
+  .input-row {
+    gap: 1rem;
+  }
 }

@@ -16,34 +16,20 @@
         <div class="main-title">
           <h1>Left To Write</h1>
         </div>
-        <div class="input-container" id="word-input">
+        <div class="input-row">
           <div>
-            <span class="material-symbols-outlined"> menu_book </span>
+            <!-- <div class="material-symbols-outlined"> menu_book </div> -->
+            <div>
+              <label for="date-today"><span class="material-symbols-outlined"> calendar_today </span>Today is <input type="date" name="" id="date-today" onchange="update(this.id)" /></label>
+              <label for="words-current"><span class="material-symbols-outlined"> clock_loader_10 </span>Word count<input type="number" min="1" max="999999" name="" id="words-current" onchange="update(this.id)" /></label>
+              <label for="words-target"><span class="material-symbols-outlined"> target </span>Target count <input type="number" min="2" max="999999" name="" id="words-target" onchange="update(this.id)" /></label>
+            </div>
           </div>
           <div>
-            <h2>Word count</h2>
-            <p><span class="material-symbols-outlined"> clock_loader_10 </span> Current <input type="number" min="1" max="999999" name="" id="words-current" onchange="update(this.id)" /></p>
-            <p><span class="material-symbols-outlined"> target </span> Target <input type="number" min="2" max="999999" name="" id="words-target" onchange="update(this.id)" /></p>
-          </div>
-        </div>
-        <div class="input-container" id="date-input">
-          <div class="material-symbols-outlined">calendar_month</div>
-          <h2>Writing days</h2>
-          <p>Today is <input type="date" name="" id="date-today" onchange="update(this.id)" /></p>
-          <p>
-            <label for="choose-days-to-date">
-              <!-- N.B. label 'for' attribute matches input 'id' -->
-              <input type="radio" name="time-type" id="choose-days-to-date" checked="checked" onchange="update(this.id)" />
-              I have written for
-              <input type="number" id="days-to-date" min="1" max="9999" onchange="update(this.id)" />
-              days so far.
-            </label>
-          </p>
-          <p>
-            <label for="choose-date-start">
-              <input type="radio" name="time-type" id="choose-date-start" onchange="update(this.id)" />
-              I started writing on
-              <input type="date" id="date-start" onchange="update(this.id)" /> and I write
+            <!-- <div class="material-symbols-outlined">calendar_month</div> -->
+            <!-- <h2>Choose either:</h2> -->
+            <label for="days-per-week">
+              Writing days per week
               <select id="days-per-week" name="" onchange="update(this.id)">
                 <option value="1">1</option>
                 <option value="2">2</option>
@@ -53,41 +39,52 @@
                 <option value="6">6</option>
                 <option value="7" selected>7</option>
               </select>
-              days per week.
             </label>
-          </p>
+            <label for="choose-days-to-date">
+              <!-- N.B. label 'for' attribute matches input 'id' -->
+              <input type="radio" name="time-type" id="choose-days-to-date" checked="checked" onchange="update(this.id)" />
+              Total writing days so far
+              <input type="number" id="days-to-date" min="1" max="9999" onchange="update(this.id)" />
+            </label>
+            <label for="choose-date-start">
+              <input type="radio" name="time-type" id="choose-date-start" onchange="update(this.id)" />
+              Started writing on <input type="date" id="date-start" onchange="update(this.id)" />
+            </label>
+          </div>
         </div>
-        <div class="results-container" id="current-progress">
-          <div class="words-circle">
-            <div class="outer-circle">
-              <div class="inner-circle">
-                <div class="inner-percentage">
-                  <h2><span id="progress-percent">0%</span></h2>
+        <div class="results-container">
+          <div class="visualisation">
+            <div class="words-circle">
+              <div class="outer-circle">
+                <div class="inner-circle">
+                  <div class="inner-percentage">
+                    <h2><span id="progress-percent">0%</span></h2>
+                  </div>
                 </div>
               </div>
             </div>
           </div>
-          <p>
-            Your current rate is <strong><span id="rate-current">___</span> words</strong> per day or about <strong><span id="pages-current">___</span> pages</strong> per day.
-          </p>
-          <p>
-            <span id="date-predicted">You should finish by <strong>___</strong>.</span>
-          </p>
-        </div>
-        <div class="results-container" id="deadline">
-          <span class="material-symbols-outlined"> event </span>
-          <h2>Deadline</h2>
-          <p>
-            <label><input type="date" name="date-target" id="date-target" onchange="update(this.id)" /> </label>
-          </p>
-          <p>
-            To hit this deadline, you need to write <strong><span id="rate-required">___</span> words</strong> per day or about <strong><span id="pages-required">___</span> pages</strong> per day.
-          </p>
+          <div class="stats">
+            <p>
+              Your current rate is <strong><span id="rate-current">___</span> words</strong> or about <strong><span id="pages-current">___</span> pages</strong> per day.
+            </p>
+            <p>
+              <span id="date-predicted">You should finish by <strong>___</strong>.</span>
+            </p>
+            <p>&nbsp;</p>
+            <label for="date-target"><span class="material-symbols-outlined"> event </span>Enter your deadline <input type="date" name="date-target" id="date-target" onchange="update(this.id)" /> </label>
+            <p>
+              To hit this deadline, write at least <strong><span id="rate-required">___</span> words</strong> or <strong><span id="pages-required">___</span> pages</strong> per day.
+            </p>
+            <p>
+              <a id="reset">Reset form</a>
+            </p>
+          </div>
         </div>
       </div>
     </div>
     <footer>
-      <p><a id="reset">Reset form</a> v0.2a</p>
+      <p>v0.2a</p>
     </footer>
   </body>
 </html>
