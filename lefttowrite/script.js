@@ -11,13 +11,25 @@ document.addEventListener("DOMContentLoaded", () => {
     if (localStorage.length == 0) {
         console.log("localStorage on load is empty");
     } else {
-        console.log("localStorage on load is:",localStorage);
+        console.log("localStorage contains:",localStorage);
     }
 
+    // check for daysPerWeek
+    if (localStorage.getItem("daysPerWeek") == null) {
+        // none saved, SET default value7
+        daysPerWeek = 7;
+        localStorage.setItem("daysPerWeek",daysPerWeek);
+        console.log("SET DEFAULT daysPerWeek",daysPerWeek);
+    } else {
+        // else GET daysPerWeek from storage
+        daysPerWeek = localStorage.getItem("daysPerWeek");
+    }
+    document.getElementById('days-per-week').value = daysPerWeek;
+    
     // check for currentWords
     if (localStorage.getItem("currentWords") == null) {
         // none saved, SET default value
-        currentWords = 1000;
+        currentWords = 1500;
         localStorage.setItem("currentWords",currentWords);
         console.log("SET DEFAULT currentWords",currentWords);
     } else {
@@ -29,7 +41,7 @@ document.addEventListener("DOMContentLoaded", () => {
     // check for targetWords
     if (localStorage.getItem("targetWords") == null) {
         // none saved, SET default value
-        targetWords = 5000;
+        targetWords = 10000;
         localStorage.setItem("targetWords",targetWords);
         console.log("SET DEFAULT targetWords",targetWords);
     } else {
@@ -38,16 +50,29 @@ document.addEventListener("DOMContentLoaded", () => {
     }
     document.getElementById('words-target').value = targetWords;
 
-    // check for daysPerWeek - NOT YET IMPLEMENTED
-    // if (localStorage.getItem("daysPerWeek") == null) {
-    //     // none saved, SET default value7
-    //     daysPerWeek = 7;
-    //     localStorage.setItem("daysPerWeek",daysPerWeek);
-    // } else {
-    //     // else GET daysPerWeek from storage
-    //     daysPerWeek = localStorage.getItem("daysPerWeek");
-    // }
-    // document.getElementById('days-per-week').value = daysPerWeek;
+    // check chooseDaysToDate radio button
+    if (localStorage.getItem("chooseDaysToDate") == null) {
+        // none saved, SET default value
+        chooseDaysToDate = true;
+        localStorage.setItem("chooseDaysToDate",chooseDaysToDate);
+        console.log("SET DEFAULT chooseDaysToDate",chooseDaysToDate);
+    } else {
+        // else GET chooseDaysToDate from storage
+        chooseDaysToDate = localStorage.getItem("chooseDaysToDate");
+    }
+    document.getElementById('choose-days-to-date').checked = chooseDaysToDate;
+
+    // check chooseStartDate radio button
+    if (localStorage.getItem("chooseStartDate") == null) {
+        // none saved, SET default value
+        chooseStartDate = false;
+        localStorage.setItem("chooseStartDate",chooseStartDate);
+        console.log("SET DEFAULT chooseStartDate",chooseStartDate);
+    } else {
+        // else GET chooseDaysToDate from storage
+        chooseStartDate = localStorage.getItem("chooseStartDate");
+    }
+    document.getElementById('choose-start-date').checked = chooseStartDate;
 
     // check daysToDate
     if (localStorage.getItem("daysToDate") == null) {
@@ -60,7 +85,7 @@ document.addEventListener("DOMContentLoaded", () => {
         daysToDate = localStorage.getItem("daysToDate");
     }
     document.getElementById('days-to-date').value = daysToDate;
-
+    
     // check startDate
     let startDate = todayDate;
     if (localStorage.getItem("startDate") == null) {
@@ -72,7 +97,7 @@ document.addEventListener("DOMContentLoaded", () => {
         // load it from local Storage
         startDate = new Date(localStorage.getItem("startDate"));
     }
-    document.getElementById('date-start').valueAsDate = startDate;
+    document.getElementById('start-date').valueAsDate = startDate;
 
     let targetDate = todayDate;
     if (localStorage.getItem("targetDate") == null) {
@@ -101,7 +126,7 @@ document.addEventListener("DOMContentLoaded", () => {
 
 function update(elementID) {
 
-    console.log('What changed:',elementID);
+    console.log('What changed?',elementID);
 
     // user can change the current date, say if they are planning ahead
     todayDate = document.getElementById('date-today').valueAsDate;
@@ -111,16 +136,20 @@ function update(elementID) {
     localStorage.setItem("currentWords", currentWords);
     targetWords = document.getElementById('words-target').value;
     localStorage.setItem("targetWords", targetWords);
+    chooseDaysToDate = document.getElementById('choose-days-to-date').checked;
+    localStorage.setItem("chooseDaysToDate",chooseDaysToDate);
+    chooseStartDate = document.getElementById('choose-start-date').checked;
+    localStorage.setItem("chooseStartDate", chooseStartDate);
     daysToDate = document.getElementById('days-to-date').value;
     localStorage.setItem("daysToDate",daysToDate);
-    startDate = document.getElementById('date-start').valueAsDate;
+    startDate = document.getElementById('start-date').valueAsDate;
     localStorage.setItem("startDate", startDate);
     targetDate = document.getElementById('date-target').valueAsDate;
     localStorage.setItem("targetDate", targetDate);
 
-    // daysPerWeek -- NOT IMPLEMENTED
-    // daysPerWeek = document.getElementById('days-per-week option:selected').value;
-    // localStorage.setItem("daysPerWeek", daysPerWeek);
+    // daysPerWeek
+    daysPerWeek = document.getElementById("days-per-week").value;
+    localStorage.setItem("daysPerWeek", daysPerWeek);
 
     // calculate current completion percentage and degrees
     currentPercent = Math.floor(100 * currentWords / targetWords)
@@ -132,7 +161,7 @@ function update(elementID) {
     if(document.getElementById('choose-days-to-date').checked) {
         // if user has selected number of days
         daysElapsed = daysToDate;
-    } else if(document.getElementById('choose-date-start').checked) {
+    } else if(document.getElementById('choose-start-date').checked) {
         // if user has selected a start date
         daysElapsed = diff_in_days(startDate, todayDate);
     }
@@ -146,8 +175,8 @@ function update(elementID) {
     }
 
     // calculate current page rate
-    // assuming 275 words per pages, then rounded to nearest 0.5 pages
-    currentPages = 0.5 * Math.round(2 * currentRate / 275);
+    // assuming 275 words per pages, then rounded to nearest 0.25 pages
+    currentPages = 0.25 * Math.round(4 * currentRate / 275);
     if (isFinite(currentPages)) {
         document.getElementById("pages-current").innerHTML = currentPages;
     } else {
@@ -158,22 +187,42 @@ function update(elementID) {
     currentProgress = currentWords / targetWords;
     switch(true) {
         case (currentProgress < 0.001):
-            document.getElementById('date-predicted').innerHTML = "You've got a way to go...";
+            document.getElementById('date-predicted').innerHTML = "<strong>You've got a long way to go...</strong>";
             break;
         case (currentProgress > 1):
-            document.getElementById('date-predicted').innerHTML = "You already exceeded your target!";
+            document.getElementById('date-predicted').innerHTML = "<strong>You already exceeded your target!</strong>";
             break;
         default:
             predictedDate = new Date(todayDate);
             addedDays = (targetWords - currentWords) / currentRate;
-            predictedDate.setDate(predictedDate.getDate() + addedDays);
+
+            if(document.getElementById('choose-days-to-date').checked) {
+                // If user selected 'total writing days' then all
+                // of these days were writing days.
+                predictedDate.setDate(predictedDate.getDate() + addedDays);
+            } else if(document.getElementById('choose-start-date').checked) {
+                // If user selected 'by start date' then we must add on the
+                // number of non-writing days to the estimated finish date.
+                addedNonWorkDays = (7 - daysPerWeek) * Math.floor(addedDays/7); 
+                predictedDate.setDate(predictedDate.getDate() + addedDays + addedNonWorkDays);
+            }
             document.getElementById('date-predicted').innerHTML = "You should finish by <strong>"+niceDate(predictedDate)+"</strong>.";
     }
 
     // calculate required rate
     daysRemaining = diff_in_days(targetDate,todayDate);
-    console.log('daysRemaining',daysRemaining);
-    requiredRate = (targetWords - currentWords) / daysRemaining;
+
+    if(document.getElementById('choose-days-to-date').checked) {
+        // If user selected 'total writing days' then all
+        // of these days were writing days.
+        requiredRate = (targetWords - currentWords) / (daysRemaining);
+    } else if(document.getElementById('choose-start-date').checked) {
+        // If user selected 'by start date' then we must add on the
+        // number of non-writing days to the estimated finish date.
+        daysNotWorking = (7 - daysPerWeek) * Math.floor(daysRemaining/7); 
+        requiredRate = (targetWords - currentWords) / (daysRemaining - daysNotWorking);
+    }
+
     if (isFinite(requiredRate)) {
         document.getElementById("rate-required").innerHTML = Math.floor(requiredRate);
     } else {
@@ -188,6 +237,8 @@ function update(elementID) {
     } else {
         document.getElementById("pages-required").innerHTML = "∞";
     }
+
+    console.log('localStorage after update:',localStorage);
 
 }
 
@@ -221,7 +272,7 @@ function niceDate(thisDate) {
     return dateString
 }
 
-// determine whether ordinal suffix is -st, -nd or -rd
+// determine ordinal suffix -st, -nd or -rd
 function ordinalSuffix(thisNumber) {
     if (thisNumber == 11 || thisNumber == 12 || thisNumber == 13) {
         return "th";
