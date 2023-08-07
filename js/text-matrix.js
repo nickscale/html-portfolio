@@ -9,7 +9,7 @@ for (i=0;i<pixels.length;i++) {
 
 let currentLetter = 0;
 let interval = setInterval(flipLetters, 75);
-let thisFlippingSound = new Audio("/audio/split-flap-display.mp3");
+let thisFlippingSound = new Audio("audio/split-flap-display.mp3");
 thisFlippingSound.volume = 0.25;
 thisFlippingSound.play();
 

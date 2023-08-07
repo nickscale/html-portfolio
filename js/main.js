@@ -1,3 +1,4 @@
+// SAVE THEME SELECTION IN LOCAL STORAGE
 const colorThemes = document.querySelectorAll('[name="theme"]');
 
 // store selected theme
