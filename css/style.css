@@ -24,7 +24,7 @@
   /* For all pages except hero/full-width page */
   --content-width: 960px; /* i.e. maximum width */
   --content-margin-x: 5vw;
-  --content-margin-y: 10vh;
+  --content-margin-y: 12vh;
 
   /* layout angle */
   --skew-angle: -2deg;
@@ -172,12 +172,45 @@ body {
 .page-container#projects {
 }
 
-.project-card {
-  background: var(--theme-bg);
+.project-card-container {
+  width: 100%;
+  height: 240px;
+  position: relative;
+  perspective: 500px;
 }
 
-.project-thumb {
-  color: var(--theme-cta);
+.project-card-container:hover {
+  transform: scale(1) rotateY(0deg);
+}
+
+.project-card {
+  position: relative;
+  transition: transform 0.2s ease-in-out;
+  transform-style: preserve-3d;
+}
+
+.project-card-front,
+.project-card-back {
+  position: absolute;
+  width: inherit;
+  height: inherit;
+  top: 0;
+  left: 0;
+  backface-visibility: hidden;
+}
+
+.project-card-front {
+  z-index: 2;
+}
+.project-card-back {
+  transform: scale(1) rotateY(180deg);
+}
+
+.project-img {
+  /* color: var(--theme-cta); */
+  width: 100%;
+  object-fit: fill;
+  transform-origin: top right;
 }
 
 .project-title {
@@ -327,6 +360,7 @@ li {
   color: var(--theme-bg);
   position: relative;
   z-index: 2;
+  transform: skewY(var(--skew-angle));
   isolation: isolate;
 }
 
@@ -335,8 +369,9 @@ li {
   background: var(--theme-text);
   position: absolute;
   z-index: -1;
-  inset: 0; /* shorthand for top/bottom/left/right = 0 */
-  transform: skewY(var(--skew-angle));
+  inset: 0;
+  box-shadow: 0px 0px 30px var(--theme-shadow);
+  /* transform: skewY(var(--skew-angle)); */
 }
 
 /*** THEMES STYLINGS ***/
@@ -354,8 +389,8 @@ li {
   --grad2: radial-gradient(at 0% 100%, var(--theme-white), #888);
 
   /* UNUSED properties */
-  --background-image: none; /* for background-container */
-  scrollbar-color: var(--theme-cta) var(--theme-bg);
+  /* --background-image: none; /* for background-container */
+  /* scrollbar-color: var(--theme-cta) var(--theme-bg); */
 }
 
 /* DARK theme stylings */
@@ -404,7 +439,7 @@ li {
   --theme-bg: var(--theme-black);
   --theme-text: var(--theme-white);
   --theme-text-heading: var(--theme-white);
-  --theme-shadow: #aaa2;
+  --theme-shadow: #aaa4;
   --theme-cta: #44f;
   --grad1: linear-gradient(-45deg, #111, #222, #004);
 }
