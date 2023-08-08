@@ -6,7 +6,6 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>Left To Write</title>
     <link rel="shortcut icon" href="favicon.ico" type="image/x-icon" />
-    <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:opsz,wght,FILL,GRAD@20..48,100..700,0..1,-50..200" />
     <link rel="stylesheet" href="style.css" />
     <script src="./script.js" defer></script>
   </head>
@@ -17,38 +16,68 @@
           <h1>Left To Write</h1>
         </div>
         <div class="input-row">
-          <div id="enter-details">
-            <label for="date-today"><span class="material-symbols-outlined"> calendar_today </span>Today is <input type="date" name="" id="date-today" onchange="update(this.id)" /></label>
-            <label for="days-per-week"
-              ><span class="material-symbols-outlined"> date_range </span>Writing days per week<select id="days-per-week" name="" onchange="update(this.id)">
-                <option value="1">1</option>
-                <option value="2">2</option>
-                <option value="3">3</option>
-                <option value="4">4</option>
-                <option value="5">5</option>
-                <option value="6">6</option>
-                <option value="7" selected>7</option>
-              </select>
-            </label>
-            <label for="words-current"><span class="material-symbols-outlined"> clock_loader_10 </span>Current word count<input type="number" min="1" max="999999" name="" id="words-current" onchange="update(this.id)" /></label>
-            <label for="words-target"><span class="material-symbols-outlined"> target </span>Target word count <input type="number" min="2" max="999999" name="" id="words-target" onchange="update(this.id)" /></label>
+          <div class="cell" id="enter-details">
+            <div>
+              <p>
+                <label for="date-today"><span class="material-symbols-outlined"> &#xE935; </span>Today is <input type="date" name="" id="date-today" onchange="update(this.id)" /></label>
+              </p>
+            </div>
+            <div>
+              <p>
+                <label for="days-per-week"
+                  ><span class="material-symbols-outlined"> &#xE916; </span>Writing days per week<select id="days-per-week" name="" onchange="update(this.id)">
+                    <option value="1">1</option>
+                    <option value="2">2</option>
+                    <option value="3">3</option>
+                    <option value="4">4</option>
+                    <option value="5">5</option>
+                    <option value="6">6</option>
+                    <option value="7" selected>7</option>
+                  </select>
+                </label>
+              </p>
+            </div>
+            <div>
+              <p>
+                <span class="material-symbols-outlined"> &#xF726; </span><label for="words-current">Current word count<input type="number" min="1" max="999999" name="" id="words-current" onchange="update(this.id)" /></label>
+              </p>
+            </div>
+            <div>
+              <p>
+                <span class="material-symbols-outlined"> &#xE719; </span><label for="words-target">Target word count <input type="number" min="2" max="999999" name="" id="words-target" onchange="update(this.id)" /></label>
+              </p>
+            </div>
           </div>
-          <div id="choose-method">
-            <h3>How long have you been working on this piece?</h3>
-            <label for="choose-days-to-date">
-              <!-- N.B. label 'for' attribute matches input 'id' -->
-              <input type="radio" name="time-type" id="choose-days-to-date" checked="checked" onchange="update(this.id)" />
-              By total writing days
-              <input type="number" id="days-to-date" min="1" max="9999" onchange="update(this.id)" />
-            </label>
-            <label for="choose-start-date">
-              <input type="radio" name="time-type" id="choose-start-date" onchange="update(this.id)" />
-              By start date <input type="date" id="start-date" onchange="update(this.id)" />
-            </label>
+          <div class="cell" id="choose-method">
+            <div>
+              <h3>How long have you been writing this piece?</h3>
+            </div>
+            <div>
+              <p>
+                <label for="choose-days-to-date">
+                  <input type="radio" name="time-type" id="choose-days-to-date" checked="checked" onchange="update(this.id)" />
+                  By number of writing days
+                  <input type="number" id="days-to-date" min="1" max="9999" onchange="update(this.id)" />
+                </label>
+              </p>
+            </div>
+            <div>
+              <p>
+                <label for="choose-start-date">
+                  <input type="radio" name="time-type" id="choose-start-date" onchange="update(this.id)" />
+                  By start date <input type="date" id="start-date" onchange="update(this.id)" />
+                </label>
+              </p>
+            </div>
+            <div>
+              <p>
+                <div class="button" id="reset"><a onclick="resetForm()">Reset form</a></div>
+              </p>
+            </div>
           </div>
         </div>
         <div class="results-row">
-          <div id="current-progress">
+          <div class="cell" id="current-progress">
             <div class="words-circle">
               <div class="outer-circle">
                 <div class="inner-circle">
@@ -62,19 +91,17 @@
               </div>
             </div>
             <div>
-              <p class="space-after">
-                Your current rate is <strong><span id="rate-current">___</span> words</strong> or about <strong><span id="pages-current">___</span> pages</strong> per day.<br />
-                <span id="date-predicted">You should finish by <strong>___</strong>.</span>
-              </p>
               <p>
-                <a id="reset">Click to reset values</a>
+                Your current rate is <strong><span id="rate-current">___</span> words</strong> or about <strong><span id="pages-current">___</span> pages</strong> per day. <span id="date-predicted">You should finish by <strong>___</strong>.</span>
               </p>
             </div>
           </div>
-          <div id="deadline">
+          <div class="cell" id="deadline">
             <h3>When is your deadline?</h3>
-            <label for="date-target"><span class="material-symbols-outlined"> event </span><input type="date" name="date-target" id="date-target" onchange="update(this.id)" /> </label>
-            <p class="space-after">
+            <p>
+              <label for="date-target"><span class="material-symbols-outlined"> &#xE878; </span><input type="date" name="date-target" id="date-target" onchange="update(this.id)" /> </label>
+            </p>
+            <p>
               To hit this deadline, write <strong><span id="rate-required">___</span> words</strong> or <strong><span id="pages-required">___</span> pages</strong> per day.
             </p>
           </div>

@@ -243,7 +243,7 @@ function update(elementID) {
 }
 
 // clear localstorage
-document.getElementById('reset').onclick = function(){
+function resetForm(){
     console.log('Resetting form and clearing localStorage');
     localStorage.clear();
     location.reload();

@@ -1,4 +1,4 @@
-@import url("https://fonts.googleapis.com/css2?family=Rock+Salt&family=Poppins:wght@100;300;500;700;900&display=swap");
+@import url("https://fonts.googleapis.com/css2?family=Rock+Salt&family=Poppins:wght@100;300;500;700;900&family=Material+Symbols+Outlined:opsz,wght,FILL,GRAD@20..48,100..700,0..1,-50..200&display=block");
 
 :root {
   /* color stylings */
@@ -41,7 +41,7 @@ body {
   width: 100dvw;
   display: flex;
   justify-content: center;
-  align-items: center;
+  align-items: start;
   background: linear-gradient(-135deg, var(--theme-black), var(--theme-grey));
 }
 
@@ -55,67 +55,79 @@ body {
 
 .input-row,
 .results-row {
-  padding: 1rem;
   display: flex;
   flex-direction: row;
   gap: 1rem;
-}
-
-#enter-details {
-  flex-basis: 50%;
-  margin-right: 1rem;
-}
-
-#choose-method {
-  flex-basis: 50%;
-  display: flex;
-  flex-direction: column;
-  justify-content: space-between;
-}
-
-.results-row > div {
-  border-radius: 1rem;
   padding: 1rem;
-  background: var(--theme-bg);
-  display: flex;
+}
+
+.cell {
+  flex-basis: 50%;
+  border-radius: 0.5rem;
+  padding: 1rem;
+  background: var(--theme-grey);
+  border: 1px solid var(--theme-text);
+}
+
+.results-row > .cell {
+  background: var(--theme-black);
 }
 
 #current-progress {
-  flex-basis: 60%;
+  flex-basis: 75%;
   display: flex;
-  flex-direction: row;
-  align-items: center;
-}
-
-#current-progress > div {
-  flex-basis: 50%;
   gap: 1rem;
 }
 
-#deadline {
-  flex-basis: 40%;
-  background: var(--theme-grey);
-  border: 1px solid var(--theme-text);
-  display: flex;
-  flex-direction: column;
+/* text stylings */
+
+h1 {
+  font-size: 2rem;
+  font-family: var(--font-heading);
 }
 
-.space-after {
-  padding: 0 0 0.5rem 0;
+.main-title {
+  margin-block: 1rem;
+  line-height: 1.5rem;
+  text-align: center;
+  color: var(--theme-action);
+  text-shadow: 0px 0px 30px var(--theme-action);
 }
 
-/* other elements stylings */
+h2 {
+  font-size: 1rem;
+  font-weight: 100;
+}
+
+h3 {
+  font-size: 1rem;
+  font-weight: 300;
+  margin: 0 0 1rem 0;
+}
+
+p,
+label {
+  font-size: 1rem;
+  margin: 0 0 1rem 0;
+}
+
+strong {
+  font-weight: 700;
+}
+
+/* form element stylings */
 
 input,
 select {
-  display: inline-block;
-  padding: 5px 0px;
+  padding: 0.25rem;
+  color: var(--theme-action);
+  vertical-align: baseline;
+  margin: -0.25rem 0 0 0;
   border: none;
   border-bottom: 1px solid var(--theme-text);
-  background: none;
   text-align: right;
-  vertical-align: middle;
-  cursor: text;
+  background: var(--theme-grey);
+  float: right;
 }
 
 input:focus {
@@ -123,7 +135,12 @@ input:focus {
   transition: 0.35s linear;
 }
 
-/* replace radio buttons */
+input:hover,
+select:hover {
+  color: var(--theme-text);
+}
+
+/* replace radio buttons so we can apply custom styles */
 
 #choose-days-to-date,
 #choose-start-date {
@@ -134,6 +151,7 @@ input:focus {
   cursor: pointer;
 }
 
+/* use pseudo-element to overlay a new custom radio button */
 input[type="radio"]:after {
   width: var(--radio-size);
   height: var(--radio-size);
@@ -159,13 +177,21 @@ input[type="radio"]:checked:after {
   outline: 1px solid var(--theme-text);
 }
 
+/* fix alignment of replacement radio buttons */
+input[type="radio"] {
+  float: none;
+  vertical-align: bottom;
+}
+
 /* data visualization */
 
 .words-circle {
+  position: static;
   --size: 9rem;
   width: var(--size);
   height: var(--size);
-  margin-left: -1rem;
+  display: flex;
+  align-items: start;
 }
 
 .outer-circle {
@@ -177,7 +203,6 @@ input[type="radio"]:checked:after {
   height: inherit;
   background: conic-gradient(var(--theme-action) 0deg var(--progress-degrees), var(--theme-grey) var(--progress-degrees) 360deg);
   border-radius: 50%;
-  /* outline: 1px solid var(--theme-grey); */
 }
 .inner-circle {
   position: absolute;
@@ -198,88 +223,47 @@ input[type="radio"]:checked:after {
   transform: translate(-50%, -50%);
 }
 
-/* text and form stylings */
-
-h1 {
-  font-family: var(--font-heading);
-  text-align: center;
-  color: var(--theme-action);
-  text-shadow: 0px 0px 50px var(--theme-grey);
-}
-
-main-title {
-  font-size: 2rem;
-  margin-bottom: 1rem;
-}
-
-h2 {
-  font-size: 1rem;
-  font-weight: 100;
-  margin: 1rem 0;
-}
-
-h3 {
-  font-size: 1rem;
-  font-weight: 300;
-  margin: 0 0 1rem 0;
-}
-
-p,
-label {
-  font-size: 0.8rem;
-  margin: 0.5rem 0;
-}
-
-strong {
-  font-weight: 700;
-}
-
-#reset {
-  font-weight: 700;
-  color: var(--theme-action);
-  cursor: pointer;
-}
-
-#reset:hover {
-  color: var(--theme-text);
-}
-
-input,
-select {
-  margin: -2.8rem 0 0 0;
-  padding: 0.5rem;
-  width: 100%;
-  color: var(--theme-action);
-}
-
-input:hover,
-select:hover {
-  color: var(--theme-text);
-}
-
-input[type="radio"] {
-  margin: 0;
-}
-
+/* for Material theme icons */
 .material-symbols-outlined {
   font-variation-settings: "FILL" 0, "wght" 400, "GRAD" 0, "opsz" 48;
   font-size: 1.5rem;
+  display: inline-block;
   margin-inline-end: 0.5rem;
   vertical-align: middle;
 }
 
-/* misc furniture */
+/* just for the reset form button */
+
+.button {
+  display: inline-block;
+  cursor: pointer;
+  text-align: center;
+  padding: 0.5rem;
+  border: 1px solid var(--theme-text);
+  background: var(--theme-grey);
+  color: var(--theme-action);
+}
+
+.button:hover {
+  background: var(--theme-black);
+}
+
+#reset {
+  float: right;
+}
+
+/* just for the version number bottom right */
 footer {
   position: fixed;
   font-size: xx-small;
-  bottom: 2px;
-  right: 2px;
+  bottom: 0;
+  right: 0;
 }
 
-/*** MEDIA QUERIES based on aspect ratio, not size ***/
+/*** MEDIA QUERIES - based on aspect ratio, not size ***/
 
 /* for portrait screens taller than 3:4 */
-@media (max-aspect-ratio: 3/4) {
+@media (max-aspect-ratio: 3/4) or (max-width: 340px) {
   .app-container {
     max-width: 480px;
   }
@@ -288,6 +272,15 @@ footer {
   }
   .input-row,
   .results-row {
+    flex-direction: column;
+    align-items: center;
+  }
+
+  .cell {
+    width: 100%;
+  }
+
+  #current-progress {
     flex-direction: column;
     align-items: center;
   }

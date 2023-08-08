@@ -1,0 +1,172 @@
+/* inspired by https://codepen.io/kylewetton/pen/QJbOjw?editors=1100 */
+
+@import url("https://fonts.googleapis.com/css2?family=Major+Mono+Display&family=Roboto+Mono:wght@100&family=Roboto:wght@100;300;500&display=swap");
+
+:root {
+  --black: #1b1e23;
+  --white: #f4eed7;
+  --feature: hsl(330, 90%, 90%);
+  --size: 300px;
+  --width: 15px;
+
+  --font-mono1: "Major Mono Display", monospace;
+  --font-mono2: "Roboto Mono", monospace;
+  --font-body: "Roboto", sans-serif;
+
+  padding: 0;
+  margin: 0;
+}
+
+body {
+  height: 100%;
+  background: var(--black);
+  font-weight: 100;
+  color: var(--white);
+}
+
+.page-wrapper {
+  height: inherit;
+  width: inherit;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  background: url("../images/gallery/liminal/liminal-ext-001.jpeg");
+  background-size: fill;
+  background-repeat: no-repeat;
+  background-position: center center;
+  overflow: hidden;
+}
+
+/* text stylings */
+
+h1 {
+  font-family: var(--font-mono1);
+  font-size: clamp(2rem, 12vw, 3rem);
+}
+h2 {
+  font-family: var(--font-mono1);
+  font-size: clamp(1rem, 8vw, 1.15rem);
+}
+
+/* analogue clock elements stylings */
+
+.clock {
+  height: var(--size);
+  width: var(--size);
+  display: flex;
+  justify-content: center;
+  isolation: isolate;
+  border-radius: 50%;
+  overflow: hidden;
+  /* outline: 1px solid var(--white); */
+}
+
+.offset_dial_marks,
+.offset_second,
+.offset_minute,
+.offset_hour,
+.offset_axle {
+  position: absolute;
+  width: var(--size);
+  height: var(--size);
+  /* outline: 1px solid var(--white); */
+  /* background: #5553; */
+}
+
+.hand_second,
+.hand_minute,
+.hand_hour,
+.dial_mark {
+  position: absolute;
+  left: calc(50% - 0.5 * var(--width));
+  background: var(--white);
+  transform-origin: bottom center;
+  z-index: 2;
+  width: var(--width);
+  border-radius: 0;
+  background: var(--white);
+}
+
+.hand_second {
+  left: calc(50% - 0.5 * var(--width)); /* tweak by half width */
+  height: calc((var(--size) * 0.41));
+  margin-top: calc((var(--size) * 0.09));
+  animation: time 60s infinite steps(60);
+  background: var(--feature);
+}
+.hand_minute {
+  left: calc(50% - 0.5 * var(--width)); /* tweak by half width */
+  height: calc((var(--size) * 0.41));
+  margin-top: calc((var(--size) * 0.09));
+  animation: time 3600s linear infinite;
+}
+.hand_hour {
+  left: calc(50% - 0.5 * var(--width)); /* tweak by half width */
+  height: calc((var(--size) * 0.33));
+  margin-top: calc((var(--size) * 0.17));
+  animation: time 43200s linear infinite;
+}
+@keyframes time {
+  to {
+    transform: rotateZ(360deg);
+  }
+}
+
+/* other analogue face markings */
+
+.axle {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  z-index: 4;
+  height: var(--width);
+  width: var(--width);
+  border-radius: 50%;
+  background: var(--feature);
+}
+
+.dial_mark {
+  height: calc(0.5 * var(--size) - var(--width));
+  background: none;
+  border-radius: 0;
+  border-top: var(--width) solid var(--feature);
+}
+
+.dial_mark:nth-of-type(1) {
+  transform: rotateZ(calc(30deg * 1));
+}
+.dial_mark:nth-of-type(2) {
+  transform: rotateZ(calc(30deg * 2));
+}
+.dial_mark:nth-of-type(3) {
+  transform: rotateZ(calc(30deg * 3));
+}
+.dial_mark:nth-of-type(4) {
+  transform: rotateZ(calc(30deg * 4));
+}
+.dial_mark:nth-of-type(5) {
+  transform: rotateZ(calc(30deg * 5));
+}
+.dial_mark:nth-of-type(6) {
+  transform: rotateZ(calc(30deg * 6));
+}
+.dial_mark:nth-of-type(7) {
+  transform: rotateZ(calc(30deg * 7));
+}
+.dial_mark:nth-of-type(8) {
+  transform: rotateZ(calc(30deg * 8));
+}
+.dial_mark:nth-of-type(9) {
+  transform: rotateZ(calc(30deg * 9));
+}
+.dial_mark:nth-of-type(10) {
+  transform: rotateZ(calc(30deg * 10));
+}
+.dial_mark:nth-of-type(11) {
+  transform: rotateZ(calc(30deg * 11));
+}
+.dial_mark:nth-of-type(12) {
+  transform: rotateZ(calc(30deg * 12));
+}
