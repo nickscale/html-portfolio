@@ -131,7 +131,7 @@ body {
 
 /*** SPECIFIC PAGE STYLINGS ***/
 
-/* FRONT page stylings */
+/* FRONT page including LETTER PIXEL MATRIX stylings */
 
 .page-container #front {
   height: 100dvh;
@@ -148,7 +148,10 @@ body {
 .pixel {
   font-family: var(--font-mono);
   color: var(--theme-text);
-  /* outline: solid 1px var(--DEBUG5); */
+}
+
+.pixel:hover {
+  outline: solid 1px var(--DEBUG5);
 }
 
 .pointer {
@@ -183,8 +186,8 @@ body {
 .project-card {
   position: relative;
   width: inherit;
-  aspect-ratio: 1;
-  transition: transform 0.3s;
+  height: inherit;
+  transition: all 0.5s;
   transform-style: preserve-3d;
 }
 
@@ -219,6 +222,7 @@ body {
 
 .project-title {
   font-family: var(--font-heading);
+  line-height: 0.85;
   color: var(--theme-text);
 }
 
@@ -271,17 +275,27 @@ body {
 .contact-form textarea,
 .contact-form input,
 .contact-form button {
-  width: 100%;
   margin: 5px 0;
   border: 0;
   border-bottom: 3px solid var(--theme-white);
   padding: 0.5rem;
   font-family: var(--font-body);
+  font-size: 1rem;
   text-align: left;
 }
 
 .contact-form textarea {
+  width: 100%;
   height: 4rem;
+}
+
+.contact-form input {
+  width: 76%;
+}
+
+.contact-form button {
+  width: 20%;
+  float: right;
 }
 
 .contact-form button:hover {
@@ -303,6 +317,7 @@ h1 {
 h2 {
   font-size: clamp(2rem, 4vmin, 3rem);
   font-weight: 300;
+  text-wrap: balance;
   margin: 1vh 0;
 }
 
@@ -318,7 +333,7 @@ p {
 }
 
 a {
-  color: var(--theme-text);
+  color: var(--theme-cta);
   text-decoration: none;
 }
 
@@ -340,13 +355,25 @@ li {
   transform: translate(0%, -100%) rotate(90deg);
 }
 
+.button {
+  padding: 0.25rem;
+  font-size: 1rem;
+  text-align: center;
+  background-color: var(--theme-bg);
+  border: 1px solid var(--theme-text);
+}
+
+.button:hover {
+  background-color: var(--theme-cta);
+  color: var(--theme-bg);
+}
 .text-heading {
   color: var(--theme-cta);
 }
 
-.text-cta {
+.text-blink {
   color: var(--theme-cta);
-  animation: glow 2s var(--ease) infinite;
+  animation: glow 1.5s var(--ease) infinite;
 }
 @keyframes glow {
   0%,

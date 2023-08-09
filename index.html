@@ -65,7 +65,7 @@
       <section class="hero-container" id="front">
         <div class="background"></div>
         <div class="letter-matrix">
-          <span class="pixel">N</span>
+          <span class="pixel"><a href="#about">N</a></span>
           <span class="pixel">I</span>
           <span class="pixel">C</span>
           <span class="pixel">K</span>
@@ -110,7 +110,7 @@
         <div class="content-container">
           <div class="section-title">
             <div class="vertical-bg">
-              <h1>Projects<span class="text-cta">.</span></h1>
+              <h1>Projects<span class="text-blink">.</span></h1>
             </div>
           </div>
           <div class="section-body columns">
@@ -122,8 +122,9 @@
                 </div>
                 <div class="project-card-back">
                   <a href="./chime/">
-                    <h1 class="project-title">Chime</h1>
+                    <h1 class="project-title">Chime<span class="text-blink">.</span></h1>
                     <p class="project-stub">A musical toy.</p>
+                    <div class="button">Play it now!</div>
                   </a>
                 </div>
               </div>
@@ -135,8 +136,9 @@
                 </div>
                 <div class="project-card-back">
                   <a href="./lefttowrite/">
-                    <h1 class="project-title">Left To Write</h1>
+                    <h1 class="project-title">Left To Write<span class="text-blink">.</span></h1>
                     <p class="project-stub">Helping writers meet deadlines.</p>
+                    <div class="button">Try it now!</div>
                   </a>
                 </div>
               </div>
@@ -148,8 +150,9 @@
                 </div>
                 <div class="project-card-back">
                   <a href="./bigtoe/">
-                    <h1 class="project-title">Big Toe</h1>
+                    <h1 class="project-title">Big Toe<span class="text-blink">.</span></h1>
                     <p class="project-stub">Tic tac toe - but bigger!</p>
+                    <div class="button">Play now!</div>
                   </a>
                 </div>
               </div>
@@ -161,8 +164,9 @@
                 </div>
                 <div class="project-card-back">
                   <a href="./simon/">
-                    <h1 class="project-title">Simple Simon</h1>
-                    <p class="project-stub">The 80s retro handheld game reinvented.</p>
+                    <h1 class="project-title">Simple Simon<span class="text-blink">.</span></h1>
+                    <p class="project-stub">The 80s handheld game reinvented.</p>
+                    <p class="button">Play now!</p>
                   </a>
                 </div>
               </div>
@@ -176,15 +180,15 @@
         <div class="content-container">
           <div class="section-title">
             <div class="vertical-bg">
-              <h1>About<span class="text-cta">.</span></h1>
+              <h1>About<span class="text-blink">.</span></h1>
             </div>
           </div>
           <div class="section-body">
-            <p>I've always been an engineer. Making demo disks on my Amiga 500. Building video editing PCs. Designing my homepage with a custom back-end CMS.</p>
+            <p>I've always been an engineer: making demo disks on my Amiga 500; building video editing PCs; designing my homepage with a custom back-end CMS.</p>
             <p>For my Electronic Engineering degree, I did software simulations of laboratory hardware in C++ and Shockwave (RIP).</p>
-            <p>My career turned to film post production. I streamed live video before YouTube existed. Over 20 years, I edited thousands of shorts, commercials, documentaries and feature films.</p>
+            <p>My career turned to film post production. I did live video webcasts before YouTube existed. Over 20 years, I edited thousands of shorts, commercials, documentaries and feature films.</p>
             <p>In 2023, I wanted a new challenge so I came back to my engineering roots. Now I'm using my software development skills to make my ideas real.</p>
-            <p>When I'm not coding, I'm writing short stories, producing electronic music, and making films.</p>
+            <p>When I'm not coding, I'm writing <a href="https://vocal.media/authors/nicholas-s-bw19a0k05">short stories</a>, producing <a href="https://soundcloud.com/electrission">electronic music</a>, and <a href="https://vimeo.com/nickswinglehurst">making films</a>.</p>
           </div>
         </div>
       </section>
@@ -194,7 +198,7 @@
         <div class="content-container">
           <div class="section-title">
             <div class="vertical-bg">
-              <h1>Skills<span class="text-cta">.</span></h1>
+              <h1>Skills<span class="text-blink">.</span></h1>
             </div>
           </div>
           <div class="section-body columns">
@@ -215,19 +219,20 @@
         <div class="content-container">
           <div class="section-title">
             <div class="vertical-bg">
-              <h1>Contact<span class="text-cta">.</span></h1>
+              <h1>Contact<span class="text-blink">.</span></h1>
             </div>
           </div>
           <div class="section-body columns">
             <div>
               <form action="mailto:nickswinglehurst@gmail.com?subject=Message via website" class="contact-form">
-                <textarea name="Your message" placeholder="Reach out! It's good for your shoulders..." min="32" required></textarea>
+                <h2>Go on, reach out...</h2>
+                <textarea name="Your message" placeholder="It's good for your shoulders!" min="32" required></textarea>
                 <input type="email" name="Your email" placeholder="your@email.com" required />
-                <button type="submit">Send</button>
+                <button id="submit-email" type="submit">Send</button>
               </form>
             </div>
             <div>
-              <p>Or scan my contact details...</p>
+              <h2>Scan this to add my contact details:</h2>
               <img class="qr-code" src="./images/vcf-qrcode.png" alt="QR code with my contact details" />
             </div>
           </div>
@@ -239,25 +244,31 @@
         <div class="content-container">
           <div class="section-title">
             <div class="vertical-bg">
-              <h1>More<span class="text-cta">.</span></h1>
+              <h1>More<span class="text-blink">.</span></h1>
             </div>
           </div>
           <div class="section-body columns">
             <div>
               <ul>
-                <li>About</li>
-                <li>Projects</li>
-                <li>Skills</li>
-                <li>Creative</li>
-                <li>Ethical</li>
+                <li>Quick Links</li>
+                <li><a href="#about">About</a></li>
+                <li><a href="#projects">Projects</a></li>
+                <li><a href="#skills">Skills</a></li>
               </ul>
             </div>
             <div>
               <ul>
-                <li>LinkedIn</li>
-                <li>GitHub</li>
-                <li>Vocal</li>
-                <li>Vimeo</li>
+                <li>Developer</li>
+                <li><a href="https://www.linkedin.com/in/nickswinglehurst/">LinkedIn</a></li>
+                <li><a href="https://github.com/nickscale">GitHub</a></li>
+              </ul>
+            </div>
+            <div>
+              <ul>
+                <li>Creative</li>
+                <li><a href="https://vocal.media/authors/nicholas-s-bw19a0k05">Vocal</a></li>
+                <li><a href="https://vimeo.com/nickswinglehurst">Vimeo</a></li>
+                <li><a href="https://soundcloud.com/electrission">Soundcloud</a></li>
                 <li>&nbsp;</li>
                 <li>© 2023</li>
               </ul>
