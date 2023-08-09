@@ -28,4 +28,26 @@ colorThemes.forEach((themeOption) => {
   });
 });
 
+
+// FOR SCROLL REVEAL ANIMATIONS
+function scrollReveal() {
+  var elements = document.querySelectorAll(".scroll-reveal");
+
+  for (i = 0; i < elements.length; i++) {
+    var windowHeight = window.innerHeight;
+    var elementTop = elements[i].getBoundingClientRect().top;
+    var elementVisible = 10; // distance from bottom when element appears
+
+    if (elementTop < windowHeight - elementVisible) {
+      elements[i].classList.add("active");
+    } else {
+      elements[i].classList.remove("active");
+    }
+  }
+}
+
+// listen for scrolling events and animate in selected elements  
+window.addEventListener("scroll", scrollReveal);
+
+// restore theme if one was previously saved
 document.onload = setTheme();

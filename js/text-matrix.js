@@ -10,7 +10,7 @@ for (i=0;i<pixels.length;i++) {
 let currentLetter = 0;
 let interval = setInterval(flipLetters, 75);
 let thisFlippingSound = new Audio("audio/split-flap-display.mp3");
-thisFlippingSound.volume = 0.25;
+thisFlippingSound.volume = 0.15;
 thisFlippingSound.play();
 
 function flipLetters(n) {
@@ -19,12 +19,12 @@ function flipLetters(n) {
     for (j=currentLetter;j<pixels.length;j++) {
         randomChar = alphabet.charAt(Math.floor(Math.random() * alphabet.length));
         pixels[j].textContent = randomChar;
-        pixels[j].classList.add("text-heading");
+        pixels[j].classList.add("pixel-colour");
     }
     
     // but set the current letter back to its original
     pixels[currentLetter].textContent = originalLetters.charAt(currentLetter);
-    pixels[currentLetter].classList.remove("text-heading");
+    pixels[currentLetter].classList.remove("pixel-colour");
 
     // move on to the next letter
     currentLetter += 1;

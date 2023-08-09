@@ -26,7 +26,7 @@ $(document).on("click", function () {
     thisItem = 0;
 
     $("#title-splash").css("display", "none");
-    $("#status").text("Level " + String(level+1));
+    $("#status").html("<h2>Level " + String(level+1) + "</h2>");
     $("#board-container").css("display", "block");
     $(".btn").addClass("hoverable");
     
@@ -63,7 +63,7 @@ $(".btn").on("mousedown", function () {
 
         // add another colour, and reset to start of pattern
         setTimeout(function (){
-          $("#status").text("Level " + String(level+1));
+          $("#status").html("<h2>Level " + String(level+1) + "</h2>");
           thisItem = 0;
           gameColor = randomColor();
           gamePattern.push(gameColor);
@@ -87,7 +87,7 @@ $(".btn").on("mousedown", function () {
         $(".game-container").removeClass("error");
         $("#board-container").css("display", "none");
         $("#main-title").text("Simple Simon");
-        $("#status").text("Tap to begin");
+        $("#status").html("<h2>Tap to begin</h2>");
         gameOver = false;
       }, 2500); // pause in milliseconds
     }
@@ -110,11 +110,11 @@ function playSound(sound) {
 // flash a button
 function flashButton(buttonColor) {
   $(".btn." + buttonColor).addClass("pressed"); 
-  $(".btn." + buttonColor).removeClass("pressed", 200);
+  $(".btn." + buttonColor).removeClass("pressed", 250);
 }
 
 // flash the game background
 function flashScreen() {
-  $(".game-container").addClass("error");
-  $(".game-container").removeClass("error", 1500);
+  $(".backdrop").addClass("error");
+  $(".backdrop").removeClass("error", 1200);
 }

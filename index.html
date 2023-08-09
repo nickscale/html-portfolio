@@ -3,10 +3,9 @@
   <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <meta title="NS" />
+    <meta title="Nick Swinglehurst" />
 
-    <!-- Link and preload Google fonts -->
-    <link rel="preload" href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:opsz,wght,FILL,GRAD@48,400,0,0&family=Azeret+Mono:wght@100;300;500;700;900" as="style" />
+    <!-- Link Google fonts -->
     <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:opsz,wght,FILL,GRAD@48,400,0,0&family=Azeret+Mono:wght@100;300;500;700;900" />
 
     <!-- Link and preload custom CSS -->
@@ -65,7 +64,7 @@
       <section class="hero-container" id="front">
         <div class="background"></div>
         <div class="letter-matrix">
-          <span class="pixel"><a href="#about">N</a></span>
+          <span class="pixel">N</span>
           <span class="pixel">I</span>
           <span class="pixel">C</span>
           <span class="pixel">K</span>
@@ -102,18 +101,41 @@
           <span class="pixel">O</span>
           <span class="pixel">N</span>
         </div>
-        <div class="pointer"><span class="material-symbols-outlined"> expand_more </span></div>
+        <div class="pointer"><span class="material-symbols-outlined"> &#xe5cf; </span></div>
+      </section>
+
+      <!-- About -->
+      <section class="page-container diagonal" id="about">
+        <div class="content-container">
+          <div class="section-title">
+            <div class="scroll-reveal">
+              <div class="vertical-bg">
+                <h1>About<span class="text-blink">.</span></h1>
+              </div>
+            </div>
+          </div>
+          <div class="section-body">
+            <p>I'm a Junior Full Stack Developer based in central London.</p>
+            <p>I've always been an engineer, from making demo disks on my Amiga 500 to building video editing PCs.</p>
+            <p>For my Electronic Engineering degree, I made software simulations of lab hardware in C++ and Shockwave (RIP).</p>
+            <p>My career turned to video post production. I streamed live webcasts before YouTube existed. Over 20 years, I edited 1000s of shorts, commercials, factual TV and cinema films.</p>
+            <p>In 2023, I wanted a new challenge so I returned to my engineering roots. I love turning ideas into reality.</p>
+            <p>When I'm not coding I'm writing <a href="https://vocal.media/authors/nicholas-s-bw19a0k05">short stories</a>, producing <a href="https://soundcloud.com/electrission">electronic music</a>, and <a href="https://vimeo.com/nickswinglehurst">making films</a>.</p>
+          </div>
+        </div>
       </section>
 
       <!-- Projects -->
       <section class="page-container diagonal" id="projects">
         <div class="content-container">
           <div class="section-title">
-            <div class="vertical-bg">
-              <h1>Projects<span class="text-blink">.</span></h1>
+            <div class="scroll-reveal">
+              <div class="vertical-bg">
+                <h1>Projects<span class="text-blink">.</span></h1>
+              </div>
             </div>
           </div>
-          <div class="section-body columns">
+          <div class="section-body columns-grid">
             <!-- project gallery -->
             <div class="project-card-container" id="proj1">
               <div class="project-card">
@@ -121,11 +143,9 @@
                   <img class="project-img" alt="Chime" src="./images/gallery/screenshot_chime.jpeg" />
                 </div>
                 <div class="project-card-back">
-                  <a href="./chime/">
                     <h1 class="project-title">Chime<span class="text-blink">.</span></h1>
                     <p class="project-stub">A musical toy.</p>
-                    <div class="button">Play it now!</div>
-                  </a>
+                    <div class="button"><a href="./chime/">Play now!</a></div>
                 </div>
               </div>
             </div>
@@ -135,11 +155,11 @@
                   <img src="./images/gallery/screenshot_lefttowrite.jpeg" alt="" class="project-img" />
                 </div>
                 <div class="project-card-back">
-                  <a href="./lefttowrite/">
+                  
                     <h1 class="project-title">Left To Write<span class="text-blink">.</span></h1>
                     <p class="project-stub">Helping writers meet deadlines.</p>
-                    <div class="button">Try it now!</div>
-                  </a>
+                    <div class="button"><a href="./lefttowrite/">Try it now!</a></div>
+            
                 </div>
               </div>
             </div>
@@ -149,11 +169,11 @@
                   <img src="./images/gallery/screenshot_bigtoe.jpeg" alt="" class="project-img" />
                 </div>
                 <div class="project-card-back">
-                  <a href="./bigtoe/">
+                  
                     <h1 class="project-title">Big Toe<span class="text-blink">.</span></h1>
                     <p class="project-stub">Tic tac toe - but bigger!</p>
-                    <div class="button">Play now!</div>
-                  </a>
+                    <div class="button"><a href="./bigtoe/">Play now!</a></div>
+                  
                 </div>
               </div>
             </div>
@@ -163,32 +183,12 @@
                   <img src="./images/gallery/screenshot_simon.jpeg" alt="" class="project-img" />
                 </div>
                 <div class="project-card-back">
-                  <a href="./simon/">
                     <h1 class="project-title">Simple Simon<span class="text-blink">.</span></h1>
                     <p class="project-stub">The 80s handheld game reinvented.</p>
-                    <p class="button">Play now!</p>
-                  </a>
+                    <div class="button"><a href="./simon/">Play now!</a></div>
                 </div>
               </div>
             </div>
-          </div>
-        </div>
-      </section>
-
-      <!-- About -->
-      <section class="page-container" id="about">
-        <div class="content-container">
-          <div class="section-title">
-            <div class="vertical-bg">
-              <h1>About<span class="text-blink">.</span></h1>
-            </div>
-          </div>
-          <div class="section-body">
-            <p>I've always been an engineer: making demo disks on my Amiga 500; building video editing PCs; designing my homepage with a custom back-end CMS.</p>
-            <p>For my Electronic Engineering degree, I did software simulations of laboratory hardware in C++ and Shockwave (RIP).</p>
-            <p>My career turned to film post production. I did live video webcasts before YouTube existed. Over 20 years, I edited thousands of shorts, commercials, documentaries and feature films.</p>
-            <p>In 2023, I wanted a new challenge so I came back to my engineering roots. Now I'm using my software development skills to make my ideas real.</p>
-            <p>When I'm not coding, I'm writing <a href="https://vocal.media/authors/nicholas-s-bw19a0k05">short stories</a>, producing <a href="https://soundcloud.com/electrission">electronic music</a>, and <a href="https://vimeo.com/nickswinglehurst">making films</a>.</p>
           </div>
         </div>
       </section>
@@ -197,19 +197,40 @@
       <section class="page-container diagonal" id="skills">
         <div class="content-container">
           <div class="section-title">
-            <div class="vertical-bg">
-              <h1>Skills<span class="text-blink">.</span></h1>
+            <div class="scroll-reveal">
+              <div class="vertical-bg">
+                <h1>Skills<span class="text-blink">.</span></h1>
+              </div>
             </div>
           </div>
-          <div class="section-body columns">
-            <h1 class="skill">HTML</h1>
-            <h1 class="skill">CSS</h1>
-            <h1 class="skill">JavaScript</h1>
-            <h1 class="skill">Python</h1>
-            <h2 class="skill">ASP</h2>
-            <h2 class="skill">PHP</h2>
-            <h3 class="skill">C++</h3>
-            <h3 class="skill"><span class="material-symbols-outlined"> skull </span>Shockwave</h3>
+          <div class="section-body">
+            <div class="columns-grid">
+              <h1 class="skill scroll-reveal">HTML</h1>
+              <h1 class="skill scroll-reveal">CSS</h1>
+              <h1 class="skill scroll-reveal">JavaScript</h1>
+              <h2 class="skill scroll-reveal">Python</h1>
+              <h3 class="skill scroll-reveal">ASP</h2>
+              <h3 class="skill scroll-reveal">PHP</h2>
+              <h4 class="skill scroll-reveal">C++</h3>
+              <h4 class="skill scroll-reveal"><span class="material-symbols-outlined"> skull </span><br>Shockwave</h3>
+            </div>
+          </div>
+          <div class="section-body">
+          <h2>Other qualifications <span class="blink">.</span></h2>
+        </div>
+        <div>
+            <ul>
+              <li>CodeWars</li>
+              <li><img src="https://www.codewars.com/users/nickscale/badges/large
+                " alt="" srcset=""></li>
+                <li>GitHub</li>
+                <li><div class="github-card" data-github="nickscale" data-width="400" data-height="" data-theme="default"></div>
+                  <script src="//cdn.jsdelivr.net/github-cards/latest/widget.js"></script></li>
+              <li>Udemy - </li>
+              <li>Bootcamps</li>
+              <li>Other learning</li>
+            </ul>
+
           </div>
         </div>
       </section>
@@ -218,21 +239,23 @@
       <section class="page-container" id="contact">
         <div class="content-container">
           <div class="section-title">
-            <div class="vertical-bg">
-              <h1>Contact<span class="text-blink">.</span></h1>
+            <div class="scroll-reveal">
+              <div class="vertical-bg">
+                <h1>Contact<span class="text-blink">.</span></h1>
+              </div>
             </div>
           </div>
-          <div class="section-body columns">
+          <div class="section-body columns-flex">
             <div>
+              <h2>Go on, reach out...</h2>
               <form action="mailto:nickswinglehurst@gmail.com?subject=Message via website" class="contact-form">
-                <h2>Go on, reach out...</h2>
-                <textarea name="Your message" placeholder="It's good for your shoulders!" min="32" required></textarea>
+                <textarea name="Your message" placeholder="... It's good for your shoulders!" min="32" required></textarea>
                 <input type="email" name="Your email" placeholder="your@email.com" required />
-                <button id="submit-email" type="submit">Send</button>
+                <div class="button" id="submit-button" onclick="submit()">Send</div>
               </form>
             </div>
             <div>
-              <h2>Scan this to add my contact details:</h2>
+              <h2>Or scan my deets...</h2>
               <img class="qr-code" src="./images/vcf-qrcode.png" alt="QR code with my contact details" />
             </div>
           </div>
@@ -240,42 +263,53 @@
       </section>
 
       <!-- Footer -->
-      <footer class="page-container diagonal" id="footer">
+      <section class="page-container diagonal" id="footer">
         <div class="content-container">
           <div class="section-title">
-            <div class="vertical-bg">
-              <h1>More<span class="text-blink">.</span></h1>
+            <div class="scroll-reveal">
+              <div class="vertical-bg">
+                <h1>More<span class="text-blink">.</span></h1>
+              </div>
             </div>
           </div>
-          <div class="section-body columns">
+          <div class="section-body columns-flex">
             <div>
               <ul>
-                <li>Quick Links</li>
+                <li><h3>Site map</h3></li>
                 <li><a href="#about">About</a></li>
                 <li><a href="#projects">Projects</a></li>
+                <li>
+                  <ul>
+                    <li>> <a href="/chime/">Chime</a></li>
+                    <li>> <a href="/lefttowrite/">Left To Write</a></li>
+                    <li>> <a href="/bigtoe/">Big Toe</a></li>
+                    <li>> <a href="/simon/">Simple Simon</a></li>
+                  </ul>
+                </li>
                 <li><a href="#skills">Skills</a></li>
               </ul>
             </div>
             <div>
               <ul>
-                <li>Developer</li>
-                <li><a href="https://www.linkedin.com/in/nickswinglehurst/">LinkedIn</a></li>
+                <li><h3>Developer</h3></li>
                 <li><a href="https://github.com/nickscale">GitHub</a></li>
+                <li><a href="https://www.codewars.com/users/nickscale">Codewars</a></li>
+                <li><a href="https://www.linkedin.com/in/nickswinglehurst/">LinkedIn</a></li>
               </ul>
             </div>
             <div>
               <ul>
-                <li>Creative</li>
+                <li><h3>Creative</h3></li>
                 <li><a href="https://vocal.media/authors/nicholas-s-bw19a0k05">Vocal</a></li>
                 <li><a href="https://vimeo.com/nickswinglehurst">Vimeo</a></li>
-                <li><a href="https://soundcloud.com/electrission">Soundcloud</a></li>
+                <li><a href="https://soundcloud.com/electrission">SoundCloud</a></li>
                 <li>&nbsp;</li>
                 <li>© 2023</li>
               </ul>
             </div>
           </div>
         </div>
-      </footer>
+      </section>
     </div>
   </body>
 </html>

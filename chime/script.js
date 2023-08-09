@@ -22,6 +22,7 @@ let percussion = [
 let nowPlaying = false;
 let playing;
 let currentBeat = 0;
+let globalVolume = 0.3;
 let mode = "synth";
 // const gainNode = audioContext.createGain();
 
@@ -246,9 +247,11 @@ function playNote(pitch, perc) {
   }
 
   if (thisNote != undefined) {
+    thisNote.volume = globalVolume;
     thisNote.play();
   }
   if (thisPerc != undefined) {
+    thisPerc.volume = globalVolume;
     thisPerc.play();
   }
 }
