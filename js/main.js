@@ -1,4 +1,46 @@
-// SAVE THEME SELECTION IN LOCAL STORAGE
+//* LETTER MATRIX ANIMATION FOR HERO SECTION
+
+let alphabet = 'ABCDEFGHIJKLMNOPQRSTUVWXYZ'
+let originalLetters = ''
+let pixels = document.getElementsByClassName("pixel");
+
+// save the original letters to be restored later
+for (i=0;i<pixels.length;i++) {
+    originalLetters += pixels[i].textContent;
+}
+
+let currentLetter = 0;
+let interval = setInterval(flipLetters, 75);
+let thisFlippingSound = new Audio("audio/split-flap-display.mp3");
+thisFlippingSound.volume = 0.15;
+thisFlippingSound.play();
+
+function flipLetters(n) {
+
+    // set every letter to a random character, starting from the current letter
+    for (j=currentLetter;j<pixels.length;j++) {
+        randomChar = alphabet.charAt(Math.floor(Math.random() * alphabet.length));
+        pixels[j].textContent = randomChar;
+        pixels[j].classList.add("pixel-colour");
+    }
+    
+    // but set the current letter back to its original
+    pixels[currentLetter].textContent = originalLetters.charAt(currentLetter);
+    pixels[currentLetter].classList.remove("pixel-colour");
+
+    // move on to the next letter
+    currentLetter += 1;
+
+    // if all the letters have been flipped and restored, then stop
+    if (currentLetter == originalLetters.length) {
+        clearInterval(interval);
+        thisFlippingSound.pause();
+    }
+}
+
+
+//* SAVE THEME SELECTION IN LOCAL STORAGE
+
 const colorThemes = document.querySelectorAll('[name="theme"]');
 
 // store selected theme
@@ -29,14 +71,15 @@ colorThemes.forEach((themeOption) => {
 });
 
 
-// FOR SCROLL REVEAL ANIMATIONS
+//* REVEAL ELEMENTS WITH ANIMATION WHEN USER SCROLLS
+
 function scrollReveal() {
   var elements = document.querySelectorAll(".scroll-reveal");
 
   for (i = 0; i < elements.length; i++) {
     var windowHeight = window.innerHeight;
     var elementTop = elements[i].getBoundingClientRect().top;
-    var elementVisible = 10; // distance from bottom when element appears
+    var elementVisible = 0; // distance from bottom when element appears
 
     if (elementTop < windowHeight - elementVisible) {
       elements[i].classList.add("active");

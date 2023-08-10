@@ -61,6 +61,7 @@ body {
   height: 99dvh;
   margin: 0 0 -4vmin 0;
 
+  /* animate the background gradient */
   background: var(--grad-hero);
   background-size: 200% 200%;
   animation: gradient 10s ease-in-out infinite;
@@ -100,7 +101,7 @@ body {
   justify-content: center;
 }
 
-/* non full width content */
+/* centred width-limited content container */
 .content-container {
   position: relative;
   width: 100%;
@@ -110,30 +111,35 @@ body {
   align-items: start;
 }
 
+/* sub-containers within each section */
+
+/* for vertical section titles */
 .section-title {
-  width: min(12vw, 4.5rem);
+  width: min(20vw, 12rem);
+  /* background: var(--DEBUG4); */
 }
 
+.vertical-title {
+  position: relative;
+  transform-origin: left bottom;
+  transform: translate(0%, -115%) rotate(90deg);
+}
+
+/* right-hand content area of each section */
 .section-body {
-  width: 87vw;
+  width: 75vw;
   display: flex;
   flex-direction: column;
 }
 
-.columns-none {
-}
-
-.columns-grid {
-  display: grid;
-  width: 100%;
-  grid-template-columns: 1fr 1fr 1fr;
-  gap: 1rem;
-}
+/* different layouts for section-body */
 
 .columns-flex {
   display: flex;
   flex-direction: row;
+  flex-wrap: wrap;
   justify-content: space-between;
+  gap: 1rem;
 }
 
 /*** SPECIFIC PAGE STYLINGS ***/
@@ -163,17 +169,16 @@ body {
 
 .pointer {
   position: relative;
-  line-height: 12vh;
   text-align: center;
   animation: point 2s ease-in-out infinite;
 }
 @keyframes point {
   0%,
   100% {
-    transform: translateY(-10%);
+    transform: translateY(0%);
   }
   50% {
-    transform: translateY(10%);
+    transform: translateY(50%);
   }
 }
 
@@ -192,8 +197,10 @@ body {
 }
 
 .project-card-container {
-  width: inherit;
-  height: min(25vw, 16rem);
+  flex-basis: 48%;
+  width: 100%;
+  height: 350px;
+  /* flex: 1; */
   /* border: 1px solid #f1f1f1; */
   perspective: 1000px; /* Remove this if you don't want the 3D effect */
 }
@@ -201,8 +208,8 @@ body {
 /* This container is needed to position the front and back side */
 .project-card {
   position: relative;
-  width: 100%;
-  height: 100%;
+  width: inherit;
+  height: inherit;
   transition: all 0.5s;
   transform-style: preserve-3d;
 }
@@ -229,15 +236,16 @@ body {
   display: flex;
   flex-direction: column;
   justify-content: space-between;
+  gap: 0.5rem;
+  color: var(--theme-text);
   transform: rotateY(180deg);
 }
 
 .project-img {
-  height: inherit;
   width: inherit;
+  height: inherit;
   object-fit: cover;
-  object-position: top center;
-  transform-origin: top right;
+  object-position: top;
 }
 
 .project-title {
@@ -246,8 +254,14 @@ body {
   color: var(--theme-text);
 }
 
-.project-stub {
-  color: var(--theme-text);
+.skill-bubble {
+  width: fit-content;
+  font-size: 1rem;
+  line-height: 2.5rem;
+  padding: 0.25rem;
+  color: var(--theme-bg);
+  background: var(--theme-shadow);
+  border: 2px solid var(--theme-text);
 }
 
 /* SKILLS page stylings */
@@ -258,18 +272,30 @@ body {
 }
 
 .skill {
-  text-align: center;
+  flex-basis: 30%;
+  text-align: left;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  /* background: var(--DEBUG4); */
+}
+
+.skill-wide {
+  flex-basis: 100%;
+  display: flex;
+  flex-direction: column;
 }
 
 /* CONTACT page styling */
 
 .page-container#contact {
-  color: var(--theme-bg);
-  background: var(--theme-text);
+  color: var(--theme-text);
+  background: var(--grad1);
 }
 
-.contact-form * {
-  margin: 5px 0;
+.contact-form > * {
+  flex-basis: 100%;
+  margin: 0.5rem 0;
   padding: 0.5rem;
   font-family: var(--font-body);
   font-size: inherit;
@@ -284,16 +310,14 @@ body {
 }
 
 .contact-form input {
-  margin: 5px 0;
-  padding: 0.5rem;
-  width: 72%;
+  width: 75%;
   height: 3rem;
 }
 
 .contact-form #submit-button {
   float: right;
-  width: 26%;
-  height: 3rem;
+  width: 20%;
+  color: var(--theme-text);
 }
 
 /* FOOTER page stylings */
@@ -311,33 +335,34 @@ body {
 
 h1 {
   font-family: var(--font-heading);
-  font-size: clamp(2rem, 6vmin, 3rem);
+  font-size: clamp(4rem, 7vmin, 6rem);
   font-weight: 500;
   line-height: 120%;
-  margin: 1vh 0;
+  margin: 0.75rem 0;
 }
 
 h2 {
-  font-size: clamp(1.25rem, 3.5vmin, 1.75rem);
+  font-size: clamp(2rem, 3.5vmin, 2.5rem);
   font-weight: 500;
-  text-wrap: balance;
-  margin: 1vh 0;
+  margin: 0.75rem 0;
 }
 
 h3 {
   font-size: 1.2rem;
   font-weight: 500;
+  margin: 0.75rem 0;
 }
 
 h4 {
   font-size: 0.9rem;
   font-weight: 300;
+  margin: 0.75rem 0;
 }
 
 p {
   font-size: 1.2rem;
   font-weight: 300;
-  margin: 0 0 1rem 0;
+  margin: 0.75rem 0;
 }
 
 a {
@@ -351,26 +376,24 @@ a:hover {
   color: var(--theme-text);
 }
 
+.material-symbols-outlined {
+  font-variation-settings: "FILL" 0, "wght" 400, "GRAD" 0, "opsz" 48;
+  vertical-align: middle;
+}
+
 .button {
-  padding: 0.25rem;
+  padding: 0.75rem;
+  width: fit-content;
   margin: 5px 0;
   display: flex;
   justify-content: center;
-  align-items: center;
   color: inherit;
-  background: inherit;
   border: 2px solid var(--theme-text);
 }
 
-/* .button:hover {
+.button:hover {
   background-color: var(--theme-cta);
   color: var(--theme-text);
-} */
-
-.vertical-bg {
-  position: relative;
-  transform-origin: left bottom;
-  transform: translate(0%, -100%) rotate(90deg);
 }
 
 ul {
@@ -379,6 +402,10 @@ ul {
 
 ul > li {
   margin-left: 1rem;
+}
+
+.strong {
+  font-weight: 700;
 }
 
 .text-blink {
@@ -442,7 +469,7 @@ ul > li {
   --theme-cta: #d82121;
 
   /* animated gradient for hero background */
-  --grad-hero: linear-gradient(45deg, var(--theme-white), #bbb, #ddd, #aaa, #fff);
+  --grad-hero: linear-gradient(45deg, var(--theme-white), #ccc, #eee, #bbb, #fff);
 
   /* static gradient for section background */
   /* this should be contrasting to hero background */
@@ -461,7 +488,7 @@ ul > li {
   --theme-shadow: var(--theme-black);
   --theme-cta: #d82121;
 
-  --grad-hero: linear-gradient(45deg, #111, #333, #222, #333, #111, #999, #111, #222);
+  --grad-hero: linear-gradient(45deg, #111, #333, #222, #555, #111, #222, #111);
   --grad-body: radial-gradient(at 50% 50%, #333, #000);
 }
 
@@ -526,7 +553,7 @@ ul > li {
 /*** MEDIA QUERIES based on aspect ratio, not size ***/
 
 /* for portrait screens taller than 3:4 */
-@media (max-aspect-ratio: 3/4) {
+@media (max-aspect-ratio: 3/4) or (max-width: 640px) {
   .letter-matrix {
     grid-template-columns: repeat(4, 1fr);
     grid-template-rows: repeat(9, 1fr);
@@ -534,6 +561,17 @@ ul > li {
   .pixel {
     font-size: 8vh;
     line-height: 10vh;
+  }
+  .project-card-container {
+    flex-basis: 98%;
+  }
+
+  h1 {
+    font-size: 12vw;
+  }
+
+  h2 {
+    font-size: max(1rem, 6vw);
   }
 }
 
