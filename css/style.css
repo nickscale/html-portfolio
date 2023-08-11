@@ -260,8 +260,7 @@ body {
   line-height: 2.5rem;
   padding: 0.25rem;
   color: var(--theme-bg);
-  background: var(--theme-shadow);
-  border: 2px solid var(--theme-text);
+  background: var(--theme-text);
 }
 
 /* SKILLS page stylings */
@@ -387,7 +386,7 @@ a:hover {
   margin: 5px 0;
   display: flex;
   justify-content: center;
-  color: inherit;
+  color: var(--theme-cta);
   border: 2px solid var(--theme-text);
 }
 
