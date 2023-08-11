@@ -1,3 +1,14 @@
+// WALLPAPER SETTINGS
+
+function setWallpaper() {
+    let randomURL = "../images/gallery/liminal/liminal-ext-0" + Math.floor(39 * Math.random()) + ".jpeg";
+    console.log('randomURL',randomURL);
+    wallpaper = document.querySelector("wallpaper");
+    wallpaper.setAttribute("src",randomURL);
+}
+
+// CLOCK SETTINGS 
+
 let timeString = '';
 let dateString = '';
 
@@ -8,12 +19,6 @@ let seconds = now.getSeconds();
 
 timeString += hours+':'+minutes+':'+seconds;
 dateString += now.getDay() + now.getDate() + now.getMonth() + now.getFullYear(); 
-
-setTime(seconds, "second");
-setTime(minutes, "minute");
-setTime((hours%12) + (minutes/60), "hour");
-setDigitalTime();
-
 
 function setTime(angle, hand) {
     switch(hand) {
@@ -31,7 +36,7 @@ function setTime(angle, hand) {
   document.getElementById("digital-date").textContent = niceDate(now);
 }
 
-/* set time on digital clock, called by setInterval every second */
+/* update digital clock using setInterval */
 function setDigitalTime() {
     let thisTime = new Date();
     let hh = thisTime.getHours();
@@ -53,7 +58,7 @@ function setDigitalTime() {
     setTimeout(setDigitalTime, 1000);
 } 
 
-// return a nice date string, e.g. 'Saturday 22nd July 2021'
+// make a nice date string, e.g. Saturday 22nd July 2021
 function niceDate(thisDate) { 
 
     // get formatted strings
@@ -68,7 +73,7 @@ function niceDate(thisDate) {
     return dateString
 }
 
-// find the ordinal suffix (-st, -nd or -rd) for a given integer
+// get the ordinal suffix (-st, -nd or -rd) for a given integer
 function ordinalSuffix(thisNumber) {
     if (thisNumber == 11 || thisNumber == 12 || thisNumber == 13) {
         return "th";
@@ -86,3 +91,10 @@ function ordinalSuffix(thisNumber) {
         }
     } 
 }
+
+// do lots of stuff when the script loads
+setTime(seconds, "second");
+setTime(minutes, "minute");
+setTime((hours%12) + (minutes/60), "hour");
+setDigitalTime();
+setWallpaper();
