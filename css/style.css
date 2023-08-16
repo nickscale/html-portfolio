@@ -19,7 +19,7 @@
   /* For all pages except hero/full-width page */
   --content-max-width: 880px; /* i.e. maximum width */
   --content-margin-x: 5vw;
-  --content-margin-y: 5rem;
+  --content-margin-y: 10rem;
 
   /* layout angle */
   --skew-angle: -2deg;
@@ -44,6 +44,7 @@ html {
 body {
   font-family: var(--font-body);
   color: var(--theme-text);
+  background-color: var(--theme-bg);
 }
 
 /***** LAYOUT STYLINGS *****/
@@ -95,8 +96,8 @@ body {
 /* for all other pages except front page */
 .page-container {
   position: relative;
-  margin: -2rem 0;
-  padding: 6rem 0;
+  margin: -2.5rem 0;
+  padding: var(--content-margin-y) 0;
   display: flex;
   justify-content: center;
 }
@@ -192,17 +193,15 @@ body {
 /* PROJECTS page styling */
 
 .page-container#projects {
-  color: var(--theme-bg);
-  background: var(--theme-text);
+  color: var(--theme-text);
+  background: var(--theme-bg);
 }
 
 .project-card-container {
   flex-basis: 48%;
   width: 100%;
-  height: 350px;
-  /* flex: 1; */
-  /* border: 1px solid #f1f1f1; */
-  perspective: 1000px; /* Remove this if you don't want the 3D effect */
+  height: max(35vh, 380px);
+  perspective: 1000px;
 }
 
 /* This container is needed to position the front and back side */
@@ -226,7 +225,7 @@ body {
   width: inherit;
   height: inherit;
   overflow: hidden;
-  background: var(--theme-bg);
+  background: var(--theme-text);
   -webkit-backface-visibility: hidden; /* Safari */
   backface-visibility: hidden;
 }
@@ -236,8 +235,8 @@ body {
   display: flex;
   flex-direction: column;
   justify-content: space-between;
-  gap: 0.5rem;
-  color: var(--theme-text);
+  gap: 0.25rem;
+  color: var(--theme-bg);
   transform: rotateY(180deg);
 }
 
@@ -251,7 +250,7 @@ body {
 .project-title {
   font-family: var(--font-heading);
   line-height: 0.85;
-  color: var(--theme-text);
+  color: var(--theme-bg);
 }
 
 .skill-bubble {
@@ -259,21 +258,22 @@ body {
   font-size: 1rem;
   line-height: 2.5rem;
   padding: 0.25rem;
+  border-radius: 0.5rem;
   color: var(--theme-bg);
-  background: var(--theme-shadow);
-  border: 2px solid var(--theme-text);
+  /* background: var(--theme-shadow); */
+  border: 1px solid var(--theme-bg);
 }
 
 /* SKILLS page stylings */
 
 .page-container#skills {
   color: var(--theme-text);
-  background: var(--theme-bg);
+  background: var(--grad-body);
 }
 
 .skill {
   flex-basis: 30%;
-  text-align: left;
+  text-align: center;
   display: flex;
   flex-direction: column;
   justify-content: center;
@@ -348,7 +348,7 @@ h2 {
 }
 
 h3 {
-  font-size: 1.2rem;
+  font-size: 1.5rem;
   font-weight: 500;
   margin: 0.75rem 0;
 }
@@ -387,8 +387,9 @@ a:hover {
   margin: 5px 0;
   display: flex;
   justify-content: center;
-  color: inherit;
-  border: 2px solid var(--theme-text);
+  color: var(--theme-text);
+  background: var(--theme-bg);
+  border: 1px solid var(--theme-text);
 }
 
 .button:hover {
@@ -436,7 +437,7 @@ ul > li {
   position: absolute;
   z-index: -1;
   inset: 0;
-  box-shadow: 0px 0px 30px var(--theme-shadow);
+  box-shadow: 0px 0px 50px var(--theme-shadow);
   /* transform: skewY(var(--skew-angle)); */
 }
 
@@ -446,7 +447,7 @@ ul > li {
   position: relative;
   transform: translateY(150px);
   opacity: 0;
-  transition: all 1s ease;
+  transition: all 0.6s ease;
 }
 
 .scroll-reveal.active {
@@ -562,6 +563,8 @@ ul > li {
     font-size: 8vh;
     line-height: 10vh;
   }
+
+  /* make project-card full width of content-container */
   .project-card-container {
     flex-basis: 98%;
   }
