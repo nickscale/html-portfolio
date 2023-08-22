@@ -47,7 +47,7 @@
 #menuToggle input {
   display: block;
   width: var(--button-size);
-  height: var(--button-size);
+  height: calc(2 * var(--button-size));
   position: absolute;
   cursor: pointer;
   opacity: 0;

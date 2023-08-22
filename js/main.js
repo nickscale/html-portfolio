@@ -42,16 +42,18 @@ function flipLetters(n) {
 //* SAVE THEME SELECTION IN LOCAL STORAGE
 
 const colorThemes = document.querySelectorAll('[name="theme"]');
+let activeTheme = null;
 
 // store selected theme
 const storeTheme = function (theme) {
+  console.log('SAVE theme:',activeTheme);
   localStorage.setItem("theme", theme);
 };
 
 // retrieve saved theme
-const setTheme = function () {
-  const activeTheme = localStorage.getItem("theme");
-  console.log('Load theme:',activeTheme);
+function setTheme () {
+  activeTheme = localStorage.getItem("theme");
+  console.log('GET theme:',activeTheme);
   colorThemes.forEach((themeOption) => {
     if (themeOption.id === activeTheme) {
       themeOption.checked = true;
@@ -66,7 +68,7 @@ colorThemes.forEach((themeOption) => {
   themeOption.addEventListener("click", () => {
     storeTheme(themeOption.id);
     location.reload();
-    console.log('Set theme:',themeOption.id);
+    console.log('PICK theme:',themeOption.id);
   });
 });
 
