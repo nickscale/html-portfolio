@@ -370,12 +370,8 @@ a:hover {
     display: flex;
     justify-content: center;
     color: var(--theme-cta);
-    background: var(--theme-black);
-}
-
-.button:hover {
-    background: var(--theme-cta);
-    cursor: pointer;
+    border: 2px solid var(--theme-cta);
+    /* background: var(--theme-black); */
 }
 
 .button:hover>a {

@@ -86,8 +86,8 @@
 /* menu closed position (toggle not checked) */
 #menuItems {
   position: fixed;
-  width: 100dvw;
-  height: 100dvh;
+  width: 50%;
+  height: 100%;
   top: 0;
   right: 100%;
   padding: var(--button-size) 0 0 4rem;
