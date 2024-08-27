@@ -1,0 +1,529 @@
+@import url("https://fonts.googleapis.com/css2?family=Libre+Baskerville:ital@0;1&family=Poppins:wght@100;300;500&family=Comforter+Brush&family=Elephant&family=Azeret+Mono:wght@100;300;500;700;900&family=Dekko&family=Major+Mono+Display&family=Mr+Dafoe&display=swap");
+
+*,
+*::before,
+*::after {
+    margin: 0;
+    padding: 0;
+    border: 0;
+    box-sizing: border-box;
+}
+
+:root {
+    /* Global fonts */
+    --font-body: "Poppins", sans-serif;
+    --font-mono: "Azeret Mono", monospace;
+    --font-heading: var(--font-mono);
+    --font-size: 1rem;
+
+    /* Layout sizing defaults */
+    --content-max-width: 960px;
+
+    /* internal margins */
+    --content-margin-x: 2rem;
+    --content-margin-y: 3rem;
+
+    /* layout angle */
+    --skew-angle: -6deg;
+
+    /* animation styling */
+    --delay: 150ms;
+    --ease: cubic-bezier(0.215, 0.61, 0.355, 1);
+
+    /* FOR TESTING */
+    --DEBUG1: #f00;
+    --DEBUG2: #0f0;
+    --DEBUG3: #00f;
+    --DEBUG4: #ff0;
+    --DEBUG5: #f0f;
+    --DEBUG6: #0ff;
+}
+
+html {
+    /* color-scheme: dark; /* This breaks theming... */
+}
+
+body {
+    font-family: var(--font-body);
+    color: var(--theme-text);
+}
+
+.background-gradient {
+    width: 100%;
+    height: 100%;
+    position: fixed;
+
+    /* animate background gradient */
+    background: var(--theme-grad);
+    background-size: 200% 200%;
+    animation: gradient 8s ease-in-out infinite;
+}
+
+@keyframes gradient {
+
+    0%,
+    100% {
+        background-position: 0% 50%;
+    }
+
+    50% {
+        background-position: 100% 50%;
+    }
+}
+
+/* noise layer for background */
+.noise {
+    width: 100%;
+    height: 100%;
+    position: fixed;
+    top: 0;
+    left: 0;
+
+    opacity: 0.03;
+    background-image: url("../images/whitenoise.gif");
+    background-repeat: repeat;
+    /* isolation: isolate; */
+}
+
+/***** LAYOUT STRUCTURE *****/
+
+/* site-wrapper contains the centred content pages */
+/* i.e. excluding nav, noise and background) */
+.site-wrapper {
+    position: relative;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+/* page container delimits a full-width vertical page with centred content-container  */
+/* NOTE: do not add left padding to avoid nav here, use indent-left class */
+.page-container {
+    width: 100%;
+    max-width: var(--content-max-width);
+    display: flex;
+    flex-direction: row;
+    justify-content: flex-start;
+    align-items: flex-start;
+    align-content: flex-start;
+    /* background-color: var(--DEBUG3) */
+}
+
+/* sub-containers within content-container */
+
+/* add class for sections that need to dodge nav/theme controls */
+.indent-left {
+    padding: 0 0 0 1rem;
+    /* add padding to avoid nav items */
+}
+
+.vertical-title {
+    writing-mode: vertical-rl;
+    transform: rotate(180deg);
+}
+
+/* right-hand content area of each section */
+.section-right {
+    width: 100%;
+    padding: 0 var(--content-margin-x) var(--content-margin-y) var(--content-margin-x);
+    display: flex;
+    flex-direction: column;
+    /* background: var(--DEBUG4); */
+}
+
+.align-center {
+    align-items: center;
+}
+
+/* column layout for section-right */
+.columns-flex {
+    display: flex;
+    flex-direction: row;
+    flex-wrap: wrap;
+    justify-content: space-between;
+    gap: 1rem;
+}
+
+/*** SPECIFIC PAGE STYLINGS ***/
+
+/* FRONT page styling */
+
+.page-container#front {
+    /* position: relative; */
+    height: 100dvh;
+
+    /* change flex-direction to column */
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    text-align: center;
+}
+
+.scroll-down-indicator {
+    position: absolute;
+    bottom: 0%;
+    animation: v-oscillate 2s ease-in-out infinite;
+}
+
+@keyframes v-oscillate {
+
+    0%,
+    100% {
+        transform: translateY(0%);
+    }
+
+    50% {
+        transform: translateY(100%);
+    }
+}
+
+/* SHOWREEL page styling */
+
+.page-container#showreel {}
+
+/* ABOUT page styling */
+
+.page-container#about {}
+
+/* PROJECTS page styling */
+
+.page-container#projects {}
+
+.project-card-container {
+    flex-basis: 48%;
+    width: 100%;
+    height: max(35vh, 380px);
+    perspective: 1000px;
+}
+
+/* This container positions the front and back sides */
+.project-card {
+    position: relative;
+    width: inherit;
+    height: inherit;
+    transition: all 0.5s;
+    transform-style: preserve-3d;
+}
+
+/* flip card container on hover */
+.project-card-container:hover .project-card {
+    /* transform: rotateY(180deg); */
+}
+
+/* Position the front and back side */
+.project-card-front,
+.project-card-back {
+    position: absolute;
+    width: inherit;
+    height: inherit;
+    overflow: hidden;
+    -webkit-backface-visibility: hidden;
+    /* Safari */
+    backface-visibility: hidden;
+}
+
+.project-card-back {
+    padding: 1rem;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    gap: 0.25rem;
+    /* transform: rotateY(180deg); */
+}
+
+.project-img {
+    width: inherit;
+    height: inherit;
+    object-fit: cover;
+    object-position: top;
+    filter: saturate(0%);
+}
+
+.project-title {
+    font-family: var(--font-heading);
+    line-height: 0.85;
+    color: var(--theme-bg);
+}
+
+.skill-bubble {
+    width: fit-content;
+    line-height: 2.5rem;
+    padding: 0.25rem;
+    border-radius: 0.5rem;
+    color: var(--theme-bg);
+    /* background: var(--theme-shadow); */
+    border: 1px solid var(--theme-bg);
+}
+
+/* SKILLS page stylings */
+
+.page-container#skills {}
+
+.skill {
+    flex-basis: 30%;
+    text-align: center;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    /* background: var(--DEBUG4); */
+}
+
+.skill-wide {
+    flex-basis: 100%;
+    display: flex;
+    flex-direction: column;
+}
+
+/* CONTACT page styling */
+
+.page-container#contact {
+    /* background: var(--DEBUG6); */
+}
+
+iframe#contact-form {
+    width: 100%;
+    /* background: green; */
+}
+
+/* FOOTER page stylings */
+
+.page-container#footer {}
+
+/***** AESTHETIC STYLINGS *****/
+
+/* text stylings */
+
+h1 {
+    font-family: var(--font-heading);
+    font-size: calc(3 * var(--font-size));
+    font-weight: 900;
+    font-style: italic;
+    color: var(--theme-cta);
+    text-transform: uppercase;
+    text-wrap: balance;
+}
+
+.skew {
+    transform: rotate(var(--skew-angle));
+}
+
+h2 {
+    font-size: calc(1.5 * var(--font-size));
+    font-weight: 700;
+    margin: 1rem 0;
+}
+
+h3 {
+    font-size: var(--font-size);
+    font-weight: 500;
+    margin: 1rem 0;
+}
+
+h4 {
+    font-size: var(--font-size);
+    font-weight: 300;
+    margin: 1rem 0 0 0;
+}
+
+p {
+    font-size: var(--font-size);
+    font-weight: 100;
+    margin: 0.75rem 0 0 0;
+}
+
+a {
+    color: var(--theme-cta);
+    text-decoration: none;
+}
+
+a:hover {
+    color: var(--theme-text);
+}
+
+.letter-matrix {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    align-items: center;
+    gap: calc(2 * var(--font-size));
+    padding: 3rem;
+}
+
+.pixel {
+    font-family: var(--font-mono);
+    font-size: calc(4*var(--font-size));
+    font-style: italic;
+    font-weight: 600;
+    line-height: calc(0.1 * var(--font-size));
+    letter-spacing: -0.3rem;
+    text-transform: uppercase;
+    color: var(--theme-cta);
+}
+
+.material-symbols-outlined {
+    font-variation-settings: "FILL"0, "wght"400, "GRAD"0, "opsz"48;
+    vertical-align: middle;
+}
+
+.button {
+    padding: 1rem 2rem 1rem 1rem;
+    display: flex;
+    justify-content: center;
+    color: var(--theme-cta);
+    background: var(--theme-black);
+}
+
+.button:hover {
+    background: var(--theme-cta);
+    cursor: pointer;
+}
+
+.button:hover>a {
+    color: var(--theme-white);
+    cursor: pointer;
+}
+
+
+ul {
+    list-style: none;
+}
+
+ul>li {
+    margin-left: 1rem;
+}
+
+strong {
+    display: inline;
+}
+
+.text-blink {
+    color: var(--theme-cta);
+    animation: glow 1.5s var(--ease) infinite;
+}
+
+@keyframes glow {
+
+    0%,
+    100% {
+        opacity: 0;
+    }
+
+    50% {
+        opacity: 1;
+    }
+}
+
+/* scroll transition stylings */
+
+.scroll-reveal {
+    position: relative;
+    transform: translateY(0);
+    transition: all 0.6s ease;
+}
+
+.scroll-reveal.active {
+    transform: translateY(0);
+}
+
+/*** THEMES STYLINGS ***/
+
+/* DARK (DEFAULT) theme stylings */
+.dark,
+:root:has(#dark:checked) {
+    --theme-white: #ddd;
+    --theme-black: #08080f;
+    --theme-body: #08080f;
+    --theme-bg: var(--theme-black);
+    --theme-text: var(--theme-white);
+    --theme-text-heading: var(--theme-text);
+    --theme-shadow: var(--theme-black);
+    --theme-cta: #d82121;
+    --theme-grad: linear-gradient(45deg, #0a0a0f, #181818, #0a0a0f, #111111, #0a0a0f);
+}
+
+/* LIGHT theme stylings */
+.light,
+:root:has(#light:checked) {
+    --theme-white: #eee;
+    --theme-black: #08080f;
+    --theme-body: #08080f;
+    --theme-bg: var(--theme-white);
+    --theme-text: var(--theme-black);
+    --theme-text-heading: var(--theme-black);
+    --theme-shadow: #444;
+    --theme-cta: #d82121;
+    --theme-grad: linear-gradient(45deg, var(--theme-white), #ccc, #eee, #bbb, #fff);
+}
+
+/* RED theme stylings */
+.pink,
+:root:has(#pink:checked) {
+    --theme-white: #eee;
+    --theme-black: #08080f;
+    --theme-body: #861452;
+    --theme-bg: var(--theme-white);
+    --theme-text: var(--theme-white);
+    --theme-text-heading: #e0218a;
+    --theme-shadow: #1114;
+    --theme-cta: #e0218a;
+    /* Barbie pink (TM) */
+    --theme-grad: linear-gradient(-45deg, #ee7752, #e73c7e, #23a6d5, #23d5ab);
+}
+
+/* GREEN theme stylings */
+.green,
+:root:has(#green:checked) {
+    --theme-white: #eee;
+    --theme-black: #08080f;
+    --theme-body: #336600;
+    --theme-bg: var(--theme-white);
+    --theme-text: var(--theme-white);
+    --theme-text-heading: var(--theme-text);
+    --theme-shadow: #444;
+    --theme-cta: hsl(120, 75%, 40%);
+    --theme-grad: linear-gradient(45deg, #71870f, #008552, #a4b945);
+}
+
+/* BLUE theme stylings */
+.blue,
+:root:has(#blue:checked) {
+    --theme-white: #eee;
+    --theme-black: #08080f;
+    --theme-body: #106;
+    --theme-bg: var(--theme-white);
+    --theme-text: var(--theme-white);
+    --theme-text-heading: var(--theme-white);
+    --theme-shadow: #aaa4;
+    --theme-cta: #44f;
+    --theme-grad: linear-gradient(45deg, hsl(180, 80%, 30%), hsl(180, 100%, 20%), hsl(180, 60%, 50%));
+}
+
+/* misc stylings */
+
+/* hide labels which are only for reading by screen readers */
+.sr-only {
+    clip: rect(0 0 0 0);
+    clip-path: inset(50%);
+    width: 1px;
+    height: 1px;
+    overflow: hidden;
+    position: absolute;
+    white-space: nowrap;
+}
+
+/*** MEDIA QUERIES based on aspect ratio, not size ***/
+
+/* for portrait screens taller than 3:4 */
+@media (max-aspect-ratio: 3/4) or (max-width: 640px) {
+
+    /* make project-card full width of content-container */
+    .project-card-container {
+        flex-basis: 98%;
+    }
+}
+
+/* for squareish screens between 3:4 and 4:3 */
+@media (min-aspect-ratio: 3/4) and (max-aspect-ratio: 4/3) {}
+
+/* for landscape screens wider than 4:3 */
+@media (min-aspect-ratio: 4/3) {}

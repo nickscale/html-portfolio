@@ -1,0 +1,190 @@
+/* Based on https://codepen.io/erikterwan/pen/EVzeRP by Erik Terwan, 2015 */
+
+:root {
+  /* controls stylings */
+  --button-size: 1.25rem;
+  --DEBUG: red;
+}
+
+/* hamburger menu position */
+#menuToggle {
+  display: block;
+  position: fixed;
+
+  left: var(--button-size);
+  top: var(--button-size);
+
+  z-index: 1;
+  -webkit-user-select: none;
+  user-select: none;
+}
+
+/* menu item link styling */
+#menuToggle a {
+  text-decoration: none;
+  color: var(--theme-white);
+  transition: color 0.2s ease;
+}
+
+#menuToggle a:hover {
+  color: var(--theme-cta);
+}
+
+/* invisible toggle for menu */
+#menuToggle input {
+  display: block;
+  width: var(--button-size);
+  height: calc(2 * var(--button-size));
+
+  position: absolute;
+
+  cursor: pointer;
+
+  opacity: 0;
+  z-index: 2;
+
+  -webkit-touch-callout: none;
+  /* background-color: var(--DEBUG5); */
+}
+
+/* slices of hamburger menu */
+#menuToggle span {
+  display: block;
+  width: var(--button-size);
+  height: calc(0.2 * var(--button-size));
+  margin-bottom: 5px;
+
+  position: relative;
+  z-index: 1;
+
+  background-color: var(--theme-text);
+
+  /* transform-origin: center; */
+  transition: transform 0.3s ease-in-out, background-color 0.3s ease-in-out, opacity 0.3s ease;
+}
+
+/* set origin on first slice */
+#menuToggle span:nth-last-child(4) {
+  transform-origin: 0% 100%;
+}
+
+/* set origin on middle slice */
+#menuToggle span:nth-last-child(3) {
+  transform-origin: 50% 50%;
+}
+
+/* set origin on last slice */
+#menuToggle span:nth-last-child(2) {
+  transform-origin: 100% 0%;
+}
+
+/* ROTATE all burger slices when checked */
+#menuToggle input:checked~span {
+  transform: rotate(90deg);
+}
+
+/* menu closed position (toggle not checked) */
+#menuItems {
+  position: fixed;
+  width: 100dvw;
+  height: 100dvh;
+  top: 0;
+  right: 100%;
+  padding: var(--button-size) 0 0 4rem;
+
+  background-color: black;
+  list-style-type: none;
+
+  /* transform-origin: 0% 0%; */
+
+  transform: translate(0%, 0);
+  transition: transform 0.25s cubic-bezier(0.77, 0.2, 0.05, 1.0);
+}
+
+/* menu items */
+#menuItems li a {
+  /* font-family: var(--font-heading); */
+  font-size: calc(1.5 * var(--button-size));
+  text-transform: uppercase;
+}
+
+/* menu expanded position (toggle is checked) */
+#menuToggle input:checked~ul {
+  transform: translate(100%, 0%);
+}
+
+/* indent sub-menu items */
+#menu li>ul {
+  margin: 0 0 0 5dvw;
+}
+
+/* theme picker stylings */
+
+#theme-picker {
+  position: fixed;
+  top: calc(2 * var(--button-size));
+  left: var(--button-size);
+  z-index: 1;
+
+  display: flex;
+  flex-direction: column;
+
+  padding: var(--button-size) 0;
+  gap: calc(0.5 * var(--button-size));
+
+  -webkit-user-select: none;
+  user-select: none;
+}
+
+#theme-picker input[type="radio"] {
+  /* strip default stylings */
+  appearance: none;
+  width: var(--button-size);
+  height: var(--button-size);
+  border: 4px solid var(--control-color, currentColor);
+  cursor: pointer;
+}
+
+#theme-picker input[type="radio"]:hover {
+  border: 7px solid var(--control-color);
+  outline: 5px solid white;
+  outline-offset: -10px;
+}
+
+#theme-picker input[type="radio"]:checked {
+  background: var(--control-color);
+}
+
+#theme-picker input[type="radio"]#light {
+  --control-color: white;
+}
+
+#theme-picker input[type="radio"]#dark {
+  --control-color: black;
+}
+
+#theme-picker input[type="radio"]#pink {
+  --control-color: #fa027e;
+}
+
+#theme-picker input[type="radio"]#green {
+  --control-color: #0fba0f;
+}
+
+#theme-picker input[type="radio"]#blue {
+  --control-color: #2828df;
+}
+
+/* PLAIN LINKS menu (separate from main popout menu) */
+
+.nav-link {
+  display: flex;
+  gap: 1rem;
+  position: absolute;
+  right: 2rem;
+}
+
+.nav-link:hover {
+  text-decoration: underline;
+  cursor: default;
+}

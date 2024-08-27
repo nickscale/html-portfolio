@@ -1,331 +1,150 @@
 <!DOCTYPE html>
 <html lang="en">
-  <head>
-    <meta charset="UTF-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <meta title="Nick Swinglehurst" />
+	<head>
+		<meta charset="UTF-8" />
+		<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+		<meta title="Nick Swinglehurst" />
 
-    <!-- Link Google fonts -->
-    <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:opsz,wght,FILL,GRAD@48,400,0,0&family=Azeret+Mono:wght@100;300;500;700;900" />
+		<!-- Link Google fonts -->
+		<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:opsz,wght,FILL,GRAD@48,400,0,0&family=Azeret+Mono:wght@100;300;500;700;900" />
 
-    <!-- Link and preload custom CSS -->
-    <link rel="stylesheet" href="css/style.css" />
-    <link rel="stylesheet" href="css/nav.css" />
+		<!-- Link and preload custom CSS -->
+		<link rel="stylesheet" href="css/style_new.css" />
+		<link rel="stylesheet" href="css/nav_new.css" />
 
-    <!-- Link and defer JavaScript -->
-    <script src="js/main.js" defer></script>
-  </head>
+		<!-- Link and defer JavaScript -->
+		<script src="js/main_new.js" defer></script>
+	</head>
 
-  <body>
-    <!-- navigation -->
-    <nav class="nav" role="navigation">
-      <div class="nav-main">
-        <div id="menuToggle">
-          <input type="checkbox" />
-          <span></span>
-          <span></span>
-          <span></span>
-          <ul id="menu">
-            <a href="index.html"><li>Home</li></a>
-            <a href="#projects"><li>Projects</li></a>
-            <ul>
-              <a href="./chime/"><li>Chime</li></a>
-              <a href="./lefttowrite/"><li>Left To Write</li></a>
-              <a href="./bigtoe/"><li>Big Toe</li></a>
-              <a href="./simon/"><li>Simple Simon</li></a>
-            </ul>
-            <a href="#skills"><li>Skills</li></a>
-            <a href="#contact"><li>Contact</li></a>
-          </ul>
-        </div>
-        <div id="theme-picker">
-          <legend class="sr-only">Change theme</legend>
-          <label for="light" class="sr-only">Light</label>
-          <input type="radio" name="theme" id="light" checked />
-          <label for="dark" class="sr-only">Dark</label>
-          <input type="radio" name="theme" id="dark" />
-          <label for="pink" class="sr-only">Pink</label>
-          <input type="radio" name="theme" id="pink" />
-          <label for="green" class="sr-only">Green</label>
-          <input type="radio" name="theme" id="green" />
-          <label for="blue" class="sr-only">Blue</label>
-          <input type="radio" name="theme" id="blue" />
-          <!-- <label for="up" class="sr-only">Previous page</label>
-        <input type="radio" name="scroll" id="up" />
-        <label for="down" class="sr-only">Next page</label>
-        <input type="radio" name="scroll" id="down" /> -->
-        </div>
-      </div>
-    </nav>
+	<body>
+		<div class="background-gradient"></div>
+		<div class="noise"></div>
+		<nav role="navigation">
+			<div id="menuToggle">
+				<input type="checkbox" id="hidden-toggle" />
+				<span></span>
+				<span></span>
+				<span></span>
+				<ul id="menuItems">
+					<li><a href="/index.html">Home</a></li>
+					<li><a href="/index.html#showreel">Showreel</a></li>
+					<li><a href="/index.html#skills">Skills</a></li>
+					<li><a href="/index.html#credits">Credits</a></li>
+					<li><a href="/index.html#contact"> Contact</a></li>
+					<li>&nbsp;</li>
+					<li><a href="/index_coder.html">-> Dev portfolio</a></li>
+					<li><a href="/index_coder.html">-> Writer portfolio</a></li>
+				</ul>
+			</div>
+		</nav>
+		<div id="theme-picker">
+			<legend class="sr-only">Change theme</legend>
+			<label for="dark" class="sr-only">Dark</label>
+			<input type="radio" name="theme" id="dark" checked />
+			<label for="light" class="sr-only">Light</label>
+			<input type="radio" name="theme" id="light" />
+			<label for="pink" class="sr-only">Pink</label>
+			<input type="radio" name="theme" id="pink" />
+			<label for="green" class="sr-only">Green</label>
+			<input type="radio" name="theme" id="green" />
+			<label for="blue" class="sr-only">Blue</label>
+			<input type="radio" name="theme" id="blue" />
+		</div>
+		<div class="site-wrapper">
+			<!-- Front -->
+			<section class="page-container" id="front">
+				<div class="letter-matrix skew">
+					<div>
+						<span class="pixel">S</span>
+						<span class="pixel">e</span>
+						<span class="pixel">n</span>
+						<span class="pixel">i</span>
+						<span class="pixel">o</span>
+						<span class="pixel">r</span>
+					</div>
+					<div>
+						<span class="pixel">O</span>
+						<span class="pixel">f</span>
+						<span class="pixel">f</span>
+						<span class="pixel">l</span>
+						<span class="pixel">i</span>
+						<span class="pixel">n</span>
+						<span class="pixel">e</span>
+					</div>
+					<div>
+						<span class="pixel">E</span>
+						<span class="pixel">d</span>
+						<span class="pixel">i</span>
+						<span class="pixel">t</span>
+						<span class="pixel">o</span>
+						<span class="pixel">r</span>
+					</div>
+					<div>
+						<span class="pixel">&</span>
+					</div>
+					<div>
+						<span class="pixel">E</span>
+						<span class="pixel">d</span>
+						<span class="pixel">i</span>
+						<span class="pixel">t</span>
+					</div>
+					<div>
+						<span class="pixel">P</span>
+						<span class="pixel">r</span>
+						<span class="pixel">o</span>
+						<span class="pixel">d</span>
+						<span class="pixel">u</span>
+						<span class="pixel">c</span>
+						<span class="pixel">e</span>
+						<span class="pixel">r</span>
+					</div>
+				</div>
+				<div>
+					<div><h4>Delivering quality cuts for over 20 years</h4></div>
+				</div>
+				<div>
+					<span class="scroll-down-indicator material-symbols-outlined"> &#xe5cf; </span>
+				</div>
+			</section>
 
-    <div class="site-wrapper">
-      <!-- Front page -->
-      <section class="hero-container" id="front">
-        <div class="background"></div>
-        <div class="letter-matrix">
-          <span class="pixel">N</span>
-          <span class="pixel">I</span>
-          <span class="pixel">C</span>
-          <span class="pixel">K</span>
-          <span class="pixel">S</span>
-          <span class="pixel">W</span>
-          <span class="pixel">I</span>
-          <span class="pixel">N</span>
-          <span class="pixel">G</span>
-          <span class="pixel">L</span>
-          <span class="pixel">E</span>
-          <span class="pixel">H</span>
-          <span class="pixel">U</span>
-          <span class="pixel">R</span>
-          <span class="pixel">S</span>
-          <span class="pixel">T</span>
-          <span class="pixel">I</span>
-          <span class="pixel">S</span>
-          <span class="pixel">A</span>
-          <span class="pixel">J</span>
-          <span class="pixel">U</span>
-          <span class="pixel">N</span>
-          <span class="pixel">I</span>
-          <span class="pixel">O</span>
-          <span class="pixel">R</span>
-          <span class="pixel">D</span>
-          <span class="pixel">E</span>
-          <span class="pixel">V</span>
-          <span class="pixel">I</span>
-          <span class="pixel">N</span>
-          <span class="pixel">L</span>
-          <span class="pixel">O</span>
-          <span class="pixel">N</span>
-          <span class="pixel">D</span>
-          <span class="pixel">O</span>
-          <span class="pixel">N</span>
-        </div>
-        <div class="pointer"><span class="material-symbols-outlined"> &#xe5cf; </span></div>
-      </section>
+			<!-- Showreel -->
+			<section class="page-container indent-left" id="showreel">
+				<div class="section-right">
+					<div style="padding: 56.25% 0 0 0; position: relative">
+						<iframe src="https://player.vimeo.com/video/151380615?badge=0&amp;autopause=0&amp;player_id=0&amp;app_id=58479" frameborder="0" allow="autoplay; fullscreen; picture-in-picture; clipboard-write" style="position: absolute; top: 0; left: 0; width: 100%; height: 100%" title="Broadcast Factual Offline Editor Showreel"></iframe>
+					</div>
+					<script src="https://player.vimeo.com/api/player.js"></script>
+				</div>
+			</section>
 
-      <!-- About -->
-      <section class="page-container diagonal" id="about">
-        <div class="content-container">
-          <div class="section-title">
-            <div class="scroll-reveal">
-              <div class="vertical-title">
-                <h1>About<span class="text-blink">.</span></h1>
-              </div>
-            </div>
-          </div>
-          <div class="section-body">
-            <h3>I'm a Junior Full Stack Developer in central London.</h3>
-            <p>I've always been an engineer, from making demo disks on my Amiga 500, to building video editing PCs. For my engineering degree I made software simulations of laboratory hardware.</p>
-            <p>My first career was in video post production. <strong>I was live streaming before YouTube existed.</strong> For 20 years, I edited 1000s of commercials, TV shows and films.</p>
-            <p>In 2023, <strong>I wanted a new challenge</strong> so I returned to my engineering roots, and started turning my ideas into reality.</p>
-            <p>When I'm not coding, I write <a href="https://vocal.media/authors/nicholas-s-bw19a0k05">stories</a>, produce <a href="https://soundcloud.com/electrission">synthy noises</a> and make <a href="https://vimeo.com/nickswinglehurst">short films</a>.</p>
-            <h2 class="skill-wide scroll-reveal">
-              <a href="./resource/NickSwinglehurst_Dev_CV.pdf"><span class="button">Download my CV (PDF)</span></a>
-            </h2>
-          </div>
-        </div>
-      </section>
+			<!-- Skills -->
+			<section class="page-container indent-left" id="skills">
+				<div class="section-right align-center">
+					<h2><span class="text-blink">25+</span> years Adobe Premiere</h2>
+					<h2><span class="text-blink">15+</span> years Avid Media Composer</h2>
+					<h2><span class="text-blink">15+</span> years Apple Final Cut Pro</h2>
+					<h3>DaVinci Resolve, After Effects, Photoshop</h3>
+					<p>Transcription, translation, subtitling with video timecode</p>
+					<p>Media assets prep and ingest and prep</p>
+					<p>Export for broadcast, web, cinema, mobile and web</p>
+				</div>
+			</section>
 
-      <!-- Projects -->
-      <section class="page-container" id="projects">
-        <div class="content-container">
-          <div class="section-title">
-            <div class="scroll-reveal">
-              <div class="vertical-title">
-                <h1>Projects<span class="text-blink">.</span></h1>
-              </div>
-            </div>
-          </div>
-          <div class="section-body columns-flex">
-            <!-- project gallery -->
-            <div class="project-card-container" id="proj1">
-              <div class="project-card">
-                <div class="project-card-front">
-                  <img class="project-img" alt="Chime" src="./images/gallery/screenshot_chime.jpeg" />
-                </div>
-                <div class="project-card-back">
-                  <a href="/chime/"><h2 class="project-title">Chime<span class="text-blink">.</span></h2></a>
-                  <p>A musical toy.</p>
-                  <p>
-                    <span class="skill-bubble">HTML</span>
-                    <span class="skill-bubble">CSS</span>
-                    <span class="skill-bubble">JavaScript</span>
-                    <span class="skill-bubble">jQuery</span>
-                    <span class="skill-bubble">Flexbox</span>
-                  </p>
-                  <h2>
-                    <a href="./chime/"><span class="button">Play now!</span></a>
-                  </h2>
-                </div>
-              </div>
-            </div>
-            <div class="project-card-container" id="proj2">
-              <div class="project-card">
-                <div class="project-card-front">
-                  <img src="./images/gallery/screenshot_lefttowrite.jpeg" alt="" class="project-img" />
-                </div>
-                <div class="project-card-back">
-                  <a href="/lefttowrite/"><h2 class="project-title">Left To Write<span class="text-blink">.</span></h2></a>
-                  <p>Helping writers meet deadlines.</p>
-                  <p>
-                    <span class="skill-bubble">HTML</span>
-                    <span class="skill-bubble">CSS</span>
-                    <span class="skill-bubble">JavaScript</span>
-                    <span class="skill-bubble">Flexbox</span>
-                  </p>
-                  <h2>
-                    <a href="./lefttowrite/"><span class="button">Try it now!</span></a>
-                  </h2>
-                </div>
-              </div>
-            </div>
-            <div class="project-card-container" id="proj3">
-              <div class="project-card">
-                <div class="project-card-front">
-                  <img src="./images/gallery/screenshot_bigtoe.jpeg" alt="" class="project-img" />
-                </div>
-                <div class="project-card-back">
-                  <a href="/bigtoe/"><h2 class="project-title">Big Toe<span class="text-blink">.</span></h2></a>
-                  <p>Tic tac toe - but bigger!</p>
-                  <p>
-                    <span class="skill-bubble">HTML</span>
-                    <span class="skill-bubble">CSS</span>
-                    <span class="skill-bubble">JavaScript</span>
-                    <span class="skill-bubble">jQuery</span>
-                    <span class="skill-bubble">Flexbox</span>
-                  </p>
-                  <h2>
-                    <a href="./bigtoe/"><span class="button">Play now!</span></a>
-                  </h2>
-                </div>
-              </div>
-            </div>
-            <div class="project-card-container" id="proj4">
-              <div class="project-card">
-                <div class="project-card-front">
-                  <img src="./images/gallery/screenshot_simon.jpeg" alt="" class="project-img" />
-                </div>
-                <div class="project-card-back">
-                  <a href="/simon/"><h2 class="project-title">Simple Simon<span class="text-blink">.</span></h2></a>
-                  <p>The 80s handheld game reinvented. Recall and repeat the pattern!</p>
-                  <p>
-                    <span class="skill-bubble">HTML</span>
-                    <span class="skill-bubble">CSS</span>
-                    <span class="skill-bubble">JavaScript</span>
-                    <span class="skill-bubble">jQuery</span>
-                    <span class="skill-bubble">Flexbox</span>
-                  </p>
-                  <h2>
-                    <a href="./simon/"><span class="button">Play now!</span></a>
-                  </h2>
-                </div>
-              </div>
-            </div>
-          </div>
-        </div>
-      </section>
+			<!-- Credits -->
+			<section class="page-container indent-left" id="credits">
+				<div class="section-right">
+					<h2 class="button"><a href="./resource/NickSwinglehurst_Editor_CV.pdf">Download CV</a></h2>
+				</div>
+			</section>
 
-      <!-- Skills -->
-      <section class="page-container diagonal" id="skills">
-        <div class="content-container">
-          <div class="section-title">
-            <div class="scroll-reveal">
-              <div class="vertical-title">
-                <h1>Skills<span class="text-blink">.</span></h1>
-              </div>
-            </div>
-          </div>
-          <div class="section-body columns-flex">
-            <h2 class="skill">HTML</h2>
-            <h2 class="skill">CSS3</h2>
-            <h2 class="skill">JavaScript</h2>
-            <h2 class="skill">Python</h2>
-            <h2 class="skill">Node.js</h2>
-            <h2 class="skill">Express.js</h2>
-            <h2 class="skill">Bootstrap</h2>
-            <h2 class="skill">jQuery</h2>
-            <h3 class="skill">SQL</h3>
-            <h3 class="skill">GitHub</h3>
-            <h3 class="skill">PHP</h3>
-            <h3 class="skill">C++</h3>
-            <h3 class="skill"><span class="material-symbols-outlined"> skull </span> Shockwave</h3>
-            <h3 class="skill">
-              Codewars<br /><a href="https://www.codewars.com/users/nickscale"><img src="https://www.codewars.com/users/nickscale/badges/micro" alt="NickScale on CodeWars" /></a>
-            </h3>
-            <h2 class="skill-wide">Qualifications</h2>
-            <p class="skill-wide"><strong>Just IT Bootcamp – London, 2023</strong>HTML, CSS, Flexbox, Grid, Bootstrap, JavaScript, SQL, Python</p>
-            <p class="skill-wide"><strong>The Complete Web Dev Bootcamp 2023 - The App Brewery / Udemy</strong>HTML, CSS, JavaScript, SQL, Python, jQuery, Express.js with Node, EJS, SQL</p>
-            <p class="skill-wide"><strong>The Complete Python Bootcamp 2023 Zero to Hero</strong> - Jose Portilla / Udemy</p>
-            <p class="skill-wide"><strong>HTML, CSS and JavaScript Complete 2023</strong> - Do Edu IT Education / Udemy</p>
-          </div>
-        </div>
-      </section>
-
-      <!-- Contact -->
-      <section class="page-container" id="contact">
-        <div class="content-container">
-          <div class="section-title">
-            <div class="scroll-reveal">
-              <div class="vertical-title">
-                <h1>Contact<span class="text-blink">.</span></h1>
-              </div>
-            </div>
-          </div>
-          <div class="section-body">
-            <div>
-              <iframe src="https://docs.google.com/forms/d/e/1FAIpQLScFSOlREu0DYNLS8k_Uxx-mPNw5YwqRqb_EfwQOJAnyA-GJLA/viewform?embedded=true" width="640" height="1080" frameborder="0" marginheight="0" marginwidth="0">Loading…</iframe>
-            </div>
-        </div>
-      </section>
-
-      <!-- Footer -->
-      <section class="page-container diagonal" id="footer">
-        <div class="content-container">
-          <div class="section-title">
-            <div class="scroll-reveal">
-              <div class="vertical-title">
-                <h1>Links<span class="text-blink">.</span></h1>
-              </div>
-            </div>
-          </div>
-          <div class="section-body columns-flex">
-            <div>
-              <ul>
-                <li><h3>Site map</h3></li>
-                <li><a href="#about">About</a></li>
-                <li><a href="#projects">Projects</a></li>
-                <li>
-                  <ul>
-                    <li>> <a href="/chime/">Chime</a></li>
-                    <li>> <a href="/lefttowrite/">Left To Write</a></li>
-                    <li>> <a href="/bigtoe/">Big Toe</a></li>
-                    <li>> <a href="/simon/">Simple Simon</a></li>
-                  </ul>
-                </li>
-                <li><a href="#skills">Skills</a></li>
-              </ul>
-            </div>
-            <div>
-              <ul>
-                <li><h3>Developer</h3></li>
-                <li><a href="https://github.com/nickscale">GitHub</a></li>
-                <li><a href="https://www.codewars.com/users/nickscale">Codewars</a></li>
-                <li><a href="https://www.linkedin.com/in/nickswinglehurst/">LinkedIn</a></li>
-              </ul>
-            </div>
-            <div>
-              <ul>
-                <li><h3>Creative</h3></li>
-                <li><a href="https://vocal.media/authors/nicholas-s-bw19a0k05">Vocal</a></li>
-                <li><a href="https://vimeo.com/nickswinglehurst">Vimeo</a></li>
-                <li><a href="https://soundcloud.com/electrission">SoundCloud</a></li>
-                <li>&nbsp;</li>
-                <li>© 2023</li>
-              </ul>
-            </div>
-          </div>
-        </div>
-      </section>
-    </div>
-  </body>
+			<!-- Contact -->
+			<section class="page-container indent-left" id="contact">
+				<div class="section-right">
+					<div>
+						<iframe id="contact-form" src="https://docs.google.com/forms/d/e/1FAIpQLScFSOlREu0DYNLS8k_Uxx-mPNw5YwqRqb_EfwQOJAnyA-GJLA/viewform?embedded=false" height="1200">Loading…</iframe>
+					</div>
+				</div>
+			</section>
+		</div>
+	</body>
 </html>
