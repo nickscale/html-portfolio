@@ -21,14 +21,14 @@
 
     /* internal margins */
     --content-margin-x: 2rem;
-    --content-margin-y: 3rem;
+    --content-margin-y: 8dvh;
 
     /* layout angle */
     --skew-angle: -6deg;
 
     /* animation styling */
     --delay: 150ms;
-    --ease: cubic-bezier(0.215, 0.61, 0.355, 1);
+    --ease: ease-in-out;
 
     /* FOR TESTING */
     --DEBUG1: #f00;
@@ -87,7 +87,7 @@ body {
 
 /***** LAYOUT STRUCTURE *****/
 
-/* site-wrapper contains the centred content pages */
+/* site-wrapper contains and centres all the page-containers */
 /* i.e. excluding nav, noise and background) */
 .site-wrapper {
     position: relative;
@@ -96,11 +96,13 @@ body {
     align-items: center;
 }
 
-/* page container delimits a full-width vertical page with centred content-container  */
-/* NOTE: do not add left padding to avoid nav here, use indent-left class */
+/* 'page-container' delimits a full-width vertical page with centred content-container  */
+/* NOTE: use indent-left class to avoid hitting nav (not left padding) */
 .page-container {
     width: 100%;
     max-width: var(--content-max-width);
+
+    /* set horizontal flex-direction */
     display: flex;
     flex-direction: row;
     justify-content: flex-start;
@@ -109,30 +111,30 @@ body {
     /* background-color: var(--DEBUG3) */
 }
 
-/* sub-containers within content-container */
+/** ADDITIONAL CLASSES FOR page-container STYLING **/
 
-/* add class for sections that need to dodge nav/theme controls */
+/* add padding to avoid left-side nav/theme controls */
 .indent-left {
-    padding: 0 0 0 1rem;
-    /* add padding to avoid nav items */
+    padding: 0 0 0 2.5rem;
 }
 
+/* style object to vertical orientation */
 .vertical-title {
     writing-mode: vertical-rl;
     transform: rotate(180deg);
 }
 
-/* right-hand content area of each section */
+/* style right-hand content area of each section */
 .section-right {
     width: 100%;
-    padding: 0 var(--content-margin-x) var(--content-margin-y) var(--content-margin-x);
+    padding: var(--content-margin-y) var(--content-margin-x);
     display: flex;
     flex-direction: column;
-    /* background: var(--DEBUG4); */
 }
 
 .align-center {
     align-items: center;
+    text-align: center;
 }
 
 /* column layout for section-right */
@@ -144,23 +146,43 @@ body {
     gap: 1rem;
 }
 
+/* style for embedded objects, e.g. video */
+
+.embed-container {
+    position: relative;
+    padding-bottom: 56.25%;
+    height: 0;
+    overflow: hidden;
+    width: 100%;
+}
+
+.embed-container iframe,
+.embed-container object,
+.embed-container embed {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+
+}
+
 /*** SPECIFIC PAGE STYLINGS ***/
 
 /* FRONT page styling */
 
 .page-container#front {
-    /* position: relative; */
-    height: 100dvh;
+    height: 100vh;
 
     /* change flex-direction to column */
     flex-direction: column;
-    justify-content: center;
+    justify-content: space-around;
     align-items: center;
     text-align: center;
 }
 
 .scroll-down-indicator {
-    position: absolute;
+    position: relative;
     bottom: 0%;
     animation: v-oscillate 2s ease-in-out infinite;
 }
@@ -179,11 +201,15 @@ body {
 
 /* SHOWREEL page styling */
 
-.page-container#showreel {}
+.page-container#showreel {
+    /* background-color: var(--DEBUG6); */
+}
 
 /* ABOUT page styling */
 
-.page-container#about {}
+.page-container#about {
+    margin: 1rem 0;
+}
 
 /* PROJECTS page styling */
 
@@ -275,7 +301,6 @@ body {
 }
 
 /* CONTACT page styling */
-
 .page-container#contact {
     /* background: var(--DEBUG6); */
 }
@@ -286,12 +311,11 @@ iframe#contact-form {
 }
 
 /* FOOTER page stylings */
-
 .page-container#footer {}
 
-/***** AESTHETIC STYLINGS *****/
+/*** AESTHETIC STYLINGS ***/
 
-/* text stylings */
+/** TEXT STYLES **/
 
 h1 {
     font-family: var(--font-heading);
@@ -322,7 +346,7 @@ h3 {
 h4 {
     font-size: var(--font-size);
     font-weight: 300;
-    margin: 1rem 0 0 0;
+    margin: 0.5rem 0 0 0;
 }
 
 p {
@@ -340,31 +364,35 @@ a:hover {
     color: var(--theme-text);
 }
 
+/** STYLE FOR ANIMATED LETTER MATRIX **/
+
 .letter-matrix {
     display: flex;
     flex-wrap: wrap;
     justify-content: center;
     align-items: center;
     gap: calc(2 * var(--font-size));
-    padding: 3rem;
+    /* padding: 1.25rem; */
 }
 
 .pixel {
     font-family: var(--font-mono);
-    font-size: calc(4*var(--font-size));
     font-style: italic;
     font-weight: 600;
-    line-height: calc(0.1 * var(--font-size));
     letter-spacing: -0.3rem;
     text-transform: uppercase;
     color: var(--theme-cta);
 }
 
+/* style for material symbols */
 .material-symbols-outlined {
     font-variation-settings: "FILL"0, "wght"400, "GRAD"0, "opsz"48;
     vertical-align: middle;
+    font-size: xx-large;
+    margin: 0 0.5rem;
 }
 
+/* basic button stylings, e.g. for CV download link */
 .button {
     padding: 1rem 2rem 1rem 1rem;
     display: flex;
@@ -392,12 +420,12 @@ strong {
     display: inline;
 }
 
-.text-blink {
+.text-pulse {
     color: var(--theme-cta);
-    animation: glow 1.5s var(--ease) infinite;
+    animation: pulse 1s var(--ease) infinite;
 }
 
-@keyframes glow {
+@keyframes pulse {
 
     0%,
     100% {
@@ -512,6 +540,11 @@ strong {
 /* for portrait screens taller than 3:4 */
 @media (max-aspect-ratio: 3/4) or (max-width: 640px) {
 
+    .pixel {
+        font-size: min(6rem, 8vw);
+        line-height: min(6rem, 8vw);
+    }
+
     /* make project-card full width of content-container */
     .project-card-container {
         flex-basis: 98%;
@@ -519,7 +552,17 @@ strong {
 }
 
 /* for squareish screens between 3:4 and 4:3 */
-@media (min-aspect-ratio: 3/4) and (max-aspect-ratio: 4/3) {}
+@media (min-aspect-ratio: 3/4) and (max-aspect-ratio: 4/3) {
+    .pixel {
+        font-size: min(6rem, 8vw);
+        line-height: min(6rem, 8vw);
+    }
+}
 
 /* for landscape screens wider than 4:3 */
-@media (min-aspect-ratio: 4/3) {}
+@media (min-aspect-ratio: 4/3) {
+    .pixel {
+        font-size: min(8vw, 6rem);
+        line-height: min(8vw, 6rem);
+    }
+}
